@@ -4,14 +4,16 @@
 
 .inputField {
     border-color: lightcoral;
-    border-width: 5px;
+    border-width: 0.25em;
+    margin-bottom: 0.7em;
 }
 
 .inputField:focus {
     border-color: red;
-    border-width: 5px;
 }
 
 .errorMessage {
     color: red;
+    margin-left: 0.5em;
+    font-weight: bold;
 }

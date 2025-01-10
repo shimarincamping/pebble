@@ -4,10 +4,13 @@ import styles from "../styles/LoginRegistration.module.css"
 function AuthenticationInputField(props) {
     return (
         <>
-            <p>{props.label}</p>
+            <label for={props.name}>{props.label}</label> 
+            <br />
+
             <input 
                 type={props.type}
                 name={props.name}
+                id={props.name}
                 value={props.value} 
                 onChange={props.onChange} 
                 onBlur={props.onBlur}
@@ -17,10 +20,11 @@ function AuthenticationInputField(props) {
 
             {props.errorMessageVisible && (
                 <span className={`${styles.errorMessage}`}>
-                    {`${props.label} is invalid!`}
+                    {props.errorMessage}
                 </span>
             )}
 
+            <br />
         </>
     );
 }

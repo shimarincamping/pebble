@@ -9,19 +9,23 @@ function RegistrationFormContainer() {
     const formFields = {
         fullName : {
             label : "Full Name",
-            type : "text"
+            type : "text",
+            errorMessage : "Name cannot be empty."
         },
         email : {
             label : "Email Address",
-            type : "text"
+            type : "text",
+            errorMessage: "Email address is invalid."
         },
         password : {
             label : "Password",
-            type : "password"
+            type : "password",
+            errorMessage : "Password must be at least 10 characters."
         },
         confirmPassword : {
             label : "Confirm Password",
-            type : "password"
+            type : "password",
+            errorMessage : "Passwords do not match."
         }
     };
 
@@ -50,12 +54,17 @@ function RegistrationFormContainer() {
     // Determines if a single input is valid:
     function isValidInput(inputType, inputValue) {
         switch (inputType) {
-            case "fullName" :
+            case "fullName":
                 return inputValue.length > 0;
             case "email":
                 return inputValue.match(emailRegex);
             case "password":
-                return inputValue.length > 10;
+                setFormDataValidState((prev) => ({
+                    ...prev,
+                    "confirmPassword" : (inputValue === formData.confirmPassword)
+                }));
+
+                return (inputValue.length > 10);
             case "confirmPassword":
                 return inputValue === formData.password;
         }
@@ -63,7 +72,7 @@ function RegistrationFormContainer() {
 
     // Determines if all inputs are valid:
     function isAllValidInput() {
-        return Object.values(formDataValidState).every(Boolean) && Object.values(formData).every(Boolean);
+        return Object.values(formData).every(Boolean) && Object.values(formDataValidState).every(Boolean);
     }
 
     // Updates state object on each keypress
@@ -76,7 +85,7 @@ function RegistrationFormContainer() {
         }));
     }
 
-    // If input invalid, clear the field. (Error warning can be added later)
+    // Removes excess whitespace + checks if the input is valid
     const validateInput = (e) => {
         const {name, value} = e.target;
         const trimmedValue = value.trim();
@@ -94,12 +103,14 @@ function RegistrationFormContainer() {
 
     // Submits the form
     const handleSubmit = (e) => {
-        e.preventDefault();
+        // Add backend integration here!
 
-        if (isAllValidInput()) alert("Form submitted!");
+        if (isAllValidInput()) alert("Form submitted!");  // Prompt user to login here!
         else alert("Form invalid!");
     }
 
+
+    // Passes props to children; returns JSX
     return (
         <div className={`${styles.formBody}`}>
             <form onSubmit={handleSubmit}>
@@ -113,12 +124,13 @@ function RegistrationFormContainer() {
                             label={value.label}
                             onChange={handleInputChange}
                             onBlur={validateInput}
+                            errorMessage={value.errorMessage}
                             errorMessageVisible={!formDataValidState[key]}
                         />
                     ))
                 }
 
-                {isAllValidInput() && <input type="submit"/>}
+                {isAllValidInput() && <input type="submit" />}
 
             </form>
         </div>
