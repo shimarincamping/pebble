@@ -1,0 +1,17 @@
+.formBody {
+    background-color : lightblue;
+}
+
+.inputField {
+    border-color: lightcoral;
+    border-width: 5px;
+}
+
+.inputField:focus {
+    border-color: red;
+    border-width: 5px;
+}
+
+.errorMessage {
+    color: red;
+}
