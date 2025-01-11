@@ -11,7 +11,7 @@ function RegistrationPage() {
             </div>
 
             <div className={`${styles.sidebarContentsContainer}`}>
-                <img src="pebbleLogo.png" className={`${styles.sidebarContentsContainer__appLogo}`}/>
+                <img src="img/pebbleLogo.png" className={`${styles.sidebarContentsContainer__appLogo}`}/>
                 <h1 className={`${styles.sidebarContentsContainer__formHeader}`}>Register</h1>
                 <RegistrationFormContainer />
 

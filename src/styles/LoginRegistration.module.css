@@ -1,8 +1,15 @@
 :root {
-    --backgroundURL: url(../../public/taylorsBackground.png); 
-
+    --backgroundURL: url(../../public/img/taylorsBackground.png); 
     --taylorsRed: #E51B22;
-    --disabledColor: grey; 
+
+    --primaryButtonBackground: var(--taylorsRed);
+    --primaryButtonText: white;
+    --disabledButtonBackground: grey;
+    --disabledButtonText: black;
+
+    --inputBorderColor: #7C7C7C;
+    --inputBorderColorFocused: var(--taylorsRed);
+    --sidebarBackgroundColor: rgba(255, 255, 255, 0.9);
 }
 
 .pageContainer {
@@ -16,7 +23,7 @@
 .sidebarContentsContainer {
     height: 100vh;
     width: 60%;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: var(--sidebarBackgroundColor);
     position: absolute;
     z-index: 1;
     overflow-x: hidden;
@@ -62,7 +69,7 @@
 }
 
 .formBody__inputField {
-    border-color: rgb(124, 124, 124);
+    border-color: var(--inputBorderColor);
     border-radius: 0.8em;
     border-width: 0.25em;
     margin-top: 0.2em;
@@ -72,7 +79,7 @@
 }
 
 .formBody__inputField:focus {
-    border-color: var(--taylorsRed);
+    border-color: var(--inputBorderColorFocused);
 }
 
 .formBody__errorMessage {
@@ -86,8 +93,8 @@
     display: block;
     margin: 3em auto;
     padding: 0.8em 3em;
-    background-color: var(--taylorsRed);
-    color: white;
+    background-color: var(--primaryButtonBackground);
+    color: var(--primaryButtonText);
     font-size: 1.1rem;
     font-weight: bold;
     border-radius: 1.2em;
@@ -95,7 +102,7 @@
 }
 
 .formBody__primaryButton:disabled {
-    background-color: var(--disabledColor);
-    color: black;
+    background-color: var(--disabledButtonBackground);
+    color: var(--disabledButtonText);
     cursor: not-allowed;
 }

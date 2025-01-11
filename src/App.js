@@ -6,6 +6,8 @@ import {
 } from "react-router-dom";
 
 import RegistrationPage from "./pages/RegistrationPage";
+import GoalsPage from "./pages/GoalsPage";
+
 import "./styles/global.module.css"
 
 function App() {
@@ -14,6 +16,7 @@ function App() {
       {/* <Link to="/register">Register</Link> */}
       <Routes>
         <Route path="/register" element={<RegistrationPage />} />
+        <Route path="/goals" element={<GoalsPage />} />
       </Routes>
     </BrowserRouter>
   );
