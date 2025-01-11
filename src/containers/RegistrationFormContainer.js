@@ -64,7 +64,7 @@ function RegistrationFormContainer() {
                     "confirmPassword" : (inputValue === formData.confirmPassword)
                 }));
 
-                return (inputValue.length > 10);
+                return inputValue.length > 10;
             case "confirmPassword":
                 return inputValue === formData.password;
         }
@@ -130,7 +130,7 @@ function RegistrationFormContainer() {
                     ))
                 }
 
-                {isAllValidInput() && <input type="submit" />}
+                {<input type="submit" className={`${styles.formBody__primaryButton}`} disabled={!isAllValidInput()}/>}
 
             </form>
         </div>

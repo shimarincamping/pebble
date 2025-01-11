@@ -3,8 +3,11 @@ import styles from "../styles/LoginRegistration.module.css"
 
 function AuthenticationInputField(props) {
     return (
-        <>
-            <label for={props.name}>{props.label}</label> 
+        <div className={`${styles.formBody__inputFieldContainer}`}>
+            <label for={props.name} className={`${styles.formBody__inputLabel}`}>
+                {props.label}
+            </label> 
+
             <br />
 
             <input 
@@ -15,17 +18,15 @@ function AuthenticationInputField(props) {
                 onChange={props.onChange} 
                 onBlur={props.onBlur}
 
-                className={`${styles.inputField}`}
+                className={`${styles.formBody__inputField}`}
             />
 
             {props.errorMessageVisible && (
-                <span className={`${styles.errorMessage}`}>
-                    {props.errorMessage}
-                </span>
+                <p className={`${styles.formBody__errorMessage}`}>
+                    ⚠️ {props.errorMessage}
+                </p>
             )}
-
-            <br />
-        </>
+        </div>
     );
 }
 
