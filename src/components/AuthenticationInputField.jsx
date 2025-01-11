@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from "../styles/LoginRegistration.module.css"
+import styles from "../styles/LoginRegistration.module.css";
 
 function AuthenticationInputField(props) {
     return (
         <div className={`${styles.formBody__inputFieldContainer}`}>
-            <label for={props.name} className={`${styles.formBody__inputLabel}`}>
+            <label htmlFor={props.name} className={`${styles.formBody__inputLabel}`}>
                 {props.label}
             </label> 
 

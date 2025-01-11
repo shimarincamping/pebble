@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AuthenticationInputField from '../components/AuthenticationInputField';
 
-import styles from "../styles/LoginRegistration.module.css"
+import styles from "../styles/LoginRegistration.module.css";
 
 function RegistrationFormContainer() {
 
