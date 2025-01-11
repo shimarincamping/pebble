@@ -10,9 +10,16 @@ function RegistrationPage() {
             <div className={`${styles.pageContainer}`}>
             </div>
 
-            <div className={`${styles.sidebarContentsContainer}`}>
-                <img src="img/pebbleLogo.png" className={`${styles.sidebarContentsContainer__appLogo}`}/>
-                <h1 className={`${styles.sidebarContentsContainer__formHeader}`}>Register</h1>
+            <main className={`${styles.sidebarContentsContainer}`}>
+                <img 
+                    src="img/pebbleLogo.png" 
+                    className={`${styles.sidebarContentsContainer__appLogo}`} 
+                    alt="PEBBLE logo"
+                />
+                <h1 className={`${styles.sidebarContentsContainer__formHeader}`}>
+                    Register
+                </h1>
+                
                 <RegistrationFormContainer />
 
                 <div className={`${styles.sidebarContentsContainer__redirectLoginLink}`}>
@@ -20,7 +27,7 @@ function RegistrationPage() {
                         Already have an account? Log in!
                     </Link>
                 </div>
-            </div>
+            </main>
         </>
 
     );

@@ -1,0 +1,146 @@
+:root {
+    --taylorsRed: #E51B22;
+
+    --cardOutlineColor: grey;
+    --cardShadowColor : grey;
+    --cardBackgroundColor: white;
+
+    --profileCardSubtextColor: grey;
+
+    --editProfileButtonBackground: var(--taylorsRed);
+    --editProfileButtonBackgroundHover: rgb(227, 67, 67);
+    --editProfileButtonText: white;
+}
+
+.sidebarContainer {
+    background-color: lightpink;
+    height: 100vh;
+}
+
+.sidebarCard {
+    background-color: var(--cardBackgroundColor);
+    border: 0.05em solid var(--cardOutlineColor);
+    border-radius: 1.5em;
+    box-shadow: 0.2em 0.2em 0.1em var(--cardShadowColor);
+    padding: 0;
+    margin: 1.2em;
+}
+
+.profileSidebarCard__bannerImage {
+    width: 100%;
+    height: 6em;
+    border-radius: 1.5em 1.5em 0 0;
+    object-fit: cover;
+    object-position: center 80%;
+}
+
+.profileSidebarCard__profilePictureBorder {
+    width: 7em;
+    position: relative;
+    top: -3.5em;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.profileSidebarCard__profilePicture {
+    width: 6.7em;
+    border-radius: 100%;
+    position: relative;
+    top: -10.64em;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.profileSidebarCard__mainBody {
+    margin: -9.5em 0.8em 1.5em 0.8em;
+}
+
+.profileSidebarCard__mainBody__userHeader {
+    text-align: center;
+}
+
+.profileSidebarCard__mainBody__userHeader h1 {
+    font-weight: 900;
+}
+
+.profileSidebarCard__mainBody__userHeader p {
+    font-size: 0.8rem;
+    color: var(--profileCardSubtextColor);
+}
+
+.profileSidebarCard__mainBody__editButtonContainer hr {
+    margin: 0 0.3em 1em 0.3em;
+}
+
+.profileSidebarCard__mainBody__editButtonContainer a {
+    text-decoration: none;
+}
+
+.profileSidebarCard__mainBody__editButtonContainer button {
+    display: block;
+    margin: auto;
+    padding: 0.12em 0;
+    text-align: center;
+    width: 80%;
+    border: none;
+    border-radius: 3em;
+    background-color: var(--editProfileButtonBackground);
+    color: var(--editProfileButtonText);
+    font-weight: 900;
+    font-size: 1rem;
+    box-shadow: 0.1em 0.1em 0.1em var(--cardShadowColor);
+
+    cursor: pointer;
+}
+
+.profileSidebarCard__mainBody__editButtonContainer button:hover {
+    background-color: var(--editProfileButtonBackgroundHover);
+}
+
+.profileSidebarCard__mainBody__editButtonContainer button img {
+    display: inline;
+    height: 1rem;
+    padding-left: 0.5em;
+}
+
+.profileSidebarCard__mainBody__additionalInformation h5 {
+    margin-top: 1.7em;
+    margin-bottom: 0.3em;
+    font-size: 0.9rem;
+}
+
+.profileSidebarCard__mainBody__additionalInformation p {
+    font-size: 0.78rem;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.profileSidebarCard__mainBody__additionalInformation__contactLine {
+    display: inline-block;
+    width: 19.5em;
+    margin: 0 0 -0.2em 0.1em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.profileSidebarCard__mainBody__additionalInformation__contactLine img {
+    height: 0.9rem;
+}
+
+.profileSidebarCard__mainBody__additionalInformation__contactLine span {
+    font-size: 0.78rem;
+    margin-left: 0.4em;
+    vertical-align: top;
+}
+
+.profileSidebarCard__loadingContainer {
+    text-align: center;
+    margin: 2em 0 2.5em 0;
+}
+
+.profileSidebarCard__loadingContainer img {
+    width: 4em;
+}

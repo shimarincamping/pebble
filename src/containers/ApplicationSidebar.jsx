@@ -4,9 +4,9 @@ import styles from "../styles/Sidebar.module.css";
 
 function ApplicationSidebar({children}) {
     return (
-        <div className={`${styles.sidebarContainer}`}>
+        <aside className={`${styles.sidebarContainer}`}>
             {children}
-        </div>
+        </aside>
     )
 }
 
