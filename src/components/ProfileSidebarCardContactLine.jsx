@@ -9,7 +9,7 @@ function ProfileSidebarCardContactLine(props) {
                 src={props.src}
                 alt={props.alt}
             />
-            <span>{props.text}</span>
+            <span title={props.text}>{props.text}</span>
         </div>
     )
 }
