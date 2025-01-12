@@ -1,0 +1,92 @@
+.microsoftButton {
+  background-color: #E51B22;
+  color: white;
+  border: none;
+  padding: 0.6em 2em;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  width: 94%;
+  cursor: pointer;
+  margin-left: 3%;
+  display: flex; /* Enable flexbox for alignment */
+  align-items: center; /* Vertically center items */
+  justify-content: center; /* Horizontally center items */
+  gap: 0.8em; /* Add spacing between logo and text */
+  font-size: 1.4rem;
+}
+
+.microsoftLogo {
+  height: 1em;
+}
+
+.inputField {
+  width: 90%;
+  margin: 0.6em 3%;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.pebbleLogo {
+  height: 7.5em;
+  align-self: center;
+  margin: 1.2em 1.5em;
+}
+
+.loginButton{
+  background-color: #E51B22;
+  color: white;
+  border: none;
+  padding: 0.7em 2em;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 94%;
+  margin: 0.4em 3%;
+  font-size: 1rem;
+}
+
+.createAccount {
+  margin: 0.8em 0 1em 4%;
+}
+
+.register {
+  color: #0000EE;
+  cursor: pointer;
+}
+
+.forgotPassword {
+  color: #0000EE;
+  cursor: pointer;
+}
+
+.loginText {
+  text-align: left;
+  margin: 3.7em 0 1.7em;
+  margin-left: 4%;
+  font-size: 0.8rem;
+}
+
+.pebbleLoginText {
+  text-align: left;
+  margin: 4.7em 0 1em 4%;
+  font-size: 0.8rem;
+}
+
+.passwordCheck {
+  display: flex; /* Enable flexbox for alignment */
+  justify-content: center; /* Horizontally center items */
+  gap: 59%; /* Add spacing between logo and text */
+  margin: 0.5em 0 1.4em;
+}
+
+.rememberPassword {
+  display: flex; /* Enable flexbox for alignment */
+  justify-content: center; /* Horizontally center items */
+  gap: 0.8rem;
+}
+
+.checkbox {
+  cursor: pointer;
+  width: 1.5em;
+  height: 1.5em;
+}
