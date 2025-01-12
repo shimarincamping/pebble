@@ -1,0 +1,33 @@
+  .loginContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .background {
+    position: absolute; /* Ensure background spans the container */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Lower z-index than the login form */
+    overflow: hidden; /* Prevents overflow issues */  
+  }
+  
+  .backgroundImg {
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    background-position: center; /* Optional: centers the image */
+  }
+  
+  .loginForm {
+    position: absolute; /* Absolute positioning to overlay background */
+    z-index: 2; /* Higher z-index to ensure it appears above the background */
+    width: 52%;
+    height: 95%;
+    background-color: rgba(255, 255, 255, 0.785);
+    display: flex;
+    justify-content: center;
+    padding: 0 1.5em 2.2em;
+  }
+  
