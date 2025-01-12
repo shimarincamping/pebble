@@ -15,7 +15,6 @@ function GoalsPage() {
       </ApplicationSidebar>
       <main>
         <h1>Main content goes here! (to be replaced with Goals components)</h1>
-        <DashboardStatsCard />
       </main>
     </div>
   );
