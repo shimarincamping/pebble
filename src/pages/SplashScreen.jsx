@@ -8,7 +8,7 @@ export default function SplashScreen() {
     navigateToHome("/login");
   };
 
-  //   const interval = setInterval(handleNavigate, 3000);
+  const interval = setInterval(handleNavigate, 3000);
 
   return (
     <div className={styles.pebbleLogo}>
