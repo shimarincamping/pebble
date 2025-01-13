@@ -3,7 +3,10 @@
 :root {
     /* Defined colors */
     --taylorsRed: #E51B22;
-
+    --dashboardStatsLeaderboard: #E3DFFF;
+    --dashboardStatsMonthlyPoints: #FFDCDC;
+    --dashboardStatsTickets: #FFF2D9;
+    
     /* Cards and blocks */
     --cardOutlineColor: grey;
     --cardShadowColor : grey;
