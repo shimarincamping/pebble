@@ -4,6 +4,7 @@ import ApplicationMainContent from "../containers/ApplicationMainContent";
 
 import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContainer";
 import GoalsPageContainer from "../containers/GoalsPageContainer";
+import CurrencyCard from "../components/CurrencyCard";
 
 import styles from "../styles/global.module.css";
 
@@ -15,6 +16,7 @@ function GoalsPage() {
     >
       <ApplicationSidebar>
         <ProfileSidebarCardContainer />
+        <CurrencyCard />
       </ApplicationSidebar>
 
       <ApplicationMainContent>
