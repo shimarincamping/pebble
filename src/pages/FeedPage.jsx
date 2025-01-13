@@ -3,27 +3,29 @@ import ApplicationSidebar from "../containers/ApplicationSidebar";
 import ApplicationMainContent from "../containers/ApplicationMainContent";
 
 import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContainer";
-import GoalsPageContainer from "../containers/GoalsPageContainer";
-import CurrencyCard from "../components/CurrencyCard";
 
 import styles from "../styles/global.module.css";
 
 
-function GoalsPage() {
+function FeedPage() {
   return (
     <div
-      className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBody}`}  
+      className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationNarrowBody}`}  
     >
       <ApplicationSidebar>
         <ProfileSidebarCardContainer />
-        <CurrencyCard />
       </ApplicationSidebar>
 
       <ApplicationMainContent>
-        <GoalsPageContainer />
       </ApplicationMainContent>
+
+      {
+      <ApplicationSidebar>
+      </ApplicationSidebar>
+      }
+
     </div>
   );
 }
 
-export default GoalsPage;
+export default FeedPage;
