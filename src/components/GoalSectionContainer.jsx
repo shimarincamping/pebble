@@ -1,18 +1,24 @@
 import React from 'react';
 
 import styles from '../styles/GoalsRewards.module.css';
+import GoalSectionItem from './GoalSectionItem';
 
 function GoalSectionContainer(props) {
-
     return (
         <div className={`${styles.goalSectionContainer}`}>
 
-            <h4>{`${props.goalType} Goals`}</h4>
+            <h3>{`${props.goalType} Goals`}</h3>
 
             <div className={`${styles.goalSectionContainer__goalsList}`}>
-                {props.children}
+                {
+                    (props.goals).map((goal, index) => (
+                        <GoalSectionItem 
+                            goalIndex={index}
+                            {...goal}
+                        />
+                    ))
+                }
             </div>
-
         </div>
     )
 
