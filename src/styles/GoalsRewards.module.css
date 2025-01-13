@@ -24,7 +24,8 @@
 
 .goalSectionContainer {
     padding: 1em 0;
-    width: 65em;
+    width: 100%;
+    min-width: 45em;
 }
 
 .goalSectionItemContainer {
@@ -45,11 +46,13 @@
     padding: 0;
 
     vertical-align: middle;
+
+    outline: 1px solid black;
 }
 
 .goalSectionItem__goalNumber {
     text-align: center;
-    width: 3em;
+    width: 6%;
     margin: 0.7em 0.7em 0.7em 0.2em;
     padding: 0.7em 0;
 
@@ -61,7 +64,7 @@
 }
 
 .goalSectionItem__goalDescriptionBody {
-    width: 56em;
+    width: 78%;
     font-size: 0.9rem;
     white-space: pre-wrap;
 }
@@ -70,14 +73,9 @@
     margin: 0.3em 0;
 }
 
-.goalSectionItem__goalDescriptionBody {
-    width: 56em;
-    font-size: 0.9rem;
-}
-
 .goalSectionItem__goalValueContainer {
     text-align: center;
-    width: 8em;
+    width: 12%;
     padding: 1.38em 0;
     float: right;
 
