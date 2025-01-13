@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+
 import styles from "../styles/LoginComponent.module.css"; 
 import microsoftLogo from "../../public/img/Microsoft.png";
 import pebbleLogo from "../../public/img/pebbleLongLogo.png";
@@ -78,7 +80,7 @@ const LoginComponent = () => {
           <button type="submit" className={styles.loginButton}>Log In</button>
         </form>
         <div className={styles.createAccount}>
-          <p>Don't have an account? <span className={styles.register}>Register here</span></p>
+          <p>Don't have an account? <Link to="/register"><span className={styles.register}>Register here</span></Link></p>
         </div>
       </div>
     </div>

@@ -37,15 +37,15 @@
 }
 
 .statsCard__item__leaderboard {
-    background-color: var(--statsLeaderboardColor);
+    background-color: var(--dashboardStatsLeaderboard);
 }
 
 .statsCard__item__points {
-    background-color: var(--statsPointsColor);
+    background-color: var(--dashboardStatsMonthlyPoints);
 }
 
 .statsCard__item__tickets {
-    background-color: var(--statsTicketsColor);
+    background-color: var(--dashboardStatsTickets);
 }
 
 .statsCard__item__desc {

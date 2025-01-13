@@ -3,7 +3,11 @@
 :root {
     /* Defined colors */
     --taylorsRed: #E51B22;
-
+    --pebbleGreen: #18BC2B;
+    --dashboardStatsLeaderboard: #E3DFFF;
+    --dashboardStatsMonthlyPoints: #FFDCDC;
+    --dashboardStatsTickets: #FFF2D9;
+    
     /* Cards and blocks */
     --cardOutlineColor: grey;
     --cardShadowColor : grey;
@@ -43,6 +47,7 @@
 /* Modifies default appearance of scrollbar */
 
 ::-webkit-scrollbar {
+    height: 0.3em;
     width: 0.3em;
 }
 
@@ -52,6 +57,7 @@
   
 ::-webkit-scrollbar-thumb {
     background: #888;
+    border-radius: 1em;
 }
 
 ::-webkit-scrollbar-thumb:hover {
