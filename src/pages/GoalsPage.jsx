@@ -22,15 +22,6 @@ function GoalsPage() {
       <ApplicationMainContent>
         <GoalsPageContainer />
       </ApplicationMainContent>
-
-      {/*
-      <ApplicationSidebar>
-        <ProfileSidebarCardContainer />
-        <ProfileSidebarCardContainer />
-        <ProfileSidebarCardContainer />
-      </ApplicationSidebar>
-      */}
-
     </div>
   );
 }
