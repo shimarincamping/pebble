@@ -1,0 +1,8 @@
+.componentLoadingContainer {
+    text-align: center;
+    margin: 2em 0 2.5em 0;
+}
+
+.componentLoadingContainer img {
+    width: 4em;
+}
