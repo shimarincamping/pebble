@@ -10,7 +10,8 @@ import {
 import RegistrationPage from "./pages/RegistrationPage";
 import LoginPage from "./pages/LoginPage";
 import GoalsPage from "./pages/GoalsPage";
-import "./styles/global.module.css"
+import SplashScreen from "./pages/SplashScreen";
+import "./styles/global.module.css";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegistrationPage />} />
         <Route path="/goals" element={<GoalsPage />} />
+        <Route path="/splash" element={<SplashScreen />} />
       </Routes>
     </BrowserRouter>
   );
