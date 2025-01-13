@@ -1,12 +1,9 @@
 import React from "react";
 import LoginComponent from "../components/LoginComponent";
 import styles from "../styles/LoginFormContainer.module.css"; 
+import campusImage from "../../public/img/campus.png"; 
 
-function LoginFormContainer() {
-
-  
-  const campusImage = "/img/taylorsBackground.png";
-
+const LoginFormContainer = () => {
   return (
     <div className={styles.loginContainer}>
       <div className={styles.background}>

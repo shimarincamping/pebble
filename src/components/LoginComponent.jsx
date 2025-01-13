@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "../styles/LoginComponent.module.css"; 
+import microsoftLogo from "../../public/img/Microsoft.png";
+import pebbleLogo from "../../public/img/pebbleLongLogo.png";
 
 
 const LoginComponent = () => {
