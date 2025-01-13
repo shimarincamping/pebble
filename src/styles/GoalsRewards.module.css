@@ -1,0 +1,31 @@
+/* RewardsPageHeader.jsx component */
+
+.contentHeader {
+    margin-bottom: 0.5em;
+}
+
+.contentHeader header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.9em;
+}
+
+.contentHeader button {
+    background-color: var(--primaryButtonBackground);
+    color: var(--primaryButtonText);
+    font-weight: 900;
+    border-radius: 1.5em;
+    padding: 0.4em 2.8em;
+}
+
+/* Goals listing */
+
+.goalSectionContainer {
+    padding: 1em 0;
+}
+
+
+.goalSectionContainer__goalsList {
+   
+}

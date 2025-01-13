@@ -1,21 +1,34 @@
 import React from "react";
 import ApplicationSidebar from "../containers/ApplicationSidebar";
+import ApplicationMainContent from "../containers/ApplicationMainContent";
+
 import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContainer";
+import GoalsPageContainer from "../containers/GoalsPageContainer";
 
 import styles from "../styles/global.module.css";
-import DashboardStatsCard from "../components/DashboardStatsCard";
+
 
 function GoalsPage() {
   return (
     <div
-      className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBody}`}
+      className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBody}`}  
     >
       <ApplicationSidebar>
         <ProfileSidebarCardContainer />
       </ApplicationSidebar>
-      <main>
-        <h1>Main content goes here! (to be replaced with Goals components)</h1>
-      </main>
+
+      <ApplicationMainContent>
+        <GoalsPageContainer />
+      </ApplicationMainContent>
+
+      {/*
+      <ApplicationSidebar>
+        <ProfileSidebarCardContainer />
+        <ProfileSidebarCardContainer />
+        <ProfileSidebarCardContainer />
+      </ApplicationSidebar>
+      */}
+
     </div>
   );
 }

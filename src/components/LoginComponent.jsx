@@ -1,10 +1,13 @@
 import React from "react";
 import styles from "../styles/LoginComponent.module.css"; 
-import microsoftLogo from "../assets/Microsoft.png";
-import pebbleLogo from "../assets/pebbleLongLogo.png";
 
 
 const LoginComponent = () => {
+
+  const pebbleLogo = "img/pebbleLogo.png";
+  const microsoftLogo = "icons/microsoft.png"
+
+
   const handleMicrosoftLogin = () => {
     console.log("Microsoft Login clicked");
   };

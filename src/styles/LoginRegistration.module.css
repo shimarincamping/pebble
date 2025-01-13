@@ -1,19 +1,5 @@
-:root {
-    --backgroundURL: url(../../public/img/taylorsBackground.png); 
-    --taylorsRed: #E51B22;
-
-    --primaryButtonBackground: var(--taylorsRed);
-    --primaryButtonText: white;
-    --disabledButtonBackground: grey;
-    --disabledButtonText: black;
-
-    --inputBorderColor: #7C7C7C;
-    --inputBorderColorFocused: var(--taylorsRed);
-    --sidebarBackgroundColor: rgba(255, 255, 255, 0.9);
-}
-
 .pageContainer {
-    background-image: var(--backgroundURL);
+    background-image: var(--registrationCoverImage);
     background-size: cover;
     height: 100vh;
     width: 100vw;
@@ -23,7 +9,7 @@
 .sidebarContentsContainer {
     height: 100vh;
     width: 60%;
-    background-color: var(--sidebarBackgroundColor);
+    background-color: var(--registrationBodyBackground);
     position: absolute;
     z-index: 1;
     overflow-x: hidden;
@@ -93,16 +79,15 @@
     display: block;
     margin: 3em auto;
     padding: 0.8em 3em;
+    
     background-color: var(--primaryButtonBackground);
     color: var(--primaryButtonText);
     font-size: 1.1rem;
     font-weight: bold;
-    border-radius: 1.2em;
-    cursor: pointer;
+    border-radius: 0.3em;
 }
 
 .formBody__primaryButton:disabled {
     background-color: var(--disabledButtonBackground);
     color: var(--disabledButtonText);
-    cursor: not-allowed;
 }
