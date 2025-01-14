@@ -8,7 +8,7 @@
 
 .sidebarContentsContainer {
     height: 100vh;
-    width: 60%;
+    width: 52%;
     background-color: var(--registrationBodyBackground);
     position: absolute;
     z-index: 1;
@@ -29,6 +29,11 @@
     margin: 1em 0 0.5em 0;
 }
 
+.sidebarContentsContainer__loginSectionHeader {
+    margin: 1.7em 0 0.9em;
+    font-size: 1.6rem;
+}
+
 .sidebarContentsContainer__redirectLoginLink {
     text-align: center;
     margin-top: -2em;
@@ -40,21 +45,34 @@
     font-weight: 900;
 }
 
+.sidebarContentsContainer__loginFormMainWrapper {
+  padding: 0 2em;
+}
+
 .formBody {
     width: 100%;
 }
 
-.formBody__inputFieldContainer {
+.formBody__loginInputField {
+  width: 95.5%;
+  margin: 0.6em 0;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.formBody__registrationInputFieldContainer {
     width: 60%;
     margin: 1.3em auto;
 }
 
-.formBody__inputLabel {
+.formBody__registrationInputLabel {
     font-size: 0.9rem;
     font-weight: bold;
 }
 
-.formBody__inputField {
+.formBody__registrationInputField {
     border-color: var(--inputBorderColor);
     border-radius: 0.8em;
     border-width: 0.25em;
@@ -64,7 +82,7 @@
     font-size: 1rem;
 }
 
-.formBody__inputField:focus {
+.formBody__registrationInputField:focus {
     border-color: var(--inputBorderColorFocused);
 }
 
@@ -92,125 +110,50 @@
     color: var(--disabledButtonText);
 }
 
-.microsoftButton {
-    background-color: #E51B22;
-    color: white;
-    border: none;
-    padding: 0.6em 2em;
-    border-radius: 4px;
-    font-size: 1.6rem;
-    width: 94%;
-    cursor: pointer;
-    margin-left: 3%;
-    display: flex; /* Enable flexbox for alignment */
-    align-items: center; /* Vertically center items */
-    justify-content: center; /* Horizontally center items */
-    gap: 0.8em; /* Add spacing between logo and text */
-    font-size: 1.4rem;
-  }
+.formBody__loginPageButton {
+  background-color: var(--primaryButtonBackground);
   
-  .microsoftLogo {
-    height: 1em;
-  }
+  border: none;
+  border-radius: 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8em;
+
+  width: 100%;
+  padding: 0.6em 0;
   
-  .inputField {
-    width: 90%;
-    margin: 0.6em 3%;
-    padding: 1em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .pebbleLogo {
-    height: 7.5em;
-    align-self: center;
-    margin: 1.2em 1.5em;
-  }
-  
-  .loginButton{
-    background-color: #E51B22;
-    color: white;
-    border: none;
-    padding: 0.7em 2em;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 94%;
-    margin: 0.4em 3%;
-    font-size: 1rem;
-  }
-  
-  .createAccount {
-    margin: 0.8em 0 1em 4%;
-  }
-  
-  .register {
-    color: #0000EE;
-    cursor: pointer;
-  }
-  
-  .forgotPassword {
-    color: #0000EE;
-    cursor: pointer;
-  }
-  
-  .loginText {
-    text-align: left;
-    margin: 3.7em 0 1.7em;
-    margin-left: 4%;
-    font-size: 0.8rem;
-  }
-  
-  .pebbleLoginText {
-    text-align: left;
-    margin: 4.7em 0 1em 4%;
-    font-size: 0.8rem;
-  }
-  
-  .passwordCheck {
-    display: flex; /* Enable flexbox for alignment */
-    justify-content: center; /* Horizontally center items */
-    gap: 59%; /* Add spacing between logo and text */
-    margin: 0.5em 0 1.4em;
-  }
-  
-  .rememberPassword {
-    display: flex; /* Enable flexbox for alignment */
-    justify-content: center; /* Horizontally center items */
-    gap: 0.8rem;
-  }
-  
-  .checkbox {
-    cursor: pointer;
-    width: 1.5em;
-    height: 1.5em;
-  }
-  
-  .background {
-    position: absolute; /* Ensure background spans the container */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1; /* Lower z-index than the login form */
-    overflow: hidden; /* Prevents overflow issues */  
-  }
-  
-  .backgroundImg {
-    width: 100%;
-    height: auto;
-    background-size: cover;
-    background-position: center; /* Optional: centers the image */
-  }
-  
-  .loginForm {
-    position: absolute; /* Absolute positioning to overlay background */
-    z-index: 2; /* Higher z-index to ensure it appears above the background */
-    width: 52%;
-    height: 95%;
-    background-color: rgba(255, 255, 255, 0.785);
-    display: flex;
-    flex-direction: column; /* Stack contents vertically */    
-    justify-content: center;
-    padding: 0 1.5em 2.2em;
-  }
-  
+  color: var(--primaryButtonText);
+  font-size: 1.4rem;
+}
+
+.formBody__loginPageButton img {
+  height: 1em;
+}
+
+.formBody__loginFormFooter > * {
+  margin-bottom: 1em;
+  display: inline;
+}
+
+.formBody__loginFormFooter label {
+  display: flex;
+  align-items: center;
+  float: right;
+}
+
+.formBody__loginFormFooter input {
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: 0.4em;
+}
+
+.formBody__loginFormFooter__registrationPageRedirect {
+  margin-top: 0.7em;
+}
+
+.formBody__loginFormFooter__registrationPageRedirect span {
+  margin-left: 0.5em;
+  font-weight: bold;
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import LoginComponent from "../components/LoginComponent";
+import LoginInputField from "../components/LoginInputField";
+
 import styles from "../styles/LoginRegistration.module.css";
 
 const LoginFormContainer = () => {
@@ -9,14 +10,11 @@ const LoginFormContainer = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    console.log("Email:", email, "Password:", password);
+    alert("Form submitted!");
   };
 
   
-  // Defining all the fields
+  // Defining fields
   const formFields = {
       email : {
           label : "Email Address",
@@ -36,14 +34,7 @@ const LoginFormContainer = () => {
       return newObject;
   }
 
-
-  // State hooks
   const [formData, setFormData] = useState(generateDefaultObject(""));
-
-  // Effect hooks
-  useEffect(() => {
-      console.log(formData);
-    }, [formData]);
 
   
   // Updates state object on each keypress
@@ -58,25 +49,26 @@ const LoginFormContainer = () => {
   
 
   return (
-    <div className={styles.loginContainer}>
-      <div className={styles.microsoftLogin}>
-        <button onClick={handleMicrosoftLogin} className={styles.microsoftButton}>
+    <div>
+      <div>
+        <button onClick={handleMicrosoftLogin} className={styles.formBody__loginPageButton}>
           <img
             src="img/microsoft.png"
             alt="Microsoft Logo"
-            className={styles.microsoftLogo}
           />
           Login with Microsoft
         </button>
       </div>
-      <div className={styles.pebbleLoginText}>
-        <h1>Login with your Pebble account</h1>
-      </div>
+
+      <h1 className={styles.sidebarContentsContainer__loginSectionHeader}>
+        Login with your Pebble account:
+      </h1>
+
       <form onSubmit={handleSubmit}>
 
         {
           Object.entries(formFields).map(([key, value]) => (
-            <LoginComponent 
+            <LoginInputField 
               name={key}
               type={value.type}
               value={formData[key]}
@@ -85,20 +77,13 @@ const LoginFormContainer = () => {
             />
           ))
         }
-        <div className={styles.passwordCheck}>
-          <div className={styles.forgotPassword}>
-            <p>Forgot Password?</p>
-          </div>
-          <div className={styles.rememberPassword}>
-            <input
-              type="checkbox"
-              name="rememberPassword"
-              className={styles.checkbox}
-            />
-            <p>Remember me</p>
-          </div>
+
+        <div className={styles.formBody__loginFormFooter}>
+          <p>Forgot Password?</p>
+          <label><input type="checkbox"/>Remember me</label>
         </div>
-        <button type="submit" className={styles.loginButton}>Log In</button>
+
+        <button type="submit" className={styles.formBody__loginPageButton}>Log In</button>
 
       </form>
     </div>
