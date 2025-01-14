@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import RewardsPageHeader from '../components/RewardsPageHeader';
 import GoalSectionContainer from '../components/GoalSectionContainer';
-import GoalSectionItem from '../components/GoalSectionItem';
 import ComponentLoadingSpinner from '../components/ComponentLoadingSpinner';
 
 function GoalsPageContainer() {
@@ -13,13 +12,13 @@ function GoalsPageContainer() {
             "goalTitle" : "Comment on 1 Post",
             "goalDescription" : "Let your peers know what you think of their achievement!\nInteractions like these are key to building your professional network!",
             "goalPoints" : 20,
-            "goalRedirect" : "/dashboard",
+            "goalRedirect" : "/feed",
             "isGoalCompleted" : false
         }, {
             "goalTitle" : "Complete 3 Coding Challenge Questions",
             "goalDescription" : "Solve any 3 coding challenges available on PEBBLE.\nSolving these questions can sharpen your coding skills, master the fundamentals!",
             "goalPoints" : 30,
-            "goalRedirect" : "/codechallenges",
+            "goalRedirect" : "/codingchallenge",
             "isGoalCompleted" : true
         }], core : [{
             "goalTitle" : "Complete Your Profile",
@@ -31,7 +30,7 @@ function GoalsPageContainer() {
             "goalTitle" : "Make Your First Post!",
             "goalDescription" : "Tell the community about something you learnt or experienced!\nDoing this often will help hone your personal branding skills!",
             "goalPoints" : 150,
-            "goalRedirect" : "/dashboard",
+            "goalRedirect" : "/feed",
             "isGoalCompleted" : true
         }, {
             "goalTitle" : "Spin the Wheel!",

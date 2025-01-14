@@ -1,13 +1,3 @@
-:root {
-    --taylorsRed: #E51B22;
-
-    --cardOutlineColor: grey;
-    --cardShadowColor : grey;
-    --cardBackgroundColor: white;
-
-    --profileCardSubtextColor: grey;
-}
-
 .currencyCard {
     background-color: var(--cardBackgroundColor);
     border: 0.05em solid var(--cardOutlineColor);
