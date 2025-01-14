@@ -6,31 +6,37 @@ import styles from "../styles/LoginRegistration.module.css"
 function LoginPage() {
   return (
     <>
-      <div className={styles.background}>
-        <img
-          src="img/campus.png"
-          alt="Background"
-          className={styles.backgroundImg} 
-        />
+
+      <div className={`${styles.pageContainer}`}>
       </div>
-      <main className={`${styles.loginForm}`}>
-        <div className={styles.pebbleLogo}>
-          <img
-            src="img/pebbleLongLogo.png"
-            alt="Pebble Logo"
-            className={styles.pebbleLogo}
+
+
+      <main className={`${styles.sidebarContentsContainer}`}>
+        
+        <div className={`${styles.sidebarContentsContainer__loginFormMainWrapper}`}>
+          <img 
+              src="img/pebbleLogo.png" 
+              className={`${styles.sidebarContentsContainer__appLogo}`} 
+              alt="PEBBLE logo"
           />
-        </div>
-        <div className={styles.loginText}>
-          <h1>Log in using your account on:</h1>
-        </div>
-        <LoginFormContainer />
-        <div className={styles.createAccount}>
-          <p>Don't have an account? <span className={styles.register}><Link to="/register">Register here</Link></span></p>
+            <h1 className={`${styles.sidebarContentsContainer__loginSectionHeader}`}>
+              Login using your account on:
+            </h1>
+          
+          <LoginFormContainer />
+
+          <div className={styles.formBody__loginFormFooter__registrationPageRedirect}>
+            <p>Don't have an account? 
+              <span>
+                <Link to="/register">Register here</Link>
+              </span>
+            </p>
+          </div>
+
         </div>
       </main>
     </>
   );
-};
+}
 
 export default LoginPage;

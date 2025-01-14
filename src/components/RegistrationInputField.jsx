@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from "../styles/LoginRegistration.module.css";
 
-function AuthenticationInputField(props) {
+function RegistrationInputField(props) {
     return (
-        <div className={`${styles.formBody__inputFieldContainer}`}>
-            <label htmlFor={props.name} className={`${styles.formBody__inputLabel}`}>
+        <div className={`${styles.formBody__registrationInputFieldContainer}`}>
+            <label htmlFor={props.name} className={`${styles.formBody__registrationInputLabel}`}>
                 {props.label}
             </label> 
 
@@ -18,7 +18,7 @@ function AuthenticationInputField(props) {
                 onChange={props.onChange} 
                 onBlur={props.onBlur}
 
-                className={`${styles.formBody__inputField}`}
+                className={`${styles.formBody__registrationInputField}`}
             />
 
             {props.errorMessageVisible && (
@@ -30,4 +30,4 @@ function AuthenticationInputField(props) {
     );
 }
 
-export default AuthenticationInputField;
+export default RegistrationInputField;

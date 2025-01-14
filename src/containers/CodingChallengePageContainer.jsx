@@ -136,13 +136,11 @@ function CodingChallengePageContainer() {
                         // -------------------------------------------------------------------
                     ) : (
                         <CodingChallengeQuestion
-                            quizID={currentQuiz.quizID}
+                            quizName={currentQuiz.quizName}
                             totalQuestions={currentQuizQuestions.length}
                             currentQuestionIndex={currentQuestionIndex}
                             questionBody={currentQuizQuestions[currentQuestionIndex].questionBody}
                             questionOptions={currentQuizQuestions[currentQuestionIndex].questionOptions}
-
-                            {...currentQuizQuestions[currentQuestionIndex]}
 
                             handleGoToNextQuestion={() => incrementQuestion(1)}
                             handleGoToPreviousQuestion={() => incrementQuestion(-1)}
