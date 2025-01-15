@@ -127,3 +127,141 @@
     margin-left: 0.4em;
     vertical-align: top;
 }
+
+/* Network Card */
+.networkCardContainer {
+    width: 94%;
+    margin: 0.5em 3%;
+    background-color: var(--cardBackgroundColor);
+    border-radius: 1.5em;
+}
+
+
+/* "My Network" Section */
+.myNetworkCard {
+    text-align: center;
+    width: 75%;
+}
+
+
+.myNetworkProfilePicture {
+    width: 3.2em;
+    height: 3.2em;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+}
+
+.myNetworkProfileName {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #333;
+    margin-top: 0.5em;
+    text-align: center;
+}
+
+/* "People You May Know" Section */
+.suggestedNetworkCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    padding: 12px;
+    margin-bottom: 12px;
+}
+
+.suggestedNetworkProfilePicture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.suggestedNetworkDetails {
+    flex-grow: 1;
+    margin: 0 2em;
+}
+
+.networkTitle {
+    margin: 2em 1.5em 0.8em;
+    font-size: 0.8rem;
+}
+
+.myNetwork {
+    display: flex;
+    flex-direction: column;
+}
+
+.suggestedNetworkName {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.suggestedNetworkSubline {
+    font-size: 0.7rem;
+    color: #555;
+    margin: 4px 0 0 0;
+}
+
+.followButton  {
+    background-color: white;
+    border: solid 2.2px var(--taylorsRed);
+    color: var(--taylorsRed);
+    font-size: 0.9em;
+    font-weight: 500;
+    padding: 0.6em 1.2em;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.followButton:hover {
+    background-color: var(--taylorsRed);
+    color: white;
+}
+
+
+.myNetwork1 {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.seeMoreButton{
+    background-color: var(--taylorsRed);
+    color: white;
+    font-size: 0.9rem;
+    padding: 0.6em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 40%;
+    margin: 0.2em 30% 0em;
+}
+
+.seeMoreButton:hover {
+    background-color: white;
+    color: var(--taylorsRed);
+    border: solid 2.2px var(--taylorsRed);
+    border-radius: 4px;
+}
+
+.seeAllButton{
+    background-color: white;
+    color: var(--hyperlinkBlue);
+    font-size: 0.9rem;
+    padding: 0.6em;
+    border: none;
+    cursor: pointer;
+    width: 40%;
+    margin: 0.2em 30% 0.6em;
+}
+
+
+.networkNumber {
+    color: var(--taylorsRed);
+}
+
+.myNetwork1 {
+    margin-left: 5%;
+    margin-bottom: 1em;
+}
