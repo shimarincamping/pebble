@@ -1,0 +1,25 @@
+.HeaderContainerDiv{
+    background-color: lightgrey;
+    width: 100vw;
+    height: 10vh;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.PebbleLongLogoContainer{
+    height: 90%;
+}
+
+.PebbleLongLogo{
+    max-height: 100%;
+}
+
+.SearchBarContainer{
+    display:flex;
+    max-height: 75%;
+    align-items: center;
+    min-width: 20%;
+    justify-content: space-between;
+    border-left: 1px solid black;
+}

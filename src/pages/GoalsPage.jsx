@@ -1,12 +1,12 @@
 import React from "react";
 import ApplicationSidebar from "../containers/ApplicationSidebar";
 import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContainer";
-
 import styles from "../styles/global.module.css";
 import DashboardStatsCard from "../components/DashboardStatsCard";
 
 function GoalsPage() {
   return (
+    
     <div
       className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBody}`}
     >

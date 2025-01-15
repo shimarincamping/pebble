@@ -10,10 +10,13 @@ import {
 import RegistrationPage from "./pages/RegistrationPage";
 import LoginPage from "./pages/LoginPage";
 import GoalsPage from "./pages/GoalsPage";
-import "./styles/global.module.css"
+import TestPage from "./pages/TestPage";
+import "./styles/global.module.css";
+
+
 
 function App() {
-  return (
+  return (   
     <BrowserRouter>
       {/* <Link to="/register">Register</Link> */}
       <Routes>
@@ -21,6 +24,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegistrationPage />} />
         <Route path="/goals" element={<GoalsPage />} />
+        <Route path="/test" element={<TestPage/>} />
       </Routes>
     </BrowserRouter>
   );
