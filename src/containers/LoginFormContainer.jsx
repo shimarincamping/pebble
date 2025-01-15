@@ -82,7 +82,6 @@ const LoginFormContainer = () => {
           <p>Forgot Password?</p>
           <label><input type="checkbox"/>Remember me</label>
         </div>
-        <button type="submit" className={styles.loginButton}>Log In</button>
 
         <button type="submit" className={styles.formBody__loginPageButton}>Log In</button>
 
