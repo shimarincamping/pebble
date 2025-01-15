@@ -14,7 +14,7 @@ import GoalsPage from "./pages/GoalsPage";
 import CodingChallengePage from "./pages/CodingChallengePage";
 
 function App() {
-  return (
+  return (   
     <BrowserRouter>
       {/* <Link to="/register">Register</Link> */}
       <Routes>

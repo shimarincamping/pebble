@@ -11,6 +11,7 @@ import styles from "../styles/global.module.css";
 
 function GoalsPage() {
   return (
+    
     <div
       className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBody}`}  
     >
