@@ -11,7 +11,10 @@ import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import FeedPage from "./pages/FeedPage"
 import GoalsPage from "./pages/GoalsPage";
+import LearnForum from "./pages/LearnForum";
 import CodingChallengePage from "./pages/CodingChallengePage";
+import "./styles/global.module.css";
+
 
 function App() {
   return (   
@@ -27,6 +30,9 @@ function App() {
         <Route path="/feed" element={<FeedPage />} />
 
         <Route path="/goals" element={<GoalsPage />} />
+        <Route path="/splash" element={<SplashScreen />} />
+        <Route path="/feed" element={<FeedPage />} />
+        <Route path="/forum" element={<LearnForum />} />
         <Route path="/codingchallenge" element={<CodingChallengePage />} />
       </Routes>
     </BrowserRouter>
