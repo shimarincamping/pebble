@@ -1,0 +1,50 @@
+.codingQuestion__quizTitle {
+    text-decoration: underline;
+    text-align: center;
+    margin-bottom: 0.85em;
+}
+
+.codingQuestion__backButton,
+.codingQuestion__navigationRow button {
+    padding: 0.2em 2em;
+    margin-bottom: 1.5em;
+    border-radius: 0.8em;
+
+    background-color: var(--primaryButtonBackground);
+    color: var(--primaryButtonText);
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.codingQuestion__option {
+    display: block;
+    width: 100%;
+    padding: 1.2em 0;
+    border-radius: 1em;
+    margin: 1.3em auto;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.3rem;
+    box-shadow: 0.2em 0.2em 0.1em var(--cardShadowColor);
+}
+
+.codingQuestion__unansweredOption {
+    border: 0.15em solid black;
+}
+
+.codingQuestion__correctOption {
+    border: 0.15em solid var(--pebbleGreen);
+}
+
+.codingQuestion__incorrectOption {
+    border: 0.15em solid var(--taylorsRed);
+
+}
+
+.codingQuestion__navigationRow {
+    display: flex;
+    justify-content: center;
+    gap: 3em;
+
+    margin-top: 3em;
+}

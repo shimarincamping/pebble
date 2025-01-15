@@ -1,0 +1,50 @@
+.currencyCard {
+    background-color: var(--cardBackgroundColor);
+    border: 0.05em solid var(--cardOutlineColor);
+    border-radius: 1.5em;
+    box-shadow: 0.2em 0.2em 0.1em var(--cardShadowColor);
+    padding: 0;
+    margin: 1.2em;
+}
+
+.ccMainBody {
+    margin: 0.8em ;
+}
+.ccMainBody h5 {
+    margin-top: 0.5em;
+    margin-bottom: 0.3em;
+    font-size: 0.9em;
+}
+
+.ccMainBody p{
+    font-size: 0.7rem;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.ccMainBody hr {
+    margin-top: 0.5em;
+}
+
+.ccButton {
+    justify-content: center;
+    display: flex;
+    margin-bottom: 0.8em;
+}
+
+.ccButton button {
+    font-size: 0.8rem;
+    text-align: center;
+    border: none;
+    border-radius: 3em;
+    background-color: #E51B22;
+    color: white;
+    display: block;
+    box-shadow: 0.1em 0.1em 0.1em var(--cardShadowColor);
+    border-radius: 3em;
+    padding: 0.3em 2em;
+}
+
+.ccButton1{
+    margin-right: 0.7em;
+}

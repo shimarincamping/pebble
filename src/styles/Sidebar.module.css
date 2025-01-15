@@ -1,19 +1,7 @@
-:root {
-    --taylorsRed: #E51B22;
-
-    --cardOutlineColor: grey;
-    --cardShadowColor : grey;
-    --cardBackgroundColor: white;
-
-    --profileCardSubtextColor: grey;
-
-    --editProfileButtonBackground: var(--taylorsRed);
-    --editProfileButtonBackgroundHover: rgb(227, 67, 67);
-    --editProfileButtonText: white;
-}
+/* Global sidebar styling */
 
 .sidebarContainer {
-    background-color: lightpink;
+    background-color: var(--sidebarContainerBackground);
     height: 100vh;
     min-width: 16em;
 
@@ -29,6 +17,8 @@
     padding: 0;
     margin: 1.2em;
 }
+
+/* Profile sidebar card */
 
 .profileSidebarCard__bannerImage {
     width: 100%;
@@ -71,7 +61,7 @@
 
 .profileSidebarCard__mainBody__userHeader p {
     font-size: 0.8rem;
-    color: var(--profileCardSubtextColor);
+    color: var(--subtextColor);
 }
 
 .profileSidebarCard__mainBody__editButtonContainer hr {
@@ -90,17 +80,15 @@
     width: 80%;
     border: none;
     border-radius: 3em;
-    background-color: var(--editProfileButtonBackground);
-    color: var(--editProfileButtonText);
+    background-color: var(--primaryButtonBackground);
+    color: var(--primaryButtonText);
     font-weight: 900;
     font-size: 1rem;
     box-shadow: 0.1em 0.1em 0.1em var(--cardShadowColor);
-
-    cursor: pointer;
 }
 
 .profileSidebarCard__mainBody__editButtonContainer button:hover {
-    background-color: var(--editProfileButtonBackgroundHover);
+    background-color: var(--primaryButtonBackgroundHover);
 }
 
 .profileSidebarCard__mainBody__editButtonContainer button img {
@@ -138,13 +126,4 @@
     font-size: 0.78rem;
     margin-left: 0.4em;
     vertical-align: top;
-}
-
-.profileSidebarCard__loadingContainer {
-    text-align: center;
-    margin: 2em 0 2.5em 0;
-}
-
-.profileSidebarCard__loadingContainer img {
-    width: 4em;
 }

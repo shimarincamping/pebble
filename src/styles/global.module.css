@@ -1,5 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root {
+    /* Defined colors */
+    --taylorsRed: #E51B22;
+    --pebbleGreen: #18BC2B;
+    --dashboardStatsLeaderboard: #E3DFFF;
+    --dashboardStatsMonthlyPoints: #FFDCDC;
+    --dashboardStatsTickets: #FFF2D9;
+    
+    /* Cards and blocks */
+    --cardOutlineColor: grey;
+    --cardShadowColor : grey;
+    --cardBackgroundColor: white;
+
+        /* Registration page blocks */
+        --registrationCoverImage: url(../../public/img/taylorsBackground.png); 
+        --registrationBodyBackground: rgba(255, 255, 255, 0.785);
+
+    /* Text */
+    --subtextColor: grey;
+
+    /* Buttons */
+    --primaryButtonBackground: var(--taylorsRed);
+    --primaryButtonBackgroundHover: rgb(227, 67, 67);
+    --primaryButtonText: white;
+
+    --disabledButtonBackground: grey;
+    --disabledButtonText: black;
+
+    /* Input fields */
+    --inputBorderColor: #7C7C7C;
+    --inputBorderColorFocused: var(--taylorsRed);
+
+    
+    /* -- Page container highlights -- */
+    --sidebarContainerBackground: lightpink;
+    --mainContentContainerBackground: lightblue;
+}
+
 * {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -9,6 +47,7 @@
 /* Modifies default appearance of scrollbar */
 
 ::-webkit-scrollbar {
+    height: 0.3em;
     width: 0.3em;
 }
 
@@ -18,6 +57,7 @@
   
 ::-webkit-scrollbar-thumb {
     background: #888;
+    border-radius: 1em;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -38,4 +78,47 @@
 /* For pages with no right sidebar -- 25% left sidebar, 75% content */
 .mainApplicationGridContainer.mainApplicationWideBody {
     grid-template-columns: 1fr 3fr;
+}
+
+
+/* Main application content */
+.applicationMainContent {
+    background-color: var(--mainContentContainerBackground);
+    height: 100vh;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+/* Every 'block' nested inside the main content is styled as a 'card'
+
+    Since the intended usage is:
+        <ApplicationMainBody>
+            (some container containing the page's main contents)
+            (optional: more containers; these will be stacked beneath the 1st container)
+        </ApplicationMainBody>
+
+    This is styled independently of the arrangement of # of sidebars
+*/
+.applicationMainContent > * {
+    display: block;
+    background-color: var(--cardBackgroundColor);
+    border: 0.05em solid var(--cardOutlineColor);
+    border-radius: 0.7em;
+    box-shadow: 0.2em 0.2em 0.1em var(--cardShadowColor);
+    padding: 1.8em;
+    margin: 1.2em;
+
+    overflow-x: hidden;
+}
+
+/* Change default behavior */
+    /* TODO: Consider generalising buttons by a universal 'primaryButton' class that sets the colors */
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
 }

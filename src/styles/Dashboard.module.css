@@ -1,17 +1,3 @@
-:root {
-    --taylorsRed: #E51B22;
-
-    --cardOutlineColor: grey;
-    --cardShadowColor : grey;
-    --cardBackgroundColor: white;
-
-    --profileCardSubtextColor: grey;
-
-    --statsLeaderboardColor: #E3DFFF;
-    --statsPointsColor: #FFDCDC;
-    --statsTicketsColor: #FFF2D9;
-}
-
 .statsCard {
     background-color: var(--cardBackgroundColor);
     border: 0.05em solid var(--cardOutlineColor);
@@ -51,15 +37,15 @@
 }
 
 .statsCard__item__leaderboard {
-    background-color: var(--statsLeaderboardColor);
+    background-color: var(--dashboardStatsLeaderboard);
 }
 
 .statsCard__item__points {
-    background-color: var(--statsPointsColor);
+    background-color: var(--dashboardStatsMonthlyPoints);
 }
 
 .statsCard__item__tickets {
-    background-color: var(--statsTicketsColor);
+    background-color: var(--dashboardStatsTickets);
 }
 
 .statsCard__item__desc {

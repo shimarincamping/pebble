@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ProfileSidebarCardContactLine from './ProfileSidebarCardContactLine';
+import ComponentLoadingSpinner from './ComponentLoadingSpinner';
 
 import styles from "../styles/Sidebar.module.css";
 
@@ -78,10 +79,7 @@ function ProfileSidebarCard(props) {
                         </div>
                     </>
                 ) : (
-                    <div className={`${styles.profileSidebarCard__loadingContainer}`}>
-                        <img src="./icons/loading.gif" />
-                        <h1>Loading...</h1>
-                    </div>
+                    <ComponentLoadingSpinner />
                 )
             }
         </section>

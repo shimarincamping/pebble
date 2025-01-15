@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import AuthenticationInputField from '../components/AuthenticationInputField';
+import RegistrationInputField from '../components/RegistrationInputField';
 
 import styles from "../styles/LoginRegistration.module.css";
 
@@ -41,12 +41,6 @@ function RegistrationFormContainer() {
     // State hooks
     const [formData, setFormData] = useState(generateDefaultObject(""));
     const [formDataValidState, setFormDataValidState] = useState(generateDefaultObject(true));
-
-    // Effect hooks
-    useEffect(() => {
-        console.log(formData);
-      }, [formData]);
-
     
     // Constants
     const emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -117,7 +111,7 @@ function RegistrationFormContainer() {
 
                 {
                     Object.entries(formFields).map(([key, value]) => (
-                        <AuthenticationInputField 
+                        <RegistrationInputField 
                             name={key}
                             type={value.type}
                             value={formData[key]}

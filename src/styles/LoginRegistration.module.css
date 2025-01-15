@@ -1,19 +1,5 @@
-:root {
-    --backgroundURL: url(../../public/img/taylorsBackground.png); 
-    --taylorsRed: #E51B22;
-
-    --primaryButtonBackground: var(--taylorsRed);
-    --primaryButtonText: white;
-    --disabledButtonBackground: grey;
-    --disabledButtonText: black;
-
-    --inputBorderColor: #7C7C7C;
-    --inputBorderColorFocused: var(--taylorsRed);
-    --sidebarBackgroundColor: rgba(255, 255, 255, 0.9);
-}
-
 .pageContainer {
-    background-image: var(--backgroundURL);
+    background-image: var(--registrationCoverImage);
     background-size: cover;
     height: 100vh;
     width: 100vw;
@@ -22,8 +8,8 @@
 
 .sidebarContentsContainer {
     height: 100vh;
-    width: 60%;
-    background-color: var(--sidebarBackgroundColor);
+    width: 52%;
+    background-color: var(--registrationBodyBackground);
     position: absolute;
     z-index: 1;
     overflow-x: hidden;
@@ -43,6 +29,11 @@
     margin: 1em 0 0.5em 0;
 }
 
+.sidebarContentsContainer__loginSectionHeader {
+    margin: 1.7em 0 0.9em;
+    font-size: 1.6rem;
+}
+
 .sidebarContentsContainer__redirectLoginLink {
     text-align: center;
     margin-top: -2em;
@@ -54,21 +45,34 @@
     font-weight: 900;
 }
 
+.sidebarContentsContainer__loginFormMainWrapper {
+  padding: 0 2em;
+}
+
 .formBody {
     width: 100%;
 }
 
-.formBody__inputFieldContainer {
+.formBody__loginInputField {
+  width: 95.5%;
+  margin: 0.6em 0;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.formBody__registrationInputFieldContainer {
     width: 60%;
     margin: 1.3em auto;
 }
 
-.formBody__inputLabel {
+.formBody__registrationInputLabel {
     font-size: 0.9rem;
     font-weight: bold;
 }
 
-.formBody__inputField {
+.formBody__registrationInputField {
     border-color: var(--inputBorderColor);
     border-radius: 0.8em;
     border-width: 0.25em;
@@ -78,7 +82,7 @@
     font-size: 1rem;
 }
 
-.formBody__inputField:focus {
+.formBody__registrationInputField:focus {
     border-color: var(--inputBorderColorFocused);
 }
 
@@ -93,16 +97,63 @@
     display: block;
     margin: 3em auto;
     padding: 0.8em 3em;
+    
     background-color: var(--primaryButtonBackground);
     color: var(--primaryButtonText);
     font-size: 1.1rem;
     font-weight: bold;
-    border-radius: 1.2em;
-    cursor: pointer;
+    border-radius: 0.3em;
 }
 
 .formBody__primaryButton:disabled {
     background-color: var(--disabledButtonBackground);
     color: var(--disabledButtonText);
-    cursor: not-allowed;
+}
+
+.formBody__loginPageButton {
+  background-color: var(--primaryButtonBackground);
+  
+  border: none;
+  border-radius: 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8em;
+
+  width: 100%;
+  padding: 0.6em 0;
+  
+  color: var(--primaryButtonText);
+  font-size: 1.4rem;
+}
+
+.formBody__loginPageButton img {
+  height: 1em;
+}
+
+.formBody__loginFormFooter > * {
+  margin-bottom: 1em;
+  display: inline;
+}
+
+.formBody__loginFormFooter label {
+  display: flex;
+  align-items: center;
+  float: right;
+}
+
+.formBody__loginFormFooter input {
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: 0.4em;
+}
+
+.formBody__loginFormFooter__registrationPageRedirect {
+  margin-top: 0.7em;
+}
+
+.formBody__loginFormFooter__registrationPageRedirect span {
+  margin-left: 0.5em;
+  font-weight: bold;
 }
