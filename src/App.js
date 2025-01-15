@@ -11,7 +11,8 @@ import RegistrationPage from "./pages/RegistrationPage";
 import LoginPage from "./pages/LoginPage";
 import GoalsPage from "./pages/GoalsPage";
 import SplashScreen from "./pages/SplashScreen";
-import FeedPage from "./pages/FeedPage"
+import FeedPage from "./pages/FeedPage";
+import LearnForum from "./pages/LearnForum";
 import "./styles/global.module.css";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/goals" element={<GoalsPage />} />
         <Route path="/splash" element={<SplashScreen />} />
         <Route path="/feed" element={<FeedPage />} />
+        <Route path="/forum" element={<LearnForum />} />
       </Routes>
     </BrowserRouter>
   );

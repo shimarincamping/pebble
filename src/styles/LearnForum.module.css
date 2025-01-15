@@ -1,0 +1,57 @@
+.threadCard__thread {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.threadCard__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.threadCard__header time {
+    font-size: 0.875rem;
+    color: var(--subtextColor);
+}
+
+.threadCard__title {
+    width: 80%;
+}
+
+.threadCard__footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.threadCard__statistics {
+    display: flex;
+    gap: 1em;
+    align-items: flex-end;
+}
+
+.threadCard__statistics span {
+    display: flex;
+    gap: 0.125em;
+}
+
+.threadCard__profile {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+}
+
+.threadCard__profile__image {
+    display: flex;
+    align-items: center;
+}
+
+.threadCard__profile img {
+    max-width: 2em;
+    border-radius: 100%;
+}
+
+.threadCard__profile__details {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.875rem;
+}
