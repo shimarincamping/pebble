@@ -64,7 +64,7 @@
 
 .formBody__registrationInputFieldContainer {
     width: 60%;
-    margin: 1.3em auto;
+    margin: 1.3em 18%;
 }
 
 .formBody__registrationInputLabel {
@@ -74,12 +74,13 @@
 
 .formBody__registrationInputField {
     border-color: var(--inputBorderColor);
-    border-radius: 0.8em;
     border-width: 0.25em;
     margin-top: 0.2em;
-    padding: 0.7em 0.5em;
     width: 100%;
     font-size: 1rem;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .formBody__registrationInputField:focus {
@@ -98,11 +99,12 @@
     margin: 3em auto;
     padding: 0.8em 3em;
     
-    background-color: var(--primaryButtonBackground);
+    background-color: var(--taylorsRed);
     color: var(--primaryButtonText);
     font-size: 1.1rem;
     font-weight: bold;
     border-radius: 0.3em;
+    width: 64%;
 }
 
 .formBody__primaryButton:disabled {
