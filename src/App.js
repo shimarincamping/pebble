@@ -24,7 +24,6 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegistrationPage />} />
         <Route path="/goals" element={<GoalsPage />} />
-        <Route path="/test" element={<TestPage/>} />
       </Routes>
     </BrowserRouter>
   );
