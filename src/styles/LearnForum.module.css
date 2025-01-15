@@ -1,3 +1,25 @@
+.forumHeader__header a {
+    display: flex;
+    justify-content: flex-end;
+    text-decoration: none;
+}
+
+.forumHeader__button {
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+    padding: 0.25em 1em;
+    border-radius: 1.5em;
+    gap: 0.5em;
+    border: none;
+    background-color: var(--primaryButtonBackground);
+    color: var(--primaryButtonText);
+    font-weight: 800;
+    font-size: 1rem;
+    box-shadow: 0.1em 0.1em 0.1em var(--cardShadowColor);
+}
+
 .threadCard__thread {
     display: flex;
     flex-direction: column;
@@ -16,6 +38,11 @@
 
 .threadCard__title {
     width: 80%;
+}
+
+.threadCard__threadType {
+    font-weight: 800;
+    color: var(--taylorsRed);
 }
 
 .threadCard__footer {
