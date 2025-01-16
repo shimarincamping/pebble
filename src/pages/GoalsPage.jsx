@@ -4,7 +4,7 @@ import ApplicationMainContent from "../containers/ApplicationMainContent";
 
 import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContainer";
 import GoalsPageContainer from "../containers/GoalsPageContainer";
-import CurrencyCard from "../components/CurrencyCard";
+import CurrencySidebarCard from "../components/CurrencySidebarCard";
 
 import styles from "../styles/global.module.css";
 
@@ -13,11 +13,11 @@ function GoalsPage() {
   return (
     
     <div
-      className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBody}`}  
+      className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBodyLeft}`}  
     >
       <ApplicationSidebar>
         <ProfileSidebarCardContainer />
-        <CurrencyCard />
+        <CurrencySidebarCard />
       </ApplicationSidebar>
 
       <ApplicationMainContent>

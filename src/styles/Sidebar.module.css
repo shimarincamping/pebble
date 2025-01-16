@@ -18,6 +18,8 @@
     margin: 1.2em;
 }
 
+/* ----------------------------------------------------------------------- */
+
 /* Profile sidebar card */
 
 .profileSidebarCard__bannerImage {
@@ -128,149 +130,171 @@
     vertical-align: top;
 }
 
-/* Network Card */
-.networkCardContainer {
-    width: 94%;
-    margin: 0.5em 3%;
-    background-color: var(--cardBackgroundColor);
-    border-radius: 1.5em;
-    box-shadow: 0.2em 0.2em 0.1em var(--cardShadowColor);
-}
+/* ----------------------------------------------------------------------- */
 
-.networkCardContent {
+/* Network sidebar card */
+.networkSidebarCard {
     width: 94%;
     margin: 0.5em 3%;
     background-color: var(--cardBackgroundColor);
     border-radius: 1.5em;
 }
 
-
-
-/* "My Network" Section */
-.myNetworkCard {
-    text-align: center;
-    width: 75%;
-}
-
-
-.myNetworkProfilePicture {
-    width: 3.2em;
-    height: 3.2em;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #ccc;
-}
-
-.myNetworkProfileName {
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: #333;
-    margin-top: 0.5em;
-    text-align: center;
-}
-
-/* "People You May Know" Section */
-.suggestedNetworkCard {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #f9f9f9;
-    padding: 12px;
-    margin-bottom: 12px;
-}
-
-.suggestedNetworkProfilePicture {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.suggestedNetworkDetails {
-    flex-grow: 1;
-    margin: 0 2em;
-}
-
-.networkTitle {
-    margin: 2em 1.5em 0.8em;
-    font-size: 0.8rem;
-}
-
-.myNetwork {
+.networkSidebarCard__myNetwork {
     display: flex;
     flex-direction: column;
 }
 
-.suggestedNetworkName {
-    font-size: 14px;
+.networkSidebarCard__myNetwork h1,
+.networkSidebarCard__peopleYouMayKnow h1 {
+    margin: 1em 1em 1em;
+    font-size: 1.2rem;
+}
+
+.networkSidebarCard__myNetwork span {
+    color: var(--taylorsRed);
+}
+
+.networkSidebarCard__myNetwork__userTileContainer {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 0 0 0.3em 5%;
+}
+
+.networkSidebarCard__myNetwork__userTile {
+    width: 75%;
+    text-align: center;
+    margin-bottom: 0.8em
+}
+
+.networkSidebarCard__myNetwork__userTile img,
+.networkSidebarCard__peopleYouMayKnow__userTile img {
+    width: 3.2em;
+    height: 3.2em;
+    border: 0.1em solid #ccc;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.networkSidebarCard__myNetwork__userTile p {
+    margin-top: 0.5em;
+    
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+}
+
+.networkSidebarCard__myNetwork__seeMoreButton {
+    width: 40%;
+    margin: 0.2em 30% 0.9em;
+    padding: 0.6em;
+
+    border: solid 0.15em white;
+    border-radius: 0.5em;
+    background-color: var(--primaryButtonBackground);
+
+    color: var(--primaryButtonText);
+    font-size: 0.9rem;
+}
+
+.networkSidebarCard__myNetwork__seeMoreButton:hover {
+    background-color: var(--invertedButtonBackground);
+    color: var(--invertedButtonText);
+    border: solid 0.15em var(--taylorsRed);
+}
+
+.networkSidebarCard__peopleYouMayKnow__userTile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    margin: 0 1em 1.5em 1em;
+}
+
+.networkSidebarCard__peopleYouMayKnow__userDetails {
+    flex-grow: 1;
+    margin: 0 2em 0 0.9em;
+}
+
+.networkSidebarCard__peopleYouMayKnow__userDetails p:nth-child(1) {
+    font-size: 1rem;
     font-weight: 600;
-    margin: 0;
+    margin-bottom: 0.3em;
 }
 
-.suggestedNetworkSubline {
+.networkSidebarCard__peopleYouMayKnow__userDetails p:nth-child(2) {
     font-size: 0.7rem;
-    color: #555;
-    margin: 4px 0 0 0;
+    color: var(--subtextColor);
 }
 
-.followButton  {
-    background-color: white;
-    border: solid 2.2px var(--taylorsRed);
+.networkSidebarCard__peopleYouMayKnow__followButton  {
+    padding: 0.6em 1.2em;
+    
+    background-color: var(--invertedButtonBackground);
+    border: solid 0.15em var(--invertedButtonText);
+    border-radius: 0.5em;
+
     color: var(--taylorsRed);
     font-size: 0.9em;
     font-weight: 500;
-    padding: 0.6em 1.2em;
-    border-radius: 4px;
-    cursor: pointer;
 }
 
-.followButton:hover {
-    background-color: var(--taylorsRed);
-    color: white;
+.networkSidebarCard__peopleYouMayKnow__followButton:hover {
+    background-color: var(--primaryButtonBackground);
+    color: var(--primaryButtonText);
 }
 
-
-.myNetwork1 {
-    display: inline-grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-
-.seeMoreButton{
-    background-color: var(--taylorsRed);
-    color: white;
-    font-size: 0.9rem;
-    padding: 0.6em;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 40%;
-    margin: 0.2em 30% 0em;
-}
-
-.seeMoreButton:hover {
-    background-color: white;
-    color: var(--taylorsRed);
-    border: solid 2.2px var(--taylorsRed);
-    border-radius: 4px;
-}
-
-.seeAllButton{
-    background-color: white;
-    color: var(--hyperlinkBlue);
-    font-size: 0.9rem;
-    padding: 0.6em;
-    border: none;
-    cursor: pointer;
+.networkSidebarCard__peopleYouMayKnow__seeAllButton {
     width: 40%;
     margin: 0.2em 30% 0.6em;
+    padding: 0.6em;
+
+    border: none;
+
+    color: var(--hyperlinkBlue);
+    font-size: 0.9rem;
 }
 
+/* ----------------------------------------------------------------------- */
 
-.networkNumber {
-    color: var(--taylorsRed);
+/* Currency sidebar card */
+.currencySidebarCard {
+    margin: 0.8em;
 }
 
-.myNetwork1 {
-    margin-left: 5%;
-    margin-bottom: 1em;
+.currencySidebarCard h5 {
+    margin: 0.5em 0 0.3em;
+    font-size: 0.9rem;
+}
+
+.currencySidebarCard p {
+    font-size: 0.7rem;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.currencySidebarCard hr {
+    margin-top: 0.5em;
+}
+
+.currencySidebarCard__buttonRow {
+    justify-content: center;
+    display: flex;
+    margin-bottom: 0.8em;
+}
+
+.currencySidebarCard__buttonRow button {
+    display: block;
+    padding: 0.3em 2em;
+    margin: 0 0.35em;
+
+    border: none;
+    border-radius: 3em;
+    background-color: var(--primaryButtonBackground);
+    box-shadow: 0.1em 0.1em 0.1em var(--cardShadowColor);
+
+    color: var(--primaryButtonText);
+    font-size: 0.8rem;
+    text-align: center;
 }

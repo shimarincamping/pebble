@@ -11,7 +11,7 @@ import styles from "../styles/global.module.css";
 function LearnForum() {
   return (
     <div
-      className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBody}`}
+      className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBodyLeft}`}
     >
       <ApplicationSidebar>
         <ProfileSidebarCardContainer />

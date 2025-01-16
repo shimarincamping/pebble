@@ -4,9 +4,6 @@
     /* Defined colors */
     --taylorsRed: #E51B22;
     --pebbleGreen: #18BC2B;
-    --dashboardStatsLeaderboard: #E3DFFF;
-    --dashboardStatsMonthlyPoints: #FFDCDC;
-    --dashboardStatsTickets: #FFF2D9;
     --hyperlinkBlue: #007BB5;
 
     
@@ -19,6 +16,11 @@
         --registrationCoverImage: url(../../public/img/taylorsBackground.png); 
         --registrationBodyBackground: rgba(255, 255, 255, 0.785);
 
+        /* Dashboard page blocks */
+        --dashboardStatsLeaderboard: #E3DFFF;
+        --dashboardStatsMonthlyPoints: #FFDCDC;
+        --dashboardStatsTickets: #FFF2D9;
+
     /* Text */
     --subtextColor: grey;
 
@@ -26,6 +28,9 @@
     --primaryButtonBackground: var(--taylorsRed);
     --primaryButtonBackgroundHover: rgb(227, 67, 67);
     --primaryButtonText: white;
+
+    --invertedButtonBackground: white;
+    --invertedButtonText: var(--taylorsRed);
 
     --disabledButtonBackground: grey;
     --disabledButtonText: black;
@@ -78,8 +83,13 @@
 }
 
 /* For pages with no right sidebar -- 25% left sidebar, 75% content */
-.mainApplicationGridContainer.mainApplicationWideBody {
+.mainApplicationGridContainer.mainApplicationWideBodyLeft {
     grid-template-columns: 1fr 3fr;
+}
+
+/* For pages with no left -- 25% left sidebar, 75% content */
+.mainApplicationGridContainer.mainApplicationWideBodyRight {
+    grid-template-columns: 3fr 1fr;
 }
 
 
