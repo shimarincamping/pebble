@@ -6,7 +6,6 @@ function ProfileSidebarCardContainer() {
 
     // Dummy data ----------------------------
     const dummyProfileData = {
-        "userID" : 1,
         "fullName" : "Anoop Singh",
         "profilePicture" : "https://i.imgur.com/qPzFvF4.jpeg",
         "courseName" : "Bachelor of Software Engineering",

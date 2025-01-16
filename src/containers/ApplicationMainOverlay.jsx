@@ -4,9 +4,9 @@ import styles from "../styles/global.module.css";
 
 function ApplicationMainOverlay({children}) {
     return (
-        <div className={`${styles.applicationMainOverlay}`}>
+        <section className={`${styles.applicationMainOverlay}`}>
             {children}
-        </div>
+        </section>
     )
 }
 
