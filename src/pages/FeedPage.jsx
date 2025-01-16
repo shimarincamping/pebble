@@ -3,7 +3,6 @@ import ApplicationSidebar from "../containers/ApplicationSidebar";
 import ApplicationMainContent from "../containers/ApplicationMainContent";
 
 import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContainer";
-import PostCreationCard from "../components/PostCreationCard";
 
 import styles from "../styles/global.module.css";
 
@@ -21,10 +20,10 @@ function FeedPage() {
         <PostCreationCard />
       </ApplicationMainContent>
 
-      {
       <ApplicationSidebar>
+        <DashboardStatsSidebarCardContainer />
+        <NetworkSidebarCardContainer />
       </ApplicationSidebar>
-      }
 
     </div>
   );

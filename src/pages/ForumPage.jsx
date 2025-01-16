@@ -3,28 +3,23 @@ import ApplicationSidebar from "../containers/ApplicationSidebar";
 import ApplicationMainContent from "../containers/ApplicationMainContent";
 
 import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContainer";
-import GoalsPageContainer from "../containers/GoalsPageContainer";
-import CurrencySidebarCard from "../components/CurrencySidebarCard";
+import ForumPageContainer from "../containers/ForumPageContainer";
 
 import styles from "../styles/global.module.css";
 
-
-function GoalsPage() {
+function ForumPage() {
   return (
-    
     <div
-      className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBodyLeft}`}  
+      className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBodyLeft}`}
     >
       <ApplicationSidebar>
         <ProfileSidebarCardContainer />
-        <CurrencySidebarCard />
       </ApplicationSidebar>
-
       <ApplicationMainContent>
-        <GoalsPageContainer />
+        <ForumPageContainer />
       </ApplicationMainContent>
     </div>
   );
 }
 
-export default GoalsPage;
+export default ForumPage;

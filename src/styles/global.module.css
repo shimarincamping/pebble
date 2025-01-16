@@ -4,11 +4,11 @@
     /* Defined colors */
     --taylorsRed: #E51B22;
     --pebbleGreen: #18BC2B;
-    --dashboardStatsLeaderboard: #E3DFFF;
-    --dashboardStatsMonthlyPoints: #FFDCDC;
-    --dashboardStatsTickets: #FFF2D9;
+    --hyperlinkBlue: #007BB5;
+
     
     /* Cards and blocks */
+    --overlayBackground: rgba(0, 0, 0, 0.6);
     --cardOutlineColor: grey;
     --cardShadowColor : grey;
     --cardBackgroundColor: white;
@@ -17,6 +17,11 @@
         --registrationCoverImage: url(../../public/img/taylorsBackground.png); 
         --registrationBodyBackground: rgba(255, 255, 255, 0.785);
 
+        /* Dashboard page blocks */
+        --dashboardStatsLeaderboard: #E3DFFF;
+        --dashboardStatsMonthlyPoints: #FFDCDC;
+        --dashboardStatsTickets: #FFF2D9;
+
     /* Text */
     --subtextColor: grey;
 
@@ -24,6 +29,9 @@
     --primaryButtonBackground: var(--taylorsRed);
     --primaryButtonBackgroundHover: rgb(227, 67, 67);
     --primaryButtonText: white;
+
+    --invertedButtonBackground: white;
+    --invertedButtonText: var(--taylorsRed);
 
     --disabledButtonBackground: grey;
     --disabledButtonText: black;
@@ -42,6 +50,11 @@
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 /* Modifies default appearance of scrollbar */
@@ -76,8 +89,13 @@
 }
 
 /* For pages with no right sidebar -- 25% left sidebar, 75% content */
-.mainApplicationGridContainer.mainApplicationWideBody {
+.mainApplicationGridContainer.mainApplicationWideBodyLeft {
     grid-template-columns: 1fr 3fr;
+}
+
+/* For pages with no left -- 25% left sidebar, 75% content */
+.mainApplicationGridContainer.mainApplicationWideBodyRight {
+    grid-template-columns: 3fr 1fr;
 }
 
 
@@ -90,6 +108,20 @@
     overflow-y: scroll;
 }
 
+.applicationMainOverlay {
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    height: calc(100vh + 10%);
+    width: calc(100vw + 10%);
+    z-index: 100;
+    background-color: var(--overlayBackground);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Every 'block' nested inside the main content is styled as a 'card'
 
     Since the intended usage is:
@@ -100,7 +132,9 @@
 
     This is styled independently of the arrangement of # of sidebars
 */
-.applicationMainContent > * {
+
+.applicationMainContent > *,
+.applicationMainOverlay > * {
     display: block;
     background-color: var(--cardBackgroundColor);
     border: 0.05em solid var(--cardOutlineColor);

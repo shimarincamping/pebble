@@ -9,7 +9,7 @@ import styles from "../styles/global.module.css";
 function CodingChallengePage() {
     return (
         <div
-            className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBody}`}  
+            className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBodyLeft}`}  
         >
             <ApplicationSidebar>
                 <ProfileSidebarCardContainer />

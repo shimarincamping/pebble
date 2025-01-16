@@ -1,11 +1,12 @@
 import React from "react";
 
-import styles from "../styles/Currency.module.css"
+import styles from "../styles/Sidebar.module.css";
 
-function CurrencyCard() {
+function CurrencySidebarCard() {
+    {/* Do remember that this component needs a Container to pass it props later on~ */}
     return (
-        <section className={styles.currencyCard}>
-            <div className={styles.ccMainBody}>
+        <section>
+            <div className={styles.currencySidebarCard}>
                 <h5>Currency Card</h5>
                 <p>Use points to get tickets and spin!</p>
                 <hr/>
@@ -13,7 +14,7 @@ function CurrencyCard() {
                 <p>Cost of each ticket: 100 points</p>
                 <h5>Available Tickets: 6</h5>
             </div>
-            <div className={styles.ccButton}>
+            <div className={styles.currencySidebarCard__buttonRow}>
                 <div className={styles.ccButton1}>
                     <button>
                         <span>Goals</span>
@@ -29,4 +30,4 @@ function CurrencyCard() {
     );
 }
 
-export default CurrencyCard;
+export default CurrencySidebarCard;

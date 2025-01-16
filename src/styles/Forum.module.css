@@ -1,0 +1,84 @@
+.forumHeader__header a {
+    display: flex;
+    justify-content: flex-end;
+    text-decoration: none;
+}
+
+.forumHeader__button {
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+    padding: 0.25em 1em;
+    border-radius: 1.5em;
+    gap: 0.5em;
+    border: none;
+    background-color: var(--primaryButtonBackground);
+    color: var(--primaryButtonText);
+    font-weight: 800;
+    font-size: 1rem;
+    box-shadow: 0.1em 0.1em 0.1em var(--cardShadowColor);
+}
+
+.threadCard__thread {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.threadCard__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.threadCard__header time {
+    font-size: 0.875rem;
+    color: var(--subtextColor);
+}
+
+.threadCard__title {
+    width: 80%;
+}
+
+.threadCard__threadType {
+    font-weight: 800;
+    color: var(--taylorsRed);
+}
+
+.threadCard__footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.threadCard__statistics {
+    display: flex;
+    gap: 1em;
+    align-items: flex-end;
+}
+
+.threadCard__statistics span {
+    display: flex;
+    gap: 0.125em;
+}
+
+.threadCard__profile {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+}
+
+.threadCard__profile__image {
+    display: flex;
+    align-items: center;
+}
+
+.threadCard__profile img {
+    max-width: 2em;
+    border-radius: 100%;
+}
+
+.threadCard__profile__details {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.875rem;
+}
