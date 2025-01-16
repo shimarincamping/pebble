@@ -8,7 +8,7 @@ function NetworkCard(props) {
   const isSuggestedNetwork = props.name2 && props.pictureURL2;
 
   return (
-    <section className={styles.networkCardContainer}>
+    <section className={styles.networkCard}>
       <div className={styles.networkCards}>
         {/* "My Network" Section */}
         {isMyNetwork && (
