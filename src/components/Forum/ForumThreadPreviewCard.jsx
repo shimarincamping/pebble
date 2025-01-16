@@ -6,9 +6,9 @@ import styles from "../../styles/LearnForum.module.css";
 
 export default function ForumThreadPreviewCard(props) {
   return (
-    <section>
+    <article className={`${styles.threadCard__thread}`}>
       {props.threadID ? (
-        <article className={`${styles.threadCard__thread}`}>
+        <>
           <div className={`${styles.threadCard__header}`}>
             <div className={`${styles.threadCard__title}`}>
               <h1>{props.threadTitle}</h1>
@@ -40,18 +40,21 @@ export default function ForumThreadPreviewCard(props) {
             </div>
             <div className={`${styles.threadCard__profile}`}>
               <div className={`${styles.threadCard__profile__image}`}>
-                <img src={props.userProfilePicture} alt="user profile icon" />
+                <img
+                  src={props.userData.profilePicture}
+                  alt="user profile icon"
+                />
               </div>
               <div className={`${styles.threadCard__profile__details}`}>
-                <span>{props.userName}</span>
-                <span>{props.userDescription}</span>
+                <span>{props.userData.fullName}</span>
+                <span>{props.userData.description}</span>
               </div>
             </div>
           </div>
-        </article>
+        </>
       ) : (
         <ComponentLoadingSpinner />
       )}
-    </section>
+    </article>
   );
 }

@@ -7,7 +7,6 @@
 .forumHeader__button {
     display: flex;
     align-items: center;
-
     text-decoration: none;
     padding: 0.25em 1em;
     border-radius: 1.5em;
@@ -24,6 +23,10 @@
     display: flex;
     flex-direction: column;
     gap: 1em;
+    padding: 1em;
+    margin: 1em 0em;
+    border-radius: 1.5em;
+    box-shadow: 0.1em 0.1em 0.1em var(--cardShadowColor);
 }
 
 .threadCard__header {
@@ -54,6 +57,7 @@
     display: flex;
     gap: 1em;
     align-items: flex-end;
+    color: var(--taylorsRed);
 }
 
 .threadCard__statistics span {
