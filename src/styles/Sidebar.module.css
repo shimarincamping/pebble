@@ -296,7 +296,7 @@
     background-color: var(--dashboardStatsLeaderboard);
 }
 
-.statsCard__item__points {
+.statsSidebarCard__item__points {
     background-color: var(--dashboardStatsMonthlyPoints);
 }
 
