@@ -134,7 +134,16 @@
     margin: 0.5em 3%;
     background-color: var(--cardBackgroundColor);
     border-radius: 1.5em;
+    box-shadow: 0.2em 0.2em 0.1em var(--cardShadowColor);
 }
+
+.networkCardContent {
+    width: 94%;
+    margin: 0.5em 3%;
+    background-color: var(--cardBackgroundColor);
+    border-radius: 1.5em;
+}
+
 
 
 /* "My Network" Section */
