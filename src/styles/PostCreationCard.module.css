@@ -1,0 +1,81 @@
+.postCreationCard {
+    background-color: var(--cardBackgroundColor);
+    border: 0.05em solid var(--cardOutlineColor);
+    border-radius: 1.5em;
+    box-shadow: 0.2em 0.2em 0.1em var(--cardShadowColor);
+    padding: 0;
+    margin: 1.2em;
+
+}
+
+.profilePictureBorder {
+    width: 3em;
+    margin-top: 1em;
+    margin-left: 1em;
+}
+
+.postHeading {
+    display: flex;
+}
+
+.postType {
+    margin-left: 1em;
+    margin-top: 1em;
+    width: 200px;
+    position: relative;
+
+}
+
+.postType h5 {
+    font-size: 14=3px;
+    font-weight: normal;
+    color: #333;
+
+}
+
+.postTypeBtn {
+    padding: 0.3em;
+    margin-top: 0.3em;
+    background: #fff;
+    box-shadow: 0.2em 0.2em 0.1em var(--cardShadowColor);
+    font-size: 12px;
+    color: var(--subtextColor);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 0.05em solid var(--cardOutlineColor);
+}
+
+.postTypeBtn p {
+    font-size: 12px;
+}
+
+.postTypeContent{
+    margin-top: 0.5em;
+    background: #fff;
+    box-shadow: 0.2em 0.2em 0.1em var(--cardShadowColor);
+    border: 0.05em solid var(--cardOutlineColor);
+
+}
+
+.postTypeItem{
+    padding: 0.3em;
+    font-size: 12px;
+
+}
+
+.postModule{
+    margin-left: 1em;
+    margin-top: 1em;
+
+}
+
+.titlePost{
+    margin-left: 5em;
+    margin-top: 1em;
+}
+
+.writePost{
+    margin-left: 5em;
+    margin-top: 1em;
+}
