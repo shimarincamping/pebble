@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import DashboardStatsCard from "../components/DashboardStatsCard";
+import DashboardStatsSidebarCard from "../components/DashboardStatsSidebarCard";
 
-export default function DashboardStatsContainer() {
+export default function DashboardStatsSidebarCardContainer() {
   const dummyProfileStats = {
     leaderboardRank: 25,
     totalPoints: 1692,
@@ -22,14 +22,14 @@ export default function DashboardStatsContainer() {
   return (
     <>
       {profileStats ? (
-        <DashboardStatsCard
+        <DashboardStatsSidebarCard
           leaderboardRank={profileStats.leaderboardRank}
           totalPoints={profileStats.totalPoints}
           monthlyPoints={profileStats.monthlyPoints}
           tickets={profileStats.tickets}
         />
       ) : (
-        <DashboardStatsCard />
+        <DashboardStatsSidebarCard />
       )}
     </>
   );

@@ -12,7 +12,7 @@ import RegistrationPage from "./pages/RegistrationPage";
 import FeedPage from "./pages/FeedPage"
 import ProfilePage from "./pages/ProfilePage";
 import GoalsPage from "./pages/GoalsPage";
-import LearnForum from "./pages/LearnForum";
+import ForumPage from "./pages/ForumPage";
 import CodingChallengePage from "./pages/CodingChallengePage";
 import "./styles/global.module.css";
 
@@ -32,7 +32,7 @@ function App() {
         <Route path="/profile/:id" element={<ProfilePage />} />
         <Route path="/goals" element={<GoalsPage />} />
         <Route path="/splash" element={<SplashScreen />} />
-        <Route path="/forum" element={<LearnForum />} />
+        <Route path="/forum" element={<ForumPage />} />
         <Route path="/codingchallenge" element={<CodingChallengePage />} />
       </Routes>
     </BrowserRouter>

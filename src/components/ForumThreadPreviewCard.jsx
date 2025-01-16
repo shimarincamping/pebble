@@ -1,8 +1,8 @@
 import React from "react";
-import ComponentLoadingSpinner from "../ComponentLoadingSpinner";
+import ComponentLoadingSpinner from "./ComponentLoadingSpinner";
 
 import { BiUpvote, BiCommentDetail, BiShareAlt, BiFlag } from "react-icons/bi";
-import styles from "../../styles/LearnForum.module.css";
+import styles from "../styles/Forum.module.css";
 
 export default function ForumThreadPreviewCard(props) {
   return (

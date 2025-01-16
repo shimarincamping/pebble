@@ -3,6 +3,7 @@ import ApplicationSidebar from "../containers/ApplicationSidebar";
 import ApplicationMainContent from "../containers/ApplicationMainContent";
 
 import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContainer";
+import DashboardStatsSidebarCardContainer from "../containers/DashboardStatsSidebarCardContainer";
 import NetworkSidebarCardContainer from "../containers/NetworkSidebarCardContainer";
 
 
@@ -23,6 +24,7 @@ function FeedPage() {
 
       {
       <ApplicationSidebar>
+        <DashboardStatsSidebarCardContainer />
         <NetworkSidebarCardContainer />
       </ApplicationSidebar>
       }

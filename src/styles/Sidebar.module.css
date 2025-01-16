@@ -258,6 +258,60 @@
 
 /* ----------------------------------------------------------------------- */
 
+/* Dashboard Stats sidebar card */
+.statsCard {
+    padding: 1.25em;
+}
+
+.statsCard h2 {
+    margin-bottom: 0.5em;
+}
+
+.statsCard__item {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    margin: 0.25em 0em;
+    padding: 0.5em;
+    border-radius: 3em;
+}
+
+.statsCard__data {
+    font-weight: bold;
+}
+
+.statsCard__logo {
+    margin-right: 0.5em;
+}
+
+.statsCard__logo__gift {
+    display: flex;
+    margin-left: 0.5em;
+    border: 1px solid black;
+    border-radius: 10em;
+    padding: 0.25em;
+}
+
+.statsCard__item__leaderboard {
+    background-color: var(--dashboardStatsLeaderboard);
+}
+
+.statsCard__item__points {
+    background-color: var(--dashboardStatsMonthlyPoints);
+}
+
+.statsCard__item__tickets {
+    background-color: var(--dashboardStatsTickets);
+}
+
+.statsCard__item__desc {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+/* ----------------------------------------------------------------------- */
+
 /* Currency sidebar card */
 .currencySidebarCard {
     margin: 0.8em;
