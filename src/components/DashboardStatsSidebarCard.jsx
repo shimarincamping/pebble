@@ -1,37 +1,34 @@
 import React from "react";
 import { TbAward, TbCalendarMonth, TbGift } from "react-icons/tb";
 import { GiPlasticDuck } from "react-icons/gi";
-import ComponentLoadingSpinner from "./ComponentLoadingSpinner";
 
 import styles from "../styles/Sidebar.module.css";
 
 export default function DashboardStatsSidebarCard(props) {
   return (
-    <section className={`${styles.sidebarCard}`}>
-      {
-        Object.keys(props).length ? (
-          <div className={`${styles.statsCard}`}>
-            <h2 className={`${styles.statsCard__title}`}>My Stats</h2>
+    <section>
+          <div className={`${styles.statsSidebarCard}`}>
+            <h2 className={`${styles.statsSidebarCard__title}`}>My Stats</h2>
             <div
-              className={`${styles.statsCard__item} ${styles.statsCard__item__leaderboard}`}
+              className={`${styles.statsSidebarCard__item} ${styles.statsSidebarCard__item__leaderboard}`}
             >
-              <TbAward size={30} className={`${styles.statsCard__logo}`} />
-              <div className={`${styles.statsCard__item__desc}`}>
-                <span className={`${styles.statsCard__data}`}>
+              <TbAward size={30} className={`${styles.statsSidebarCard__logo}`} />
+              <div className={`${styles.statsSidebarCard__item__desc}`}>
+                <span className={`${styles.statsSidebarCard__data}`}>
                   {props.leaderboardRank}&nbsp;
                 </span>
                 <span>&#40;{props.totalPoints} pts&#41;</span>
               </div>
             </div>
             <div
-              className={`${styles.statsCard__item} ${styles.statsCard__item__points}`}
+              className={`${styles.statsSidebarCard__item} ${styles.statsSidebarCard__item__points}`}
             >
               <TbCalendarMonth
                 size={30}
                 className={`${styles.statsCard__logo}`}
               />
-              <div className={`${styles.statsCard__item__desc}`}>
-                <span className={`${styles.statsCard__data}`}>
+              <div className={`${styles.statsSidebarCard__item__desc}`}>
+                <span className={`${styles.statsSidebarCard__data}`}>
                   {props.monthlyPoints}pts&nbsp;
                 </span>
                 <span>this month</span>
@@ -39,28 +36,24 @@ export default function DashboardStatsSidebarCard(props) {
             </div>
             <div>
               <div
-                className={`${styles.statsCard__item} ${styles.statsCard__item__tickets}`}
+                className={`${styles.statsSidebarCard__item} ${styles.statsSidebarCard__item__tickets}`}
               >
                 <GiPlasticDuck
                   size={30}
-                  className={`${styles.statsCard__logo}`}
+                  className={`${styles.statsSidebarCard__logo}`}
                 />
-                <div className={`${styles.statsCard__item__desc}`}>
-                  <span className={`${styles.statsCard__data}`}>
+                <div className={`${styles.statsSidebarCard__item__desc}`}>
+                  <span className={`${styles.statsSidebarCard__data}`}>
                     {props.tickets}&nbsp;
                   </span>
                   <span>tickets</span>
                 </div>
-                <div className={`${styles.statsCard__logo__gift}`}>
+                <div className={`${styles.statsSidebarCard__logo__gift}`}>
                   <TbGift size={20} />
                 </div>
               </div>
             </div>
           </div>
-        ) : (
-          <ComponentLoadingSpinner />
-        )
-      }
     </section>
   );
 }

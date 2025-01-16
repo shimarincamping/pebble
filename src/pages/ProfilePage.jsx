@@ -4,6 +4,7 @@ import ApplicationSidebar from "../containers/ApplicationSidebar";
 import ApplicationMainContent from "../containers/ApplicationMainContent";
 
 import ProfilePageContainer from "../containers/ProfilePageContainer";
+import CVSidebarCardContainer from "../containers/CVSidebarCardContainer";
 import NetworkSidebarCardContainer from "../containers/NetworkSidebarCardContainer";
 import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContainer";
 
@@ -26,7 +27,7 @@ function ProfilePage() {
                         </ApplicationMainContent>
 
                         <ApplicationSidebar>
-                            <h1>Placeholder! --- CV Card</h1>
+                            <CVSidebarCardContainer />
                             <NetworkSidebarCardContainer />
                         </ApplicationSidebar>
                     </div>

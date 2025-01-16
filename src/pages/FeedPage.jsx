@@ -22,12 +22,10 @@ function FeedPage() {
       <ApplicationMainContent>
       </ApplicationMainContent>
 
-      {
       <ApplicationSidebar>
         <DashboardStatsSidebarCardContainer />
         <NetworkSidebarCardContainer />
       </ApplicationSidebar>
-      }
 
     </div>
   );

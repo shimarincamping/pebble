@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DashboardStatsSidebarCard from "../components/DashboardStatsSidebarCard";
+import ComponentLoadingSpinner from "../components/ComponentLoadingSpinner";
 
 export default function DashboardStatsSidebarCardContainer() {
   const dummyProfileStats = {
@@ -21,16 +22,16 @@ export default function DashboardStatsSidebarCardContainer() {
 
   return (
     <>
-      {profileStats ? (
-        <DashboardStatsSidebarCard
-          leaderboardRank={profileStats.leaderboardRank}
-          totalPoints={profileStats.totalPoints}
-          monthlyPoints={profileStats.monthlyPoints}
-          tickets={profileStats.tickets}
-        />
-      ) : (
-        <DashboardStatsSidebarCard />
-      )}
+      {
+        (profileStats) ? (
+          <DashboardStatsSidebarCard
+            leaderboardRank={profileStats.leaderboardRank}
+            totalPoints={profileStats.totalPoints}
+            monthlyPoints={profileStats.monthlyPoints}
+            tickets={profileStats.tickets}
+          />
+        ) : (<ComponentLoadingSpinner />)
+      }
     </>
   );
 }

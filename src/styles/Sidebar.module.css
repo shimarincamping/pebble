@@ -9,7 +9,7 @@
     overflow-y: scroll;
 }
 
-.sidebarCard {
+.sidebarContainer > * {
     background-color: var(--cardBackgroundColor);
     border: 0.05em solid var(--cardOutlineColor);
     border-radius: 1.5em;
@@ -259,15 +259,15 @@
 /* ----------------------------------------------------------------------- */
 
 /* Dashboard Stats sidebar card */
-.statsCard {
+.statsSidebarCard {
     padding: 1.25em;
 }
 
-.statsCard h2 {
+.statsSidebarCard h2 {
     margin-bottom: 0.5em;
 }
 
-.statsCard__item {
+.statsSidebarCard__item {
     display: flex;
     align-items: center;
     font-size: 1rem;
@@ -276,15 +276,15 @@
     border-radius: 3em;
 }
 
-.statsCard__data {
+.statsSidebarCard__data {
     font-weight: bold;
 }
 
-.statsCard__logo {
+.statsSidebarCard__logo {
     margin-right: 0.5em;
 }
 
-.statsCard__logo__gift {
+.statsSidebarCard__logo__gift {
     display: flex;
     margin-left: 0.5em;
     border: 1px solid black;
@@ -292,7 +292,7 @@
     padding: 0.25em;
 }
 
-.statsCard__item__leaderboard {
+.statsSidebarCard__item__leaderboard {
     background-color: var(--dashboardStatsLeaderboard);
 }
 
@@ -300,11 +300,11 @@
     background-color: var(--dashboardStatsMonthlyPoints);
 }
 
-.statsCard__item__tickets {
+.statsSidebarCard__item__tickets {
     background-color: var(--dashboardStatsTickets);
 }
 
-.statsCard__item__desc {
+.statsSidebarCard__item__desc {
     display: flex;
     width: 100%;
     justify-content: center;
@@ -351,4 +351,49 @@
     color: var(--primaryButtonText);
     font-size: 0.8rem;
     text-align: center;
+}
+
+/* ----------------------------------------------------------------------- */
+
+/* CV sidebar card */
+.cvSidebarCard {
+    padding: 1.25em;
+}
+
+.cvSidebarCard__viewCVTile {
+    margin-top: 1em;
+    text-align: center;
+}
+
+.cvSidebarCard__viewCVTile img {
+    width: 80%;
+}
+
+.cvSidebarCard__viewCVTile button {
+    position: relative;
+    top: -12em;
+    z-index: 1;
+
+    padding: 0.4em 3em;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 1em;
+    border: 0.15em solid var(--invertedButtonText);
+    color: var(--invertedButtonText);
+    font-weight: bold;
+}
+
+.cvSidebarCard__viewCVTile button:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.cvSidebarCard__generateCVButton {
+    display: block;
+    margin: -0.9em auto 0.6em auto;
+
+    padding: 0.3em 3em;
+    background-color: var(--primaryButtonBackground);
+    border-radius: 1em;
+    color: var(--primaryButtonText);
+    font-weight: bold;
+    font-size: 0.9rem;
 }

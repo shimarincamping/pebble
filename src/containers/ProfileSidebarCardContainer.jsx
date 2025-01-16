@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProfileSidebarCard from '../components/ProfileSidebarCard';
+import ComponentLoadingSpinner from '../components/ComponentLoadingSpinner';
 
 function ProfileSidebarCardContainer() {
 
@@ -65,7 +66,7 @@ function ProfileSidebarCardContainer() {
                         phone={profileData.phoneNumber}
                         discord={profileData.discordUsername}
                     />
-                ) : <ProfileSidebarCard />
+                ) : (<ComponentLoadingSpinner />)
             }
         </>
     );
