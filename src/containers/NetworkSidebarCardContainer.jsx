@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NetworkSidebarCard from "../components/NetworkSidebarCard";
+import ComponentLoadingSpinner from "../components/ComponentLoadingSpinner";
 
 function NetworkSidebarCardContainer() {
   const dummyNetworkData = {
@@ -42,14 +43,12 @@ function NetworkSidebarCardContainer() {
   return (
     <>
       {
-        networkData ? (
+        (networkData) ? (
           <NetworkSidebarCard 
             {...networkData}
             handleFollowUser={handleFollowUser}
           />
-        ) : (
-          <NetworkSidebarCard />
-        )
+        ) : (<ComponentLoadingSpinner />)
       }
     </>
   );

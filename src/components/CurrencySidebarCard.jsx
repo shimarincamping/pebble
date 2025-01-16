@@ -5,7 +5,7 @@ import styles from "../styles/Sidebar.module.css";
 function CurrencySidebarCard() {
     {/* Do remember that this component needs a Container to pass it props later on~ */}
     return (
-        <section className={styles.sidebarCard}>
+        <section>
             <div className={styles.currencySidebarCard}>
                 <h5>Currency Card</h5>
                 <p>Use points to get tickets and spin!</p>
