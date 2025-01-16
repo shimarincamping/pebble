@@ -23,7 +23,7 @@ function ProfilePage() {
                         className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBodyRight}`}  
                     >
                         <ApplicationMainContent>
-                            <ProfilePageContainer />
+                            <ProfilePageContainer id={id}/>
                         </ApplicationMainContent>
 
                         <ApplicationSidebar>
@@ -40,7 +40,7 @@ function ProfilePage() {
                         </ApplicationSidebar>
 
                         <ApplicationMainContent>
-                            <ProfilePageContainer />
+                            <ProfilePageContainer id={id}/>
                         </ApplicationMainContent>
                     </div>                    
                 )

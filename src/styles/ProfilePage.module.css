@@ -1,0 +1,99 @@
+.profilePageCard {
+    border-radius: 1.6em;
+    margin: 1.2em 2.4em;
+    padding-bottom: 2.5em;
+    width: 66.75em;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Profile header */
+
+.headerInfoCard {
+    padding: 0 0 2.5em 0;
+}
+
+.headerInfoCard__bannerImage {
+    width: 100%;
+    height: 13em;
+    border-radius: 1.5em 1.5em 0 0;
+    object-fit: cover;
+    object-position: center 80%;
+}
+
+
+.headerInfoCard__profilePictureBorder {
+    width: 13em;
+    position: absolute;
+    top: 29.09%;
+    left: 7em;
+}
+
+.headerInfoCard__profilePicture {
+    width: 12.4em;
+    border-radius: 100%;
+    position: absolute;
+    top: 30.1%;
+    left: 7.3em;
+}
+
+.headerInfoCard__gridContainer {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.headerInfoCard__gridContainer__leftColumn {
+    text-align: center;
+    width: 26.6em;
+    padding-top: 7.7em;
+}
+
+.headerInfoCard__followerCount {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--taylorsRed);
+    margin-bottom: 0.4em;
+}
+
+.headerInfoCard__editProfileButton,
+.headerInfoCard__followButton,
+.headerInfoCard__unfollowButton:hover {
+    background-color: var(--primaryButtonBackground);
+    color: var(--primaryButtonText);
+    border: 0.2em solid var(--primaryButtonText);
+    border-radius: 1.3em;
+    padding: 0.5em 3em;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.headerInfoCard__unfollowButton,
+.headerInfoCard__followButton:hover {
+    background-color: var(--invertedButtonBackground);
+    color: var(--invertedButtonText);
+    border: 0.2em solid var(--invertedButtonText);
+    border-radius: 1.3em;
+    padding: 0.5em 3em;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.headerInfoCard__gridContainer__rightColumn {
+    margin: 1em 5em 1em -3.6em;
+}
+
+.headerInfoCard__gridContainer__rightColumn h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.1em;
+}
+
+.headerInfoCard__gridContainer__rightColumn p:nth-of-type(1) {
+    color: var(--taylorsRed);
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 0.8em;
+}
+
+.headerInfoCard__gridContainer__rightColumn p:nth-of-type(2) {
+    font-size: 1.2rem;
+}

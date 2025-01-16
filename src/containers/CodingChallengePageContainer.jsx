@@ -7,7 +7,6 @@ function CodingChallengePageContainer() {
     // Dummy data ----------------------------
     const dummyQuizListData = {
         45 : {
-            "quizID" : 1,
             "quizName" : "PHP Variables Quiz",
             "quizDescription" : "Test out whether you understand how PHP variables really work!",
             "quizDifficulty" : "Easy",

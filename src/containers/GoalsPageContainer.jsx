@@ -24,7 +24,7 @@ function GoalsPageContainer() {
             "goalTitle" : "Complete Your Profile",
             "goalDescription" : "Fill out all profile sections, including your courses and certifications!\nThis will help you build a strong profile!",
             "goalPoints" : 200,
-            "goalRedirect" : "/profile",
+            "goalRedirect" : "/profile/me",
             "isGoalCompleted" : true
         }, {
             "goalTitle" : "Make Your First Post!",
