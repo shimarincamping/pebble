@@ -3,12 +3,11 @@ import ApplicationSidebar from "../containers/ApplicationSidebar";
 import ApplicationMainContent from "../containers/ApplicationMainContent";
 
 import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContainer";
-
-import ForumContainer from "../containers/ForumContainer";
+import ForumPageContainer from "../containers/ForumPageContainer";
 
 import styles from "../styles/global.module.css";
 
-function LearnForum() {
+function ForumPage() {
   return (
     <div
       className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBodyLeft}`}
@@ -17,10 +16,10 @@ function LearnForum() {
         <ProfileSidebarCardContainer />
       </ApplicationSidebar>
       <ApplicationMainContent>
-        <ForumContainer />
+        <ForumPageContainer />
       </ApplicationMainContent>
     </div>
   );
 }
 
-export default LearnForum;
+export default ForumPage;

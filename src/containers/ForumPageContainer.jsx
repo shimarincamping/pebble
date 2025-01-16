@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import ForumPageHeader from "../components/Forum/ForumPageHeader";
-import ForumThreadPreviewCard from "../components/Forum/ForumThreadPreviewCard";
+import ForumPageHeader from "../components/ForumPageHeader";
+import ForumThreadPreviewCard from "../components/ForumThreadPreviewCard";
 
-export default function ForumContainer() {
+export default function ForumPageContainer() {
   const dummyForumThreadData = {
     threadID: 1,
     threadTitle:
