@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlinePlus } from "react-icons/ai";
-import styles from "../../styles/LearnForum.module.css";
+import styles from "../styles/Forum.module.css";
 
 export default function ForumPageHeader() {
   return (

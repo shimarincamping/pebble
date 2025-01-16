@@ -3,7 +3,9 @@ import ApplicationSidebar from "../containers/ApplicationSidebar";
 import ApplicationMainContent from "../containers/ApplicationMainContent";
 
 import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContainer";
-import NetworkCardContainer from "../containers/NetworkCardContainer";
+import DashboardStatsSidebarCardContainer from "../containers/DashboardStatsSidebarCardContainer";
+import NetworkSidebarCardContainer from "../containers/NetworkSidebarCardContainer";
+import PostCreationCard from "../components/PostCreationCard";
 
 
 import styles from "../styles/global.module.css";
@@ -19,16 +21,17 @@ function FeedPage() {
       </ApplicationSidebar>
 
       <ApplicationMainContent>
+        <PostCreationCard />
       </ApplicationMainContent>
 
-      {
       <ApplicationSidebar>
-        <NetworkCardContainer />
+        <DashboardStatsSidebarCardContainer />
+        <NetworkSidebarCardContainer />
       </ApplicationSidebar>
-      }
 
     </div>
   );
 }
 
 export default FeedPage;
+

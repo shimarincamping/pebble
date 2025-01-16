@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import ForumPageHeader from "../components/Forum/ForumPageHeader";
-import ForumThreadGenerator from "../components/Forum/ForumThreadGenerator";
+import ForumPageHeader from "../components/ForumPageHeader";
+import ForumThreadGenerator from "../components/ForumThreadGenerator";
 import ComponentLoadingSpinner from "../components/ComponentLoadingSpinner";
-import { FaFoursquare } from "react-icons/fa";
 
 export default function ForumContainer() {
   const dummyForumThreadData = [
