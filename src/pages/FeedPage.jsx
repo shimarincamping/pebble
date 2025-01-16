@@ -3,6 +3,7 @@ import ApplicationSidebar from "../containers/ApplicationSidebar";
 import ApplicationMainContent from "../containers/ApplicationMainContent";
 
 import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContainer";
+import PostCreationCard from "../components/PostCreationCard";
 
 import styles from "../styles/global.module.css";
 
@@ -17,6 +18,7 @@ function FeedPage() {
       </ApplicationSidebar>
 
       <ApplicationMainContent>
+        <PostCreationCard />
       </ApplicationMainContent>
 
       {
