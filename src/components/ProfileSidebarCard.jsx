@@ -14,7 +14,7 @@ function ProfileSidebarCard(props) {
                 alt="Profile Banner"
             />
             {
-                props.name ? (
+                (Object.keys(props).length) ? (
                     <>
                         <img 
                             src="/img/profilePictureBorder.png"
@@ -38,7 +38,7 @@ function ProfileSidebarCard(props) {
                                 <Link to="/profile">
                                     <button>
                                         <span>Edit Profile</span>
-                                        <img src="icons/edit_white.png"></img>
+                                        <img src="/icons/edit_white.png"></img>
                                     </button>
                                 </Link>
                             </div>
@@ -51,7 +51,7 @@ function ProfileSidebarCard(props) {
 
                                 {/* The assumption is all accounts have an email... */}
                                 <ProfileSidebarCardContactLine 
-                                    src="./icons/email_black.png"
+                                    src="/icons/email_black.png"
                                     alt="Email Address"
                                     text={props.email}
                                 /> <br />
@@ -60,7 +60,7 @@ function ProfileSidebarCard(props) {
                                 {props.phone && (
                                     <>
                                         <ProfileSidebarCardContactLine 
-                                            src="./icons/phone_black.png"
+                                            src="/icons/phone_black.png"
                                             alt="Phone Number" 
                                             text={props.phone}
                                         /> <br />
@@ -69,7 +69,7 @@ function ProfileSidebarCard(props) {
                                 {props.discord && (
                                     <>
                                         <ProfileSidebarCardContactLine 
-                                            src="./icons/discord_black.png"
+                                            src="/icons/discord_black.png"
                                             alt="Discord Username" 
                                             text={`@${props.discord}`}
                                         /> <br />
