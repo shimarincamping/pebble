@@ -31,7 +31,7 @@ function ProfilePageDetailEditForm(props) {
                                 value={entry.icon}
                                 id={`${props.dataKey}-entry${index}-icon`}
                                 onChange={(e) => props.editProfileDetail(index, "icon", e.target.value)}
-                                hint="Enter a valid URL to an image..."
+                                placeholder="Enter a valid URL to an image..."
                             /> <br />
 
                             {/* Second field: Heading */}
@@ -40,7 +40,7 @@ function ProfilePageDetailEditForm(props) {
                                 value={entry.heading}
                                 id={`${props.dataKey}-entry${index}-heading`}
                                 onChange={(e) => props.editProfileDetail(index, "heading", e.target.value)}
-                                hint="Enter a suitable title..."
+                                placeholder="Enter a suitable title..."
                             /> <br />
 
                             {/* Third field: Subheading */}
@@ -49,7 +49,7 @@ function ProfilePageDetailEditForm(props) {
                                 value={entry.subheading}
                                 id={`${props.dataKey}-entry${index}-subheading`}
                                 onChange={(e) => props.editProfileDetail(index, "subheading", e.target.value)}
-                                hint="Write about some important details (location, dates, organisations, platforms)..."
+                                placeholder="Write about some important details (location, dates, organisations, platforms)..."
                             /> <br />
 
                             {/* Fourth field: Description */}
@@ -58,7 +58,7 @@ function ProfilePageDetailEditForm(props) {
                                 value={entry.description}
                                 id={`${props.dataKey}-entry${index}-description`}
                                 onChange={(e) => props.editProfileDetail(index, "description", e.target.value)}
-                                hint="Describe your experience and what you learnt..."
+                                placeholder="Describe your experience and what you learnt..."
                             /> <br />
 
                             <hr />
