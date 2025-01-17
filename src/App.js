@@ -29,7 +29,10 @@ function App() {
         <Route path="/register" element={<RegistrationPage />} />
 
         <Route path="/feed" element={<FeedPage />} />
+
+        <Route path="/profile" element={<Navigate to="/profile/me" />} /> 
         <Route path="/profile/:id" element={<ProfilePage />} />
+
         <Route path="/goals" element={<GoalsPage />} />
         <Route path="/splash" element={<SplashScreen />} />
         <Route path="/forum" element={<ForumPage />} />

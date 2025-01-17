@@ -4,6 +4,8 @@ import ProfilePageHeaderInfoCard from "../components/ProfilePageHeaderInfoCard";
 import ComponentLoadingSpinner from "../components/ComponentLoadingSpinner";
 
 import ApplicationMainOverlay from './ApplicationMainOverlay';
+import ProfilePageDetailCardContainer from "./ProfilePageDetailCardContainer";
+import ProfilePagePostsCardContainer from "./ProfilePagePostsCardContainer";
 
 function ProfilePageContainer({id}) {
 
@@ -24,19 +26,39 @@ function ProfilePageContainer({id}) {
         "isFollowingUser" : false,
         "latestPost" : {
             // Replace with information needed to render a Post component
-            "title" : "THIS IS A PLACEHOLDER!"
+            "title" : "Insert user's one (1) latest post here using a <Post> component (same as Feed)"
         }
     }
 
     const dummyProfileDetailsData = {
         "workExperience" : [
-
+            {
+                icon : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/ChessSet.jpg/800px-ChessSet.jpg",
+                heading : "Chess Tutor",
+                subheading : "Jan 2023 - Present",
+                description : "Planning and conducting chess lessons to facilitate high level understanding of complex concepts among children aged 5-12. Enjoyment and development of the passion from the game is always prioritised."
+            }
         ],
         "coursesAndCertifications" : [
-
+            {
+                icon : "https://i.imgur.com/D9IuBml.jpeg",
+                heading : "Learn SQL Course",
+                subheading : "Codecademy • Jan 2025",
+                description : "Completed an introductory SQL course, mastering database design, queries, joins, data manipulation, and optimization techniques."
+            }, {
+                icon : "https://i.imgur.com/D9IuBml.jpeg",
+                heading : "Learn React Course",
+                subheading : "Codecademy • Jan 2025",
+                description : "Acquired skills in building dynamic and interactive user interfaces, managing state, handling events, and creating reusable, modular UI components for modern web applications."
+            }
         ],
         "skills" : [
-
+            {
+                icon : "https://cdn-icons-png.freepik.com/256/15707/15707874.png",
+                heading : "Content Creation and Digital Marketing",
+                subheading : "YouTube",
+                description : "Utilising data scraping and processing techniques combined with GUI programming using a Python framework to deliver regular content to over 2000 subscribers. Generated over RM1500 in revenue across all income streams."
+            }
         ]
     }
 
@@ -55,13 +77,8 @@ function ProfilePageContainer({id}) {
 
     useEffect(
         () => {
-            // Replace this with a fetch request for user data. The server should trim the raw database response to fit the object above.
-            const fetchData = setInterval(() => {
-                setUserProfileData(dummyProfileData);  // When calling the backend API, use the ID provided to determine whose data to fetch
-                setUserProfileDetails(dummyProfileDetailsData);
-            }, 5000);
-
-            return () => clearInterval(fetchData);
+            setUserProfileData(dummyProfileData);  // When calling the backend API, use the ID provided to determine whose data to fetch
+            setUserProfileDetails(dummyProfileDetailsData);
         },
     []);
 
@@ -77,27 +94,14 @@ function ProfilePageContainer({id}) {
     // For frontend, assume the backend will respond after every action with an updated set of data
     // The following functions "can" be used to simulate these actions, I am keeping them here as reference for future backend development
 
-    /*
-    function updateProfileData(key, newValue) {
-        setUserProfileData((prev) => ({...prev, key : newValue}));
+
+    function updateProfileData(dataKey, newValue) {
+        setUserProfileData((prev) => ({...prev, [dataKey] : newValue}));
     }
 
-    function updateProfileDetails(key, newValue) {
-        setUserProfileDetails((prev) => ({...prev, key: newValue}));
+    function updateProfileDetails(dataKey, newValue) {
+        setUserProfileDetails((prev) => ({...prev, [dataKey] : newValue}));
     }
-
-        function addProfileDetail(type, newEntry) {
-            updateProfileDetails(type, [...userProfileDetails[type], newEntry])
-        }
-
-        function editProfileDetail(type, index, newEntry) {
-            updateProfileDetails(type, userProfileDetails[type].map((item, i) => i === index ? newEntry : item));
-        }
-
-        function removeProfileDetail(type, index) {
-            updateProfileDetails(type, userProfileDetails[type].filter((_, i) => i !== index));
-        }
-    */
 
     // ====================================NOTES=================================================
 
@@ -121,10 +125,33 @@ function ProfilePageContainer({id}) {
                             toggleEditProfileFormVisible={() => setIsEditProfileFormVisible(true)}
                             toggleFollow={toggleFollow}
                         />
-                        <h1>Placeholder! -- Post history card</h1>
-                        <h1>Placeholder! -- Experiences card</h1>
-                        <h1>Placeholder! -- Courses & certifications card</h1>
-                        <h1>Placeholder! -- Skills card</h1>
+                        <ProfilePagePostsCardContainer
+                            latestPost={userProfileData.latestPost}
+                            allPosts={userPostHistory}
+                            getAllPosts={initPostHistory}
+                            showPostButton={isMyProfile}
+                        />
+                        <ProfilePageDetailCardContainer 
+                            dataKey="workExperience"
+                            title="Work Experience"
+                            data={userProfileDetails.workExperience}
+                            handleNewDetails={updateProfileDetails}
+                            isEditable={isMyProfile}
+                        />
+                        <ProfilePageDetailCardContainer 
+                            dataKey="coursesAndCertifications"
+                            title="Courses and Certifications"
+                            data={userProfileDetails.coursesAndCertifications}
+                            handleNewDetails={updateProfileDetails}
+                            isEditable={isMyProfile}
+                        />
+                        <ProfilePageDetailCardContainer 
+                            dataKey="skills"
+                            title="Skills"
+                            data={userProfileDetails.skills}
+                            handleNewDetails={updateProfileDetails}
+                            isEditable={isMyProfile}
+                        />
                     </>
                 ) : (<ComponentLoadingSpinner />)
             }
