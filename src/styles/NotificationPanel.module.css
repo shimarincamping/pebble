@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    /* Defined colors */
+    --taylorsRed: #E51B22;
+    --pebbleGreen: #18BC2B;
+    --hyperlinkBlue: #007BB5;
+
+    
+    /* Cards and blocks */
+    --overlayBackground: rgba(0, 0, 0, 0.6);
+    --cardOutlineColor: grey;
+    --cardShadowColor : grey;
+    --cardBackgroundColor: white;
+
+        /* Registration page blocks */
+        --registrationCoverImage: url(../../public/img/taylorsBackground.png); 
+        --registrationBodyBackground: rgba(255, 255, 255, 0.785);
+
+        /* Dashboard page blocks */
+        --dashboardStatsLeaderboard: #E3DFFF;
+        --dashboardStatsMonthlyPoints: #FFDCDC;
+        --dashboardStatsTickets: #FFF2D9;
+
+    /* Text */
+    --subtextColor: grey;
+
+    /* Buttons */
+    --primaryButtonBackground: var(--taylorsRed);
+    --primaryButtonBackgroundHover: rgb(227, 67, 67);
+    --primaryButtonText: white;
+
+    --invertedButtonBackground: white;
+    --invertedButtonText: var(--taylorsRed);
+
+    --disabledButtonBackground: grey;
+    --disabledButtonText: black;
+
+    /* Input fields */
+    --inputBorderColor: #7C7C7C;
+    --inputBorderColorFocused: var(--taylorsRed);
+
+    
+    /* -- Page container highlights -- */
+    --sidebarContainerBackground: lightpink;
+    --mainContentContainerBackground: lightblue;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+.NotificationPanelContainer{
+    height:100vh;
+    display:flex; 
+    flex-direction: column;
+}
+
+
+
+.Header{
+    height:10%;
+    background-color: var(--taylorsRed);
+    display:flex; 
+    align-items: center;
+    justify-content: space-between;
+}
+
+.BackArrow{
+    height:50%;
+    width:auto;
+    margin-left:4%;
+}
+
+.HeaderText{
+    margin-right:35%;
+    color:white;
+
+}
+
+.Body{
+    flex:1;
+    background-color: white;
+    overflow-y: scroll;
+    width:100%;
+}
+
+/* Effects each row, in the navbar body (including the icon and text*/
+.Body > div{
+    display:flex;
+    height:16.6%;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.TextContainer{
+    /* border: 3px dotted green; */
+    display:flex;
+    flex:1;
+}
+
+.Body div img{
+    max-height:50%;
+    width:auto; 
+}
