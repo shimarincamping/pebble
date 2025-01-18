@@ -1,16 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    /* Defined colors */
+    --taylorsRed: #E51B22;
+    --pebbleGreen: #18BC2B;
+    --hyperlinkBlue: #007BB5;
+
+    
+    /* Cards and blocks */
+    --overlayBackground: rgba(0, 0, 0, 0.6);
+    --cardOutlineColor: grey;
+    --cardShadowColor : grey;
+    --cardBackgroundColor: white;
+
+        /* Registration page blocks */
+        --registrationCoverImage: url(../../public/img/taylorsBackground.png); 
+        --registrationBodyBackground: rgba(255, 255, 255, 0.785);
+
+        /* Dashboard page blocks */
+        --dashboardStatsLeaderboard: #E3DFFF;
+        --dashboardStatsMonthlyPoints: #FFDCDC;
+        --dashboardStatsTickets: #FFF2D9;
+
+    /* Text */
+    --subtextColor: grey;
+
+    /* Buttons */
+    --primaryButtonBackground: var(--taylorsRed);
+    --primaryButtonBackgroundHover: rgb(227, 67, 67);
+    --primaryButtonText: white;
+
+    --invertedButtonBackground: white;
+    --invertedButtonText: var(--taylorsRed);
+
+    --disabledButtonBackground: grey;
+    --disabledButtonText: black;
+
+    /* Input fields */
+    --inputBorderColor: #7C7C7C;
+    --inputBorderColorFocused: var(--taylorsRed);
+
+    
+    /* -- Page container highlights -- */
+    --sidebarContainerBackground: lightpink;
+    --mainContentContainerBackground: lightblue;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
 .NavPanelContainer{
     height:100vh;
+    display:flex; 
+    flex-direction: column;
+    justify-content: space-between;
 }
+
+
 
 .Header{
     height:10%;
-    background-color: red;
+    background-color: var(--taylorsRed);
+    display:flex; 
+    align-items: center;
+    justify-content: space-between;
+}
+
+.TaylorsLogo{
+    height:80%;
+    width:auto;
+    margin-left:2%;
+}
+
+.MenuIcon{
+    margin-right:3%;
+    height:70%;
+    width:auto;
 }
 
 .Body{
+    height:80%;
+    background-color: white;
+}
+
+/* Effects each row, in the navbar body (including the icon and text*/
+.Body > div{
+    display:flex;
+    height:16.6%;
+    align-items: center;
+    justify-content: space-between;
 
 }
 
-.Footer{
+.TextContainer{
+    /* border: 3px dotted green; */
+    display:flex;
+    flex:1;
+}
 
+.Body div img{
+    max-height:50%;
+    width:auto; 
+}
+
+.ImgContainer{
+    height:100%;
+    width: 20%;
+    display:flex;
+    justify-content:center;
+    /* border:3px solid red; */
+    align-items: center;
+}
+
+
+.Footer{
+    height:10%;
+    background-color: var(--taylorsRed);
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.BellIconContainer{
+    margin-right:5%;
+}
+
+.BellIcon{
+    height:50%;
+    width:auto;
+    margin-right:5%;
+}
+
+.LogOut{
+    margin-left:3%;
+    color:white;
 }

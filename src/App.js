@@ -14,6 +14,7 @@ import ProfilePage from "./pages/ProfilePage";
 import GoalsPage from "./pages/GoalsPage";
 import ForumPage from "./pages/ForumPage";
 import CodingChallengePage from "./pages/CodingChallengePage";
+import Test from "./pages/Test";
 import "./styles/global.module.css";
 
 
@@ -34,6 +35,7 @@ function App() {
         <Route path="/splash" element={<SplashScreen />} />
         <Route path="/forum" element={<ForumPage />} />
         <Route path="/codingchallenge" element={<CodingChallengePage />} />
+        <Route path="/test" element={<Test />} />
       </Routes>
     </BrowserRouter>
   );
