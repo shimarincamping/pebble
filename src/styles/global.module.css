@@ -22,6 +22,9 @@
         --dashboardStatsMonthlyPoints: #FFDCDC;
         --dashboardStatsTickets: #FFF2D9;
 
+        /* Leaderboard page blocks */
+        --leaderboardCardBackgroundColor: #EEEEEE;
+
     /* Text */
     --subtextColor: grey;
 

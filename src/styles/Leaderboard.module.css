@@ -1,0 +1,113 @@
+.leaderboardHeader {
+}
+
+.leaderboardHeader header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.9em;
+}
+
+.leaderboardHeader button {
+    background-color: var(--primaryButtonBackground);
+    color: var(--primaryButtonText);
+    font-weight: bold;
+    border-radius: 1.5em;
+    padding: 0.4em 2.8em;
+    font-size: 1.1rem;
+}
+
+.leaderboardSectionItem__container {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    background-color: var(--leaderboardCardBackgroundColor);
+    border-radius: 1em;
+    box-shadow: 0.1em 0.1em 0.1em var(--cardShadowColor);
+    margin: 0.75em 0em;
+    padding: 1em 2em;
+}
+
+.leaderboardSectionItem__container__image{
+    max-width: 7em;
+    border-radius: 100%;
+    border: white solid 2px;
+    box-shadow: 0.1em 0.1em 0.1em var(--cardShadowColor);
+}
+
+.leaderboardSectionItem__userData {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+}
+
+.leaderboardSectionItem__userData h3 {
+    border-bottom: 1px solid black;
+}
+
+.leaderboardSectionItem__userData__intakeCourse {
+    color: var(--subtextColor);
+}
+
+.leaderboardSectionItem__userData span {
+    font-weight: 600;
+}
+
+.leaderboardSidebar__sidebarItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75em;
+    padding: 1.5em;
+}
+
+.leaderboardSidebar__sidebarItem header {
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.leaderboardSidebar__sidebarItem__image {
+    max-width: 7em;
+    border-radius: 100%;
+    border: white solid 2px;
+    box-shadow: 0.1em 0.1em 0.1em var(--cardShadowColor);
+    margin: auto;
+}
+
+.leaderboardSidebar__sidebarItem__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75em;
+}
+
+.leaderboardSidebar__sidebarItem__content h3 {
+    text-align: center;
+}
+
+.leaderboardSidebar__sidebarItem__content span {
+    font-weight: 600;
+}
+
+.leaderboardSidebar__sidebarItem__bioHeader {
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.125rem;
+}
+
+.leaderboardSidebar__sidebarItem__bioBody {
+    background-color: var(--leaderboardCardBackgroundColor);
+    border-radius: 1em;
+    box-shadow: 0.1em 0.1em 0.1em var(--cardShadowColor);
+    padding: 0.5em 1em;
+    text-align: center;
+}
+
+.leaderboardSidebar__sidebarItem__button {
+    background-color: var(--primaryButtonBackground);
+    color: var(--primaryButtonText);
+    font-weight: bold;
+    border-radius: 1.5em;
+    padding: 0.4em 2.8em;
+    margin: auto;
+    width: fit-content;
+}
