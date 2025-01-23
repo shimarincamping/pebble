@@ -44,6 +44,14 @@
     /* -- Page container highlights -- */
     --sidebarContainerBackground: lightpink;
     --mainContentContainerBackground: lightblue;
+
+
+    /* -- Z-index --*/
+    --PageHeaderZI: 10;
+    --NavPanelZI:11;
+    --NotificaitonPanelZI:12;
+
+
 }
 
 * {
@@ -55,12 +63,24 @@
 
 .NavPanelContainer{
     height:100vh;
+    width: 25vw;
     display:flex; 
     flex-direction: column;
     justify-content: space-between;
+
+    z-index: var(--NavPanelZI);
+
+    position:fixed;
+    top:0;
+    transition: left 0.3s ease-in-out;
+    /*Hiding the navpanel*/
+    left:-250vw; 
+    
 }
 
-
+.visible{
+    left:0;
+}
 
 .Header{
     height:10%;
@@ -80,6 +100,7 @@
     margin-right:3%;
     height:70%;
     width:auto;
+    cursor: pointer;
 }
 
 .Body{
@@ -125,14 +146,11 @@
     align-items: center;
 }
 
-.BellIconContainer{
-    margin-right:5%;
-}
-
 .BellIcon{
     height:50%;
     width:auto;
     margin-right:5%;
+    cursor: pointer;
 }
 
 .LogOut{

@@ -1,12 +1,17 @@
 import React from "react";
 import styles from "../styles/PageHeader.module.css"; 
 
+
+const testAlert=()=>{
+    alert("1234")
+};
+
 function PageHeader({handleLogoClick,handleMenuClick,handleSearch}){
     return(
         <>
             <div className={styles.HeaderContainerDiv}>
-                <div className={styles.HamburgerIconContainer}>
-                    <img className={styles.HamburgerIcon} src="img/Menu.svg" onclick={handleMenuClick} alt=""/>
+                <div className={styles.HamburgerIconContainer} onClick={handleMenuClick}>
+                    <img className={styles.HamburgerIcon} src="img/Menu.svg"  alt=""/>
                 </div>
 
                 <div className={styles.PebbleLongLogoContainer} >  

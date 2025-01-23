@@ -1,12 +1,28 @@
 import React from 'react';
 import styles from '../styles/NavPanel.module.css';
-function NavPanel(){
+function NavPanel({isVisible,HandleMenuClick,HandleBellClick}){
+
+    // alert(props.isVisible);
+    // let isVisible=-1;
 
     return(
-        <div className={styles.NavPanelContainer}> 
+        <div className={`${styles.NavPanelContainer} 
+                         ${isVisible ? styles.visible : ""}
+                        `}
+        > 
             <div className={styles.Header}> 
-                <img src="/img/TaylorsLogo.png" className={styles.TaylorsLogo} alt=""/>
-                <img src="/img/WhiteMenuIcon.png" className={styles.MenuIcon} alt=""/>
+                <img 
+                    src="/img/TaylorsLogo.png" 
+                    className={styles.TaylorsLogo} 
+                    alt=""
+                />
+
+                <img 
+                    src="/img/WhiteMenuIcon.png" 
+                    className={styles.MenuIcon} 
+                    onClick={HandleMenuClick}
+                    alt=""
+                />
             </div>
 
             <div className={styles.Body}>
@@ -68,7 +84,11 @@ function NavPanel(){
                 <div className={styles.LogOut}>
                     <h3>LOG OUT</h3>
                 </div>
-                <img className={styles.BellIcon} src="/img/BellIcon.png" alt="" />
+                <img className={styles.BellIcon} 
+                     src="/img/BellIcon.png" 
+                     onClick={HandleBellClick}
+                     alt="" 
+                />
 
             </div>
         </div>
