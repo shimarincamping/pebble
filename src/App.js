@@ -14,6 +14,7 @@ import ProfilePage from "./pages/ProfilePage";
 import GoalsPage from "./pages/GoalsPage";
 import ForumPage from "./pages/ForumPage";
 import CodingChallengePage from "./pages/CodingChallengePage";
+import Leaderboard from "./pages/Leaderboard";
 import Test from "./pages/Test";
 import "./styles/global.module.css";
 
@@ -30,11 +31,15 @@ function App() {
         <Route path="/register" element={<RegistrationPage />} />
 
         <Route path="/feed" element={<FeedPage />} />
+
+        <Route path="/profile" element={<Navigate to="/profile/me" />} /> 
         <Route path="/profile/:id" element={<ProfilePage />} />
+
         <Route path="/goals" element={<GoalsPage />} />
         <Route path="/splash" element={<SplashScreen />} />
         <Route path="/forum" element={<ForumPage />} />
         <Route path="/codingchallenge" element={<CodingChallengePage />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/test" element={<Test />} />
       </Routes>
     </BrowserRouter>

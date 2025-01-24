@@ -20,13 +20,18 @@
 }
 
 .threadCard__thread {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
     padding: 1em;
     margin: 1em 0em;
     border-radius: 1.5em;
     box-shadow: 0.1em 0.1em 0.1em var(--cardShadowColor);
+}
+
+.threadCard__thread a {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    text-decoration: none;
+    color: black;
 }
 
 .threadCard__header {
