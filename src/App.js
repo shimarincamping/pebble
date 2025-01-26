@@ -17,6 +17,8 @@ import CodingChallengePage from "./pages/CodingChallengePage";
 import CareerRoadmapPage from "./pages/CareerRoadmapPage";
 import CareerRoadmapPostPage from "./pages/CareerRoadmapPostPage";
 import Leaderboard from "./pages/Leaderboard";
+import Moderator from "./pages/ModeratorPage";
+
 import "./styles/global.module.css";
 
 
@@ -43,6 +45,7 @@ function App() {
         <Route path="/careerroadmap" element={<CareerRoadmapPage />} />
         <Route path="/roadmap/:id" element={<CareerRoadmapPostPage />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/moderator" element={<Moderator />} />
       </Routes>
     </BrowserRouter>
   );
