@@ -14,6 +14,8 @@ import ProfilePage from "./pages/ProfilePage";
 import GoalsPage from "./pages/GoalsPage";
 import ForumPage from "./pages/ForumPage";
 import CodingChallengePage from "./pages/CodingChallengePage";
+import CareerRoadmapPage from "./pages/CareerRoadmapPage";
+import CareerRoadmapPostPage from "./pages/CareerRoadmapPostPage";
 import Leaderboard from "./pages/Leaderboard";
 import "./styles/global.module.css";
 
@@ -38,6 +40,8 @@ function App() {
         <Route path="/splash" element={<SplashScreen />} />
         <Route path="/forum" element={<ForumPage />} />
         <Route path="/codingchallenge" element={<CodingChallengePage />} />
+        <Route path="/careerroadmap" element={<CareerRoadmapPage />} />
+        <Route path="/roadmap/:id" element={<CareerRoadmapPostPage />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
       </Routes>
     </BrowserRouter>
