@@ -216,3 +216,20 @@
 .roadmapButton__bottom {
   font-size: 0.9rem;
 }
+
+.roadmapPost__backButton {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: white;
+  padding: 1em 1.5em;
+  border: none;
+  border-radius: 5em;
+  font-size: 1rem;
+  font-weight: bolder;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.roadmapPost__backButton:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}

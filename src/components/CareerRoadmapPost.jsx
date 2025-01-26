@@ -10,6 +10,9 @@ const CareerRoadmapPost = ({ roadmap }) => {
   return (
     <div className={styles.roadmapPost}>
       <div className={styles.roadmapPost__header}>
+        <Link to="/careerroadmap" className={styles.roadmapPost__backButton}>
+          ←
+        </Link>
         <div className={styles.roadmapPost__banner}>
           <img 
             src={roadmap.bannerImage} 
