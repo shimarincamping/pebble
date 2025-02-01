@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ForumPageHeader from "../components/ForumPageHeader";
 import ForumThreadGenerator from "../components/ForumThreadGenerator";
+import ForumCreateThreadContainer from "./ForumCreateThreadContainer";
 import ComponentLoadingSpinner from "../components/ComponentLoadingSpinner";
 
 export default function ForumContainer() {
@@ -11,7 +12,7 @@ export default function ForumContainer() {
         "GongGong.AI a revolutionary new way for the older generation to interact with technology!",
       threadDateTime: "2021-01-01 12:00:00",
       threadType: "Feedback Thread",
-      threadContent:
+      threadDescription:
         "I would love to receive some feedback on my newly created project that was made during the AI Nusantara GenAI workshop! Was wondering if the implementation of Gemini 1.5 Flash was the best choice for this use case. I’m also working on my conciseness and readability, so any additional feedback on that is appreciate. Thanks to anyone that takes the time to review this!",
       threadScore: 38,
       commentCount: 15,
@@ -29,7 +30,7 @@ export default function ForumContainer() {
       threadTitle: "Multi-model approaches to sentiment analysis with GenAI",
       threadDateTime: "2021-01-02 12:00:00",
       threadType: "Discussion Thread",
-      threadContent:
+      threadDescription:
         "Hoping to one day replace goodreads :). Tried to include some GenAI features, might not have the best token efficiency. Any comments or feedback about the overall architecture or tech stack used would also be valuable Overall, I’m seeking feedback on implementation and features. Thanks very much for your time!",
       threadScore: 55,
       commentCount: 18,
@@ -43,7 +44,17 @@ export default function ForumContainer() {
       },
     },
   ];
+
+  const [isCreatingThread, setIsCreatingThread] = useState(false);
   const [forumThread, setForumThread] = useState(null);
+
+  const handleCreateThread = () => {
+    setIsCreatingThread(true);
+  };
+
+  const handleViewThread = () => {
+    setIsCreatingThread(false);
+  };
 
   useEffect(() => {
     const fetchData = setInterval(() => {
@@ -55,9 +66,11 @@ export default function ForumContainer() {
 
   return (
     <div>
-      <ForumPageHeader />
-      {forumThread ? (
+      {isCreatingThread ? (
+        <ForumCreateThreadContainer clickBackButton={handleViewThread} />
+      ) : forumThread ? (
         <>
+          <ForumPageHeader onClick={handleCreateThread} />
           <ForumThreadGenerator threads={forumThread} />
         </>
       ) : (
