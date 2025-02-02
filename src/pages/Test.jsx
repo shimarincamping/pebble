@@ -1,29 +1,26 @@
-import React from "react";
+import React from 'react';
 import ApplicationSidebar from "../containers/ApplicationSidebar";
 import ApplicationMainContent from "../containers/ApplicationMainContent";
-import NotificationPanelContainer from "../containers/NotificationPanelContainer";
-import PageHeaderContainer from "../containers/PageHeaderContainer";
-import PageHeader from "../components/PageHeader";
-import styles from "../styles/Test.module.css";
 
-
+import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContainer";
+import CodingChallengePageContainer from '../containers/CodingChallengePageContainer';
+import RewardWheelCardContainer from '../containers/RewardWheelCardContainer';
+import styles from "../styles/global.module.css";
 
 function Test() {
-  return (
-    <>
-    <div className={styles.HeaderContainer}>
-        <PageHeaderContainer/>
-    </div>
-    <div className={styles.gridContainer}>
-      <div className={styles.Sidebar}>
-        {/* <NotificationPanelContainer/> */}
+    return (
+        <div
+            className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBodyLeft}`}  
+        >
+            <ApplicationSidebar>
+                <ProfileSidebarCardContainer />
+            </ApplicationSidebar>
+    
+            <ApplicationMainContent>
+                <RewardWheelCardContainer/>
+            </ApplicationMainContent>
       </div>
-
-      <div></div>
-    </div>
-    </>
-  );
+    );
 }
 
 export default Test;
-

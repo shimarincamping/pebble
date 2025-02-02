@@ -17,7 +17,7 @@ import CodingChallengePage from "./pages/CodingChallengePage";
 import Leaderboard from "./pages/Leaderboard";
 import Test from "./pages/Test";
 import "./styles/global.module.css";
-
+import PageStructureTest from "./pages/PageStructureTest";
 
 function App() {
   return (   
@@ -41,6 +41,7 @@ function App() {
         <Route path="/codingchallenge" element={<CodingChallengePage />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/test" element={<Test />} />
+        <Route path="/test2" element={<PageStructureTest />} />
       </Routes>
     </BrowserRouter>
   );

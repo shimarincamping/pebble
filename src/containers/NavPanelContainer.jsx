@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import NavPanel from "../components/NavPanel.jsx";
 import NotificationPanelContainer from "./NotificationPanelContainer.jsx";
-
+import { useNavigate } from "react-router-dom";
 
 function NavPanelContainer({isNavPanelVisible,toggleNavPanel}){
 
@@ -24,6 +24,11 @@ function NavPanelContainer({isNavPanelVisible,toggleNavPanel}){
         toggleNavPanel();
     };
 
+    const navigate=useNavigate();
+    const navigateTo=(pageName)=>()=>{
+        navigate(pageName)
+    }
+
     return(
         <>
             
@@ -31,6 +36,7 @@ function NavPanelContainer({isNavPanelVisible,toggleNavPanel}){
                 isVisible={isNavPanelVisible}
                 HandleMenuClick={handleMenuIconClick}
                 HandleBellClick={showNotiPanel}
+                navigateTo={navigateTo}
             />
 
             <NotificationPanelContainer
