@@ -9,7 +9,7 @@ import CongratsMessageCard from "../components/CongratsMessageCard";
     const [isCongratsVisible,setCongratsVisibility]=useState(false);
     const [rewardName,setReward]=useState("")
 
-    let rewardsList=['Discord Nitro', 'Syopz Voucher', 'New Profile Picture', '+10 point', '+10 point', 'Discord Nitro', '+10 point', '+10 point', '+10 point', 'Syopz Voucher', 'Discord Nitro']
+    let rewardsList=['Discord Nitro', 'Syopz Voucher', 'New Profile Picture', '+10 points', '+10 points', 'Discord Nitro', '+10 points', '+10 points', '+10 points', 'Syopz Voucher', 'Discord Nitro']
 
     const ticketCount=2;
     const getTicketCount=()=>{
@@ -20,6 +20,17 @@ import CongratsMessageCard from "../components/CongratsMessageCard";
         }
     }
 
+    const showCongrats=()=>{
+        setCongratsVisibility(true);
+        console.log("showCongrats called")
+    }
+
+    const hideCongrats=()=>{
+        setCongratsVisibility(false);
+    }
+
+
+
 
     const handleSpin=()=>{
         //Math.floor(Math.random()*10) returns a number between 0(inclusive) and 9(inclusive)
@@ -27,7 +38,7 @@ import CongratsMessageCard from "../components/CongratsMessageCard";
         let deg=3600+pos*36;
         setRotation(deg);
         setReward(rewardsList[pos]);
-        
+        // showCongrats();
 
         // console.log("prize: "+rewardsList[pos])
         // console.log("pos: "+pos)
@@ -36,7 +47,9 @@ import CongratsMessageCard from "../components/CongratsMessageCard";
     }
 
     const handleCongratsClose=()=>{
-
+        hideCongrats();
+        //reset the wheel
+        setRotation(0);
     }
     
     
@@ -48,6 +61,7 @@ import CongratsMessageCard from "../components/CongratsMessageCard";
             WheelRotation={WheelRotation}
             handleSpin={handleSpin}
             getTicketCount={getTicketCount}
+            showCongrats={showCongrats}
         />
 
         <CongratsMessageCard

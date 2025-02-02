@@ -3,8 +3,10 @@ import styles from "../styles/RewardWheelCard.module.css"
 import CongratsMessageCard from "./CongratsMessageCard"
 
 
-    function RewardWheelCard({WheelRotation,handleSpin,getTicketCount,isCongratsVisible,rewardName,handleCongratsClose}){
-        
+    function RewardWheelCard({WheelRotation,handleSpin,getTicketCount,showCongrats}){
+    const test=()=>{
+        console.log("transition end")
+    }
 
     return(
 
@@ -16,10 +18,11 @@ import CongratsMessageCard from "./CongratsMessageCard"
                     className={styles.Wheel}
                     style={
                             {transform: `rotate(${WheelRotation}deg)`,
-                             transition:"transform 2s ease-out"
+                             transition: WheelRotation ? "transform 2s ease-out" : ""
                             }
                          } 
                     src="/img/RewardWheelImg.png"
+                    onTransitionEnd={showCongrats}
                 />
 
                 <img 
@@ -32,8 +35,6 @@ import CongratsMessageCard from "./CongratsMessageCard"
                     className={styles.Pointer}
                     src='/img/WheelPointer.png' 
                 />
-
-                
             </div>
 
             

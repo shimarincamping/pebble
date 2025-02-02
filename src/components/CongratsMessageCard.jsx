@@ -5,9 +5,10 @@ function CongratsMessageCard({rewardName,isVisible,handleClose}){
 
 return (
     <div className={`${styles.container} ${isVisible ? styles.visible : ""}`  }>
-        <div className={styles.msg}>
+        <div className={styles.txt}>
             <h1 className={styles.redText}>Congratulations! </h1>
-            <h1>You have won <span className={styles.redText}>{rewardName} !!</span> </h1>
+            <h2>You have won:   </h2>
+            <h2><span className={styles.redText}>{rewardName} !!</span></h2>
         </div>
         <button className={styles.btn} onClick={handleClose}>Close</button>
     </div>
