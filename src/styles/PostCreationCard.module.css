@@ -37,7 +37,6 @@
     padding: 0.3em;
     margin-top: 0.3em;
     background: #fff;
-    box-shadow: 0.2em 0.2em 0.1em var(--cardShadowColor);
     font-size: 12px;
     color: var(--subtextColor);
     display: flex;
@@ -53,29 +52,122 @@
 .postTypeContent{
     margin-top: 0.5em;
     background: #fff;
-    box-shadow: 0.2em 0.2em 0.1em var(--cardShadowColor);
     border: 0.05em solid var(--cardOutlineColor);
-
+    margin-bottom: 1em;
 }
 
-.postTypeItem{
+.postTypeItem {
     padding: 0.3em;
     font-size: 12px;
+    cursor: pointer;
+    transform: all 0.2s;
+}
+
+.postTypeItem:hover {
+    background: #f4f4f4;
+}
+
+.postModule {
+    margin-left: 2em;
+    margin-top: 1em;
+    width: 250px;
+    position: relative;
 
 }
 
-.postModule{
-    margin-left: 1em;
-    margin-top: 1em;
+.postModule h5 {
+    font-size: 14=3px;
+    font-weight: normal;
+    color: #333;
 
+}
+
+.postModuleBtn {
+    padding: 0.3em;
+    margin-top: 0.3em;
+    background: #fff;
+    font-size: 12px;
+    color: var(--subtextColor);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 0.05em solid var(--cardOutlineColor);
+}
+
+.postModuleBtn p {
+    font-size: 12px;
+}
+
+.postModuleContent{
+    margin-top: 0.5em;
+    background: #fff;
+    border: 0.05em solid var(--cardOutlineColor);
+    margin-bottom: 1em;
+}
+
+.postModuleItem{
+    padding: 0.3em;
+    font-size: 12px;
+    cursor: pointer;
+    transform: all 0.2s;
+}
+
+.postModuleItem:hover{
+    background: #f4f4f4;
+}
+
+.imageBtn{
+    margin-top: 2em;
+    margin-left: 3em;
 }
 
 .titlePost{
     margin-left: 5em;
-    margin-top: 1em;
+}
+
+.titlePost input {
+    padding: 1em;
+    text-align: left;
+    width: 90%;
+    font-size: 12px;
+    border: 0.05em solid var(--cardOutlineColor);
+    border-radius: 0.8em;
 }
 
 .writePost{
     margin-left: 5em;
-    margin-top: 1em;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+.writePost input {
+    text-align: left;
+    padding: 1em;
+    padding-bottom: 8em;
+    width: 90%;
+    font-size: 12px;
+    border: 0.05em solid var(--cardOutlineColor);
+    border-radius: 0.8em;
+
+}
+
+.postItBtn {
+    margin-bottom: 0.5em;
+    margin-left: 34em;
+}
+
+.postItBtn button {
+    display: block;
+    padding: 0.3em 2em;
+    margin: 0 0.35em;
+
+    border: none;
+    border-radius: 3em;
+    background-color: var(--primaryButtonBackground);
+    box-shadow: 0.1em 0.1em 0.1em var(--cardShadowColor);
+
+    color: var(--primaryButtonText);
+    font-size: 0.8rem;
+    text-align: center;
+    font-weight: bold;
 }

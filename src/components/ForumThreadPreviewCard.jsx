@@ -20,7 +20,7 @@ export default function ForumThreadPreviewCard(props) {
           </div>
         </div>
         <div className={`${styles.threadCard__body}`}>
-          <p>{props.threadContent}</p>
+          <p>{props.threadDescription}</p>
         </div>
         <div className={`${styles.threadCard__footer}`}>
           <div className={`${styles.threadCard__statistics}`}>

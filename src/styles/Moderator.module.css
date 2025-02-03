@@ -1,0 +1,126 @@
+.moderatorContainer {
+    padding: 2em;
+    max-width: max-content;
+    min-width: fit-content;
+  }
+  
+  .moderatorHeader {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 1.6em;
+    color: gray;
+    font-weight: normal;
+  }
+
+  .moderatorLength {
+    font-size: 1.5rem;
+    color: black;
+    font-weight: bold;
+    margin-top: 0.15em;
+  }
+  
+  .commentCard {
+    background: #eeeeee;
+    border-radius: 8px;
+    padding: 0.8em;
+    margin-bottom: 1.8em;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  .commentContainer {
+    display: flex;
+    align-items: center;
+    gap: 1em; /* Space between image and text */
+    position: relative;
+    margin: 1.4em auto 0;
+  }
+  
+  .commentHeader {
+    font-size: 14px;
+    color: #007bff;
+    font-weight: bold;
+    margin: 0.5em 0 1em 1%;
+  }
+  
+  .commentContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    background: white;
+    border-radius: 5px;
+    padding: 0.75em 1.8em 0.75em 4.9em;
+    position: relative;
+    right: 0.6em;
+    margin-left: 6.5%;
+    flex-grow: 1;
+    border-top-left-radius: 5%;
+    border-bottom-left-radius: 5%;
+  }
+
+  .commentTop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .profilePic {
+    width: 6.5em;
+    height: 6.5em;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    border: 3px solid white; /* Creates the overlap effect */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .profileWrapper {
+    position: absolute;
+    top: 50%;
+    left: 0.3em;    
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+  
+  .commentUser {
+    font-weight: bold;
+  }
+  
+  .commentText {
+    font-size: 0.9rem;
+    margin: 0.6em 0;
+  }
+  
+  .commentFooter {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-top: 1em;
+  }
+  
+  .commentTime {
+    font-size: 0.8rem;
+    color: gray;
+  }
+  
+  .commentActions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .approveButton,
+  .deleteButton {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .approveButton:hover {
+    color: green;
+  }
+  
+  .deleteButton:hover {
+    color: red;
+  }
+  
