@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    /* Defined colors */
+    --taylorsRed: #E51B22;
+    --pebbleGreen: #18BC2B;
+    --hyperlinkBlue: #007BB5;
+
+    
+    /* Cards and blocks */
+    --overlayBackground: rgba(0, 0, 0, 0.6);
+    --cardOutlineColor: grey;
+    --cardShadowColor : grey;
+    --cardBackgroundColor: white;
+
+        /* Registration page blocks */
+        --registrationCoverImage: url(../../public/img/taylorsBackground.png); 
+        --registrationBodyBackground: rgba(255, 255, 255, 0.785);
+
+        /* Dashboard page blocks */
+        --dashboardStatsLeaderboard: #E3DFFF;
+        --dashboardStatsMonthlyPoints: #FFDCDC;
+        --dashboardStatsTickets: #FFF2D9;
+
+    /* Text */
+    --subtextColor: grey;
+
+    /* Buttons */
+    --primaryButtonBackground: var(--taylorsRed);
+    --primaryButtonBackgroundHover: rgb(227, 67, 67);
+    --primaryButtonText: white;
+
+    --invertedButtonBackground: white;
+    --invertedButtonText: var(--taylorsRed);
+
+    --disabledButtonBackground: grey;
+    --disabledButtonText: black;
+
+    /* Input fields */
+    --inputBorderColor: #7C7C7C;
+    --inputBorderColorFocused: var(--taylorsRed);
+
+    
+    /* -- Page container highlights -- */
+    --sidebarContainerBackground: lightpink;
+    --mainContentContainerBackground: lightblue;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.ItemContainer{
+    width:100%;
+    height:auto;
+    display:flex;
+    padding:4% 2%;
+}
+
+.ImgContainer{
+    width:30%; 
+    height:auto;
+}
+
+.ProfileImg{
+    width:100%; 
+    height:auto;
+}
+
+.TxtContainer{
+    margin-left:1em;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width:60%;
+}
+
+.TxtContainerBot{
+    margin-bottom:4%;
+}

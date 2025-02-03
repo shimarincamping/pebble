@@ -21,7 +21,6 @@ import Moderator from "./pages/ModeratorPage";
 
 import "./styles/global.module.css";
 
-
 function App() {
   return (   
     <BrowserRouter>

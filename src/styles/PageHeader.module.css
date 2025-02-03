@@ -1,3 +1,18 @@
+    
+    
+   :root{
+
+
+    /* -- Z-index --*/
+    --PageHeaderZI: 10;
+    --NavPanelZI:11;
+    --NotificaitonPanelZI:12;
+
+
+   } 
+    
+    
+
 .HeaderContainerDiv{
     background-color: #F6F6F6;
     width: 100vw;
@@ -5,6 +20,9 @@
     display:flex;
     align-items: center;
     justify-content: space-between;
+    position:fixed; 
+    z-index: var(--PageHeaderZI);
+
 }
 
 .PebbleLongLogoContainer{
@@ -16,6 +34,7 @@
 
 .HamburgerIconContainer{
     margin-left:2%;
+    cursor: pointer;
 }
 
 .HamburgerIcon{

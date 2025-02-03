@@ -1,0 +1,45 @@
+.Container{
+    width:90%;
+    height:90%;
+    display:flex; 
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+    position:relative; 
+    overflow-y: hidden;
+}
+
+.Wheel{
+    height:100%;
+    width:auto; 
+}
+
+.TicketCount{
+    color:#B30208;
+}
+
+.WheelContainer{
+    margin-top:5%;
+    height:90%;
+    width:auto; 
+    display:flex; 
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+
+.SpinNow{
+    position:relative;
+    width:25%;
+    /* left:37.5%; */
+    /* top:10%; */
+    bottom:54.5%;
+}
+
+.Pointer{
+    width:15%;
+    height:auto;
+    position: relative;
+    bottom: 120%;
+}
