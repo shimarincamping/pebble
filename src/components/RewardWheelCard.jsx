@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import styles from "../styles/RewardWheelCard.module.css"
-import CongratsMessageCard from "./CongratsMessageCard"
+import CongratsMessageCard from "./PrizeObtainedDialog"
 
 
     function RewardWheelCard({WheelRotation,handleSpin,getTicketCount,showCongrats}){

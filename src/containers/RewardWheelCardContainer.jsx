@@ -1,9 +1,9 @@
 import React,{useState} from "react";
 import styles from "../styles/RewardWheelCard.module.css"
 import RewardWheelCard from "../components/RewardWheelCard";
-import CongratsMessageCard from "../components/CongratsMessageCard";
+import PrizeObtainedDialog from "../components/PrizeObtainedDialog";
 
-    function RewardWheelCardContainer(){
+function RewardWheelCardContainer(){
     
     const [WheelRotation,setRotation]=useState(0);
     const [isCongratsVisible,setCongratsVisibility]=useState(false);
@@ -64,7 +64,7 @@ import CongratsMessageCard from "../components/CongratsMessageCard";
             showCongrats={showCongrats}
         />
 
-        <CongratsMessageCard
+        <PrizeObtainedDialog
             isVisible={isCongratsVisible}
             rewardName={rewardName}
             handleClose={handleCongratsClose}
