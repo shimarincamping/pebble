@@ -1,13 +1,13 @@
 import React from "react";
-import styles from "../styles/Moderator.module.css";
+import styles from "../styles/ModeratorDashboard.module.css";
 
-const ModeratorComponent = ({ comments, onDelete, onApprove }) => {
+const ModeratorDashboardComponent = ({ comments, onDelete, onApprove }) => {
   return (
     <div className={styles.moderatorContainer}>
       <h2 className={styles.moderatorHeader}>
         Good morning, <br />
         <div className={styles.moderatorLength}>
-            <strong>{comments.length} new comments</strong> are awaiting moderation
+          <strong>{comments.length} new comments</strong> are awaiting moderation
         </div>
       </h2>
 
@@ -39,13 +39,21 @@ const ModeratorComponent = ({ comments, onDelete, onApprove }) => {
                 className={styles.approveButton}
                 onClick={() => onApprove(comment.id)}
               >
-                ✅
+                <img 
+                  className={styles.approveIcon}
+                  src="/icons/checkbox.png"
+                  alt="Approve Icon"
+                />
               </button>
               <button
                 className={styles.deleteButton}
                 onClick={() => onDelete(comment.id)}
               >
-                🗑️
+                <img 
+                  className={styles.rejectIcon}
+                  src="/icons/reject.png"
+                  alt="Reject Icon"
+                />
               </button>
             </div>
           </div>
@@ -55,4 +63,4 @@ const ModeratorComponent = ({ comments, onDelete, onApprove }) => {
   );
 };
 
-export default ModeratorComponent;
+export default ModeratorDashboardComponent;
