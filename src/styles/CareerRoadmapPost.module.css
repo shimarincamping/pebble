@@ -32,7 +32,7 @@
 
 .roadmapPost__bannerImage {
   width: 100%;
-  height: 250px; /* Adjust height as needed */
+  height: 15em; /* Adjust height as needed */
   object-fit: cover; /* Ensures the image fills the space without stretching */
   display: block;
   margin-bottom: 2em;
