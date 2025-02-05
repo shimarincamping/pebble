@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import ApplicationSidebar from "../containers/ApplicationSidebar";
 import ApplicationMainContent from "../containers/ApplicationMainContent";
+import PageHeaderContainer from '../containers/PageHeaderContainer.jsx';
 
 import ProfilePageContainer from "../containers/ProfilePageContainer";
 import CVSidebarCardContainer from "../containers/CVSidebarCardContainer";
@@ -10,15 +11,18 @@ import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContain
 
 import styles from "../styles/global.module.css";
 
-
+    
 function ProfilePage() {
 
     const { id } = useParams();
 
     return (
         <>
+            <PageHeaderContainer/>
             {
                 (id === "me") ? (
+                    <>
+                    {/* <PageHeaderContainer/> */}
                     <div
                         className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBodyRight}`}  
                     >
@@ -31,7 +35,10 @@ function ProfilePage() {
                             <NetworkSidebarCardContainer />
                         </ApplicationSidebar>
                     </div>
+                    </> 
                 ) : (
+                    <>
+                    {/* <PageHeaderContainer/> */}
                     <div
                         className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBodyLeft}`}  
                     >
@@ -42,7 +49,8 @@ function ProfilePage() {
                         <ApplicationMainContent>
                             <ProfilePageContainer id={id}/>
                         </ApplicationMainContent>
-                    </div>                    
+                    </div>  
+                    </>                  
                 )
             }
             

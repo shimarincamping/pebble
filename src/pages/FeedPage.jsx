@@ -6,7 +6,7 @@ import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContain
 import DashboardStatsSidebarCardContainer from "../containers/DashboardStatsSidebarCardContainer";
 import NetworkSidebarCardContainer from "../containers/NetworkSidebarCardContainer";
 import PostCreationCard from "../components/PostCreationCard";
-
+import RewardWheelCardContainer from "../containers/RewardWheelCardContainer";
 
 import styles from "../styles/global.module.css";
 

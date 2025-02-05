@@ -4,7 +4,8 @@
     background-color: var(--sidebarContainerBackground);
     height: 100vh;
     min-width: 16em;
-
+    margin-top: 10vh;
+    
     overflow-x: hidden;
     overflow-y: scroll;
 }

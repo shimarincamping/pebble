@@ -56,7 +56,11 @@
     min-width: 20%;
     border-left: 2px solid darkgrey;
     margin-right: 1%;
-    /* background-color: green; */
+
+    /* change this if haarish is mad about it */
+    visibility: hidden;
+    
+
 }
 
 .SearchForm{

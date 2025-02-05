@@ -18,6 +18,7 @@ import CareerRoadmapPage from "./pages/CareerRoadmapPage";
 import CareerRoadmapPostPage from "./pages/CareerRoadmapPostPage";
 import Leaderboard from "./pages/Leaderboard";
 import Moderator from "./pages/ModeratorPage";
+import RewardsPage from "./pages/RewardsPage";
 
 import "./styles/global.module.css";
 
@@ -45,6 +46,7 @@ function App() {
         <Route path="/roadmap/:id" element={<CareerRoadmapPostPage />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/moderator" element={<Moderator />} />
+        <Route path="/rewards" element={<RewardsPage/>} /> 
       </Routes>
     </BrowserRouter>
   );
