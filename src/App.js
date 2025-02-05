@@ -13,7 +13,7 @@ import CodingChallengePage from "./pages/CodingChallengePage";
 import CareerRoadmapPage from "./pages/CareerRoadmapPage";
 import CareerRoadmapPostPage from "./pages/CareerRoadmapPostPage";
 import Leaderboard from "./pages/Leaderboard";
-import Moderator from "./pages/ModeratorPage";
+import Moderator from "./pages/ModeratorDashboardPage";
 
 import "./styles/global.module.css";
 
