@@ -1,0 +1,60 @@
+.codingPreviewContainer {
+    display: flex;
+    flex-direction: row;  /* Make the container horizontal */
+    justify-content: flex-start;
+    padding: 1em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-bottom: 1em;
+    position: relative;
+    height: auto;  /* Let the height be flexible depending on content */
+}
+
+.codingDescription {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;  /* Allow it to grow and take up the available space */
+    padding-right: 15px; /* Space for the level box */
+    margin-right: 10px;  /* To separate from the level box */
+}
+
+.codingDescription h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+.codingDescription p {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.5;
+}
+
+.codingLevel {
+    display: flex;
+    align-items: center; /* Vertically center the text */
+    justify-content: center;  /* Horizontally center the text */
+    text-align: center;
+    width: 150px; /* Fixed width */
+    border-radius: 0 0.65em 0.65em 0;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.easy {
+    background-color: #28a745; /* Green for Easy */
+}
+
+.medium {
+    background-color: #ffc107; /* Yellow for Medium */
+}
+
+.hard {
+    background-color: #dc3545; /* Red for Hard */
+}
