@@ -5,6 +5,7 @@ import ApplicationMainContent from "../containers/ApplicationMainContent";
 import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContainer";
 import CodingChallengePageContainer from '../containers/CodingChallengePageContainer';
 import styles from "../styles/global.module.css";
+import CodingChallengePreviewContainer from '../containers/CodingChallengePreviewContainer';
 
 function CodingChallengePage() {
     return (
@@ -17,6 +18,7 @@ function CodingChallengePage() {
     
             <ApplicationMainContent>
                 <CodingChallengePageContainer />
+                <CodingChallengePreviewContainer />
             </ApplicationMainContent>
       </div>
     );

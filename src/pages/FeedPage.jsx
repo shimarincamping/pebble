@@ -6,7 +6,7 @@ import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContain
 import DashboardStatsSidebarCardContainer from "../containers/DashboardStatsSidebarCardContainer";
 import NetworkSidebarCardContainer from "../containers/NetworkSidebarCardContainer";
 import PostCreationCard from "../components/PostCreationCard";
-
+import PostCardContainer from "../containers/PostCardContainer";
 
 import styles from "../styles/global.module.css";
 
@@ -22,6 +22,8 @@ function FeedPage() {
 
       <ApplicationMainContent>
         <PostCreationCard />
+        <PostCardContainer />
+
       </ApplicationMainContent>
 
       <ApplicationSidebar>

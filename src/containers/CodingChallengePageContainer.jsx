@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import CodingChallengeQuestion from '../components/CodingChallengeQuestion';
 import ComponentLoadingSpinner from '../components/ComponentLoadingSpinner';
+import CodingChallengePreview from '../components/CodingChallengePreview';
+
 
 function CodingChallengePageContainer() {
     
