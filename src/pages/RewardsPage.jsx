@@ -21,7 +21,7 @@ function RewardsPage(){
                 <CurrencySidebarCard />
             </ApplicationSidebar>
         
-            <ApplicationMainContent>
+            <ApplicationMainContent >
                     <RewardWheelCardContainer/>
             </ApplicationMainContent>
         
