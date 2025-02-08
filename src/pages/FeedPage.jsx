@@ -7,7 +7,7 @@ import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContain
 import DashboardStatsSidebarCardContainer from "../containers/DashboardStatsSidebarCardContainer";
 import NetworkSidebarCardContainer from "../containers/NetworkSidebarCardContainer";
 import PostCreationCard from "../components/PostCreationCard";
-import RewardWheelCardContainer from "../containers/RewardWheelCardContainer";
+import RewardWheelCardContainer from "../containers/RewardWheelCardContainer";import PostCardContainer from "../containers/PostCardContainer";
 
 import styles from "../styles/global.module.css";
 
@@ -24,9 +24,11 @@ function FeedPage() {
           <ProfileSidebarCardContainer />
         </ApplicationSidebar>
 
-        <ApplicationMainContent>
-          <PostCreationCard />
-        </ApplicationMainContent>
+      <ApplicationMainContent>
+        <PostCreationCard />
+        <PostCardContainer />
+
+      </ApplicationMainContent>
 
         <ApplicationSidebar>
           <DashboardStatsSidebarCardContainer />

@@ -102,3 +102,88 @@
     justify-content: space-evenly;
     align-items: center;
 }
+
+
+/* Main container for the dialog */
+.dialogContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 45%;
+    height: 40%;
+    text-align: center;
+    z-index: 1000; /* Ensure it appears on top */
+  }
+  
+  /* Warning icon styling */
+  .dialogIcon {
+    width: 5em;
+    height: 5em;
+    margin-bottom: 1em;
+  }
+  
+  /* Dialog title */
+  .dialogContainer h1 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 1em;
+  }
+  
+  /* Dialog message text */
+  .dialogContainer p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 2em;
+  }
+  
+  /* Button container */
+  .dialogActions {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  /* Base button styling */
+  .dialogActions button {
+    padding: 1em 1.5em;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    border: none;
+  }
+  
+  /* Reject button (red) */
+  .rejectBtn {
+    background: #e74c3c;
+    color: white;
+  }
+  
+  .rejectBtn:hover {
+    background: #c0392b;
+  }
+  
+  /* Accept button (green) */
+  .acceptBtn {
+    background: #2ecc71;
+    color: white;
+  }
+  
+  .acceptBtn:hover {
+    background: #27ae60;
+  }
+  
+  /* Cancel button (gray) */
+  .closeBtn {
+    background: #bdc3c7;
+    color: black;
+  }
+  
+  .closeBtn:hover {
+    background: #95a5a6;
+  }
+  
