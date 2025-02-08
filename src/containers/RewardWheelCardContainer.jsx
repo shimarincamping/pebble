@@ -1,12 +1,12 @@
 import React,{useState} from "react";
-import styles from "../styles/RewardWheelCard.module.css"
 import RewardWheelCard from "../components/RewardWheelCard";
 import PrizeObtainedDialog from "../components/PrizeObtainedDialog";
+import ApplicationMainOverlay from "../containers/ApplicationMainOverlay";
 
 function RewardWheelCardContainer(){
     
     const [WheelRotation,setRotation]=useState(0);
-    const [isCongratsVisible,setCongratsVisibility]=useState(false);
+    const [isPrizeObtainedDialogVisible,setPrizeObtainedDialogVisibility]=useState(false);
     const [rewardName,setReward]=useState("")
 
     let rewardsList=['Discord Nitro', 'Syopz Voucher', 'New Profile Picture', '+10 points', '+10 points', 'Discord Nitro', '+10 points', '+10 points', '+10 points', 'Syopz Voucher', 'Discord Nitro']
@@ -20,13 +20,13 @@ function RewardWheelCardContainer(){
         }
     }
 
-    const showCongrats=()=>{
-        setCongratsVisibility(true);
+    const showDialog=()=>{
+        setPrizeObtainedDialogVisibility(true);
         console.log("showCongrats called")
     }
 
-    const hideCongrats=()=>{
-        setCongratsVisibility(false);
+    const hideDialog=()=>{
+        setPrizeObtainedDialogVisibility(false);
     }
 
 
@@ -46,8 +46,8 @@ function RewardWheelCardContainer(){
         // console.log("relevant deg: "+deg-7200)
     }
 
-    const handleCongratsClose=()=>{
-        hideCongrats();
+    const handleDialogClose=()=>{
+        hideDialog();
         //reset the wheel
         setRotation(0);
     }
@@ -57,18 +57,27 @@ function RewardWheelCardContainer(){
 
     return(
         <>
-        <RewardWheelCard
-            WheelRotation={WheelRotation}
-            handleSpin={handleSpin}
-            getTicketCount={getTicketCount}
-            showCongrats={showCongrats}
-        />
+            <RewardWheelCard
+                WheelRotation={WheelRotation}
+                handleSpin={handleSpin}
+                getTicketCount={getTicketCount}
+                showCongrats={showDialog}
+            />
 
-        <PrizeObtainedDialog
-            isVisible={isCongratsVisible}
-            rewardName={rewardName}
-            handleClose={handleCongratsClose}
-        />
+            {isPrizeObtainedDialogVisible &&
+                (
+                <ApplicationMainOverlay>
+                <PrizeObtainedDialog
+                    isVisible={isPrizeObtainedDialogVisible}
+                    rewardName={rewardName}
+                    handleClose={handleDialogClose}
+                />
+                </ApplicationMainOverlay>
+                )
+
+
+            }
+            
         </>
 
 

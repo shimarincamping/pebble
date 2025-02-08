@@ -91,11 +91,11 @@ function CodingChallengePageContainer() {
 
     useEffect(
         () => {
-            const fetchData = setInterval(() => {
+            const fetchData = setTimeout(() => {
                 setCurrentQuizList(dummyQuizListData);
             }, 5000);
 
-            return () => clearInterval(fetchData);
+            return () => clearTimeout(fetchData);
         },
     []);
 

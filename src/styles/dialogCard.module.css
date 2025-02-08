@@ -16,8 +16,6 @@
 }
 
 
-
-
 .PrizeObtainedContainer{
     position:absolute;
     /* top:45%;
@@ -25,15 +23,16 @@
     display:flex;
     flex-direction: column;
     align-items: center;
-    border:1px solid black;
+    /* border:1px solid black; */
     background-color: white;
-    height:25%;
-    width:20%;
+        /* height:25%;
+        width:20%; */
 }
 
 .PrizeObtainedVisible{
-    top:45%;
-    left:49%;
+    visibility: visible;
+    /* top:45%;
+    left:49%; */
 }
 
 .redText{

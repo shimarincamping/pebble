@@ -106,6 +106,7 @@ body {
 .applicationMainContent {
     background-color: var(--mainContentContainerBackground);
     height: 100vh;
+    margin-top: 10vh;
 
     overflow-x: hidden;
     overflow-y: scroll;
