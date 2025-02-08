@@ -14,8 +14,7 @@ function PageHeader({handleLogoClick,handleMenuClick,handleSearch}){
     return(
         <>
             <div className={styles.HeaderContainerDiv}>
-                {/* <div className={styles.HamburgerIconContainer} onClick={handleMenuClick}> */}
-                <div className={styles.HamburgerIconContainer} onClick={testHamburger()}>
+                <div className={styles.HamburgerIconContainer} onClick={handleMenuClick}>
                     <img className={styles.HamburgerIcon} src="/img/Menu.svg"  alt=""/>
                 </div>
 
