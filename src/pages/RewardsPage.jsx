@@ -2,8 +2,9 @@ import React from 'react';
 import styles from '../styles/global.module.css'
 import ApplicationSidebar from '../containers/ApplicationSidebar.jsx';
 import ApplicationMainContent from '../containers/ApplicationMainContent.jsx';
-import RewardWheelCardContainer from '../containers/RewardWheelCardContainer.jsx'
 import PageHeaderContainer from '../containers/PageHeaderContainer.jsx';
+
+import RewardWheelCardContainer from '../containers/RewardWheelCardContainer.jsx'
 import ProfileSidebarCardContainer from '../containers/ProfileSidebarCardContainer.jsx';
 import CurrencySidebarCard from '../components/CurrencySidebarCard.jsx';
 

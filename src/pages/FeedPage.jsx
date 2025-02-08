@@ -1,6 +1,7 @@
 import React from "react";
 import ApplicationSidebar from "../containers/ApplicationSidebar";
 import ApplicationMainContent from "../containers/ApplicationMainContent";
+import PageHeaderContainer from '../containers/PageHeaderContainer.jsx';
 
 import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContainer";
 import DashboardStatsSidebarCardContainer from "../containers/DashboardStatsSidebarCardContainer";
@@ -13,24 +14,29 @@ import styles from "../styles/global.module.css";
 
 function FeedPage() {
   return (
-    <div
-      className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationNarrowBody}`}  
-    >
-      <ApplicationSidebar>
-        <ProfileSidebarCardContainer />
-      </ApplicationSidebar>
+    <>
+      <PageHeaderContainer/>
 
-      <ApplicationMainContent>
-        <PostCreationCard />
-      </ApplicationMainContent>
+      <div
+        className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationNarrowBody}`}  
+      >
+        <ApplicationSidebar>
+          <ProfileSidebarCardContainer />
+        </ApplicationSidebar>
 
-      <ApplicationSidebar>
-        <DashboardStatsSidebarCardContainer />
-        <NetworkSidebarCardContainer />
-      </ApplicationSidebar>
+        <ApplicationMainContent>
+          <PostCreationCard />
+        </ApplicationMainContent>
 
-    </div>
+        <ApplicationSidebar>
+          <DashboardStatsSidebarCardContainer />
+          <NetworkSidebarCardContainer />
+        </ApplicationSidebar>
+
+      </div>
+    </>
   );
+  
 }
 
 export default FeedPage;
