@@ -29,9 +29,10 @@ const CareerRoadmapPostContainer = () => {
       ],      
       sections: [
         {
+          type: "courses",
           title: "Recommended Courses",
           text: "Taking an external course alongside your degree in machine learning can provide practical skills, industry-relevant knowledge, and exposure to cutting-edge tools not always covered in a standard curriculum. It enhances your expertise, builds your portfolio, and gives you a competitive edge with certifications that demonstrate your abilities.",
-          items: [
+          buttons: [
             {
               text: "Stanford Machine Learning, Coursera",
               link: "https://coursera.org",
@@ -47,9 +48,10 @@ const CareerRoadmapPostContainer = () => {
           ],
         },
         {
+          type: "competitions",
           title: "Recommended Competitions",
           text: "Working on machine learning projects is essential for applying theoretical knowledge to real-world problems, building practical skills, and gaining experience with tools like TensorFlow or PyTorch. Projects showcase your problem-solving abilities and demonstrate tangible results, making your portfolio stand out to employers and increasing your chances of landing a job in machine learning. Here are some recommendations:",
-          items: [
+          buttons: [
             {
               text: "Kaggle Titanic Challenge",
               link: "https://kaggle.com",
@@ -58,9 +60,8 @@ const CareerRoadmapPostContainer = () => {
             },
           ],
         },
-      ],
-      projects: [
         {
+          type: "projects",
           title: "Recommended Projects",
           text: "Working on machine learning projects is essential for applying theoretical knowledge to real-world problems, building practical skills, and gaining experience with tools like TensorFlow or PyTorch. Projects showcase your problem-solving abilities and demonstrate tangible results, making your portfolio stand out to employers and increasing your chances of landing a job in machine learning. Here are some recommendations:",
           buttons: [
@@ -106,9 +107,10 @@ const CareerRoadmapPostContainer = () => {
       ],      
       sections: [
         {
+          type: "courses",
           title: "Recommended Courses",
           text: "Taking an external course alongside your degree in machine learning can provide practical skills, industry-relevant knowledge, and exposure to cutting-edge tools not always covered in a standard curriculum. It enhances your expertise, builds your portfolio, and gives you a competitive edge with certifications that demonstrate your abilities.",
-          items: [
+          buttons: [
             {
               text: "Stanford Machine Learning, Coursera",
               link: "https://coursera.org",
@@ -124,9 +126,10 @@ const CareerRoadmapPostContainer = () => {
           ],
         },
         {
+          type: "competitions",
           title: "Recommended Competitions",
           text: "Working on machine learning projects is essential for applying theoretical knowledge to real-world problems, building practical skills, and gaining experience with tools like TensorFlow or PyTorch. Projects showcase your problem-solving abilities and demonstrate tangible results, making your portfolio stand out to employers and increasing your chances of landing a job in machine learning. Here are some recommendations:",
-          items: [
+          buttons: [
             {
               text: "Kaggle Titanic Challenge",
               link: "https://kaggle.com",
@@ -135,9 +138,8 @@ const CareerRoadmapPostContainer = () => {
             },
           ],
         },
-      ],
-      projects: [
         {
+          type: "projects",
           title: "Recommended Projects",
           text: "Working on machine learning projects is essential for applying theoretical knowledge to real-world problems, building practical skills, and gaining experience with tools like TensorFlow or PyTorch. Projects showcase your problem-solving abilities and demonstrate tangible results, making your portfolio stand out to employers and increasing your chances of landing a job in machine learning. Here are some recommendations:",
           buttons: [
@@ -183,9 +185,10 @@ const CareerRoadmapPostContainer = () => {
       ],      
       sections: [
         {
+          type: "courses",
           title: "Recommended Courses",
           text: "Taking an external course alongside your degree in machine learning can provide practical skills, industry-relevant knowledge, and exposure to cutting-edge tools not always covered in a standard curriculum. It enhances your expertise, builds your portfolio, and gives you a competitive edge with certifications that demonstrate your abilities.",
-          items: [
+          buttons: [
             {
               text: "Stanford Machine Learning, Coursera",
               link: "https://coursera.org",
@@ -201,9 +204,10 @@ const CareerRoadmapPostContainer = () => {
           ],
         },
         {
+          type: "competitions",
           title: "Recommended Competitions",
           text: "Working on machine learning projects is essential for applying theoretical knowledge to real-world problems, building practical skills, and gaining experience with tools like TensorFlow or PyTorch. Projects showcase your problem-solving abilities and demonstrate tangible results, making your portfolio stand out to employers and increasing your chances of landing a job in machine learning. Here are some recommendations:",
-          items: [
+          buttons: [
             {
               text: "Kaggle Titanic Challenge",
               link: "https://kaggle.com",
@@ -212,9 +216,8 @@ const CareerRoadmapPostContainer = () => {
             },
           ],
         },
-      ],
-      projects: [
         {
+          type: "projects",
           title: "Recommended Projects",
           text: "Working on machine learning projects is essential for applying theoretical knowledge to real-world problems, building practical skills, and gaining experience with tools like TensorFlow or PyTorch. Projects showcase your problem-solving abilities and demonstrate tangible results, making your portfolio stand out to employers and increasing your chances of landing a job in machine learning. Here are some recommendations:",
           buttons: [
@@ -260,9 +263,10 @@ const CareerRoadmapPostContainer = () => {
       ],      
       sections: [
         {
+          type: "courses",
           title: "Recommended Courses",
           text: "Taking an external course alongside your degree in machine learning can provide practical skills, industry-relevant knowledge, and exposure to cutting-edge tools not always covered in a standard curriculum. It enhances your expertise, builds your portfolio, and gives you a competitive edge with certifications that demonstrate your abilities.",
-          items: [
+          buttons: [
             {
               text: "Stanford Machine Learning, Coursera",
               link: "https://coursera.org",
@@ -278,9 +282,10 @@ const CareerRoadmapPostContainer = () => {
           ],
         },
         {
+          type: "competitions",
           title: "Recommended Competitions",
           text: "Working on machine learning projects is essential for applying theoretical knowledge to real-world problems, building practical skills, and gaining experience with tools like TensorFlow or PyTorch. Projects showcase your problem-solving abilities and demonstrate tangible results, making your portfolio stand out to employers and increasing your chances of landing a job in machine learning. Here are some recommendations:",
-          items: [
+          buttons: [
             {
               text: "Kaggle Titanic Challenge",
               link: "https://kaggle.com",
@@ -289,9 +294,8 @@ const CareerRoadmapPostContainer = () => {
             },
           ],
         },
-      ],
-      projects: [
         {
+          type: "projects",
           title: "Recommended Projects",
           text: "Working on machine learning projects is essential for applying theoretical knowledge to real-world problems, building practical skills, and gaining experience with tools like TensorFlow or PyTorch. Projects showcase your problem-solving abilities and demonstrate tangible results, making your portfolio stand out to employers and increasing your chances of landing a job in machine learning. Here are some recommendations:",
           buttons: [
@@ -337,9 +341,10 @@ const CareerRoadmapPostContainer = () => {
       ],      
       sections: [
         {
+          type: "courses",
           title: "Recommended Courses",
           text: "Taking an external course alongside your degree in machine learning can provide practical skills, industry-relevant knowledge, and exposure to cutting-edge tools not always covered in a standard curriculum. It enhances your expertise, builds your portfolio, and gives you a competitive edge with certifications that demonstrate your abilities.",
-          items: [
+          buttons: [
             {
               text: "Stanford Machine Learning, Coursera",
               link: "https://coursera.org",
@@ -355,9 +360,10 @@ const CareerRoadmapPostContainer = () => {
           ],
         },
         {
+          type: "competitions",
           title: "Recommended Competitions",
           text: "Working on machine learning projects is essential for applying theoretical knowledge to real-world problems, building practical skills, and gaining experience with tools like TensorFlow or PyTorch. Projects showcase your problem-solving abilities and demonstrate tangible results, making your portfolio stand out to employers and increasing your chances of landing a job in machine learning. Here are some recommendations:",
-          items: [
+          buttons: [
             {
               text: "Kaggle Titanic Challenge",
               link: "https://kaggle.com",
@@ -366,9 +372,8 @@ const CareerRoadmapPostContainer = () => {
             },
           ],
         },
-      ],
-      projects: [
         {
+          type: "projects",
           title: "Recommended Projects",
           text: "Working on machine learning projects is essential for applying theoretical knowledge to real-world problems, building practical skills, and gaining experience with tools like TensorFlow or PyTorch. Projects showcase your problem-solving abilities and demonstrate tangible results, making your portfolio stand out to employers and increasing your chances of landing a job in machine learning. Here are some recommendations:",
           buttons: [
@@ -414,9 +419,10 @@ const CareerRoadmapPostContainer = () => {
       ],      
       sections: [
         {
+          type: "courses",
           title: "Recommended Courses",
           text: "Taking an external course alongside your degree in machine learning can provide practical skills, industry-relevant knowledge, and exposure to cutting-edge tools not always covered in a standard curriculum. It enhances your expertise, builds your portfolio, and gives you a competitive edge with certifications that demonstrate your abilities.",
-          items: [
+          buttons: [
             {
               text: "Stanford Machine Learning, Coursera",
               link: "https://coursera.org",
@@ -432,9 +438,10 @@ const CareerRoadmapPostContainer = () => {
           ],
         },
         {
+          type: "competitions",
           title: "Recommended Competitions",
           text: "Working on machine learning projects is essential for applying theoretical knowledge to real-world problems, building practical skills, and gaining experience with tools like TensorFlow or PyTorch. Projects showcase your problem-solving abilities and demonstrate tangible results, making your portfolio stand out to employers and increasing your chances of landing a job in machine learning. Here are some recommendations:",
-          items: [
+          buttons: [
             {
               text: "Kaggle Titanic Challenge",
               link: "https://kaggle.com",
@@ -443,9 +450,8 @@ const CareerRoadmapPostContainer = () => {
             },
           ],
         },
-      ],
-      projects: [
         {
+          type: "projects",
           title: "Recommended Projects",
           text: "Working on machine learning projects is essential for applying theoretical knowledge to real-world problems, building practical skills, and gaining experience with tools like TensorFlow or PyTorch. Projects showcase your problem-solving abilities and demonstrate tangible results, making your portfolio stand out to employers and increasing your chances of landing a job in machine learning. Here are some recommendations:",
           buttons: [
