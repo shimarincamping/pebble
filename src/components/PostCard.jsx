@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { BsHandThumbsUp, BsChat, BsShare, BsFlag } from "react-icons/bs"; 
 import { FaLinkedin } from "react-icons/fa"; // Import LinkedIn icon
+import PostCommentContainer from "../containers/PostCommentContainer";
 import styles from "../styles/PostCard.module.css";
 
 const PostCard = ({ post, onClick }) => {
     const [expanded, setExpanded] = useState(false);
+    const [showComments, setShowComments] = useState(false);
+    
     
     return (
         <div className={styles.postCard} onClick={onClick}>
@@ -48,10 +51,13 @@ const PostCard = ({ post, onClick }) => {
 
             <div className={styles.postActions}>
                 <div className={styles.action}><BsHandThumbsUp /></div>
-                <div className={styles.action}><BsChat /></div>
+                <div className={styles.action} onClick={(e) => { e.stopPropagation(); setShowComments(true); }}>
+                    <BsChat />
+                </div>
                 <div className={styles.action}><BsShare /></div>
                 <div className={styles.action}><BsFlag /></div>
             </div>
+            {showComments && <PostCommentContainer onClose={() => setShowComments(false)} />}
         </div>
     );
 };

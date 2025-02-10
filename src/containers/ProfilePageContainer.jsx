@@ -6,6 +6,7 @@ import ComponentLoadingSpinner from "../components/ComponentLoadingSpinner";
 import ApplicationMainOverlay from './ApplicationMainOverlay';
 import ProfilePageDetailCardContainer from "./ProfilePageDetailCardContainer";
 import ProfilePagePostsCardContainer from "./ProfilePagePostsCardContainer";
+import EditProfileFormContainer from "./EditProfileFormContainer";
 
 function ProfilePageContainer({id}) {
 
@@ -72,7 +73,6 @@ function ProfilePageContainer({id}) {
     const [userProfileData, setUserProfileData] = useState(null);
     const [userProfileDetails, setUserProfileDetails] = useState(null);
     const [userPostHistory, setUserPostHistory] = useState(null);
-    
     const [isEditProfileFormVisible, setIsEditProfileFormVisible] = useState(false);
 
     useEffect(
@@ -158,7 +158,11 @@ function ProfilePageContainer({id}) {
 
             {isEditProfileFormVisible && (
                 <ApplicationMainOverlay>
-                    <span onClick={() => setIsEditProfileFormVisible(false)}>Placeholder: Edit Profile Form</span>
+                    <EditProfileFormContainer 
+                        initialData={userProfileData} 
+                        onClose={() => setIsEditProfileFormVisible(false)} 
+                        onSave={updateProfileData} 
+                    />
                 </ApplicationMainOverlay>
             )}
 
