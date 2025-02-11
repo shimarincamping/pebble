@@ -22,7 +22,6 @@
     justify-content: space-between;
     position:fixed; 
     z-index: var(--PageHeaderZI);
-
 }
 
 .PebbleLongLogoContainer{
@@ -30,6 +29,7 @@
     /* The approach taken to use justify-content: space-between; with a combination of manual margin left is admittedly "hacky", 
     and I am sorry for that */
     margin-left: 14%;
+    cursor:pointer;
 }
 
 .HamburgerIconContainer{
@@ -56,7 +56,11 @@
     min-width: 20%;
     border-left: 2px solid darkgrey;
     margin-right: 1%;
-    /* background-color: green; */
+
+    /* change this if haarish is mad about it */
+    visibility: hidden;
+    
+
 }
 
 .SearchForm{

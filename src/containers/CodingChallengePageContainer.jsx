@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import CodingChallengeQuestion from '../components/CodingChallengeQuestion';
 import ComponentLoadingSpinner from '../components/ComponentLoadingSpinner';
+import CodingChallengePreview from '../components/CodingChallengePreview';
+
 
 function CodingChallengePageContainer() {
     
@@ -89,11 +91,11 @@ function CodingChallengePageContainer() {
 
     useEffect(
         () => {
-            const fetchData = setInterval(() => {
+            const fetchData = setTimeout(() => {
                 setCurrentQuizList(dummyQuizListData);
             }, 5000);
 
-            return () => clearInterval(fetchData);
+            return () => clearTimeout(fetchData);
         },
     []);
 
