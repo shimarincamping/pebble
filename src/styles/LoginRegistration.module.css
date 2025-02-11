@@ -50,6 +50,24 @@
   padding: 0 2em;
 }
 
+.sidebarContentsContainer__warningIcon {
+  height: 35%;
+  width: 35%;
+  margin: 1em 32.5% 0em;
+}
+
+.sidebarContentsContainer__forgotPasswordHeader {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+.sidebarContentsContainer__forgotPasswordText {
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
 .formBody {
     width: 100%;
 }
@@ -57,6 +75,15 @@
 .formBody__loginInputField {
   width: 95.5%;
   margin: 0.6em 0;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.formBody__forgotPasswordInputField {
+  width: 95.5%;
+  margin: 1.5em 0;
   padding: 1em;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -140,6 +167,10 @@
   display: inline;
 }
 
+.loginFormFooter__forgotPassword:hover {
+  cursor: pointer;
+}
+
 .formBody__loginFormFooter label {
   display: flex;
   align-items: center;
@@ -152,6 +183,10 @@
   margin-right: 0.4em;
 }
 
+.formBody__loginFormFooter input:hover {
+  cursor: pointer;
+}
+
 .formBody__loginFormFooter__registrationPageRedirect {
   margin-top: 0.7em;
 }
@@ -160,3 +195,36 @@
   margin-left: 0.5em;
   font-weight: bold;
 }
+
+.formBody__loginFormFooter__icon {
+  width: auto;
+  height: 30%;
+}
+
+.loginFormFooter__backIcon {
+  width: 6%;
+  height: 6%;
+}
+
+.loginFormFooter__backText {
+  text-align: center;
+  align-items: center;
+  font-size: 1.3rem;
+  text-decoration: none !important; 
+  color: var(--subtextColor);
+}
+
+.formBody__loginFormFooter__loginPageLink {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8em;
+}
+
+.loginFormFooter__backText:visited {
+  color: var(--subtextColor); 
+  text-decoration: none !important; 
+}
+

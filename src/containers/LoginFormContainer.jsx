@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import LoginInputField from "../components/LoginInputField";
 
 import styles from "../styles/LoginRegistration.module.css";
@@ -79,7 +80,7 @@ const LoginFormContainer = () => {
         }
 
         <div className={styles.formBody__loginFormFooter}>
-          <p>Forgot Password?</p>
+          <p className={styles.loginFormFooter__forgotPassword}><Link to="/forgotpassword">Forgot Password?</Link></p>
           <label><input type="checkbox"/>Remember me</label>
         </div>
 
