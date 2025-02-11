@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"; // To get ID from URL
 import ForumThreadDetailsCard from "../components/ForumThreadDetailsCard";
+import ForumThreadComments from "../components/ForumThreadComments";
+import ForumThreadAddComment from "../components/ForumThreadAddComment";
 
 const ForumThreadContainer = () => {
     const { threadID } = useParams(); // Get the roadmap ID from
     const [forumThread, setForumThread] = useState(null);
+    const [showAddComment, setShowAddComment] = useState(false);
+    const [hasAppendedUserData, setHasAppendedUserData] = useState(false);
+    const [inputText, setInputText] = useState("");
+    const [replyTo, setReplyTo] = useState(null);
 
     const dummyForumThreadData = [
         {
@@ -25,6 +31,34 @@ const ForumThreadContainer = () => {
                 fullName: "Anoop Singh",
                 description: "BSE | Data Science | Finance",
             },
+            comments: [
+                {
+                    commentID: 1,
+                    commentDetails: "So real",
+                    upvoteScore: 15,
+                    downvoteScore: 1,
+                    isFlagged: false,
+                    userData: {
+                        userID: 9,
+                        profilePicture: "https://i.imgur.com/qPzFvF4.jpeg",
+                        fullName: "Brendan Ooi",
+                        description: "Co-Founder at TalentSprout",
+                    },
+                },
+                {
+                    commentID: 2,
+                    commentDetails: "Nice!",
+                    upvoteScore: 10,
+                    downvoteScore: 2,
+                    isFlagged: false,
+                    userData: {
+                        userID: 3,
+                        profilePicture: "https://i.imgur.com/qPzFvF4.jpeg",
+                        fullName: "Edmond Yong",
+                        description: "Jesus",
+                    },
+                },
+            ],
         },
         {
             threadID: 2,
@@ -44,6 +78,34 @@ const ForumThreadContainer = () => {
                 fullName: "Haarish Nair",
                 description: "Co-Founder at TalentSprout",
             },
+            comments: [
+                {
+                    commentID: 1,
+                    commentDetails: "So UNREAL",
+                    upvoteScore: 15,
+                    downvoteScore: 1,
+                    isFlagged: false,
+                    userData: {
+                        userID: 9,
+                        profilePicture: "https://i.imgur.com/qPzFvF4.jpeg",
+                        fullName: "Brendan Ooi",
+                        description: "Co-Founder at TalentSprout",
+                    },
+                },
+                {
+                    commentID: 2,
+                    commentDetails: "KYS",
+                    upvoteScore: 10,
+                    downvoteScore: 2,
+                    isFlagged: false,
+                    userData: {
+                        userID: 3,
+                        profilePicture: "https://i.imgur.com/qPzFvF4.jpeg",
+                        fullName: "Edmond Yong",
+                        description: "Jesus",
+                    },
+                },
+            ],
         },
     ];
 
@@ -52,14 +114,70 @@ const ForumThreadContainer = () => {
             (item) => item.threadID === +threadID
         );
         setForumThread(selectedForumThread);
-        console.log(selectedForumThread);
     }, [threadID]);
+
+    const handleReplyComponent = (repliesTo) => {
+        setShowAddComment(true);
+        setHasAppendedUserData(true);
+        setReplyTo(repliesTo);
+    };
+
+    const closeReplyComponent = () => {
+        setShowAddComment(false);
+    };
+
+    const appendIDToReply = (ID, text) => {
+        const existingID = inputText.match(/@\d+/);
+        existingID
+            ? setInputText(inputText.replace(existingID, `@${ID}`))
+            : setInputText(`@${ID} ${text}`);
+    };
+
+    const handleInputChange = (e) => {
+        setInputText(e.target.value);
+    };
+
+    useEffect(() => {
+        if (replyTo) {
+            appendIDToReply(replyTo.userID, inputText);
+        }
+    }, [replyTo]);
+
+    const handleSubmit = (e) => {
+        e.preventDefault(); // Prevent the default form submission behavior};
+        console.log(inputText);
+    };
 
     if (!forumThread) return <p>Loading forum details...</p>;
 
     return (
         <div>
-            <ForumThreadDetailsCard forumThread={forumThread} />
+            <ForumThreadDetailsCard
+                forumThread={forumThread}
+                userData={forumThread.userData}
+                onClickReply={() => handleReplyComponent(forumThread.userData)}
+            />
+            <div>
+                {showAddComment ? (
+                    <ForumThreadAddComment
+                        repliesTo={replyTo.fullName}
+                        onCancel={() => closeReplyComponent()}
+                        onChange={handleInputChange}
+                        onSubmit={handleSubmit}
+                        inputText={inputText}
+                    />
+                ) : null}
+                {forumThread.comments.map((comment, index) => (
+                    <ForumThreadComments
+                        key={index}
+                        comment={comment}
+                        userData={comment.userData}
+                        onClickReply={() => {
+                            handleReplyComponent(comment.userData);
+                        }}
+                    />
+                ))}
+            </div>
         </div>
     );
 };
