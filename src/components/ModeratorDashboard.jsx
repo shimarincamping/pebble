@@ -7,7 +7,7 @@ const ModeratorDashboardComponent = ({ comments, onDelete, onApprove }) => {
       <h2 className={styles.moderatorHeader}>
         Good morning, <br />
         <div className={styles.moderatorLength}>
-          <strong>{comments.length} new comments</strong> are awaiting moderation
+          <strong>{comments.length} new content</strong> are awaiting moderation
         </div>
       </h2>
 
