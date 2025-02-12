@@ -7,7 +7,7 @@ const CareerRoadmapPost = ({ roadmap }) => {
   return (
     <div className={styles.roadmapPost}>
       <div className={styles.roadmapPost__header}>
-        <Link to="/careerroadmap" className={styles.roadmapPost__backButton}>
+        <Link to="/roadmap" className={styles.roadmapPost__backButton}>
           <img src="/img/Back.png" alt="Back" className={styles.roadmapPost__back} />
         </Link>
         <div className={styles.roadmapPost__banner}>
@@ -49,7 +49,7 @@ const CareerRoadmapPost = ({ roadmap }) => {
         <h2 className={styles.bottomSection__sectionTitle}>Bottom Line</h2>
         <p>By actively participating in these competitions and showcasing your skills and achievements, you can significantly enhance your resume.</p>
         <button className={styles.bottomSection__backButton}>
-          <Link to="/careerroadmap">Back to Roadmap</Link>
+          <Link to="/roadmap">Back to Roadmap</Link>
         </button>
       </div>
     </div>
