@@ -6,6 +6,7 @@ import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContain
 import LeaderboardPageContainer from "../containers/LeaderboardPageMainContainer";
 import styles from "../styles/global.module.css";
 import LeaderboardSectionSidebarItem from "../components/LeaderboardSectionSidebarItem";
+
 export default function Leaderboard() {
   const [selectedProfile, setSelectedProfile] = useState(null);
   return (
