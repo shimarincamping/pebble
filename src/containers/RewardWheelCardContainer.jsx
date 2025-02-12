@@ -35,7 +35,7 @@ function RewardWheelCardContainer(){
     const handleSpin=()=>{
         //Math.floor(Math.random()*10) returns a number between 0(inclusive) and 9(inclusive)
         let pos=Math.floor(Math.random()*10)
-        let deg=3600+pos*36;
+        let deg=5400+pos*36;
         setRotation(deg);
         setReward(rewardsList[pos]);
         // showCongrats();
