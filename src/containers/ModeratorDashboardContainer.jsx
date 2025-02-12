@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ModeratorDashboardComponent from "../components/ModeratorDashboard";
 import ModerationDialogCard from "../components/ModerationDialogCard";
+import ApplicationMainOverlay from "../containers/ApplicationMainOverlay";
+
 
 const ModeratorDashboardContainer = () => {
   const [isDialogVisible, setDialogVisible] = useState(false);
@@ -69,12 +71,14 @@ const ModeratorDashboardContainer = () => {
       />
 
       {isDialogVisible && (
-        <ModerationDialogCard
-          onClose={handleCloseDialog}
-          onConfirm={handleConfirm}
-          onReject={handleCloseDialog} // Reject just closes
-          actionType={actionType} // Pass action type
-        />
+        <ApplicationMainOverlay>
+          <ModerationDialogCard
+            onClose={handleCloseDialog}
+            onConfirm={handleConfirm}
+            onReject={handleCloseDialog} // Reject just closes
+            actionType={actionType} // Pass action type
+          />
+        </ApplicationMainOverlay>
       )}
     </>
   );
