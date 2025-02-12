@@ -15,12 +15,9 @@ const CareerRoadmapPost = ({ roadmap }) => {
         </div>
         <div className={styles.roadmapPost__headerContent}>
           <h1 className={styles.roadmapPost__title}>{roadmap.title}</h1>
-          <div className={styles.roadmapPost__headerInfo}>
-            <div className={styles.roadmapPost__author}>
-              <img src={roadmap.profileImage} alt={roadmap.author} className={styles.roadmapPost__authorImage} />
-              <p>{roadmap.author}</p>
-            </div>
-            <button className={styles.roadmapPost__button}>Recommended Paths</button>
+          <div className={styles.roadmapPost__author}>
+            <img src={roadmap.profileImage} alt={roadmap.author} className={styles.roadmapPost__authorImage} />
+            <p>{roadmap.author}</p>
           </div>
         </div>
       </div>
@@ -48,9 +45,15 @@ const CareerRoadmapPost = ({ roadmap }) => {
       <div className={styles.bottomSection}>
         <h2 className={styles.bottomSection__sectionTitle}>Bottom Line</h2>
         <p>By actively participating in these competitions and showcasing your skills and achievements, you can significantly enhance your resume.</p>
+<<<<<<< Updated upstream
         <button className={styles.bottomSection__backButton}>
           <Link to="/roadmap">Back to Roadmap</Link>
         </button>
+=======
+        <div className={styles.bottomSection__backButton}>
+          <Link to="/careerroadmap">Back to Roadmap</Link>
+        </div>
+>>>>>>> Stashed changes
       </div>
     </div>
   );
