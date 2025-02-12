@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
 import LoginInputField from "../components/LoginInputField";
 
 import styles from "../styles/LoginRegistration.module.css";
@@ -80,7 +79,13 @@ const LoginFormContainer = () => {
         }
 
         <div className={styles.formBody__loginFormFooter}>
-          <p className={styles.loginFormFooter__forgotPassword}><Link to="/forgotpassword">Forgot Password?</Link></p>
+          <p className={styles.loginFormFooter__forgotPassword}>
+            <a 
+              href="mailto:campuscentral@taylors.edu.my?subject=Password Reset Request&body=Dear Taylor's Campus Central,%0D%0A%0D%0AI would like to request a password reset for my Pebble app account. My credentials are as follows:%0D%0A%0D%0A[Your Details Here]"
+            >
+              Forgot Password?
+            </a>
+          </p>
           <label><input type="checkbox"/>Remember me</label>
         </div>
 

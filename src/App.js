@@ -15,7 +15,6 @@ import CareerRoadmapPostPage from "./pages/CareerRoadmapPostPage";
 import Leaderboard from "./pages/Leaderboard";
 import Moderator from "./pages/ModeratorDashboardPage";
 import RewardsPage from "./pages/RewardsPage";
-import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 
 import "./styles/global.module.css";
 
@@ -28,7 +27,6 @@ function App() {
 
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegistrationPage />} />
-                <Route path="/forgotpassword" element={<ForgotPasswordPage />}/>
 
                 <Route path="/feed" element={<FeedPage />} />
 
