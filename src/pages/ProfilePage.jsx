@@ -18,11 +18,11 @@ function ProfilePage() {
 
     return (
         <>
-            <PageHeaderContainer/>
+            <PageHeaderContainer />
+
             {
                 (id === "me") ? (
                     <>
-                    {/* <PageHeaderContainer/> */}
                     <div
                         className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBodyRight}`}  
                     >
@@ -38,7 +38,6 @@ function ProfilePage() {
                     </> 
                 ) : (
                     <>
-                    {/* <PageHeaderContainer/> */}
                     <div
                         className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBodyLeft}`}  
                     >
