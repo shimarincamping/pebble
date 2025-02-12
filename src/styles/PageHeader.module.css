@@ -1,16 +1,9 @@
-    
-    
-   :root{
-
-
-    /* -- Z-index --*/
-    --PageHeaderZI: 10;
-    --NavPanelZI:11;
-    --NotificaitonPanelZI:12;
-
-
-   } 
-    
+:root{
+/* -- Z-index --*/
+--PageHeaderZI: 10;
+--NavPanelZI:11;
+--NotificaitonPanelZI:12;
+} 
     
 
 .HeaderContainerDiv{

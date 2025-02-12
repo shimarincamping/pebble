@@ -2,7 +2,7 @@
 
 .sidebarContainer {
     background-color: var(--sidebarContainerBackground);
-    height: 100vh;
+    height: 90vh;
     min-width: 16em;
     margin-top: 10vh;
     
