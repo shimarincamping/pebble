@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../styles/SplashScreen.module.css";
 import { useNavigate } from "react-router-dom";
 export default function SplashScreen() {
+
   const navigateToHome = useNavigate();
 
   const handleNavigate = () => {
     navigateToHome("/login");
   };
 
-  const interval = setInterval(handleNavigate, 3000);
+  useEffect(() => {
+      const interval = setTimeout(handleNavigate, 3000);
+
+      return () => clearTimeout(interval);
+  }, []);
 
   return (
     <div className={styles.pebbleLogo}>
