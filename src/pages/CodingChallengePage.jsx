@@ -6,7 +6,6 @@ import PageHeaderContainer from '../containers/PageHeaderContainer.jsx';
 import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContainer";
 import CodingChallengePageContainer from '../containers/CodingChallengePageContainer';
 import styles from "../styles/global.module.css";
-import CodingChallengePreviewContainer from '../containers/CodingChallengePreviewContainer';
 
 function CodingChallengePage() {
     return (

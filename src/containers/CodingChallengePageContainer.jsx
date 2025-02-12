@@ -1,19 +1,56 @@
 import React, { useState, useEffect } from 'react';
+import CodingChallengePreview from '../components/CodingChallengePreview';
 import CodingChallengeQuestion from '../components/CodingChallengeQuestion';
 import ComponentLoadingSpinner from '../components/ComponentLoadingSpinner';
-import CodingChallengePreview from '../components/CodingChallengePreview';
+
+import styles from '../styles/CodingChallengePreview.module.css';
 
 
 function CodingChallengePageContainer() {
     
     // Dummy data ----------------------------
     const dummyQuizListData = {
-        45 : {
-            "quizName" : "PHP Variables Quiz",
-            "quizDescription" : "Test out whether you understand how PHP variables really work!",
-            "quizDifficulty" : "Easy",
-            "isQuizCompleted" : false,
-            "lastAnsweredQuestion" : -1
+        1 : {
+            quizName : "PHP Variables Quiz",
+            quizDescription : "Test out whether you understand how PHP variables really work!",
+            quizDifficulty : "Easy",
+            isQuizCompleted : false,
+            lastAnsweredQuestion : -1
+        },
+        2 : {
+            quizName : "JavaScript Loops Challenge",
+            quizDescription : "Can you solve looping problems in JavaScript?",
+            quizDifficulty : "Easy",
+            isQuizCompleted : false,
+            lastAnsweredQuestion : -1
+        },
+        3 : {
+            quizName : "Python Functions Exercise",
+            quizDescription : "Practice writing Python functions and understand their scope!",
+            quizDifficulty : "Medium",
+            isQuizCompleted : false,
+            lastAnsweredQuestion : -1
+        },
+        4 : {
+            quizName : "React Props and State",
+            quizDescription : "Improve your React skills with this interactive props and state challenge!",
+            quizDifficulty : "Medium",
+            isQuizCompleted : false,
+            lastAnsweredQuestion : -1
+        },
+        5 : {
+            quizName : "SQL Joins Mastery",
+            quizDescription : "Test your SQL join skills with real-world queries.",
+            quizDifficulty : "Hard",
+            isQuizCompleted : false,
+            lastAnsweredQuestion : -1
+        },
+        6 : {
+            quizName : "Data Structures: Linked Lists",
+            quizDescription : "Implement and manipulate linked lists in your favorite language!",
+            quizDifficulty : "Hard",
+            isQuizCompleted : false,
+            lastAnsweredQuestion : -1
         }
     }
 
@@ -99,8 +136,18 @@ function CodingChallengePageContainer() {
         },
     []);
 
-    const initCodingQuestionData = ({target}) => {
-        const {id} = target;
+    const getLevelClass = (level) => {
+        switch (level) {
+            case "Easy":
+                return styles.easy;
+            case "Medium":
+                return styles.medium;
+            case "Hard":
+                return styles.hard;
+        }
+    };
+
+    const initCodingQuestionData = (id) => {      
         // call Backend Get Question Data(Quiz_ID)
         setCurrentQuiz(currentQuizList[id]);
         setCurrentQuizQuestions(dummyQuizQuestionData);  // Replace with a function call using Quiz ID to backend
@@ -133,7 +180,19 @@ function CodingChallengePageContainer() {
                 (currentQuizList) ? (
                     (!currentQuizQuestions) ? (
                         // ------------Insert coding challenge list view here-----------------
-                        <button id="45" onClick={initCodingQuestionData}>test --- coding QUIZ LIST!!!</button>
+                        <>
+                            {Object.keys(currentQuizList).map((quiz, index) => (
+                                <CodingChallengePreview 
+                                    key={quiz}
+                                    codingTitle={currentQuizList[quiz].quizName}
+                                    codingDescription={currentQuizList[quiz].quizDescription}
+                                    codingLevel={currentQuizList[quiz].quizDifficulty}
+                                    levelClass={getLevelClass(currentQuizList[quiz].quizDifficulty)}
+                                    onClick={() => initCodingQuestionData(quiz)}
+                                />
+                            ))}
+                        </>
+                        // <button id="45" onClick={initCodingQuestionData}>test --- coding QUIZ LIST!!!</button>
                         // -------------------------------------------------------------------
                     ) : (
                         <CodingChallengeQuestion
