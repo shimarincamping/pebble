@@ -146,8 +146,8 @@
     flex-direction: column;
 }
 
-.networkSidebarCard__myNetwork h1,
-.networkSidebarCard__peopleYouMayKnow h1 {
+.networkSidebarCard__myNetwork h3,
+.networkSidebarCard__peopleYouMayKnow h3 {
     margin: 1em 1em 1em;
     font-size: 1.2rem;
 }
@@ -165,7 +165,8 @@
 .networkSidebarCard__myNetwork__userTile {
     width: 75%;
     text-align: center;
-    margin-bottom: 0.8em
+    margin-bottom: 0.8em;
+    cursor: pointer;
 }
 
 .networkSidebarCard__myNetwork__userTile img,
@@ -179,7 +180,6 @@
 
 .networkSidebarCard__myNetwork__userTile p {
     margin-top: 0.5em;
-    
     font-size: 0.8rem;
     font-weight: 500;
     color: #333;
