@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import NetworkSidebarCard from "../components/NetworkSidebarCard";
 import ComponentLoadingSpinner from "../components/ComponentLoadingSpinner";
 import NetworkPopup from "../components/NetworkPopup";
+import ApplicationMainOverlay from "../containers/ApplicationMainOverlay";
 
 function NetworkSidebarCardContainer() {
   const navigate = useNavigate();
@@ -77,13 +78,15 @@ function NetworkSidebarCardContainer() {
       )}
 
       {isPopupOpen && (
-        <NetworkPopup 
-          title={popupTitle}
-          users={popupData}
-          handleClose={handleClosePopup}
-          handleUserClick={handleUserClick}
-          handleFollowUser={popupTitle === "People You May Know" ? handleFollowUser : null}
-        />
+        <ApplicationMainOverlay>
+          <NetworkPopup 
+            title={popupTitle}
+            users={popupData}
+            handleClose={handleClosePopup}
+            handleUserClick={handleUserClick}
+            handleFollowUser={popupTitle === "People You May Know" ? handleFollowUser : null}
+          />
+        </ApplicationMainOverlay>
       )}
     </>
   );
