@@ -228,6 +228,10 @@
   margin-top: 1.5em;
 }
 
+.userDetails {
+  margin-bottom: 0.8em;
+}
+
 .userTile {
   display: flex;
   flex-direction: column;
@@ -235,7 +239,6 @@
   justify-content: space-between; 
   width: 100%;
   text-align: center;
-  margin-bottom: 0.8em;
   margin-right: 0.8em;
   height: 100%; 
 }

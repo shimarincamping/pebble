@@ -21,7 +21,7 @@ const NetworkPopup = ({ title, users, handleClose, handleUserClick, handleFollow
               <div className={styles.userDetails} onClick={() => handleUserClick(user.userID)}>
                 <p>{user.shortName}</p>
                 {user.course && <p>{user.course}</p>}
-                <p>Year {user.year}</p>
+                {user.course &&<p>Year {user.year}</p>}
               </div>
               {handleFollowUser && (
                 <button 
