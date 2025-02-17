@@ -1,5 +1,5 @@
 import React from "react";
-import CV from "../components/CV";
+import DisplayGeneratedCV from "../components/DisplayGeneratedCV";
 
 const CVContainer = ({ data }) => {
     if (!data) {
@@ -8,7 +8,7 @@ const CVContainer = ({ data }) => {
 
     return (
         <div>
-            <CV formData={data} />
+            <DisplayGeneratedCV formData={data} />
         </div>
     );
 };

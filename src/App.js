@@ -12,7 +12,7 @@ import ForumThreadPage from "./pages/ForumThreadPage";
 import CodingChallengePage from "./pages/CodingChallengePage";
 import CareerRoadmapPage from "./pages/CareerRoadmapPage";
 import CareerRoadmapPostPage from "./pages/CareerRoadmapPostPage";
-import Leaderboard from "./pages/Leaderboard";
+import LeaderboardPage from "./pages/LeaderboardPage";
 import Moderator from "./pages/ModeratorDashboardPage";
 import RewardsPage from "./pages/RewardsPage";
 
@@ -30,19 +30,28 @@ function App() {
 
                 <Route path="/feed" element={<FeedPage />} />
 
-                <Route path="/profile" element={<Navigate to="/profile/me" />}/>
+                <Route
+                    path="/profile"
+                    element={<Navigate to="/profile/me" />}
+                />
                 <Route path="/profile/:id" element={<ProfilePage />} />
 
                 <Route path="/forum" element={<ForumPage />} />
                 <Route path="/forum/:threadID" element={<ForumThreadPage />} />
-                <Route path="/codingchallenge" element={<CodingChallengePage />}/>
+                <Route
+                    path="/codingchallenge"
+                    element={<CodingChallengePage />}
+                />
 
                 <Route path="/roadmap" element={<CareerRoadmapPage />} />
-                <Route path="/roadmap/:id" element={<CareerRoadmapPostPage />}/>
+                <Route
+                    path="/roadmap/:id"
+                    element={<CareerRoadmapPostPage />}
+                />
 
                 <Route path="/goals" element={<GoalsPage />} />
                 <Route path="/rewards" element={<RewardsPage />} />
-                <Route path="/leaderboard" element={<Leaderboard />} />
+                <Route path="/leaderboard" element={<LeaderboardPage />} />
 
                 <Route path="/moderator" element={<Moderator />} />
             </Routes>
