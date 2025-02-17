@@ -4,7 +4,7 @@ import styles from "../styles/CareerRoadmapPost.module.css";
 const CareerRoadmapButtons = ({ item, type }) => {
     return (
         <a
-            href={item.link}
+            href={item.buttonLink}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.roadmap__button}
@@ -14,13 +14,13 @@ const CareerRoadmapButtons = ({ item, type }) => {
                     {type === "projects" ? (
                         <div className={styles.roadmapButton__leftContent}>
                             <img
-                                src={item.image}
-                                alt={item.name}
+                                src={item.buttonImage}
+                                alt={item.buttonTitle}
                                 className={styles.roadmapButton__image}
                             />
                             <div className={styles.roadmapButton__besideImage}>
                                 <div className={styles.roadmapButton__top}>
-                                    <strong>{item.name}</strong>
+                                    <strong>{item.buttonTitle}</strong>
                                     <div
                                         className={
                                             styles.roadmapButton__difficulty

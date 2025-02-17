@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import ModerationDialogCard from '../components/ModerationDialogCard';
+import ModerationDialogCard from './ModerationDialogCard';
 
-function ModerationDialogContainer({ isVisible, onClose, onConfirm, onReject }) {
+function ModerationDialogOverlay({ isVisible, onClose, onConfirm, onReject }) {
     return (
         <>
             {isVisible && (
@@ -15,4 +14,4 @@ function ModerationDialogContainer({ isVisible, onClose, onConfirm, onReject }) 
     );
 }
 
-export default ModerationDialogContainer;
+export default ModerationDialogOverlay;
