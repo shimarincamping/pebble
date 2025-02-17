@@ -105,6 +105,12 @@
 
 /* Create Thread Component */
 
+.createThread__container {
+    padding: 1em;
+    border-radius: 1.5em;
+    box-shadow: 0.1em 0.1em 0.1em var(--cardShadowColor);
+}
+
 .createThread__section {
     display: flex;
     flex-direction: column;
@@ -135,7 +141,7 @@
     gap: 0.5em;
 
     & label {
-        font-weight: 700;
+        font-weight: 500;
     }
 
     & input {
@@ -152,11 +158,46 @@
         border-radius: 1em;
         border: 0.05em solid var(--cardOutlineColor);
     }
+
+    & select {
+        padding: 0.875em;
+        border-radius: 1em;
+        border: 0.05em solid var(--cardOutlineColor);
+    }
+}
+
+.createThread__input__title {
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+
+    & button {
+        background-color: white;
+        border: none;
+    }
+}
+
+.createThread__inputDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.createThread__button__addContent {
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75em;
+    background-color: white;
+    border: none;
+    cursor: pointer;
 }
 
 .createThread__buttons {
     display: flex;
     justify-content: space-between;
+    position: relative;
 }
 
 .createThread__buttons__attachments {
@@ -252,7 +293,7 @@
 /* Roadmap Input Box */
 
 .roadmapInputBox__container {
-    position: absolute;
+    z-index: 5;
     background-color: var(--cardBackgroundColor);
     padding: 1em;
     border-radius: 1.5em;
