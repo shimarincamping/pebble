@@ -11,32 +11,32 @@ const CareerRoadmapPost = ({ roadmap }) => {
           <img src="/img/Back.png" alt="Back" className={styles.roadmapPost__back} />
         </Link>
         <div className={styles.roadmapPost__banner}>
-          <img src={roadmap.bannerImage} alt="Banner" className={styles.roadmapPost__bannerImage} />
+          <img src={roadmap.roadmapBannerImageLink} alt="Banner" className={styles.roadmapPost__bannerImage} />
         </div>
         <div className={styles.roadmapPost__headerContent}>
-          <h1 className={styles.roadmapPost__title}>{roadmap.title}</h1>
+          <h1 className={styles.roadmapPost__title}>{roadmap.roadmapThreadTitle}</h1>
           <div className={styles.roadmapPost__author}>
-            <img src={roadmap.profileImage} alt={roadmap.author} className={styles.roadmapPost__authorImage} />
-            <p>{roadmap.author}</p>
+            <img src={roadmap.roadmapProfileImageLink} alt={roadmap.author} className={styles.roadmapPost__authorImage} />
+            <p>{roadmap.roadmapThreadAuthor}</p>
           </div>
         </div>
       </div>
 
       <div className={styles.roadmapPost__content}>
-        {roadmap.description?.map((desc, index) => (
+        {roadmap.roadmapDescription?.map((desc, index) => (
           <div key={index} className={styles.roadmapPost__description}>
-            <h3><strong>{desc.title}</strong></h3>
+            <h3><strong>{desc.roadmapDescriptionTitle}</strong></h3>
             <p>{desc.content}</p>
           </div>
         ))}
 
-        {roadmap.sections?.map((section, index) => (
+        {roadmap.roadmapSection?.map((section, index) => (
           <div key={index} className={styles.roadmapPost__section}>
-            <h3 className={styles.roadmapPost__sectionTitle}>{section.title}</h3>
-            <p className={styles.roadmapPost__sectionText}>{section.text}</p>
+            <h3 className={styles.roadmapPost__sectionTitle}>{section.roadmapSectionTitle}</h3>
+            <p className={styles.roadmapPost__sectionText}>{section.roadmapSectionDescription}</p>
 
-            {section.buttons?.map((item, itemIndex) => (
-              <CareerRoadmapButtons key={itemIndex} item={item} type={section.type} />
+            {section.roadmapSectionButton?.map((item, itemIndex) => (
+              <CareerRoadmapButtons key={itemIndex} item={item} type={section.roadmapSectionType} />
             ))}
           </div>
         ))}
