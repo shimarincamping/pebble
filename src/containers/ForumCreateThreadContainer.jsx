@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import ForumThreadInputField from "../components/ForumThreadInputField";
 import ForumThreadInputFieldRoadmapDescription from "../components/ForumThreadInputFieldRoadmapDescription";
-import ForumThreadInputFieldRoadmap from "../components/ForumThreadInputFieldRoadmapLinkBtn";
-import ForumCreateThreadRoadmapLinkContainer from "./ForumCreateThreadRoadmapLinkContainer";
 import ForumThreadInputFieldRoadmapSection from "../components/ForumThreadInputFieldRoadmapSection";
 import ForumThreadInputFieldRoadmapSectionBtn from "../components/ForumThreadInputFieldRoadmapSectionBtn";
 
@@ -228,13 +226,6 @@ export default function ForumCreateThreadContainer(props) {
             roadmapThreadSection={mapRoadmapThreadSectionData(
                 roadmapThreadData
             )}
-            roadmapLinkButton={
-                isThreadTypeRoadmap && (
-                    <ForumCreateThreadRoadmapLinkContainer
-                    // updateRoadmapBtnData={updateRoadmapBtnData}
-                    />
-                )
-            }
         />
     );
 }
