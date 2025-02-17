@@ -20,7 +20,7 @@ const CareerRoadmapButtons = ({ item, type }) => {
                             />
                             <div className={styles.roadmapButton__besideImage}>
                                 <div className={styles.roadmapButton__top}>
-                                    <strong>{item.text}</strong>
+                                    <strong>{item.name}</strong>
                                     <div
                                         className={
                                             styles.roadmapButton__difficulty
@@ -57,7 +57,13 @@ const CareerRoadmapButtons = ({ item, type }) => {
                     )}
                 </div>
                 <div className={styles.roadmapButton__right}>
-                    <div className={styles.roadmapButton__icon}>🔗</div>
+                    <div className={styles.roadmapButton__icon}>
+                        <img
+                            src="/icons/link.png"
+                            alt="link"
+                            className={styles.roadmapButton__linkIcon}
+                        />
+                    </div>
                 </div>
             </div>
         </a>

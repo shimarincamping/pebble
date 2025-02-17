@@ -186,4 +186,88 @@
   .closeBtn:hover {
     background: #95a5a6;
   }
-  
+
+
+/* Network Popup */
+
+.popupOverlay {
+  position: fixed;
+  margin: auto;
+  width: max-content;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popupContent {
+  background: white;
+  padding: 2em;
+  border-radius: 10px;
+  width: 25em;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+
+.closeIcon {
+  position: absolute;
+  top: 1.5em;
+  right: 1.5em;
+  width: 2.3em;
+  height: 2.3em;
+  cursor: pointer;
+}
+
+.userList {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 1.5em;
+}
+
+.userDetails {
+  margin-bottom: 0.8em;
+}
+
+.userTile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; 
+  width: 100%;
+  text-align: center;
+  margin-right: 0.8em;
+  height: 100%; 
+}
+
+.userTile img {
+  width: 7em;
+  height: 7em;
+  border: 0.1em solid #ccc;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.userTile p {
+  margin-top: 0.5em;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+}
+
+
+.followButton {
+  padding: 0.6em 1.2em;
+  margin-top: 0.7em;
+  background-color: var(--invertedButtonBackground);
+  border: solid 0.15em var(--invertedButtonText);
+  border-radius: 0.5em;
+
+  color: var(--taylorsRed);
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+

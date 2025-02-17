@@ -15,47 +15,35 @@ import CareerRoadmapPostPage from "./pages/CareerRoadmapPostPage";
 import Leaderboard from "./pages/Leaderboard";
 import Moderator from "./pages/ModeratorDashboardPage";
 import RewardsPage from "./pages/RewardsPage";
-import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 
 import "./styles/global.module.css";
 
 function App() {
     return (
         <BrowserRouter>
-            {/* <Link to="/register">Register</Link> */}
             <Routes>
                 <Route path="/" element={<Navigate to="/splash" />} />
                 <Route path="/splash" element={<SplashScreen />} />
 
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegistrationPage />} />
-                <Route
-                    path="/forgotpassword"
-                    element={<ForgotPasswordPage />}
-                />
 
                 <Route path="/feed" element={<FeedPage />} />
 
-                <Route
-                    path="/profile"
-                    element={<Navigate to="/profile/me" />}
-                />
+                <Route path="/profile" element={<Navigate to="/profile/me" />}/>
                 <Route path="/profile/:id" element={<ProfilePage />} />
 
-                <Route path="/goals" element={<GoalsPage />} />
-                <Route path="/splash" element={<SplashScreen />} />
                 <Route path="/forum" element={<ForumPage />} />
                 <Route path="/forum/:threadID" element={<ForumThreadPage />} />
-                <Route
-                    path="/codingchallenge"
-                    element={<CodingChallengePage />}
-                />
-                <Route path="/careerroadmap" element={<CareerRoadmapPage />} />
-                <Route
-                    path="/roadmap/:id"
-                    element={<CareerRoadmapPostPage />}
-                />
+                <Route path="/codingchallenge" element={<CodingChallengePage />}/>
+
+                <Route path="/roadmap" element={<CareerRoadmapPage />} />
+                <Route path="/roadmap/:id" element={<CareerRoadmapPostPage />}/>
+
+                <Route path="/goals" element={<GoalsPage />} />
+                <Route path="/rewards" element={<RewardsPage />} />
                 <Route path="/leaderboard" element={<Leaderboard />} />
+
                 <Route path="/moderator" element={<Moderator />} />
             </Routes>
         </BrowserRouter>

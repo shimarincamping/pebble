@@ -14,18 +14,15 @@ function RewardsPage(){
         <>
             <PageHeaderContainer/>
             
-            <div
-            className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBodyLeft}`}  
-            >
-            <ApplicationSidebar>
-                <ProfileSidebarCardContainer />
-                <CurrencySidebarCard />
-            </ApplicationSidebar>
-        
-            <ApplicationMainContent >
-                    <RewardWheelCardContainer/>
-            </ApplicationMainContent>
-        
+            <div className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBodyLeft}`}>
+                <ApplicationSidebar>
+                    <ProfileSidebarCardContainer />
+                    <CurrencySidebarCard />
+                </ApplicationSidebar>
+            
+                <ApplicationMainContent >
+                        <RewardWheelCardContainer/>
+                </ApplicationMainContent>
             </div>
         </>
       );
