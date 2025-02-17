@@ -1,14 +1,25 @@
 import React, { useState } from "react";
-import ForumThreadInputFieldRoadmap from "../components/ForumThreadInputFieldRoadmap";
+import ForumThreadInputFieldRoadmapLinkBtn from "../components/ForumThreadInputFieldRoadmapLinkBtn";
 import ForumThreadInputFieldRoadmapInputBox from "../components/ForumThreadInputFieldRoadmapInputBox";
 
 export default function ForumCreateThreadRoadmapLinkContainer(props) {
     const [clickedOnRoadmap, setClickedOnRoadmap] = useState(false);
     const [roadmapBtnData, setRoadmapBtnData] = useState({
+        roadmapBtnType: "roadmapBtnCourses",
         roadmapBtnTitle: "",
-        roadmapBtnDescription: "",
-        roadmapBtnLink: "",
+        roadmapBtnResourceLink: "",
+        roadmapBtnImageLink: "",
+        roadmapBtnAuthor: "",
+        roadmapBtnDifficulty: "",
+        roadmapBtnDuration: "",
     });
+
+    const handleSelectThreadType = (event) => {
+        setRoadmapBtnData((prev) => ({
+            ...prev,
+            roadmapBtnType: event.target.value,
+        }));
+    };
 
     const handleClickRoadmapBtn = () => {
         setClickedOnRoadmap(true);
@@ -22,6 +33,10 @@ export default function ForumCreateThreadRoadmapLinkContainer(props) {
         console.log(info);
     };
 
+    const handleUpdate = () => {
+        props.updateRoadmapBtnData(roadmapBtnData);
+    };
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
 
@@ -31,21 +46,23 @@ export default function ForumCreateThreadRoadmapLinkContainer(props) {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const roadmapBtnHandleSubmit = (e) => {
         e.preventDefault(); // Prevent the default form submission behavior};
-        console.log(roadmapBtnData);
+        handleUpdate();
     };
 
     return (
-        <ForumThreadInputFieldRoadmap
+        <ForumThreadInputFieldRoadmapLinkBtn
             roadmapInputBoxActive={handleClickRoadmapBtn}
             addRoadmapInputBox={
                 clickedOnRoadmap && (
                     <ForumThreadInputFieldRoadmapInputBox
-                        onSubmit={handleSubmit}
+                        onSubmit={roadmapBtnHandleSubmit}
                         onChange={handleInputChange}
                         roadmapInputBoxDisable={handleDisableRoadmapBtn}
                         clickAndSendToInputBox={sendToInputBox}
+                        handleThreadType={handleSelectThreadType}
+                        roadmapBtnType={roadmapBtnData.roadmapBtnType}
                     />
                 )
             }

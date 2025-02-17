@@ -1,16 +1,16 @@
 import React from "react";
 import { MdOutlineAddLink } from "react-icons/md";
 
-export default function ForumThreadInputFieldRoadmap(props) {
+export default function ForumThreadInputFieldRoadmapLinkBtn(props) {
     return (
         <>
-            <button>
+            <button type="button">
                 <MdOutlineAddLink size={20} />
                 <span onClick={props.roadmapInputBoxActive}>
                     Add Roadmap Link
                 </span>
             </button>
-            <div>{props.addRoadmapInputBox}</div>
+            {props.addRoadmapInputBox}
         </>
     );
 }
