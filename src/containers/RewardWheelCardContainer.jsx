@@ -5,7 +5,7 @@ import ApplicationMainOverlay from "../containers/ApplicationMainOverlay";
 
 function RewardWheelCardContainer(){
     
-    const [WheelRotation,setRotation]=useState(0);
+    const [WheelRotation,setWheelRotation]=useState(0);
     const [isPrizeObtainedDialogVisible,setPrizeObtainedDialogVisibility]=useState(false);
     const [rewardName,setReward]=useState("")
 
@@ -36,20 +36,14 @@ function RewardWheelCardContainer(){
         //Math.floor(Math.random()*10) returns a number between 0(inclusive) and 9(inclusive)
         let pos=Math.floor(Math.random()*10)
         let deg=5400+pos*36;
-        setRotation(deg);
+        setWheelRotation(deg);
         setReward(rewardsList[pos]);
-        // showCongrats();
-
-        // console.log("prize: "+rewardsList[pos])
-        // console.log("pos: "+pos)
-        // console.log("deg: "+deg)
-        // console.log("relevant deg: "+deg-7200)
     }
 
     const handleDialogClose=()=>{
         hideDialog();
         //reset the wheel
-        setRotation(0);
+        setWheelRotation(0);
     }
     
     
@@ -74,8 +68,6 @@ function RewardWheelCardContainer(){
                 />
                 </ApplicationMainOverlay>
                 )
-
-
             }
             
         </>
