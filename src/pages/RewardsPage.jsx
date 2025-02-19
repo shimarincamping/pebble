@@ -6,7 +6,7 @@ import PageHeaderContainer from '../containers/PageHeaderContainer.jsx';
 
 import RewardWheelCardContainer from '../containers/RewardWheelCardContainer.jsx'
 import ProfileSidebarCardContainer from '../containers/ProfileSidebarCardContainer.jsx';
-import CurrencySidebarCard from '../components/CurrencySidebarCard.jsx';
+import CurrencySidebarCardContainer from '../containers/CurrencySidebarCardContainer.jsx';
 
 
 function RewardsPage(){
@@ -17,7 +17,7 @@ function RewardsPage(){
             <div className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBodyLeft}`}>
                 <ApplicationSidebar>
                     <ProfileSidebarCardContainer />
-                    <CurrencySidebarCard />
+                    <CurrencySidebarCardContainer />
                 </ApplicationSidebar>
             
                 <ApplicationMainContent >

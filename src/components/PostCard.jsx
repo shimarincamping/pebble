@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import { BsHandThumbsUp, BsChat, BsShare, BsFlag } from "react-icons/bs"; 
+import { BsHandThumbsUpFill, BsChatFill, BsShareFill, BsFlagFill } from "react-icons/bs"; 
 import { FaLinkedin } from "react-icons/fa"; // Import LinkedIn icon
 import PostCommentContainer from "../containers/PostCommentContainer";
 import styles from "../styles/PostCard.module.css";
 
-const PostCard = ({ post, onClick }) => {
+const PostCard = ({ post, onClick, onLike, onReport, onCopyLink }) => {
     const [expanded, setExpanded] = useState(false);
     const [showComments, setShowComments] = useState(false);
-    
-    
+
     return (
         <div className={styles.postCard} onClick={onClick}>
             <div className={styles.postHeading}>
@@ -37,25 +36,52 @@ const PostCard = ({ post, onClick }) => {
             <div className={styles.postContent}>
                 <h3>{post.title}</h3>
                 <p className={styles.postMeta}>
-                    {post.date} • <span className={styles.taggedName}>{post.taggedName}</span>
+                    {post.date} 
                 </p>
                 <p className={styles.postDesc}>
                     {expanded ? post.postDesc : `${post.postDesc.substring(0, 150)}...`}
                 </p>
-                {!expanded && (
-                    <button className={styles.readMore} onClick={() => setExpanded(true)}>Read More</button>
+
+                {post.postDesc.length > 150 && (
+                    <button 
+                        className={styles.readMore} 
+                        onClick={(e) => {
+                            e.stopPropagation(); // Prevents triggering the post click event
+                            setExpanded(!expanded);
+                        }}
+                    >
+                        {expanded ? "Read Less" : "Read More"}
+                    </button>
                 )}
             </div>
 
             <hr className={styles.separator} />
 
             <div className={styles.postActions}>
-                <div className={styles.action}><BsHandThumbsUp /></div>
-                <div className={styles.action} onClick={(e) => { e.stopPropagation(); setShowComments(true); }}>
-                    <BsChat />
+                <div
+                    className={`${styles.action} ${post.liked ? styles.liked : ""}`}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onLike(post.id);
+                    }}
+                >
+                    <BsHandThumbsUpFill />
                 </div>
-                <div className={styles.action}><BsShare /></div>
-                <div className={styles.action}><BsFlag /></div>
+                <div className={styles.action} onClick={(e) => { e.stopPropagation(); setShowComments(true); }}>
+                    <BsChatFill />
+                </div>
+                <div className={styles.action} onClick={(e) => { e.stopPropagation(); onCopyLink(window.location.href); }}>
+                    <BsShareFill />
+                </div>
+                <div
+                    className={`${styles.action} ${post.reported ? styles.reported : ""}`}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onReport(post.id);
+                    }}
+                >
+                    <BsFlagFill />
+                </div>
             </div>
             {showComments && <PostCommentContainer onClose={() => setShowComments(false)} />}
         </div>
