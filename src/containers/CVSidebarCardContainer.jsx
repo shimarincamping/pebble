@@ -12,16 +12,17 @@ function CVSidebarCardContainer() {
     // Dummy data ----------------------------
     const dummyCVData = {
         latestUserCV: {
-            fullName: "John Doe",
-            email: "johndoe@example.com",
+            fullName: "Anoop Singh",
+            email: "anoopsingh@example.com",
             phone: "+123456789",
             address: "123 Main Street, City, Country",
-            linkedin: "https://linkedin.com/in/johndoe",
-            github: "https://github.com/johndoe",
-            portfolio: "https://johndoe.dev",
+            linkedin: "https://linkedin.com/in/anoopsingh",
+            github: "https://github.com/anoopsingh",
+            portfolio: "https://anoopsingh.dev",
             summary: "Highly motivated software engineer with 3+ years of experience in web development and cybersecurity. Passionate about building secure and scalable applications.",
+            jobDesc: "Developed and maintained web applications using React and Node.js. Assisted in frontend development and security assessments.",
             workExperience: [
-                { title: "Software Engineer", company: "ABC Corp", duration: "2022 - Present", description: "Developed and maintained web applications using React and Node.js." },
+                { title: "Part Time Software Engineer", company: "ABC Corp", duration: "2022 - Present", description: "Developed and maintained web applications using React and Node.js." },
                 { title: "Intern", company: "XYZ Ltd", duration: "2021 - 2022", description: "Assisted in frontend development and security assessments." }
             ],
             education: [
@@ -90,6 +91,7 @@ function CVSidebarCardContainer() {
                                     github: CVData.latestUserCV?.github || "",
                                     portfolio: CVData.latestUserCV?.portfolio || "",
                                     summary: CVData.latestUserCV?.summary || "",
+                                    jobDesc: CVData.latestUserCV?.jobDesc || "",
                                     workExperience: CVData.latestUserCV?.workExperience?.map(item => `${item.title} - ${item.description}`).join("\n") || "",
                                     education: CVData.latestUserCV?.education?.map(item => `${item.degree} - ${item.institution} (${item.year})`).join("\n") || "",
                                     skills: CVData.latestUserCV?.skills?.join(", ") || "",

@@ -5,7 +5,7 @@ import PageHeaderContainer from '../containers/PageHeaderContainer.jsx';
 
 import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContainer";
 import GoalsPageContainer from "../containers/GoalsPageContainer";
-import CurrencySidebarCard from "../components/CurrencySidebarCard";
+import CurrencySidebarCardContainer from "../containers/CurrencySidebarCardContainer";
 
 import styles from "../styles/global.module.css";
 
@@ -19,7 +19,7 @@ function GoalsPage() {
       >
         <ApplicationSidebar>
           <ProfileSidebarCardContainer />
-          <CurrencySidebarCard />
+          <CurrencySidebarCardContainer />
         </ApplicationSidebar>
 
         <ApplicationMainContent>

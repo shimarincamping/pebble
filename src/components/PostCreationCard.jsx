@@ -1,76 +1,77 @@
-import React, { useState } from "react";
-import { BsChevronDown } from "react-icons/bs";
+import React from "react";
 import { BsImage } from "react-icons/bs";
-import styles from "../styles/PostCreationCard.module.css"
+import styles from "../styles/PostCreationCard.module.css";
 
-
-function PostCreationCard() {
-    const [isActivePostType, setIsActivePostType] = useState(false);
-    const [isActivePostModule, setIsActivePostModule] = useState(false);
-    const [selectedPostType, setSelectedPostType] = useState("");
-    const [selectedPostModule, setSelectedPostModule] = useState("");
-    const options1 = ["One", "Two", "Three"];
-    const options2 = ["Hee", "Nee", "Tee"];
-
+function PostCreationCard({ postData, onPostTypeChange, onModuleChange, onPostTitleChange, onPostDescriptionChange, onImageUpload, onPostSubmit }) {
     return (
         <div className={styles.postCreationCard}>
             <div className={styles.postHeading}>
-                <div>
-                    <img 
-                        src="/img/profilePictureBorder.png"
-                        className={styles.profilePictureBorder}
-                    />
-                </div>
+                <img 
+                    src={postData.profilePicture}
+                    className={styles.profilePicture}
+                    alt="Profile"
+                />
+                
+                {/* Post Type Selection */}
                 <div className={styles.postType}>
                     <h5>Post Type</h5>
-                    <div className={styles.postTypeBtn} onClick={() =>
-                        setIsActivePostType(!isActivePostType)}>
-                        <p>{!selectedPostType ? "Select one...": selectedPostType}</p>
-                        <BsChevronDown/>
-                    </div>
-                    {isActivePostType && (
-                        <div className={styles.postTypeContent}>
-                            {options1.map((option) => (
-                                <div className={styles.postTypeItem} onClick={() => {
-                                    setSelectedPostType(option);
-                                    setIsActivePostType(false);
-                                }} >
-                                    {option}
-                                </div>
-                            ))}
-                        </div>
-                    )}
+                    <select value={postData.postType} onChange={onPostTypeChange} className={styles.selectInput}>
+                        <option value="">Select Type...</option>
+                        <option value="Discussion">Discussion</option>
+                        <option value="Question">Question</option>
+                        <option value="Announcement">Announcement</option>
+                    </select>
                 </div>
+
+                {/* Module Selection */}
                 <div className={styles.postModule}>
                     <h5>Module</h5>
-                    <div className={styles.postModuleBtn} onClick={() =>
-                        setIsActivePostModule(!isActivePostModule)}>
-                        <p>{!selectedPostModule ? "Select one...": selectedPostModule}</p>
-                        <BsChevronDown/>
-                    </div>
-                    {isActivePostModule && (
-                        <div className={styles.postModuleContent}>
-                            {options2.map((option) => (
-                                <div className={styles.postModuleItem} onClick={() => {
-                                    setSelectedPostModule(option);
-                                    setIsActivePostModule(false);
-                                }} >
-                                    {option}
-                                </div>
-                            ))}
-                        </div>
-                    )}
+                    <select value={postData.module} onChange={onModuleChange} className={styles.selectInput}>
+                        <option value="">Select Module...</option>
+                        <option value="Cybersecurity">Cybersecurity</option>
+                        <option value="Software Engineering">Software Engineering</option>
+                        <option value="AI & Machine Learning">AI & Machine Learning</option>
+                    </select>
                 </div>
-                <BsImage size={25} color="grey" weight="light" className={styles.imageBtn}/>
+
+                {/* Image Upload Button */}
+                <label className={styles.imageUpload}>
+                    <input type="file" accept="image/*" onChange={onImageUpload} hidden />
+                    <BsImage size={35} color="grey" />
+                </label>
             </div>
+
+            {/* Post Title */}
             <div className={styles.titlePost}>
-                <input type="text" placeholder="Post Title"/>
+                <input
+                    type="text"
+                    placeholder="Post Title"
+                    className={styles.inputField}
+                    value={postData.title}
+                    onChange={onPostTitleChange}
+                />
             </div>
+
+            {/* Post Content */}
             <div className={styles.writePost}>
-                <input type="text" placeholder="Write A New Post!"/>
+                <textarea
+                    placeholder="Write A New Post!"
+                    className={styles.textareaField}
+                    value={postData.postDesc}
+                    onChange={onPostDescriptionChange}
+                />
             </div>
-            <div className={styles.postItBtn}>
-                <button>
+
+            {/* Uploaded Image Preview */}
+            {postData.uploadedImage && (
+                <div className={styles.imagePreview}>
+                    <img src={postData.uploadedImage} alt="Uploaded Preview" />
+                </div>
+            )}
+
+            {/* Post Button */}
+            <div className={styles.postItBtn} >
+                <button onClick={onPostSubmit}>
                     <span>Post It</span>
                 </button>
             </div>

@@ -62,12 +62,12 @@ const CV = ({ formData }) => {
                 </section>
             )}
 
-            {formData.volunteerExperience && (
-                <section>
-                    <h2>Volunteer Experience</h2>
-                    <p>{formData.volunteerExperience}</p>
-                </section>
-            )}
+            <section>
+                <h2>Job Description</h2>
+                <p>{formData.jobDesc}</p>
+            </section>
+
+
         </div>
     );
 };

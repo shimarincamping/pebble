@@ -146,6 +146,17 @@ const GenerateCV = ({ formData, handleChange, handleSubmit, closeForm }) => {
                     />
                 </label>
 
+                <label>
+                    Job Description{" "}
+                    <span className={styles.requiredAsterisk}>*</span>
+                    <textarea
+                        name="workExperience"
+                        value={formData.jobDesc}
+                        onChange={handleChange}
+                        required
+                    />
+                </label>
+
                 <hr />
 
                 <div className={styles.buttonContainer}>

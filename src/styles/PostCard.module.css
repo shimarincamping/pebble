@@ -81,9 +81,10 @@
 }
 
 .postDesc {
-    font-size: 1em;
+    font-size: 0.95em;
     color: #333;
     margin-top: 5px;
+    text-align: justify;
 }
 
 .readMore {
@@ -117,10 +118,40 @@
 
 .action {
     cursor: pointer;
-    font-size: 1.2rem; /* Adjust icon size */
+    font-size: 1.5rem; /* Adjust icon size */
     transition: transform 0.2s ease-in-out;
+    color: #ababab;
 }
 
 .action:hover {
     transform: scale(1.2); /* Slightly enlarge on hover */
+}
+
+.liked {
+    color: #0073b1;
+}
+
+.reported {
+    color: red;
+}
+
+.copiedMessage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #E51B22;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 1000;
+    animation: fadeOut 5s ease-in-out;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
 }
