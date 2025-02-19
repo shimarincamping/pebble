@@ -81,12 +81,11 @@ const DisplayGeneratedCV = ({ formData }) => {
                 </section>
             )}
 
-            {formData.volunteerExperience && (
-                <section className={`${styles.CV__section}`}>
-                    <h2>Volunteer Experience</h2>
-                    <p>{formData.volunteerExperience}</p>
-                </section>
-            )}
+            <section className={`${styles.CV__section}`}>
+                <h2>Job Description</h2>
+                <p>{formData.jobDesc}</p>
+            </section>
+
         </div>
     );
 };
