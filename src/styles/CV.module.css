@@ -31,7 +31,6 @@
     margin-bottom: 4em;
 }
 
-
 .cvHeader {
     text-align: center;
     margin-bottom: 20px;
@@ -47,22 +46,22 @@
     color: #666;
 }
 
-section {
+.CV__section {
     margin-bottom: 15px;
-}
 
-section h2 {
-    font-size: 18px;
-    color: #444;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-}
+    & h2 {
+        font-size: 18px;
+        color: #444;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+    }
 
-section p {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #555;
+    & p {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #555;
+    }
 }
 
 .closeButton {
@@ -77,4 +76,3 @@ section p {
     cursor: pointer;
     border-radius: 5px;
 }
-
