@@ -161,3 +161,129 @@ button:disabled {
     cursor: not-allowed;
 }
 
+  
+  /* Responsive breakpoints */
+  @media (max-width: 1024px) {
+    .mainApplicationNarrowBody {
+      grid-template-columns: 1fr 2fr;
+    }
+    
+    /* Hide right sidebar */
+    .mainApplicationNarrowBody > :last-child {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .mainApplicationNarrowBody {
+      grid-template-columns: 1fr;
+      padding: 0;
+    }
+    
+    /* Hide both sidebars */
+    .mainApplicationNarrowBody > aside {
+      display: none;
+    }
+    
+    .applicationMainContent {
+      margin-top: 8vh;
+      height: 92vh;
+    }
+    
+    .applicationMainContent > * {
+      margin: 0.5rem;
+      padding: 1rem;
+      border-radius: 0.5em;
+    }
+  }
+  
+  /* Add to PostCard.module.css */
+  @media (max-width: 768px) {
+    .postCard {
+      margin: 0.5rem;
+      padding: 0.75rem;
+    }
+    
+    .postHeading {
+      padding-bottom: 8px;
+    }
+    
+    .profilePicture {
+      width: 2.5em;
+      height: 2.5em;
+    }
+    
+    .postActions {
+      gap: 2em;
+      padding: 8px 0;
+    }
+    
+    .postContent {
+      padding: 8px 0;
+    }
+    
+    .postImageContainer {
+      margin: 0.5rem -0.75rem;
+      border-radius: 0;
+    }
+  }
+  
+  /* Add to PostCreationCard.module.css */
+  .postCreationCard {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .postCreationCard {
+      margin: 0.5rem;
+      padding: 1rem;
+    }
+    
+    .postHeading {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .postType,
+    .postModule {
+      width: 100%;
+    }
+    
+    .postTypeBtn,
+    .postModuleBtn {
+      width: 100%;
+      margin-top: 0.25rem;
+    }
+    
+    .imageBtn {
+      align-self: flex-end;
+      margin-top: 0.5rem;
+    }
+    
+    .titlePost input,
+    .writePost input {
+      font-size: 0.9rem;
+      padding: 0.5rem;
+    }
+    
+    .postItBtn button {
+      width: 100%;
+      margin-top: 0.75rem;
+    }
+  }
+  
+  /* Add to Sidebar.module.css */
+  @media (max-width: 1024px) {
+    .sidebarContainer {
+      min-width: 14em;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .sidebarContainer {
+      display: none;
+    }
+  }
