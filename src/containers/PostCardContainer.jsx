@@ -4,7 +4,7 @@ import PostCard from "../components/PostCard";
 import ComponentLoadingSpinner from "../components/ComponentLoadingSpinner";
 import styles from "../styles/PostCard.module.css";
 
-function PostCardContainer({newPost}) {
+function PostCardContainer(props) {
   const navigate = useNavigate();
 
   const dummyPostCardData = [
@@ -40,11 +40,8 @@ function PostCardContainer({newPost}) {
   const [copied, setCopied] = useState(false); // Global state for copied message
 
 
-
   useEffect(() => {
-    setTimeout(() => {
-      setPostCardData(dummyPostCardData);
-    }, 2000);
+    setPostCardData(props.postCardData || dummyPostCardData);
   }, []);
 
   const handlePostClick = (id) => {
@@ -74,10 +71,10 @@ function PostCardContainer({newPost}) {
   };
 
   useEffect(() => {
-    if (newPost) {
-      setPostCardData((prevPosts) => [{ ...newPost, id: prevPosts.length + 1 }, ...prevPosts]);
+    if (props.newPost) {
+      setPostCardData((prevPosts) => [{ ...props.newPost, id: prevPosts.length + 1 }, ...prevPosts]);
     }
-  }, [newPost]);
+  }, [props.newPost]);
 
   return (
     <div className={styles.posts}>

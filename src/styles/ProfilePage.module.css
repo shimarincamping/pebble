@@ -30,6 +30,8 @@
 
 .headerInfoCard__profilePicture {
     width: 12.4em;
+    height: 12.4em;
+    object-fit: cover;
     border-radius: 100%;
     position: absolute;
     top: 30.1%;
@@ -100,6 +102,10 @@
 }
 
 /* Profile posts card */
+.profilePostsCard > section {
+    margin-top: 1em;
+}
+
 .profilePostsCard > h3 {
     text-align: center;
     padding: 3em 0 4em 0;
@@ -126,13 +132,12 @@
 }
 
 .viewAllPostsOverlayCard {
-    width: 60%;
+    width: 45%;
     height: 80%;
     margin: -4% 0 0 -2%;
 }
 
 .viewAllPostsOverlayCard__feed > * {
-    text-align: center;
     margin: 2.2em 0;
 }
 
