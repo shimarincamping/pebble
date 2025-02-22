@@ -27,31 +27,31 @@ const CareerRoadmapButtons = ({ item, type }) => {
                                         }
                                     >
                                         <strong>Difficulty:</strong>{" "}
-                                        <p>{item.difficulty}</p>
+                                        <p>{item.buttonDifficulty}</p>
                                     </div>
                                     <p
                                         className={
                                             styles.roadmapButton__duration
                                         }
                                     >
-                                        {item.duration}
+                                        {item.buttonDuration}
                                     </p>
                                 </div>
                                 <div className={styles.roadmapButton__bottom}>
-                                    <p>{item.description}</p>
+                                    <p>{item.buttonDescription}</p>
                                 </div>
                             </div>
                         </div>
                     ) : (
                         <>
                             <img
-                                src={item.image}
-                                alt={item.text}
+                                src={item.buttonImage}
+                                alt={item.buttonTitle}
                                 className={styles.roadmapButton__image}
                             />
                             <div className={styles.roadmapButton__text}>
-                                <strong>{item.text}</strong>
-                                <p>{item.author}</p>
+                                <strong>{item.buttonTitle}</strong>
+                                <p>{item.buttonAuthor}</p>
                             </div>
                         </>
                     )}

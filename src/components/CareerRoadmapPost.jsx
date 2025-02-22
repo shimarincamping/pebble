@@ -26,7 +26,7 @@ const CareerRoadmapPost = ({ roadmap }) => {
         {roadmap.roadmapDescription?.map((desc, index) => (
           <div key={index} className={styles.roadmapPost__description}>
             <h3><strong>{desc.roadmapDescriptionTitle}</strong></h3>
-            <p>{desc.content}</p>
+            <p>{desc.roadmapDescriptionContent}</p>
           </div>
         ))}
 

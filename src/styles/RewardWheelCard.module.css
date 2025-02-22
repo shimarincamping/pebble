@@ -44,3 +44,60 @@
     position: relative;
     bottom: 120%;
 }
+
+/* Tablet Styles */
+@media (max-width: 48em) {
+    .Container {
+        padding-bottom: 15%;
+    }
+
+    .Wheel {
+        max-width: 25rem;
+    }
+
+    .SpinNow {
+        max-width: 6.25rem;
+    }
+
+    .Pointer {
+        max-width: 3.75rem;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 30em) {
+    .Container {
+        padding-bottom: 20%;
+    }
+
+    .Wheel {
+        max-width: 18.75rem;
+    }
+
+    .SpinNow {
+        max-width: 5rem;
+    }
+
+    .Pointer {
+        max-width: 3.125rem;
+    }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 20em) {
+    .Container {
+        padding-bottom: 25%;
+    }
+
+    .Wheel {
+        max-width: 15.625rem;
+    }
+
+    .SpinNow {
+        max-width: 4.375rem;
+    }
+
+    .Pointer {
+        max-width: 2.5rem;
+    }
+}
