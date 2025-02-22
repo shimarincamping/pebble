@@ -76,3 +76,48 @@
   margin-right: 1em;
 }
 
+/* Mobile Styles */
+@media (max-width: 30em) {
+  .roadmaps {
+    padding: 0.5rem;
+  }
+
+  .roadmaps__header {
+    margin-bottom: 1.5rem;
+  }
+
+  .roadmaps__roadmapData {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .roadmaps__image {
+    height: 9rem;
+  }
+
+  .roadmaps__cardContent {
+    margin: 0.5rem;
+  }
+
+  .roadmaps__authorContainer {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 20em) {
+  .roadmaps__image {
+    height: 8rem;
+  }
+
+  .roadmaps__cardContent {
+    margin: 0.25rem;
+  }
+
+  .roadmaps__profileImage {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.75rem;
+  }
+}
+

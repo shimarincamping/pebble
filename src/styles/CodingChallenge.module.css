@@ -48,3 +48,65 @@
 
     margin-top: 3em;
 }
+
+/* Tablet Styles */
+@media (max-width: 48em) {
+    .codingQuestion__option {
+        margin: 1rem auto;
+        padding: 1rem;
+        width: 90%;
+    }
+
+    .codingQuestion__navigationRow {
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .codingQuestion__backButton,
+    .codingQuestion__navigationRow button {
+        padding: 0.2rem 1.5rem;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 30em) {
+    .codingQuestion__quizTitle {
+        margin-bottom: 0.5rem;
+    }
+
+    .codingQuestion__option {
+        margin: 0.8rem auto;
+        padding: 0.8rem;
+        width: 85%;
+        border-radius: 0.8rem;
+    }
+
+    .codingQuestion__navigationRow {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        align-items: center;
+    }
+
+    .codingQuestion__backButton,
+    .codingQuestion__navigationRow button {
+        width: 100%;
+        max-width: 20rem;
+        margin-bottom: 0.8rem;
+        padding: 0.4rem 1rem;
+    }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 20em) {
+    .codingQuestion__option {
+        width: 90%;
+        padding: 0.6rem;
+        margin: 0.6rem auto;
+    }
+
+    .codingQuestion__backButton,
+    .codingQuestion__navigationRow button {
+        padding: 0.3rem 0.8rem;
+    }
+}

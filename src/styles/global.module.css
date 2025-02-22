@@ -173,13 +173,43 @@ button:disabled {
       display: none;
     }
   }
+
+  /* For desktop screens */
+  @media (min-width: 48em) { /* 768px -> 48em */
+    .mainApplicationWideBodyLeft {
+      grid-template-columns: 25% 75%;
+    }
+
+    .mainApplicationWideBodyRight {
+        grid-template-columns: 75% 25%;
+    }
+  }
   
-  @media (max-width: 768px) {
+  @media (max-width: 47.9375em) {
     .mainApplicationNarrowBody {
       grid-template-columns: 1fr;
       padding: 0;
     }
+
+    .mainApplicationWideBodyLeft,
+    .mainApplicationWideBodyRight {
+        grid-template-columns: 1fr;
+    }
+
+    /* Ensure main content is always first on mobile */
+    .mainApplicationWideBodyRight {
+      display: grid;
+      grid-template-rows: auto auto;
+    } 
+
+    .mainApplicationWideBodyRight > :first-child {
+      order: 1; 
+    }
     
+    .mainApplicationWideBodyRight > :last-child {
+        order: 2; 
+    }
+
     /* Hide both sidebars */
     .mainApplicationNarrowBody > aside {
       display: none;
@@ -188,6 +218,7 @@ button:disabled {
     .applicationMainContent {
       margin-top: 8vh;
       height: 92vh;
+      margin-left: 1.5em;
     }
     
     .applicationMainContent > * {

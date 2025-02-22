@@ -58,3 +58,56 @@
 .hard {
     background-color: #dc3545; /* Red for Hard */
 }
+
+/* Tablet Styles */
+@media (max-width: 64em) { /* 1024px */
+    .codingDescription {
+        margin-right: 7.5rem;
+    }
+
+    .codingLevel {
+        width: 7.5rem;
+        font-size: 1.2rem;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 48em) { /* 768px */
+    .codingPreviewContainer {
+        flex-direction: column;
+        padding: 1rem 1rem 4rem 1rem;
+    }
+
+    .codingDescription {
+        margin-right: 0;
+    }
+
+    .codingLevel {
+        position: absolute;
+        width: 100%;
+        height: 3rem;
+        bottom: 0;
+        top: auto;
+        border-radius: 0 0 0.5rem 0.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 30em) { /* 480px */
+    .codingPreviewContainer {
+        padding: 0.75rem 0.75rem 3.5rem 0.75rem;
+    }
+
+    .codingDescription h3 {
+        font-size: 1.1rem;
+    }
+
+    .codingDescription p {
+        font-size: 0.9rem;
+    }
+
+    .codingLevel {
+        height: 2.5rem;
+    }
+}
