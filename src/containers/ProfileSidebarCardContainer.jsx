@@ -4,35 +4,20 @@ import ComponentLoadingSpinner from '../components/ComponentLoadingSpinner';
 
 function ProfileSidebarCardContainer() {
 
-    // Dummy data ----------------------------
-    const dummyProfileData = {
-        "fullName" : "Anoop Singh",
-        "profilePicture" : "https://i.imgur.com/qPzFvF4.jpeg",
-        "courseName" : "Bachelor of Software Engineering",
-        "userType" : "student",
-        "currentYear" : 3,
-        "about" : "Currently pursuing a Bachelor of Software Engineering with an extension in Data Science and a minor in Finance at Taylor's University. Graduating in early 2026.",
-        "email" : "anoopharmahindersingh.singh@sd.taylors.edu.my",
-        "phoneNumber" : "+60122603995",
-        "discordUsername" : "anoopsinghhs"
-    }
-
-    // ---------------------------------------
-
     const [profileData, setProfileData] = useState(null);
     const [profileSubline, setProfileSubline] = useState([null, null])
 
-    useEffect(
-        () => {
-            // Replace this with a fetch request for user data. The server should trim the raw database response to fit the object above.
-            const fetchData = setInterval(() => {
-                setProfileData(dummyProfileData);
-                setProfileSubline(getProfileSubheading(dummyProfileData));
-            }, 5000);
+    const handleFetchData = async () => {
+        const currentUserID = "3oMAV7h8tmHVMR8Vpv9B" // Replace with value set by authentication feature, currently always Anoop
 
-            return () => clearInterval(fetchData);
-        },
-    []);
+        const fetchedData = await fetch(`${process.env.REACT_APP_API_URL}/users/${currentUserID}/profile-information/basic`);
+        const fetchedJsonData = await fetchedData.json();
+
+        setProfileData(fetchedJsonData);
+        setProfileSubline(getProfileSubheading(fetchedJsonData));
+    }
+
+    useEffect(() => { handleFetchData(); }, []);
 
 
     function getProfileSubheading(user) {
