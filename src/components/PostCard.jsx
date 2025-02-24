@@ -4,7 +4,7 @@ import { FaLinkedin } from "react-icons/fa"; // Import LinkedIn icon
 import PostCommentContainer from "../containers/PostCommentContainer";
 import styles from "../styles/PostCard.module.css";
 
-const PostCard = ({ post, onClick, onLike, onReport, onCopyLink }) => {
+const PostCard = ({ post, onClick, onLike, onReport, onCopyLink, sendAuthReq}) => {
     const [expanded, setExpanded] = useState(false);
     const [showComments, setShowComments] = useState(false);
 
@@ -22,7 +22,8 @@ const PostCard = ({ post, onClick, onLike, onReport, onCopyLink }) => {
                     <p className={styles.postTime}>{post.time}</p>
                 </div>
 
-                <a href={post.linkedinUrl} target="_blank" rel="noopener noreferrer">
+                {/* <a href={post.linkedinUrl} target="_blank" rel="noopener noreferrer" onClick={sendAuthReq}> */}
+                <a rel="noopener noreferrer" onClick={sendAuthReq}>
                     <FaLinkedin className={styles.linkedinIcon} />
                 </a>
             </div>

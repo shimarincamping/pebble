@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import PostCard from "../components/PostCard";
 import ComponentLoadingSpinner from "../components/ComponentLoadingSpinner";
@@ -14,7 +15,7 @@ function PostCardContainer(props) {
       profilePicture: "https://i.imgur.com/qPzFvF4.jpeg",
       courseName: "Bachelor of Software Engineering Student",
       time: "1 minute ago",
-      linkedinUrl: "https://www.linkedin.com/in/anoopsingh", 
+      linkedinUrl: "https://www.linkedin.com/in/anoopsinghhs", 
       postPicture: "https://i.imgur.com/U3Xbkb3.jpeg",
       title: "Successful Creation of my XR-based Application!",
       date: "DEC 30, 2024",
@@ -26,7 +27,7 @@ function PostCardContainer(props) {
       profilePicture: "https://i.imgur.com/qPzFvF4.jpeg",
       courseName: "Bachelor of Computer Science Student",
       time: "5 minutes ago",
-      linkedinUrl: "https://www.linkedin.com/in/anoopsingh", 
+      linkedinUrl: "https://www.linkedin.com/in/anoopsinghhs", 
       postPicture: "https://i.imgur.com/U3Xbkb3.jpeg",
       title: "Machine Learning Model for Predicting Cyber Attacks!",
       date: "DEC 28, 2024",
@@ -76,6 +77,20 @@ function PostCardContainer(props) {
     }
   }, [props.newPost]);
 
+
+  //function to call backend for linkedin auth
+  //This auth process is for the user to allow pebble access to their account
+  const sendAuthReq = async () => {
+    try{
+      const response= await axios.get('https://localhost4001/auth/linkedin');
+    }catch (e){
+      console.error("Error during LinkedIn Auth : " + e);
+    }
+    sendAuthReq();
+  }
+
+
+
   return (
     <div className={styles.posts}>
       <div className={styles.postsData}>
@@ -88,6 +103,7 @@ function PostCardContainer(props) {
               onLike={handleLike}
               onReport={handleReport}
               onCopyLink={handleCopyLink} // Pass function to PostCard
+              sendAuthReq={sendAuthReq}
             />
           ))
         ) : (
