@@ -5,9 +5,29 @@
     height: 90vh;
     min-width: 16em;
     margin-top: 10vh;
-    
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 48em) {
+    .sidebarContainer {
+        height: calc(100vh - 4em);
+        min-width: 100%;
+        margin-top: 4em;
+        padding-bottom: 2em;
+    }
+
+    .sidebarContainer > * {
+        margin: 0.8em;
+    }
+}
+
+@media (max-width: 30em) {
+    .sidebarContainer {
+        height: calc(100vh - 3.5em);
+        margin-top: 3.5em;
+    }
 }
 
 .sidebarContainer > * {
@@ -258,6 +278,84 @@
     background-color: white;
 }
 
+/* Medium screens */
+@media (max-width: 56.25em) {
+    .networkSidebarCard__myNetwork__userTileContainer {
+        grid-template-columns: 1fr 1fr 1fr;
+        margin: 0 0 0.3em 2%;
+    }
+
+    .networkSidebarCard__myNetwork__userTile {
+        width: 85%;
+    }
+
+    .networkSidebarCard__myNetwork__userTile img,
+    .networkSidebarCard__peopleYouMayKnow__userTile img {
+        width: 2.8em;
+        height: 2.8em;
+    }
+
+    .networkSidebarCard__peopleYouMayKnow__userDetails {
+        margin: 0 1em 0 0.6em;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 48em) {
+    .networkSidebarCard__myNetwork__userTileContainer {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        margin: 0 0 0.3em 1%;
+    }
+
+    .networkSidebarCard__myNetwork__userTile {
+        width: 90%;
+    }
+
+    .networkSidebarCard__myNetwork__userTile p {
+        font-size: 0.75rem;
+    }
+
+    .networkSidebarCard__peopleYouMayKnow__userDetails p:nth-child(1) {
+        font-size: 0.9rem;
+    }
+
+    .networkSidebarCard__peopleYouMayKnow__userDetails p:nth-child(2) {
+        font-size: 0.65rem;
+    }
+
+    .networkSidebarCard__peopleYouMayKnow__followButton {
+        padding: 0.4em 0.8em;
+        font-size: 0.8rem;
+    }
+}
+
+/* Small mobile screens */
+@media (max-width: 30em) {
+    .networkSidebarCard__myNetwork__userTileContainer {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .networkSidebarCard__myNetwork__userTile img,
+    .networkSidebarCard__peopleYouMayKnow__userTile img {
+        width: 2.5em;
+        height: 2.5em;
+    }
+
+    .networkSidebarCard__myNetwork__userTile p {
+        font-size: 0.7rem;
+        margin-top: 0.3em;
+    }
+
+    .networkSidebarCard__peopleYouMayKnow__userDetails {
+        margin: 0 0.5em 0 0.4em;
+    }
+
+    .networkSidebarCard__peopleYouMayKnow__followButton {
+        padding: 0.3em 0.6em;
+        font-size: 0.75rem;
+    }
+}
+
 /* ----------------------------------------------------------------------- */
 
 /* Dashboard Stats sidebar card */
@@ -335,25 +433,59 @@
 }
 
 .currencySidebarCard__buttonRow {
-    justify-content: center;
     display: flex;
-    margin-bottom: 0.8em;
+    justify-content: center;
+    gap: 0.8em;
+    padding: 1em 0.5em;
 }
 
 .currencySidebarCard__buttonRow button {
-    display: block;
-    padding: 0.3em 2em;
-    margin: 0 0.35em;
-
-    border: none;
-    border-radius: 3em;
-    background-color: var(--primaryButtonBackground);
-    box-shadow: 0.1em 0.1em 0.1em var(--cardShadowColor);
-
-    color: var(--primaryButtonText);
-    font-size: 0.9em;
-    font-weight: bold;
+    padding: 0.4em 2em;
+    min-width: 8em;
     text-align: center;
+    border-radius: 2em;
+    border: none;
+    background-color: var(--primaryButtonBackground);
+    color: var(--primaryButtonText);
+    font-weight: bold;
+    transition: background-color 0.2s;
+    box-shadow: 0.1em 0.1em 0.1em var(--cardShadowColor);
+}
+
+/* New medium-size breakpoint */
+@media (max-width: 56.25em) {
+    .currencySidebarCard__buttonRow {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5em;
+        padding: 0.8em 0.5em;
+    }
+
+    .currencySidebarCard__buttonRow button {
+        padding: 0.4em 0;
+        font-size: 0.85rem;
+    }
+}
+
+/* Existing mobile styles */
+@media (max-width: 48em) {
+    .currencySidebarCard__buttonRow button {
+        width: 85%;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 30em) {
+    .currencySidebarCard__buttonRow {
+        gap: 0.4em;
+        padding: 0.6em 0.5em;
+    }
+
+    .currencySidebarCard__buttonRow button {
+        width: 80%;
+        font-size: 0.8rem;
+        padding: 0.35em 0;
+    }
 }
 
 /* ----------------------------------------------------------------------- */
@@ -399,4 +531,31 @@
     color: var(--primaryButtonText);
     font-weight: bold;
     font-size: 0.9rem;
+}
+
+/* Profile sidebar card button adjustments */
+@media (max-width: 48em) {
+    .profileSidebarCard__mainBody__editButtonContainer button {
+        width: 85%;
+        font-size: 0.8rem;
+        padding: 0.3em 0;
+    }
+
+    .profileSidebarCard__mainBody__editButtonContainer button img {
+        height: 0.8rem;
+        padding-left: 0.3em;
+    }
+}
+
+@media (max-width: 30em) {
+    .profileSidebarCard__mainBody__editButtonContainer button {
+        width: 80%;
+        font-size: 0.75rem;
+        padding: 0.25em 0;
+    }
+
+    .profileSidebarCard__mainBody__editButtonContainer button img {
+        height: 0.75rem;
+        padding-left: 0.2em;
+    }
 }
