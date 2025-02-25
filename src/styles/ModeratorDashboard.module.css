@@ -1,47 +1,49 @@
-  .moderatorContainer {
+.moderatorContainer {
     padding: 2em;
-  }
-  
-  .moderatorHeader {
+    max-width: 90em;
+    margin: 0 auto;
+}
+
+.moderatorHeader {
     font-size: 1rem;
     text-align: center;
     margin-bottom: 1.6em;
     color: gray;
     font-weight: normal;
-  }
+}
 
-  .moderatorLength {
+.moderatorLength {
     font-size: 1.5rem;
     color: black;
     font-weight: bold;
     margin-top: 0.15em;
-  }
-  
-  .commentCard {
+}
+
+.commentCard {
     background: #dfdfdf;
     border-radius: 8px;
     padding: 0.8em;
     margin-bottom: 1.8em;
     box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.4);
     position: relative;
-  }
+}
 
-  .commentContainer {
+.commentContainer {
     display: flex;
     align-items: center;
-    gap: 1em; /* Space between image and text */
+    gap: 1em;
     position: relative;
     margin: 1.4em auto 0;
-  }
-  
-  .commentHeader {
+}
+
+.commentHeader {
     font-size: 14px;
     color: #007bff;
     font-weight: bold;
     margin: 0.5em 0 1em 1%;
-  }
-  
-  .commentContent {
+}
+
+.commentContent {
     display: flex;
     flex-direction: column;
     gap: 1em;
@@ -54,15 +56,15 @@
     flex-grow: 1;
     border-top-left-radius: 5%;
     border-bottom-left-radius: 5%;
-  }
+}
 
-  .commentTop {
+.commentTop {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  }
-  
-  .profilePic {
+}
+
+.profilePic {
     width: 6.5em;
     height: 6.5em;
     border-radius: 50%;
@@ -70,61 +72,180 @@
     justify-content: center;
     border: 3px solid white; /* Creates the overlap effect */
     box-shadow: 4px 5px 6px rgba(0, 0, 0, 0.4);
-  }
+}
 
-  .profileWrapper {
+.profileWrapper {
     position: absolute;
     top: 50%;
     left: 0.3em;    
     transform: translateY(-50%);
     z-index: 10;
-  }
-  
-  .commentUser {
+}
+
+.commentUser {
     font-weight: bold;
-  }
-  
-  .commentText {
+}
+
+.commentText {
     font-size: 0.9rem;
     margin: 0.6em 0;
-  }
-  
-  .commentFooter {
+}
+
+.commentFooter {
     display: flex;
     justify-content: end;
     align-items: center;
     margin-top: 1em;
-  }
-  
-  .commentTime {
+}
+
+.commentTime {
     font-size: 0.8rem;
     color: gray;
-  }
-  
-  .commentActions {
+}
+
+.commentActions {
     display: flex;
     gap: 1em;
-  }
-  
-  .approveButton,
-  .deleteButton {
+}
+
+.approveButton,
+.deleteButton {
     border: none;
     background: none;
     cursor: pointer;
-  }
+}
 
-  .approveIcon,
-  .rejectIcon {
+.approveIcon,
+.rejectIcon {
     height: 2em;
     width: 2em;
     margin-right: 1em;
-  }
-  
-  .approveButton:hover {
+}
+
+.approveButton:hover {
     color: green;
-  }
-  
-  .deleteButton:hover {
+}
+
+.deleteButton:hover {
     color: red;
-  }
+}
+
+@media (max-width: 48em) {
+    .moderatorContainer {
+        padding: 1em;
+    }
+
+    .moderatorHeader {
+        font-size: 0.9rem;
+        margin-bottom: 1.2em;
+    }
+
+    .moderatorLength {
+        font-size: 1.3rem;
+    }
+
+    .commentCard {
+        padding: 0.6em;
+        margin-bottom: 1.4em;
+        box-shadow: 5px 5px 4px 0px rgba(0, 0, 0, 0.3);
+    }
+
+    .commentContainer {
+        margin: 1em auto 0;
+        gap: 0.8em;
+    }
+
+    .commentContent {
+        padding: 0.6em 1.2em 0.6em 4em;
+        gap: 0.8em;
+    }
+
+    .profilePic {
+        width: 5em;
+        height: 5em;
+    }
+
+    .profileWrapper {
+        left: 0.2em;
+    }
+
+    .commentUser {
+        font-size: 0.9rem;
+    }
+
+    .commentText {
+        font-size: 0.85rem;
+    }
+
+    .commentTime {
+        font-size: 0.75rem;
+    }
+
+    .approveIcon,
+    .rejectIcon {
+        height: 1.8em;
+        width: 1.8em;
+        margin-right: 0.8em;
+    }
+}
+
+@media (max-width: 30em) {
+    .moderatorContainer {
+        padding: 0.8em 0.5em;
+    }
+
+    .moderatorHeader {
+        font-size: 0.85rem;
+        margin-bottom: 1em;
+    }
+
+    .moderatorLength {
+        font-size: 1.2rem;
+    }
+
+    .commentCard {
+        padding: 0.5em;
+        margin-bottom: 1.2em;
+        box-shadow: 4px 4px 3px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    .commentContainer {
+        margin: 0.8em auto 0;
+        gap: 0.6em;
+    }
+
+    .commentContent {
+        padding: 0.5em 1em 0.5em 3.5em;
+        gap: 0.6em;
+    }
+
+    .profilePic {
+        width: 4em;
+        height: 4em;
+    }
+
+    .commentUser {
+        font-size: 0.85rem;
+    }
+
+    .commentText {
+        font-size: 0.8rem;
+        margin: 0.4em 0;
+    }
+
+    .commentTime {
+        font-size: 0.7rem;
+    }
+
+    .approveIcon,
+    .rejectIcon {
+        height: 1.6em;
+        width: 1.6em;
+        margin-right: 0.6em;
+    }
+
+    .commentActions {
+        gap: 0.8em;
+    }
+}
   

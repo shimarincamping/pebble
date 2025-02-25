@@ -52,31 +52,140 @@
     padding: 0;
 }
 
-.ItemContainer{
-    width:100%;
-    height:auto;
-    display:flex;
-    padding:4% 2%;
+.ItemContainer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding: 1em;
+    border-bottom: 1px solid #eee;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease;
 }
 
-.ImgContainer{
-    width:30%; 
-    height:auto;
+.ItemContainer:hover {
+    background-color: #f5f5f5;
 }
 
-.ProfileImg{
-    width:100%; 
-    height:auto;
+.ImgContainer {
+    width: 3.5em;
+    height: 3.5em;
+    flex-shrink: 0;
 }
 
-.TxtContainer{
-    margin-left:1em;
-    display:flex;
+.ProfileImg {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.TxtContainer {
+    margin-left: 1em;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width:60%;
+    flex-grow: 1;
 }
 
-.TxtContainerBot{
-    margin-bottom:4%;
+.TxtContainerBot {
+    color: var(--subtextColor);
+    font-size: 0.85rem;
+    margin-top: 0.4em;
+}
+
+.NotificationText {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Tablet screens */
+@media (max-width: 64em) {
+    .ItemContainer {
+        padding: 0.9em;
+    }
+
+    .ImgContainer {
+        width: 3.2em;
+        height: 3.2em;
+    }
+
+    .NotificationText {
+        font-size: 1rem;
+    }
+
+    .TxtContainerBot {
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 48em) {
+    .ItemContainer {
+        padding: 0.8em;
+    }
+
+    .ImgContainer {
+        width: 3em;
+        height: 3em;
+    }
+
+    .TxtContainer {
+        margin-left: 0.8em;
+    }
+
+    .NotificationText {
+        font-size: 1.1rem;
+        line-height: 1.3;
+    }
+
+    .TxtContainerBot {
+        font-size: 0.95rem;
+        margin-top: 0.3em;
+    }
+}
+
+/* Small mobile screens */
+@media (max-width: 30em) {
+    .ItemContainer {
+        padding: 0.7em;
+    }
+
+    .ImgContainer {
+        width: 2.8em;
+        height: 2.8em;
+    }
+
+    .TxtContainer {
+        margin-left: 0.6em;
+    }
+
+    .NotificationText {
+        font-size: 1rem;
+        line-height: 1.2;
+    }
+
+    .TxtContainerBot {
+        font-size: 0.9rem;
+        margin-top: 0.25em;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 20em) {
+    .ItemContainer {
+        padding: 0.6em;
+    }
+
+    .ImgContainer {
+        width: 2.5em;
+        height: 2.5em;
+    }
+
+    .NotificationText {
+        font-size: 0.95rem;
+    }
+
+    .TxtContainerBot {
+        font-size: 0.85rem;
+    }
 }
