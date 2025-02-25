@@ -12,6 +12,7 @@ export default function ForumCreateThreadContainer(props) {
     });
 
     const [roadmapThreadData, setRoadmapThreadData] = useState({
+        threadType: "roadmap",
         roadmapThreadTitle: "",
         roadmapThreadAuthor: "",
         roadmapProfileImageLink: "",
