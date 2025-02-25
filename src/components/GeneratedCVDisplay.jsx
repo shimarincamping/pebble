@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../styles/CV.module.css";
 
-const DisplayGeneratedCV = ({ formData }) => {
+const GeneratedCVDisplay = ({ formData }) => {
     return (
         <div className={styles.cvContainer}>
             <div className={styles.cvHeader}>
@@ -90,4 +90,4 @@ const DisplayGeneratedCV = ({ formData }) => {
     );
 };
 
-export default DisplayGeneratedCV;
+export default GeneratedCVDisplay;

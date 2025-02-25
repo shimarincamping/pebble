@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import ComponentLoadingSpinner from '../components/ComponentLoadingSpinner';
 import CVSidebarCard from '../components/CVSidebarCard';
 import ApplicationMainOverlay from './ApplicationMainOverlay';
-import GenerateCVContainer from './GenerateCVContainer';
-import CVContainer from './CVContainer';
+import GenerateCVFormContainer from './GenerateCVFormContainer';
+import GeneratedCVDisplayContainer from './GeneratedCVDisplayContainer';
 import styles from "../styles/CV.module.css";
 
 
@@ -81,7 +81,7 @@ function CVSidebarCardContainer() {
 
                     {CVGenerationOverlayVisible && 
                         <ApplicationMainOverlay>
-                            <GenerateCVContainer 
+                            <GenerateCVFormContainer 
                                 initialData={{
                                     fullName: CVData.latestUserCV?.fullName || "",
                                     email: CVData.latestUserCV?.email || "",
@@ -110,7 +110,7 @@ function CVSidebarCardContainer() {
                         <ApplicationMainOverlay>
                             <div className={styles.overlay}>
                                 <div className={styles.cvOutContainer}>
-                                    <CVContainer data={CVData.latestUserCV} />
+                                    <GeneratedCVDisplayContainer data={CVData.latestUserCV} />
                                         <button onClick={toggleCVViewOverlay} className={styles.closeButton}>✖</button>
                                 </div>
                             </div>
