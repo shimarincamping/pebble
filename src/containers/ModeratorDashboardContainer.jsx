@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ModeratorDashboardComponent from "../components/ModeratorDashboard";
+import ModeratorDashboard from "../components/ModeratorDashboard";
 import ModerationDialogCard from "../components/ModerationDialogCard";
 import ApplicationMainOverlay from "../containers/ApplicationMainOverlay";
 
@@ -64,7 +64,7 @@ const ModeratorDashboardContainer = () => {
 
   return (
     <>
-      <ModeratorDashboardComponent
+      <ModeratorDashboard
         comments={comments}
         onDelete={(id) => handleOpenDialog("reject", id)}
         onApprove={(id) => handleOpenDialog("approve", id)}

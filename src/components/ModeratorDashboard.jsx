@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../styles/ModeratorDashboard.module.css";
 
-const ModeratorDashboardComponent = ({ comments, onDelete, onApprove }) => {
+const ModeratorDashboard = ({ comments, onDelete, onApprove }) => {
   return (
     <div className={styles.moderatorContainer}>
       <h2 className={styles.moderatorHeader}>
@@ -63,4 +63,4 @@ const ModeratorDashboardComponent = ({ comments, onDelete, onApprove }) => {
   );
 };
 
-export default ModeratorDashboardComponent;
+export default ModeratorDashboard;

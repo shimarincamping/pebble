@@ -1,6 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import ComponentLoadingSpinner from "./ComponentLoadingSpinner";
 import { BiUpvote, BiCommentDetail, BiShareAlt, BiFlag } from "react-icons/bi";
 import styles from "../styles/Forum.module.css";
 

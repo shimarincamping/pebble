@@ -9,12 +9,12 @@ function CareerRoadmapContainer() {
   
   // Dummy data for the roadmaps
   const dummyRoadmapData = [
-    { id: 1, title: "Become a mobile application developer", author: "Dr HemaLatha Ramalingam", profileImage: "https://i.imgur.com/qPzFvF4.jpeg", image: "https://i.imgur.com/qPzFvF4.jpeg" },
-    { id: 2, title: "Become a platform engineer", author: "Alex Hormozi", profileImage: "https://i.imgur.com/qPzFvF4.jpeg", image: "https://i.imgur.com/qPzFvF4.jpeg" },
-    { id: 3, title: "Become a web developer", author: "Nikola Tesla", profileImage: "https://i.imgur.com/qPzFvF4.jpeg", image: "https://i.imgur.com/qPzFvF4.jpeg" },
-    { id: 4, title: "Become a machine learning engineer", author: "Andrej Karpathy", profileImage: "https://i.imgur.com/qPzFvF4.jpeg", image: "https://i.imgur.com/qPzFvF4.jpeg" },
-    { id: 5, title: "Become a data analyst", author: "Dr Abdul Hadi", profileImage: "https://i.imgur.com/qPzFvF4.jpeg", image: "https://i.imgur.com/qPzFvF4.jpeg" },
-    { id: 6, title: "Become a UI/UX designer", author: "Dr HemaLatha Ramalingam", profileImage: "https://i.imgur.com/qPzFvF4.jpeg", image: "https://i.imgur.com/qPzFvF4.jpeg" }
+    { id: 1, roadmapThreadTitle: "Become a mobile application developer", roadmapThreadAuthor: "Dr HemaLatha Ramalingam", roadmapProfileImageLink: "https://i.imgur.com/qPzFvF4.jpeg", roadmapBannerImageLink: "https://i.imgur.com/qPzFvF4.jpeg" },
+    { id: 2, roadmapThreadTitle: "Become a platform engineer", roadmapThreadAuthor: "Alex Hormozi", roadmapProfileImageLink: "https://i.imgur.com/qPzFvF4.jpeg", roadmapBannerImageLink: "https://i.imgur.com/qPzFvF4.jpeg" },
+    { id: 3, roadmapThreadTitle: "Become a web developer", roadmapThreadAuthor: "Nikola Tesla", roadmapProfileImageLink: "https://i.imgur.com/qPzFvF4.jpeg", roadmapBannerImageLink: "https://i.imgur.com/qPzFvF4.jpeg" },
+    { id: 4, roadmapThreadTitle: "Become a machine learning engineer", roadmapThreadAuthor: "Andrej Karpathy", roadmapProfileImageLink: "https://i.imgur.com/qPzFvF4.jpeg", roadmapBannerImageLink: "https://i.imgur.com/qPzFvF4.jpeg" },
+    { id: 5, roadmapThreadTitle: "Become a data analyst", roadmapThreadAuthor: "Dr Abdul Hadi", roadmapProfileImageLink: "https://i.imgur.com/qPzFvF4.jpeg", roadmapBannerImageLink: "https://i.imgur.com/qPzFvF4.jpeg" },
+    { id: 6, roadmapThreadTitle: "Become a UI/UX designer", roadmapThreadAuthor: "Dr HemaLatha Ramalingam", roadmapProfileImageLink: "https://i.imgur.com/qPzFvF4.jpeg", roadmapBannerImageLink: "https://i.imgur.com/qPzFvF4.jpeg" }
   ];
 
   const [roadmapData, setRoadmapData] = useState([]);

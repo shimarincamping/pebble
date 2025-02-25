@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ForumThreadInputField from "../components/ForumThreadInputField";
 import ForumThreadInputFieldRoadmapDescription from "../components/ForumThreadInputFieldRoadmapDescription";
 import ForumThreadInputFieldRoadmapSection from "../components/ForumThreadInputFieldRoadmapSection";
-import ForumThreadInputFieldRoadmapSectionBtn from "../components/ForumThreadInputFieldRoadmapSectionBtn";
+import ForumThreadInputFieldRoadmapSectionButton from "../components/ForumThreadInputFieldRoadmapSectionButton";
 
 export default function ForumCreateThreadContainer(props) {
     const [threadData, setThreadData] = useState({
@@ -104,7 +104,7 @@ export default function ForumCreateThreadContainer(props) {
                 addRoadmapThreadSection={addRoadmapThreadSection}
                 threadSectionBtnInput={section.roadmapSectionButton.map(
                     (btn, btnIndex) => (
-                        <ForumThreadInputFieldRoadmapSectionBtn
+                        <ForumThreadInputFieldRoadmapSectionButton
                             key={btnIndex}
                             btn={btn}
                             section={section}

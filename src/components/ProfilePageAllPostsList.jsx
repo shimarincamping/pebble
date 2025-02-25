@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from "../styles/ProfilePage.module.css";
+import PostCardContainer from "../containers/PostCardContainer";
+import ComponentLoadingSpinner from './ComponentLoadingSpinner';
 
 function ProfilePageAllPostsList(props) {
     return (
@@ -11,12 +13,12 @@ function ProfilePageAllPostsList(props) {
             />
             <hr />
             <div class={`${styles.viewAllPostsOverlayCard__feed}`}>
-                {
-                    (props.postList).map((post) => (
-                        /* Initialise a post component here */
-                        <h3>{post.title}</h3>
-                        /* Initialise a post component here */
-                    ))
+                { 
+                    (props.postList) ? (
+                        <section>
+                            <PostCardContainer postCardData={props.postList}/>
+                        </section>
+                    ) : (<ComponentLoadingSpinner />)
                 }
             </div>
 

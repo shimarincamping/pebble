@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ForumPageHeader from "../components/ForumPageHeader";
 import ForumCreateThreadContainer from "./ForumCreateThreadContainer";
-import ForumThreadDetailsCard from "../components/ForumThreadDetailsCard";
-import ComponentLoadingSpinner from "../components/ComponentLoadingSpinner";
 import ForumThreadPreviewCard from "../components/ForumThreadPreviewCard";
 
 export default function ForumPageContainer() {

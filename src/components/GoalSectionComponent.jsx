@@ -3,7 +3,7 @@ import React from 'react';
 import styles from '../styles/GoalsRewards.module.css';
 import GoalSectionItem from './GoalSectionItem';
 
-function GoalSectionContainer(props) {
+function GoalSectionComponent(props) {
     return (
         <div className={`${styles.goalSectionContainer}`}>
 
@@ -24,4 +24,4 @@ function GoalSectionContainer(props) {
 
 }
 
-export default GoalSectionContainer;
+export default GoalSectionComponent;

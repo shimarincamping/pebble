@@ -3,7 +3,7 @@ import styles from "../styles/Forum.module.css";
 import { BiPlusCircle } from "react-icons/bi";
 import { MdOutlineCancel } from "react-icons/md";
 
-export default function ForumThreadInputFieldRoadmapSectionBtn(props) {
+export default function ForumThreadInputFieldRoadmapSectionButton(props) {
     return (
         <div
             className={`${styles.createThread__inputDiv}  ${styles.createThread__container}`}

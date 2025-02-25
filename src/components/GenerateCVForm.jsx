@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../styles/GenerateCV.module.css";
 
-const GenerateCV = ({ formData, handleChange, handleSubmit, closeForm }) => {
+const GenerateCVForm = ({ formData, handleChange, handleSubmit, closeForm }) => {
     return (
         <div className={styles.formContainer}>
             <button className={styles.closeButton} onClick={closeForm}>
@@ -167,4 +167,4 @@ const GenerateCV = ({ formData, handleChange, handleSubmit, closeForm }) => {
     );
 };
 
-export default GenerateCV;
+export default GenerateCVForm;

@@ -8,133 +8,22 @@ import styles from '../styles/CodingChallengePreview.module.css';
 
 function CodingChallengePageContainer() {
     
-    // Dummy data ----------------------------
-    const dummyQuizListData = {
-        1 : {
-            quizName : "PHP Variables Quiz",
-            quizDescription : "Test out whether you understand how PHP variables really work!",
-            quizDifficulty : "Easy",
-            isQuizCompleted : false,
-            lastAnsweredQuestion : -1
-        },
-        2 : {
-            quizName : "JavaScript Loops Challenge",
-            quizDescription : "Can you solve looping problems in JavaScript?",
-            quizDifficulty : "Easy",
-            isQuizCompleted : false,
-            lastAnsweredQuestion : -1
-        },
-        3 : {
-            quizName : "Python Functions Exercise",
-            quizDescription : "Practice writing Python functions and understand their scope!",
-            quizDifficulty : "Medium",
-            isQuizCompleted : false,
-            lastAnsweredQuestion : -1
-        },
-        4 : {
-            quizName : "React Props and State",
-            quizDescription : "Improve your React skills with this interactive props and state challenge!",
-            quizDifficulty : "Medium",
-            isQuizCompleted : false,
-            lastAnsweredQuestion : -1
-        },
-        5 : {
-            quizName : "SQL Joins Mastery",
-            quizDescription : "Test your SQL join skills with real-world queries.",
-            quizDifficulty : "Hard",
-            isQuizCompleted : false,
-            lastAnsweredQuestion : -1
-        },
-        6 : {
-            quizName : "Data Structures: Linked Lists",
-            quizDescription : "Implement and manipulate linked lists in your favorite language!",
-            quizDifficulty : "Hard",
-            isQuizCompleted : false,
-            lastAnsweredQuestion : -1
-        }
-    }
-
-    const dummyQuizQuestionData = [
-        {
-            "questionBody" : "Which one is NOT a keyword used inside switch code blocks?",
-            "questionOptions" : [{
-                optionText : "break",
-                isCorrect : false
-            }, {
-                optionText : "default",
-                isCorrect : false
-            },  {
-                optionText : "case",
-                isCorrect: true
-            }, {
-                optionText : "return",
-                isCorrect: false
-            }],
-        }, {
-            "questionBody" : "Which operator can be used to perform string concatenation, or joining strings, in PHP?",
-            "questionOptions" : [{
-                optionText : "=",
-                isCorrect : false
-            }, {
-                optionText : "+",
-                isCorrect : false
-            }, {
-                optionText : "$",
-                isCorrect: false
-            }, {
-                optionText : ".",
-                isCorrect: true
-            }]
-        }, {
-            "questionBody" : "All variables in PHP start with which symbol?",
-            "questionOptions" : [{
-                optionText : "$",
-                isCorrect: true
-            }, {
-                optionText : "!",
-                isCorrect : false
-            }, {
-                optionText : "*",
-                isCorrect : false
-            }, {
-                optionText : "@",
-                isCorrect: false
-            }]
-        }, {
-            "questionBody" : "Does Edmond deserve a day off tomorrow?",
-            "questionOptions" : [{
-                optionText : "Absolutely!",
-                isCorrect: true
-            }, {
-                optionText : "Definitely!",
-                isCorrect : true
-            }, {
-                optionText : "Not allowed. Get back to work.",
-                isCorrect : false
-            }, {
-                optionText : "One hundred percent!",
-                isCorrect: true
-            }]
-        }
-    ]
-
-    // ---------------------------------------
-
     const [currentQuizList, setCurrentQuizList] = useState(null);
 
     const [currentQuiz, setCurrentQuiz] = useState(null);
     const [currentQuizQuestions, setCurrentQuizQuestions] = useState(null);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-    useEffect(
-        () => {
-            const fetchData = setTimeout(() => {
-                setCurrentQuizList(dummyQuizListData);
-            }, 5000);
+    const handleFetchData = async () => {
+        const currentUserID = "3oMAV7h8tmHVMR8Vpv9B" // Replace with value set by authentication feature, currently always Anoop
 
-            return () => clearTimeout(fetchData);
-        },
-    []);
+        const fetchedData = await fetch(`${process.env.REACT_APP_API_URL}/coding-challenges`);
+        const fetchedJsonData = await fetchedData.json();
+
+        setCurrentQuizList(fetchedJsonData);
+    }
+
+    useEffect(() => { handleFetchData(); }, []);
 
     const getLevelClass = (level) => {
         switch (level) {
@@ -147,20 +36,42 @@ function CodingChallengePageContainer() {
         }
     };
 
-    const initCodingQuestionData = (id) => {      
-        // call Backend Get Question Data(Quiz_ID)
-        setCurrentQuiz(currentQuizList[id]);
-        setCurrentQuizQuestions(dummyQuizQuestionData);  // Replace with a function call using Quiz ID to backend
-        setCurrentQuestionIndex(currentQuizList[id].lastAnsweredQuestion + 1);
+    const initCodingQuestionData = async (id) => {      
+        const currentUserID = "3oMAV7h8tmHVMR8Vpv9B" // Replace with value set by authentication feature, currently always Anoop
+
+        setCurrentQuiz(id);
+        
+        const fetchedData = await fetch(`${process.env.REACT_APP_API_URL}/coding-challenges/${id}`);
+        const fetchedJsonData = await fetchedData.json();
+
+        setCurrentQuizQuestions(fetchedJsonData); 
+        setCurrentQuestionIndex(
+            (currentQuizList[id].lastAnsweredQuestion >= fetchedJsonData.length - 1)
+            ? fetchedJsonData.length - 1
+            : currentQuizList[id].lastAnsweredQuestion + 1
+        );
     }
 
     const handleAnswerSubmit = () => {
         // Tell the backend that the user has completed this question! (Sync)
-        if (currentQuestionIndex > currentQuiz.lastAnsweredQuestion) {
-            setCurrentQuiz(prev => ({
+        if (currentQuestionIndex > currentQuizList[currentQuiz].lastAnsweredQuestion) {
+            setCurrentQuizList(prev => ({
                 ...prev,
-                lastAnsweredQuestion : currentQuestionIndex
+                [currentQuiz] : {
+                    ...prev[currentQuiz],
+                    lastAnsweredQuestion : currentQuestionIndex
+                }
             }));
+
+            fetch(`${process.env.REACT_APP_API_URL}/coding-challenges/${currentQuiz}/user-progress`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    newProgressValue : currentQuestionIndex
+                }),
+                headers: new Headers({
+                    'Content-Type': 'application/json; charset=UTF-8'
+                })
+            });
         }
     }
 
@@ -179,7 +90,6 @@ function CodingChallengePageContainer() {
             {
                 (currentQuizList) ? (
                     (!currentQuizQuestions) ? (
-                        // ------------Insert coding challenge list view here-----------------
                         <>
                             {Object.keys(currentQuizList).map((quiz, index) => (
                                 <CodingChallengePreview 
@@ -192,11 +102,9 @@ function CodingChallengePageContainer() {
                                 />
                             ))}
                         </>
-                        // <button id="45" onClick={initCodingQuestionData}>test --- coding QUIZ LIST!!!</button>
-                        // -------------------------------------------------------------------
                     ) : (
                         <CodingChallengeQuestion
-                            quizName={currentQuiz.quizName}
+                            quizName={currentQuizList[currentQuiz].quizName}
                             totalQuestions={currentQuizQuestions.length}
                             currentQuestionIndex={currentQuestionIndex}
                             questionBody={currentQuizQuestions[currentQuestionIndex].questionBody}
@@ -207,8 +115,8 @@ function CodingChallengePageContainer() {
                             handleExitQuiz={handleExitQuiz}
                             handleAnswerSubmit={handleAnswerSubmit}
 
-                            revealAnswer={currentQuiz.lastAnsweredQuestion >= currentQuestionIndex}
-                            nextButtonVisible={(currentQuiz.lastAnsweredQuestion >= currentQuestionIndex)
+                            revealAnswer={currentQuizList[currentQuiz].lastAnsweredQuestion >= currentQuestionIndex}
+                            nextButtonVisible={(currentQuizList[currentQuiz].lastAnsweredQuestion >= currentQuestionIndex)
                                 && currentQuestionIndex < currentQuizQuestions.length - 1
                             }
                             prevButtonVisible={currentQuestionIndex > 0}

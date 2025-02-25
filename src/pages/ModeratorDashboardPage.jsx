@@ -4,7 +4,7 @@ import ApplicationMainContent from "../containers/ApplicationMainContent";
 import PageHeaderContainer from '../containers/PageHeaderContainer.jsx';
 
 import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContainer";
-import ModeratorContainer from '../containers/ModeratorDashboardContainer';
+import ModeratorDashboardContainer from '../containers/ModeratorDashboardContainer';
 import styles from "../styles/global.module.css";
 
 function ModeratorPage() {
@@ -19,7 +19,7 @@ function ModeratorPage() {
                 </ApplicationSidebar>
         
                 <ApplicationMainContent>
-                    <ModeratorContainer />
+                    <ModeratorDashboardContainer />
                 </ApplicationMainContent>
         </div>
       </>

@@ -330,3 +330,87 @@
         box-shadow: 0.1em 0.1em 0.1em var(--cardShadowColor);
     }
 }
+
+@media (max-width: 48em) { /* 768px */
+    .threadCard__header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .threadCard__title {
+        max-width: 100%;
+    }
+
+    .threadCard__footer {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .threadCard__profile {
+        justify-content: flex-start;
+    }
+
+    .createThread__buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .createThread__buttons__attachments {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .createThread__submit button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 30em) { /* 480px */
+    .forumHeader__button {
+        font-size: 0.875rem;
+        padding: 0.25rem 0.75rem;
+    }
+
+    .threadCard__thread {
+        padding: 0.75rem;
+        border-radius: 1rem;
+    }
+
+    .threadCard__statistics {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .createThread__container {
+        padding: 0.75rem;
+        border-radius: 1rem;
+    }
+
+    .createThread__input input,
+    .createThread__input textarea,
+    .createThread__input select {
+        padding: 0.75rem;
+        border-radius: 0.75rem;
+    }
+
+    .createComment__section {
+        padding: 0.75rem;
+        border-radius: 1rem;
+    }
+
+    .roadmapInputBox__container {
+        padding: 0.75rem;
+    }
+
+    .roadmapInputBox__image {
+        width: 20%;
+    }
+
+    .roadmapInputBox__inputButtons button,
+    .createComment__footer button {
+        padding: 0.5rem 1rem;
+        width: 100%;
+    }
+}
