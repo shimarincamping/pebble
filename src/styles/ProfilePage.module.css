@@ -1,15 +1,17 @@
 .profilePageCard {
     border-radius: 1.6em;
     margin: 1.2em 2.4em 2em 2.5em;
+    width: auto;  /* Allow card to size with content */
+    box-sizing: border-box;
 }
 
 /* Profile header */
 
 .headerInfoCard {
     padding: 0 0 2.5em 0;
-    width: 66.75em;
     overflow: hidden;
     position: relative;
+    box-sizing: border-box;
 }
 
 .headerInfoCard__bannerImage {
@@ -19,7 +21,6 @@
     object-fit: cover;
     object-position: center 80%;
 }
-
 
 .headerInfoCard__profilePictureBorder {
     width: 13em;
@@ -250,6 +251,34 @@
     padding: 0.5em 3em;
     font-weight: bold;
     font-size: 0.9rem;
+}
+
+@media (max-width: 48em) {
+    .profilePageCard {
+        margin: 1em 1em 1.5em 1em;  /* Reduced margins on mobile */
+    }
+
+    .headerInfoCard {
+        padding: 0 0 2em 0;  /* Slightly reduced padding */
+    }
+
+    .headerInfoCard__bannerImage {
+        height: 11em;  /* Slightly smaller banner on mobile */
+    }
+}
+
+@media (max-width: 30em) {
+    .profilePageCard {
+        margin: 0.8em 0.5em 1em 0.5em;  /* Minimal margins on small screens */
+    }
+
+    .headerInfoCard {
+        padding: 0 0 1.5em 0;
+    }
+
+    .headerInfoCard__bannerImage {
+        height: 9em;
+    }
 }
 
 

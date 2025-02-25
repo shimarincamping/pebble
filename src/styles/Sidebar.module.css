@@ -177,16 +177,23 @@
 }
 
 .networkSidebarCard__myNetwork__userTileContainer {
-    display: inline-grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin: 0 0 0.3em 5%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);  /* 4 columns */
+    gap: 0.8em;
+    margin: 0.5em 1em;
+    max-height: fit-content;
+    overflow: hidden;  /* Hide overflow */
 }
 
 .networkSidebarCard__myNetwork__userTile {
-    width: 75%;
+    width: 100%;
     text-align: center;
-    margin-bottom: 0.8em;
     cursor: pointer;
+}
+
+/* Hide users after the 8th one */
+.networkSidebarCard__myNetwork__userTile:nth-child(n+9) {
+    display: none;
 }
 
 .networkSidebarCard__myNetwork__userTile img,
@@ -225,12 +232,27 @@
     border: solid 0.15em var(--taylorsRed);
 }
 
+.networkSidebarCard__peopleYouMayKnow {
+    max-height: fit-content;
+    overflow: hidden;  /* Hide any overflow */
+}
+
 .networkSidebarCard__peopleYouMayKnow__userTile {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #f9f9f9;
-    margin: 0 1em 1.5em 1em;
+    margin: 0 1em 1em 1em;  /* Reduced bottom margin */
+}
+
+/* Only show first 4 items */
+.networkSidebarCard__peopleYouMayKnow__userTile:nth-child(n+5) {
+    display: none;
+}
+
+/* Adjust spacing for the last visible item */
+.networkSidebarCard__peopleYouMayKnow__userTile:nth-child(4) {
+    margin-bottom: 0.5em;
 }
 
 .networkSidebarCard__peopleYouMayKnow__userDetails {
@@ -281,78 +303,43 @@
 /* Medium screens */
 @media (max-width: 56.25em) {
     .networkSidebarCard__myNetwork__userTileContainer {
-        grid-template-columns: 1fr 1fr 1fr;
-        margin: 0 0 0.3em 2%;
-    }
-
-    .networkSidebarCard__myNetwork__userTile {
-        width: 85%;
-    }
-
-    .networkSidebarCard__myNetwork__userTile img,
-    .networkSidebarCard__peopleYouMayKnow__userTile img {
-        width: 2.8em;
-        height: 2.8em;
-    }
-
-    .networkSidebarCard__peopleYouMayKnow__userDetails {
-        margin: 0 1em 0 0.6em;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.6em;
+        margin: 0.5em 0.8em;
     }
 }
 
 /* Mobile screens */
 @media (max-width: 48em) {
     .networkSidebarCard__myNetwork__userTileContainer {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        margin: 0 0 0.3em 1%;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.5em;
+        margin: 0.5em 0.6em;
     }
 
-    .networkSidebarCard__myNetwork__userTile {
-        width: 90%;
+    .networkSidebarCard__peopleYouMayKnow__userTile {
+        margin: 0 0.8em 0.8em 0.8em;
     }
 
-    .networkSidebarCard__myNetwork__userTile p {
-        font-size: 0.75rem;
-    }
-
-    .networkSidebarCard__peopleYouMayKnow__userDetails p:nth-child(1) {
-        font-size: 0.9rem;
-    }
-
-    .networkSidebarCard__peopleYouMayKnow__userDetails p:nth-child(2) {
-        font-size: 0.65rem;
-    }
-
-    .networkSidebarCard__peopleYouMayKnow__followButton {
-        padding: 0.4em 0.8em;
-        font-size: 0.8rem;
+    .networkSidebarCard__peopleYouMayKnow__userTile:nth-child(4) {
+        margin-bottom: 0.4em;
     }
 }
 
 /* Small mobile screens */
 @media (max-width: 30em) {
     .networkSidebarCard__myNetwork__userTileContainer {
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.4em;
+        margin: 0.5em 0.4em;
     }
 
-    .networkSidebarCard__myNetwork__userTile img,
-    .networkSidebarCard__peopleYouMayKnow__userTile img {
-        width: 2.5em;
-        height: 2.5em;
+    .networkSidebarCard__peopleYouMayKnow__userTile {
+        margin: 0 0.6em 0.6em 0.6em;
     }
 
-    .networkSidebarCard__myNetwork__userTile p {
-        font-size: 0.7rem;
-        margin-top: 0.3em;
-    }
-
-    .networkSidebarCard__peopleYouMayKnow__userDetails {
-        margin: 0 0.5em 0 0.4em;
-    }
-
-    .networkSidebarCard__peopleYouMayKnow__followButton {
-        padding: 0.3em 0.6em;
-        font-size: 0.75rem;
+    .networkSidebarCard__peopleYouMayKnow__userTile:nth-child(4) {
+        margin-bottom: 0.3em;
     }
 }
 

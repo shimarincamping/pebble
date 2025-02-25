@@ -18,12 +18,17 @@ function NetworkSidebarCardContainer() {
       { userID: 5, shortName: "Ivy Chung", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg" },
       { userID: 6, shortName: "Wei Zhe", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg" },
       { userID: 7, shortName: "Jay Leow", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg" },
-      { userID: 8, shortName: "Nicholas", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg" }
+      { userID: 8, shortName: "Nicholas", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg" },
+      { userID: 9, shortName: "Edmond", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg" }
     ],
     mySuggestedUsers: [
       { userID: 9, shortName: "Frederick Lau", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg", course: "Software Engineering", year: 3 },
       { userID: 10, shortName: "John Doe", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg", course: "Software Engineering", year: 3 },
-      { userID: 11, shortName: "Jane Doe", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg", course: "Computer Science", year: 3 }
+      { userID: 11, shortName: "Jane Doe", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg", course: "Computer Science", year: 3 },
+      { userID: 12, shortName: "Fred Lau", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg", course: "Software Engineering", year: 3 },
+      { userID: 13, shortName: "Goku", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg", course: "Software Engineering", year: 3 },
+      { userID: 14, shortName: "Harry Potter", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg", course: "Computer Science", year: 3 },
+      { userID: 15, shortName: "Jack", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg", course: "Computer Science", year: 3 }
     ]
   };
 
