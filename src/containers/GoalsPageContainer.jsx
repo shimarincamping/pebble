@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import RewardsPageHeader from '../components/RewardsPageHeader';
-import GoalSectionContainer from '../components/GoalSectionContainer';
+import GoalSectionComponent from '../components/GoalSectionComponent';
 import ComponentLoadingSpinner from '../components/ComponentLoadingSpinner';
 
 function GoalsPageContainer() {
@@ -31,8 +31,8 @@ function GoalsPageContainer() {
                             buttonText="Leaderboard"
                             buttonRedirect="/leaderboard"   
                         />
-                        <GoalSectionContainer goalType="Daily" goals={goalsList.daily}/>
-                        <GoalSectionContainer goalType="Core" goals={goalsList.core}/>
+                        <GoalSectionComponent goalType="Daily" goals={goalsList.daily}/>
+                        <GoalSectionComponent goalType="Core" goals={goalsList.core}/>
                     </>
                 ) : <ComponentLoadingSpinner />
             }
