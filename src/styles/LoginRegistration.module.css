@@ -1,19 +1,29 @@
+:root {
+    --registrationBodyBackgroundRGB: 255, 255, 255;  /* Adjust these values to match your background color */
+}
+
 .pageContainer {
     background-image: var(--registrationCoverImage);
     background-size: cover;
+    background-position: center;
     height: 100vh;
     width: 100vw;
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .sidebarContentsContainer {
     height: 100vh;
     width: 52%;
     background-color: var(--registrationBodyBackground);
-    position: absolute;
+    position: fixed;
     z-index: 1;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;  /* Smooth scrolling on iOS */
+    top: 0;
+    left: 0;
 }
 
 .sidebarContentsContainer__appLogo {
@@ -258,90 +268,88 @@
 
 /* Mobile devices */
 @media screen and (max-width: 48em) { /* 768px */
-  .pageContainer {
-      display: none;
-  }
+    .sidebarContentsContainer {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        overflow-y: auto;
+        padding-bottom: 2em;  /* Add space at bottom for scrolling */
+    }
 
-  .sidebarContentsContainer {
-      width: 100%;
-      height: 100vh;
-      overflow-y: auto;
-  }
+    .sidebarContentsContainer__loginFormMainWrapper {
+        padding: 0 5%;
+        width: 90%;
+    }
 
-  .sidebarContentsContainer__loginFormMainWrapper {
-      padding: 0 5%;
-      width: 90%;
-  }
+    .sidebarContentsContainer__appLogo {
+        height: 5em;
+        margin: 1.5em auto 0 auto;
+    }
 
-  .sidebarContentsContainer__appLogo {
-      height: 5em;
-      margin: 1.5em auto 0 auto;
-  }
+    .sidebarContentsContainer__loginSectionHeader {
+        font-size: 1.2em;
+        margin: 1.2em 0 0.7em;
+    }
 
-  .sidebarContentsContainer__loginSectionHeader {
-      font-size: 1.2em;
-      margin: 1.2em 0 0.7em;
-  }
+    .formBody__loginInputField {
+        width: 93%;
+        font-size: 0.9em;
+    }
 
-  .formBody__loginInputField {
-      width: 93%;
-      font-size: 0.9em;
-  }
+    .formBody__loginPageButton {
+        font-size: 1.1em;
+        padding: 0.5em 0;
+    }
 
-  .formBody__loginPageButton {
-      font-size: 1.1em;
-      padding: 0.5em 0;
-  }
+    .formBody__primaryButton {
+        width: 80%;
+        font-size: 1em;
+        margin: 2em auto;
+    }
 
-  .formBody__primaryButton {
-      width: 80%;
-      font-size: 1em;
-      margin: 2em auto;
-  }
+    .formBody__loginFormFooter label {
+        margin-bottom: 1em;
+    }
 
-  .formBody__loginFormFooter label {
-      float: none;
-      margin-bottom: 1em;
-  }
+    .formBody__loginFormFooter input {
+        width: 1.2em;
+        height: 1.2em;
+    }
 
-  .formBody__loginFormFooter input {
-      width: 1.2em;
-      height: 1.2em;
-  }
+    .formBody__loginFormFooter__registrationPageRedirect {
+        text-align: center;
+        margin-top: 1.5em;
+        margin-bottom: 1em;
+    }
 
-  .formBody__loginFormFooter__registrationPageRedirect {
-      text-align: center;
-      margin-top: 1.5em;
-  }
+    .formBody__registrationInputFieldContainer {
+        width: 85%;
+        margin: 1em 7.5%;
+    }
 
-  .formBody__registrationInputFieldContainer {
-      width: 85%;
-      margin: 1em 7.5%;
-  }
+    .sidebarContentsContainer__formHeader {
+        font-size: 1.6em;
+        margin: 0.8em 0 0.4em 0;
+    }
 
-  .sidebarContentsContainer__formHeader {
-      font-size: 1.6em;
-      margin: 0.8em 0 0.4em 0;
-  }
+    .formBody__registrationInputLabel {
+        font-size: 0.85em;
+    }
 
-  .formBody__registrationInputLabel {
-      font-size: 0.85em;
-  }
+    .formBody__registrationInputField {
+        padding: 0.8em;
+        font-size: 0.9em;
+    }
 
-  .formBody__registrationInputField {
-      padding: 0.8em;
-      font-size: 0.9em;
-  }
+    .formBody__errorMessage {
+        font-size: 0.8em;
+    }
 
-  .formBody__errorMessage {
-      font-size: 0.8em;
-  }
-
-  .sidebarContentsContainer__redirectLoginLink {
-      margin-top: -1em;
-      padding-bottom: 3em;
-      font-size: 0.9em;
-  }
+    .sidebarContentsContainer__redirectLoginLink {
+        margin-top: -1em;
+        padding-bottom: 3em;
+        font-size: 0.9em;
+    }
 }
 
 /* Small mobile devices */
@@ -383,29 +391,10 @@
   }
 }
 
-/* Height-based media queries for shorter screens */
+/* Height-based media query */
 @media screen and (max-height: 43.75em) { /* 700px */
-  .sidebarContentsContainer__appLogo {
-      margin: 1em auto 0 auto;
-  }
-
-  .sidebarContentsContainer__loginSectionHeader {
-      margin: 1em 0 0.5em;
-  }
-
-  .formBody__primaryButton {
-      margin: 1.5em auto;
-  }
-
-  .formBody__registrationInputFieldContainer {
-      margin: 0.8em auto;
-  }
-
-  .sidebarContentsContainer__formHeader {
-      margin: 0.6em 0 0.3em 0;
-  }
-
-  .sidebarContentsContainer__redirectLoginLink {
-      padding-bottom: 2em;
-  }
+    .sidebarContentsContainer {
+        overflow-y: auto;
+        padding-bottom: 1.5em;
+    }
 }
