@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import GenerateCV from "../components/GenerateCV";
+import GenerateCVForm from "../components/GenerateCVForm";
 import styles from "../styles/GenerateCV.module.css";
 
-const GenerateCVContainer = ({ initialData, onClose, onGenerate }) => {
+const GenerateCVFormContainer = ({ initialData, onClose, onGenerate }) => {
     const [formData, setFormData] = useState(initialData);
 
     const handleChange = (e) => {
@@ -34,7 +34,7 @@ const GenerateCVContainer = ({ initialData, onClose, onGenerate }) => {
     
     return (
         <div className={styles.overlay}>
-            <GenerateCV 
+            <GenerateCVForm 
                 formData={formData} 
                 handleChange={handleChange} 
                 handleSubmit={handleSubmit} 
@@ -44,4 +44,4 @@ const GenerateCVContainer = ({ initialData, onClose, onGenerate }) => {
     );
 };
 
-export default GenerateCVContainer;
+export default GenerateCVFormContainer;

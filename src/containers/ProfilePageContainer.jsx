@@ -22,9 +22,16 @@ function ProfilePageContainer({id}) {
         const currentRequestID = (isMyProfile) ? "3oMAV7h8tmHVMR8Vpv9B" : id; // Replace with value set by authentication feature, currently always Anoop
 
         const fetchedProfileData = await fetch(`${process.env.REACT_APP_API_URL}/users/${currentRequestID}/profile-information/full`);
-        const fetchedJsonProfileData = await fetchedProfileData.json();
-        setUserProfileData(fetchedJsonProfileData);
-        setUserProfileDetails(fetchedJsonProfileData.profileDetails);
+
+        if (fetchedProfileData.ok) {
+            const fetchedJsonProfileData = await fetchedProfileData.json();
+            setUserProfileData(fetchedJsonProfileData);
+            setUserProfileDetails(fetchedJsonProfileData.profileDetails);
+        } 
+
+        if (fetchedProfileData.status === 404) {
+            alert("The user profile does not exist or could not be found.");
+        }
     }
 
     const handleFetchPostHistory = async () => {

@@ -5,8 +5,7 @@ import PageHeaderContainer from '../containers/PageHeaderContainer.jsx';
 import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContainer";
 import DashboardStatsSidebarCardContainer from "../containers/DashboardStatsSidebarCardContainer";
 import NetworkSidebarCardContainer from "../containers/NetworkSidebarCardContainer";
-import PostCreationCard from "../components/PostCreationCard";
-import RewardWheelCardContainer from "../containers/RewardWheelCardContainer";import PostCardContainer from "../containers/PostCardContainer";
+import PostCardContainer from "../containers/PostCardContainer";
 
 import styles from "../styles/global.module.css";
 import PostCreationCardContainer from "../containers/PostCreationCardContainer.jsx";
