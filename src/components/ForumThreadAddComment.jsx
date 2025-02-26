@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../styles/Forum.module.css";
-import { BiImage } from "react-icons/bi";
 import { MdOutlineCancel } from "react-icons/md";
 
 export default function ForumThreadAddComment(props) {

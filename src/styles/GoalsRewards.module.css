@@ -55,11 +55,11 @@
     color: black;
 }
 
-.goalSectionItem > * {
-    display: inline-block;
-    padding: 0;
-
-    vertical-align: middle;
+.goalSectionItem {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    position: relative;
 }
 
 .goalSectionItem__goalNumber {
@@ -76,9 +76,10 @@
 }
 
 .goalSectionItem__goalDescriptionBody {
-    width: 78%;
+    flex: 1;
     font-size: 0.9rem;
     white-space: pre-wrap;
+    padding: 0.7em;
 }
 
 .goalSectionItem__goalDescriptionBody * {
@@ -86,14 +87,22 @@
 }
 
 .goalSectionItem__goalValueContainer {
-    text-align: center;
-    width: 12%;
-    padding: 1.38em 0;
-    float: right;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 5rem;
+    align-self: stretch;
     border-radius: 0 0.65em 0.65em 0;
     color: white;
     font-weight: bold;
+    text-align: center;
+    padding: 0.5em;
+    margin-left: auto;
+}
+
+.goalSectionItem__goalValueContainer button {
+    margin: 0.2em 0;
 }
 
 .goalSectionItem__goalValueContainer.uncompletedGoal {
@@ -106,10 +115,14 @@
 
 .goalSectionItem__goalValueContainer > p {
     font-size: 1.2rem;
+    margin: 0;
+    width: 100%;
+    text-align: center;
 }
 
 .goalSectionItem__goalValueContainer > p > span {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
+    margin-bottom: 0.2em;
 }
 
 /* Tablet Styles */
@@ -174,15 +187,15 @@
     }
 
     .goalSectionItem__goalValueContainer {
-        flex-basis: 3rem;
+        min-width: 4.5rem;
+        padding: 0.4em;
     }
 
-    .goalSectionItem__goalValueContainer > p {
-        font-size: 1rem;
-    }
-
-    .goalSectionItem__goalValueContainer > p > span {
-        font-size: 1.2rem;
+    .goalSectionItem__goalValueContainer button {
+        width: 100%;
+        margin: 0.15em 0;
+        padding: 0.25em 0.5em;
+        font-size: 0.75rem;
     }
 }
 
@@ -200,6 +213,30 @@
     }
 
     .goalSectionItem__goalValueContainer {
-        flex-basis: 2.5rem;
+        min-width: 4rem;
+        padding: 0.3em;
+    }
+
+    .goalSectionItem__goalValueContainer button {
+        margin: 0.1em 0;
+        padding: 0.2em 0.4em;
+    }
+}
+
+.mobileCurrencyCard {
+    display: none;  /* Hidden by default on desktop */
+}
+
+@media (max-width: 48em) {
+    .mobileCurrencyCard {
+        display: block;  /* Show on mobile */
+        margin: 1em;
+        margin-top: 5em;  /* Space for top bar */
+    }
+}
+
+@media (max-width: 30em) {
+    .mobileCurrencyCard {
+        margin-top: 4.5em;
     }
 }

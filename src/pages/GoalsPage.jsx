@@ -26,6 +26,17 @@ function GoalsPage() {
           <GoalsPageContainer />
         </ApplicationMainContent>
       </div>
+
+      {/* Mobile Currency Card */}
+      <div className={styles.mobileCurrencyCard}>
+        <CurrencySidebarCardContainer />
+      </div>
+
+      {/* Sidebar */}
+      <div className={styles.sidebarContainer}>
+        <ProfileSidebarCardContainer />
+        <CurrencySidebarCardContainer />
+      </div>
     </>
   );
 }

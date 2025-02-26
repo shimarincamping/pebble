@@ -7,6 +7,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    top: 0;
+    left: 0;
+    padding: 1em;  /* Add padding to ensure space around container */
+    box-sizing: border-box;
 }
 
 .formContainer {
@@ -16,8 +20,10 @@
     border-radius: 2em;
     width: 60%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 0.5em;
-    margin-bottom: 4em;
+    margin: 0 auto;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
 
 .formContainer hr {
@@ -30,7 +36,7 @@
     position: absolute;
     top: 2em;
     right: 2em;
-    background: red;
+    background: var(--taylorsRed);
     color: white;
     border: none;
     padding: 5px 10px;
@@ -51,6 +57,11 @@
 }
 
 .submitProfileForm {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    box-sizing: border-box;
+
     label {
         display: block;
         margin-bottom: 10px;
@@ -58,6 +69,7 @@
         font-weight: bold;
     }
 }
+
 .submitProfileForm {
     input,
     textarea {
@@ -73,6 +85,8 @@
     display: flex;
     justify-content: space-between;
     gap: 2em;
+    width: 100%;
+    box-sizing: border-box;  /* Include padding in width calculation */
 }
 
 .halfWidth {
@@ -99,5 +113,119 @@
     button:hover {
         background: white;
         color: red;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 48em) {
+    .overlay {
+        padding: 0.5em;  /* Reduce padding on mobile */
+        align-items: flex-start;  /* Align to top on mobile */
+    }
+
+    .formContainer {
+        padding: 2em 1em;
+        margin: 0;
+        max-height: 98vh;  /* Almost full height */
+        border-radius: 1em;  /* Smaller radius on mobile */
+    }
+
+    .closeButton {
+        top: 1.5em;
+        right: 1.5em;
+        font-size: 14px;
+        padding: 4px 8px;
+    }
+
+    .submitProfileForm {
+        width: 100%;
+        padding: 0 0.5em;
+    }
+
+    .row {
+        flex-direction: column;
+        gap: 1em;
+        padding: 0;
+    }
+
+    .halfWidth {
+        width: 100%;
+    }
+
+    .submitProfileForm {
+        label {
+            font-size: 0.9rem;
+            margin-bottom: 0.5em;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.5em;
+            font-size: 0.9rem;
+            box-sizing: border-box;
+        }
+    }
+
+    .buttonContainer {
+        margin-top: 1.5em;
+        margin-bottom: -1em;
+
+        button {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+    }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 30em) {
+    .overlay {
+        padding: 0.3em;  /* Even smaller padding */
+    }
+
+    .formContainer {
+        padding: 1.5em 0.8em;
+        border-radius: 0.8em;
+    }
+
+    .closeButton {
+        top: 0.8em;
+        right: 0.8em;
+        font-size: 12px;
+        padding: 3px 6px;
+    }
+
+    .submitProfileForm {
+        padding: 0 0.3em;
+    }
+
+    .submitProfileForm {
+        label {
+            font-size: 0.85rem;
+        }
+
+        input,
+        textarea {
+            padding: 0.4em;
+            font-size: 0.85rem;
+        }
+    }
+
+    .buttonContainer button {
+        padding: 6px 14px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Height-based media query for shorter screens */
+@media (max-height: 600px) {
+    .overlay {
+        align-items: flex-start;
+    }
+
+    .formContainer {
+        margin: 0;
+        max-height: 98vh;
     }
 }
