@@ -85,43 +85,54 @@
 
 
 .Header{
-    height:10%;
+    height:8%;
     /* E91C24  A61C20 3A0101 */
     /* background-color: var(--taylorsRed); */
     background:linear-gradient(to right,#E91C24,#A61C20,#3A0101);
     display:flex; 
     align-items: center;
     justify-content: space-between;
-    padding: 0 1.2em;
+    padding: 0 1em;
 }
 
 .TaylorsLogo{
-    height:80%;
+    height:70%;
     width:auto;
     margin-left:2%;
 }
 
 .MenuIcon{
-    margin-right:3%;
-    height:70%;
+    margin-right:2%;
+    height:60%;
     width:auto;
     cursor: pointer;
 }
 
 .Body{
-    height:80%;
+    height:84%;
     background-color: white;
     overflow-y: auto;
+    padding: 0.5em 0;  /* Added padding top and bottom */
+    margin-bottom: 4em;
 }
 
 /* Effects each row, in the navbar body (including the icon and text*/
 .Body > div{
     display:flex;
-    height:16.6%;
+    height:13%;  /* Reduced from 12% */
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
+    padding: 0 0.5em;
+    margin-bottom: 1em;  /* Added margin between items */
+}
 
+.Body > div:first-child {
+    margin-top: 0;  /* Remove top margin for first item */
+}
+
+.Body > div:last-child {
+    margin-bottom: 0;  /* Remove bottom margin for last item */
 }
 
 .Body > div:hover{
@@ -132,17 +143,18 @@
     /* border: 3px dotted green; */
     display:flex;
     flex:1;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
 }
 
 .Body div img{
-    max-height:50%;
+    max-height:45%;
     width:auto; 
 }
 
 .ImgContainer{
     height:100%;
-    width: 20%;
+    width: 15%;
     display:flex;
     justify-content:center;
     /* border:3px solid red; */
@@ -151,47 +163,44 @@
 
 
 .Footer{
-    height:10%;
+    height:8%;
     background-color: var(--taylorsRed);
     display:flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1.2em;
+    padding: 0 1em;
 }
 
 .BellIcon{
-    height:50%;
+    height:45%;
     width:auto;
-    margin-right:5%;
+    margin-right:4%;
     cursor: pointer;
 }
 
 .LogOut{
-    margin-left:3%;
+    margin-left:2%;
     color:white;
+    font-size: 0.9rem;
 }
 
 /* Tablet screens */
 @media (max-width: 64em) {
     .NavPanelContainer {
-        width: 40%;  /* Fixed percentage instead of vw */
+        width: 30%;  /* Fixed percentage instead of vw */
     }
 
     .TextContainer {
-        font-size: 0.95rem;
+        font-size: 0.8rem;
     }
 }
 
 /* Mobile screens */
 @media (max-width: 48em) {
     .NavPanelContainer {
-        width: 50%;  /* Fixed percentage */
+        width: 38%;  /* Fixed percentage */
     }
 
-    .Header {
-        height: 8%;
-        padding: 0 1em;
-    }
 
     .TaylorsLogo {
         height: 70%;
@@ -203,13 +212,19 @@
         margin-right: 2%;
     }
 
+    .Body {
+        padding: 0.4em 0;
+        margin-bottom: 2em;
+    }
+
     .Body > div {
-        height: 14%;
+        height: 12%;
+        margin-bottom: 1em;  /* Slightly reduced margins on mobile */
     }
 
     .TextContainer {
-        font-size: 1.1rem;
-        padding-left: 0.5em;
+        font-size: 0.65rem;
+        margin-left: 0.5em;
     }
 
     .ImgContainer {
@@ -217,22 +232,16 @@
     }
 
     .Footer {
-        height: 8%;
-        padding: 0 1em;
+        height: 7%;
     }
 
     .LogOut {
-        font-size: 1.1rem;
+        font-size: 0.85rem;
     }
 }
 
 /* Small mobile screens */
 @media (max-width: 30em) {
-    .Header {
-        height: 7%;
-        padding: 0 0.8em;
-    }
-
     .TaylorsLogo {
         height: 65%;
     }
@@ -241,36 +250,46 @@
         height: 55%;
     }
 
-    .TextContainer {
-        font-size: 1rem;
+    .Body {
+        padding: 0.3em 0;
+    }
+
+    .Body > div {
+        height: 8%;
+        margin: 0.2em 0;  /* Further reduced margins on small screens */
     }
 
     .Footer {
-        height: 7%;
-        padding: 0 0.8em;
+        height: 6%;
     }
 
     .LogOut {
-        font-size: 1rem;
+        font-size: 0.85rem;
     }
 }
 
+/* Very small mobile screens */
+@media (max-width: 20em) {
+    .NavPanelContainer {
+        width: 60%;
+    }
+}
 
 /* Handle landscape orientation */
 @media (orientation: landscape) and (max-height: 500px) {
     .Header {
-        height: 15%;
+        height: 12%;
     }
 
     .Body {
-        height: 70%;
+        height: 76%;
     }
 
     .Body > div {
-        height: 16.6%;
+        height: 14%;
     }
 
     .Footer {
-        height: 15%;
+        height: 12%;
     }
 }

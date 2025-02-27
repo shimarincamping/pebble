@@ -28,6 +28,9 @@
 .HamburgerIconContainer{
     margin-left:2%;
     cursor: pointer;
+    height: 50%;  /* Reduced from default */
+    display: flex;
+    align-items: center;
 }
 
 .HamburgerIcon{
@@ -77,6 +80,38 @@
     max-height:100%;
     width:auto;
 
+}
+
+/* Tablet screens */
+@media (max-width: 64em) {
+    .HamburgerIconContainer {
+        height: 45%;
+        margin-left: 1.5%;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 48em) {
+    .HamburgerIconContainer {
+        height: 40%;
+        margin-left: 1%;
+    }
+
+    .PebbleLongLogoContainer {
+        margin-left: 10%;
+    }
+}
+
+/* Small mobile screens */
+@media (max-width: 30em) {
+    .HamburgerIconContainer {
+        height: 35%;
+        margin-left: 0.8%;
+    }
+
+    .PebbleLongLogoContainer {
+        margin-left: 8%;
+    }
 }
 
 
