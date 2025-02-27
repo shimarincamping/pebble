@@ -7,12 +7,6 @@ import styles from "../styles/PostCard.module.css";
 const PostCard = ({ post, onClick, onLike, onReport, onCopyLink }) => {
     const [expanded, setExpanded] = useState(false);
     const [showComments, setShowComments] = useState(false);
-<<<<<<< Updated upstream
-
-=======
-    
-    
->>>>>>> Stashed changes
     return (
         <div className={styles.postCard} onClick={onClick}>
             <div className={styles.postHeading}>
@@ -63,7 +57,6 @@ const PostCard = ({ post, onClick, onLike, onReport, onCopyLink }) => {
             <hr className={styles.separator} />
 
             <div className={styles.postActions}>
-<<<<<<< Updated upstream
                 <div
                     className={`${styles.action} ${post.liked ? styles.liked : ""}`}
                     onClick={(e) => {
@@ -88,14 +81,6 @@ const PostCard = ({ post, onClick, onLike, onReport, onCopyLink }) => {
                 >
                     <BsFlagFill />
                 </div>
-=======
-                <div className={styles.action}><BsHandThumbsUp /></div>
-                <div className={styles.action} onClick={(e) => { e.stopPropagation(); setShowComments(true); }}>
-                    <BsChat />
-                </div>
-                <div className={styles.action}><BsShare /></div>
-                <div className={styles.action}><BsFlag /></div>
->>>>>>> Stashed changes
             </div>
             {showComments && <PostCommentContainer onClose={() => setShowComments(false)} />}
         </div>

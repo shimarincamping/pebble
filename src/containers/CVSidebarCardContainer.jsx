@@ -12,7 +12,6 @@ function CVSidebarCardContainer() {
     // Dummy data ----------------------------
     const dummyCVData = {
         latestUserCV: {
-<<<<<<< Updated upstream
             fullName: "Anoop Singh",
             email: "anoopsingh@example.com",
             phone: "+123456789",
@@ -24,18 +23,6 @@ function CVSidebarCardContainer() {
             jobDesc: "Developed and maintained web applications using React and Node.js. Assisted in frontend development and security assessments.",
             workExperience: [
                 { title: "Part Time Software Engineer", company: "ABC Corp", duration: "2022 - Present", description: "Developed and maintained web applications using React and Node.js." },
-=======
-            fullName: "John Doe",
-            email: "johndoe@example.com",
-            phone: "+123456789",
-            address: "123 Main Street, City, Country",
-            linkedin: "https://linkedin.com/in/johndoe",
-            github: "https://github.com/johndoe",
-            portfolio: "https://johndoe.dev",
-            summary: "Highly motivated software engineer with 3+ years of experience in web development and cybersecurity. Passionate about building secure and scalable applications.",
-            workExperience: [
-                { title: "Software Engineer", company: "ABC Corp", duration: "2022 - Present", description: "Developed and maintained web applications using React and Node.js." },
->>>>>>> Stashed changes
                 { title: "Intern", company: "XYZ Ltd", duration: "2021 - 2022", description: "Assisted in frontend development and security assessments." }
             ],
             education: [
@@ -104,10 +91,7 @@ function CVSidebarCardContainer() {
                                     github: CVData.latestUserCV?.github || "",
                                     portfolio: CVData.latestUserCV?.portfolio || "",
                                     summary: CVData.latestUserCV?.summary || "",
-<<<<<<< Updated upstream
                                     jobDesc: CVData.latestUserCV?.jobDesc || "",
-=======
->>>>>>> Stashed changes
                                     workExperience: CVData.latestUserCV?.workExperience?.map(item => `${item.title} - ${item.description}`).join("\n") || "",
                                     education: CVData.latestUserCV?.education?.map(item => `${item.degree} - ${item.institution} (${item.year})`).join("\n") || "",
                                     skills: CVData.latestUserCV?.skills?.join(", ") || "",
