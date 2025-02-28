@@ -7,7 +7,6 @@ import styles from "../styles/PostCard.module.css";
 const PostCard = ({ post, onClick, onLike, onReport, onCopyLink, sendAuthReq}) => {
     const [expanded, setExpanded] = useState(false);
     const [showComments, setShowComments] = useState(false);
-
     return (
         <div className={styles.postCard} onClick={onClick}>
             <div className={styles.postHeading}>
