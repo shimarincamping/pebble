@@ -43,13 +43,12 @@ export default function ForumThreadDetailsCard({
                         </span>
                         <span>
                             <BiCommentDetail size={20} />{" "}
-                            {forumThread.commentCount}
                         </span>
                         <span>
                             <BiFlag size={20} />
                         </span>
                         <span>
-                            <BiShareAlt size={20} /> {forumThread.shareCount}
+                            <BiShareAlt size={20} />
                         </span>
                         <span onClick={onClickReply}>
                             <BiReply size={20} /> Reply

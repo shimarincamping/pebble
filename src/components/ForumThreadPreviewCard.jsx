@@ -38,7 +38,7 @@ export default function ForumThreadPreviewCard({
                         <BiFlag size={20} />
                     </span>
                     <span>
-                        <BiShareAlt size={20} /> {forumThread.shareCount}
+                        <BiShareAlt size={20} />
                     </span>
                 </div>
                 <div className={`${styles.threadCard__profile}`}>

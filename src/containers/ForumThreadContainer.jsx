@@ -22,8 +22,6 @@ const ForumThreadContainer = () => {
             threadDescription:
                 "I would love to receive some feedback on my newly created project that was made during the AI Nusantara GenAI workshop! Was wondering if the implementation of Gemini 1.5 Flash was the best choice for this use case. I’m also working on my conciseness and readability, so any additional feedback on that is appreciate. Thanks to anyone that takes the time to review this!",
             threadScore: 38,
-            commentCount: 15,
-            shareCount: 128,
             isFlagged: false,
             userData: {
                 userID: 1,
@@ -69,8 +67,6 @@ const ForumThreadContainer = () => {
             threadDescription:
                 "Hoping to one day replace goodreads :). Tried to include some GenAI features, might not have the best token efficiency. Any comments or feedback about the overall architecture or tech stack used would also be valuable Overall, I’m seeking feedback on implementation and features. Thanks very much for your time!",
             threadScore: 55,
-            commentCount: 18,
-            shareCount: 560,
             isFlagged: false,
             userData: {
                 userID: 2,
