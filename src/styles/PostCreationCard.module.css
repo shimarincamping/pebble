@@ -46,7 +46,7 @@
 .imageUpload {
     cursor: pointer;
     margin-top: 1.3em;
-    margin-left: 9.1em;
+    margin-left: 7.5em;
 }
 
 .titlePost, .writePost {
@@ -94,7 +94,7 @@
     cursor: pointer;
     transition: background 0.3s;
     margin-bottom: 1em;
-    margin-left: 39em;
+    margin-left: 37em;
 }
 
 .postItBtn button:hover {
