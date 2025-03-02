@@ -45,8 +45,8 @@
 
     
     /* -- Page container highlights -- */
-    --sidebarContainerBackground: rgb(199, 199, 199);
-    --mainContentContainerBackground: #F6F6F6;
+    --sidebarContainerBackground: #f6f6f6;  /* Light gray like PEBBLE */
+    --mainContentContainerBackground: #e8e8e8;  /* Slightly darker for contrast */
 }
 
 * {
@@ -58,6 +58,7 @@
 body {
     overflow-x: hidden;
     overflow-y: hidden;
+    background-color: #f8f8f8;
 }
 
 /* Modifies default appearance of scrollbar */
@@ -106,7 +107,6 @@ body {
 
 /* Main application content */
 .applicationMainContent {
-    background-color: var(--mainContentContainerBackground);
     height: 90vh;
     margin-top: 10vh;
     overflow-x: hidden;
@@ -127,13 +127,12 @@ body {
 .applicationMainContent > *,
 .applicationMainOverlay > * {
     display: block;
-    background-color: var(--cardBackgroundColor);
+    background-color: var(--cardBackgroundColor);  /* White background for cards */
     border: 0.05em solid var(--cardOutlineColor);
     border-radius: 0.7em;
-    box-shadow: 0.2em 0.2em 0.1em var(--cardShadowColor);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);  /* Subtle shadow like PEBBLE */
     padding: 1.8em;
     margin: 1.2em;
-
     overflow-x: hidden;
 }
 
@@ -204,3 +203,4 @@ button:disabled {
         margin: 0.6em 0.3em;  /* Further reduced margins */
     }
 }
+
