@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "../styles/ModeratorDashboard.module.css";
 
 const ModeratorDashboard = ({ flaggedContent, loading, error, onApprove, onDeny }) => {
@@ -22,7 +23,12 @@ const ModeratorDashboard = ({ flaggedContent, loading, error, onApprove, onDeny 
       {flaggedContent.map((content) => (
         <div key={content.id} className={styles.contentCard}>
           <div className={styles.contentHeader}>
-            <span className={styles.author}>{content.user}</span> &gt;{" "}
+            <Link 
+              to={`/profile/${content.id}`} 
+              className={styles.author}
+            >
+              {content.user}
+            </Link> &gt;{" "}
             <span className={styles.contentType}>{content.contentType}</span>
           </div>
 
