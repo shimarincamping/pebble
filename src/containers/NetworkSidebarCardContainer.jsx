@@ -1,78 +1,117 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import NetworkSidebarCard from "../components/NetworkSidebarCard";
 import ComponentLoadingSpinner from "../components/ComponentLoadingSpinner";
 import NetworkPopup from "../components/NetworkPopup";
 import ApplicationMainOverlay from "../containers/ApplicationMainOverlay";
 
-function NetworkSidebarCardContainer() {
+function NetworkSidebarCardContainer({ loggedInUserId }) {
   const navigate = useNavigate();
-
-  const dummyNetworkData = {
-    followerCount: 105,
-    myFollowers: [
-      { userID: 1, shortName: "Brendan", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg" },
-      { userID: 2, shortName: "Haarish", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg" },
-      { userID: 3, shortName: "Najihah", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg" },
-      { userID: 4, shortName: "Wei Lee", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg" },
-      { userID: 5, shortName: "Ivy Chung", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg" },
-      { userID: 6, shortName: "Wei Zhe", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg" },
-      { userID: 7, shortName: "Jay Leow", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg" },
-      { userID: 8, shortName: "Nicholas", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg" },
-      { userID: 9, shortName: "Edmond", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg" }
-    ],
-    mySuggestedUsers: [
-      { userID: 9, shortName: "Frederick Lau", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg", course: "Software Engineering", year: 3 },
-      { userID: 10, shortName: "John Doe", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg", course: "Software Engineering", year: 3 },
-      { userID: 11, shortName: "Jane Doe", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg", course: "Computer Science", year: 3 },
-      { userID: 12, shortName: "Fred Lau", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg", course: "Software Engineering", year: 3 },
-      { userID: 13, shortName: "Goku", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg", course: "Software Engineering", year: 3 },
-      { userID: 14, shortName: "Harry Potter", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg", course: "Computer Science", year: 3 },
-      { userID: 15, shortName: "Jack", profilePicture: "https://i.imgur.com/qPzFvF4.jpeg", course: "Computer Science", year: 3 }
-    ]
-  };
-
   const [networkData, setNetworkData] = useState(null);
   const [popupData, setPopupData] = useState(null);
   const [popupTitle, setPopupTitle] = useState("");
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
+  // Use a test user ID if loggedInUserId is missing
+  const userId = loggedInUserId;
+
+  console.log("Using userID:", userId);
+
+  const fetchNetworkData = useCallback(async () => {
+    console.log("fetchNetworkData function is being called");
+
+    if (!userId) {
+      console.log("No userId found, skipping fetch");
+      return;
+    }
+
+    try {
+      const url = `${process.env.REACT_APP_API_URL}/users/${userId}/network`;
+      console.log("Fetching:", url);
+
+      const response = await fetch(url, {
+        method: "GET",
+        credentials: "include",
+      });
+
+      console.log("Response status:", response.status);
+
+      if (!response.ok) throw new Error(`Error: ${response.status}`);
+
+      const data = await response.json();
+      console.log("Data received:", data);
+      setNetworkData(data);
+    } catch (error) {
+      console.error("Error fetching network data:", error);
+      setNetworkData([]); // Prevents errors due to missing data
+    }
+  }, [userId]);
+
   useEffect(() => {
-    // Simulate fetching data
-    const fetchData = setInterval(() => {
-      setNetworkData(dummyNetworkData);
-    }, 5000);
+    fetchNetworkData();
+  }, [fetchNetworkData]);
 
-    return () => clearInterval(fetchData);
-  }, []);
-
-  function handleFollowUser({ target }) {
-    console.log(`Sent a server request to follow user ID: ${target.value}`);
-  }
-
-  function handleUserClick(userID) {
+  const handleFollowUser = async ({ target }) => {
+    const userID = target.value;
+    if (!userId) {
+      console.error("No userId found, cannot follow/unfollow");
+      return;
+    }
+  
+    console.log(`Attempting to follow/unfollow user: ${userID}`);
+  
+    try {
+      const url = `${process.env.REACT_APP_API_URL}/users/${userId}/followers`;
+      console.log("Making request to:", url);
+  
+      const payload = { followeeId: userID };
+      console.log("Payload:", JSON.stringify(payload));
+  
+      const response = await fetch(url, {
+        method: "PUT",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+  
+      console.log("Response status:", response.status);
+      const responseData = await response.text(); // Get the response body
+      console.log("Response body:", responseData);
+  
+      if (!response.ok) throw new Error(`Error: ${response.status} - ${responseData}`);
+  
+      console.log("Follow/unfollow successful!");
+      fetchNetworkData(); // Refresh network data
+    } catch (error) {
+      console.error("Error following/unfollowing user:", error);
+    }
+  };
+  
+  const handleUserClick = (userID) => {
     navigate(`/profile/${userID}`);
-  }
+  };
 
-  function handleOpenPopup(type) {
+  const handleOpenPopup = (type) => {
+    if (!networkData) return;
+
     if (type === "followers") {
       setPopupTitle("All Followers");
-      setPopupData(networkData?.myFollowers || []);
+      setPopupData(networkData.myFollowers);
     } else if (type === "suggested") {
       setPopupTitle("People You May Know");
-      setPopupData(networkData?.mySuggestedUsers || []);
+      setPopupData(networkData.mySuggestedUsers);
     }
     setIsPopupOpen(true);
-  }
+  };
 
-  function handleClosePopup() {
+  const handleClosePopup = () => {
     setIsPopupOpen(false);
-  }
+  };
 
   return (
     <>
       {networkData ? (
-        <NetworkSidebarCard 
+        <NetworkSidebarCard
           {...networkData}
           handleFollowUser={handleFollowUser}
           handleUserClick={handleUserClick}
@@ -84,7 +123,7 @@ function NetworkSidebarCardContainer() {
 
       {isPopupOpen && (
         <ApplicationMainOverlay>
-          <NetworkPopup 
+          <NetworkPopup
             title={popupTitle}
             users={popupData}
             handleClose={handleClosePopup}

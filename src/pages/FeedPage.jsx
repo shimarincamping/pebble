@@ -13,6 +13,7 @@ import PostCreationCardContainer from "../containers/PostCreationCardContainer.j
 
 function FeedPage() {
   const [newPost, setNewPost] = useState(null);
+  const loggedInUserId = "3oMAV7h8tmHVMR8Vpv9B";
   return (
     <>
       <PageHeaderContainer/>
@@ -32,7 +33,7 @@ function FeedPage() {
 
         <ApplicationSidebar>
           <DashboardStatsSidebarCardContainer />
-          <NetworkSidebarCardContainer />
+          <NetworkSidebarCardContainer loggedInUserId={loggedInUserId} />
         </ApplicationSidebar>
 
       </div>

@@ -45,8 +45,8 @@
 
     
     /* -- Page container highlights -- */
-    --sidebarContainerBackground: lightpink;
-    --mainContentContainerBackground: lightblue;
+    --sidebarContainerBackground: rgb(199, 199, 199);
+    --mainContentContainerBackground: #F6F6F6;
 }
 
 * {

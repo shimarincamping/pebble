@@ -2,8 +2,10 @@
     padding: 2em;
     max-width: 90em;
     margin: 0 auto;
+    background-color: #f6f6f6;  /* Light gray background */
 }
 
+/* Moderator Header */
 .moderatorHeader {
     font-size: 1rem;
     text-align: center;
@@ -19,117 +21,259 @@
     margin-top: 0.15em;
 }
 
-.commentCard {
-    background: #dfdfdf;
+/* Content Card Styles */
+.contentCard {
+    background: #e8e8e8;  /* Darker gray background */
     border-radius: 8px;
-    padding: 0.8em;
-    margin-bottom: 1.8em;
-    box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.4);
+    padding: 1.2em;
+    margin-bottom: 2em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
 }
 
-.commentContainer {
+/* Different styles for each content type */
+.contentCard[data-type="post"] {
+    background: #e3f2fd;  /* Light blue */
+    border-left: 5px solid #1976d2;
+}
+
+.contentCard[data-type="thread"] {
+    background: #fff3e0;  /* Light orange */
+    border-left: 5px solid #f57c00;
+}
+
+.contentCard[data-type="comment"] {
+    background: #f5f5f5;  /* Light gray */
+    border-left: 5px solid #757575;
+}
+
+/* Content type label */
+.contentType {
+    top: 0.5em;
+    right: 1em;
+    font-size: 0.8rem;
+    color: #1976d2;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+/* Content Layout */
+.contentHeader {
     display: flex;
     align-items: center;
-    gap: 1em;
-    position: relative;
-    margin: 1.4em auto 0;
+    gap: 0.5em;
+    margin-bottom: 0.8em;
+    color: #0066cc;  /* Blue link color */
+    font-size: 0.9rem;
 }
 
-.commentHeader {
-    font-size: 14px;
-    color: #007bff;
-    font-weight: bold;
-    margin: 0.5em 0 1em 1%;
+.contentHeader a {
+    color: inherit;
+    text-decoration: none;
 }
 
-.commentContent {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
+.contentHeader a:hover {
+    text-decoration: underline;
+}
+
+.contentContainer {
     background: white;
-    border-radius: 5px;
-    padding: 0.75em 1.8em 0.75em 4.9em;
-    position: relative;
-    right: 0.6em;
-    margin-left: 6.5%;
-    flex-grow: 1;
-    border-top-left-radius: 5%;
-    border-bottom-left-radius: 5%;
-}
-
-.commentTop {
+    border-radius: 6px;
+    padding: 1em;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.profilePic {
-    width: 6.5em;
-    height: 6.5em;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    border: 3px solid white; /* Creates the overlap effect */
-    box-shadow: 4px 5px 6px rgba(0, 0, 0, 0.4);
+    gap: 1em;
+    align-items: flex-start;
 }
 
 .profileWrapper {
-    position: absolute;
-    top: 50%;
-    left: 0.3em;    
-    transform: translateY(-50%);
-    z-index: 10;
+    flex-shrink: 0;
+    width: 2.8em;  /* Smaller profile pic */
 }
 
-.commentUser {
-    font-weight: bold;
+.profilePic {
+    width: 100%;
+    height: 2.8em;  /* Matching width */
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-.commentText {
-    font-size: 0.9rem;
-    margin: 0.6em 0;
-}
-
-.commentFooter {
+.contentDetails {
+    flex-grow: 1;
     display: flex;
-    justify-content: end;
+    flex-direction: column;
+    gap: 0.6em;  /* Increased gap for better spacing */
+}
+
+.contentTop {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin-top: 1em;
 }
 
-.commentTime {
-    font-size: 0.8rem;
-    color: gray;
-}
-
-.commentActions {
+.contentUserDetails {
     display: flex;
-    gap: 1em;
+    flex-direction: column;
+}
+
+.contentUser {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.contentAuthor {
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #6b6b6b;
+    margin-top: 0.4em;
+}
+
+.contentTime {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.contentTextContainer {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    padding: 1em;
+}
+
+.postTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0.2em 0;
+}
+
+.postImage {
+    width: 100%;
+    max-height: 20em;  /* Limit maximum height */
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0.3em 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contentText {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #333;
+    white-space: pre-wrap;  /* Preserve line breaks */
+    word-break: break-word;  /* Handle long words */
+    margin: 0.2em 0;
+}
+
+.contentFooter {
+    margin-top: 0.8em;
+}
+
+.contentActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.5em;
 }
 
 .approveButton,
 .deleteButton {
+    width: 2.5em;  /* Fixed square size */
+    height: 2.5em;
+    padding: 0;
     border: none;
-    background: none;
+    border-radius: 5px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    background-color: transparent;
+}
+
+.approveButton {
+    color: #2e7d32;
+}
+
+.deleteButton {
+    color: #c62828;
+}
+
+.approveButton:hover {
+    background-color: #e8f5e9;
+}
+
+.deleteButton:hover {
+    background-color: #ffebee;
 }
 
 .approveIcon,
 .rejectIcon {
-    height: 2em;
     width: 2em;
-    margin-right: 1em;
+    height: 2em;
 }
 
-.approveButton:hover {
-    color: green;
+/* Different styles for post vs comment */
+.contentCard[data-type="post"] .contentContainer {
+    flex-direction: column;
+    background: white;
+    border-radius: 8px;
+    padding: 1.2em;
 }
 
-.deleteButton:hover {
-    color: red;
+.contentCard[data-type="post"] .profileWrapper {
+    width: 3.5em;  /* Slightly larger for posts */
+    margin-right: 0.8em;
 }
 
+.contentCard[data-type="post"] .contentTop {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+    margin-bottom: 0.4em;
+}
+
+.contentCard[data-type="post"] .contentUser {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+}
+
+.contentCard[data-type="post"] .userTitle {
+    font-size: 0.85rem;
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: normal;
+    margin-top: 0.1em;
+}
+
+.contentCard[data-type="post"] .contentTime {
+    font-size: 0.85rem;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.contentCard[data-type="post"] .postTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #000;
+    margin: 0.8em 0;
+}
+
+.contentCard[data-type="post"] .contentText {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.9);
+    margin: 0.6em 0;
+}
+
+.contentCard[data-type="post"] .postImage {
+    width: 100%;
+    max-height: 25em;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0.8em 0;
+}
+
+/* Media Queries */
 @media (max-width: 48em) {
     .moderatorContainer {
         padding: 1em;
@@ -144,48 +288,81 @@
         font-size: 1.3rem;
     }
 
-    .commentCard {
-        padding: 0.6em;
-        margin-bottom: 1.4em;
-        box-shadow: 5px 5px 4px 0px rgba(0, 0, 0, 0.3);
+    .contentCard {
+        padding: 1em;
     }
 
-    .commentContainer {
+    .contentType {
+        font-size: 0.7rem;
+        top: 0.4em;
+        right: 0.8em;
+        color: #1976d2;
+    }
+
+    .contentContainer {
         margin: 1em auto 0;
         gap: 0.8em;
     }
 
-    .commentContent {
-        padding: 0.6em 1.2em 0.6em 4em;
-        gap: 0.8em;
+    .profileWrapper {
+        width: 2.5em;
     }
 
     .profilePic {
-        width: 5em;
-        height: 5em;
+        height: 2.5em;
     }
 
-    .profileWrapper {
-        left: 0.2em;
-    }
-
-    .commentUser {
+    .contentUser {
         font-size: 0.9rem;
     }
 
-    .commentText {
+    .contentText {
         font-size: 0.85rem;
+        line-height: 1.4;
     }
 
-    .commentTime {
-        font-size: 0.75rem;
+    .postTitle {
+        font-size: 1rem;
+    }
+
+    .postImage {
+        max-height: 15em;  /* Smaller max height on mobile */
+    }
+
+    .approveButton,
+    .deleteButton {
+        width: 2.2em;
+        height: 2.2em;
     }
 
     .approveIcon,
     .rejectIcon {
-        height: 1.8em;
-        width: 1.8em;
-        margin-right: 0.8em;
+        width: 1.5em;
+        height: 1.5em;
+    }
+
+    .contentCard[data-type="post"] .contentContainer {
+        padding: 1em;
+    }
+
+    .contentCard[data-type="post"] .profileWrapper {
+        width: 3em;
+    }
+
+    .contentCard[data-type="post"] .contentUser {
+        font-size: 0.95rem;
+    }
+
+    .contentCard[data-type="post"] .userTitle {
+        font-size: 0.8rem;
+    }
+
+    .contentCard[data-type="post"] .contentTime {
+        font-size: 0.8rem;
+    }
+
+    .contentCard[data-type="post"] .postTitle {
+        font-size: 1rem;
     }
 }
 
@@ -194,58 +371,67 @@
         padding: 0.8em 0.5em;
     }
 
-    .moderatorHeader {
-        font-size: 0.85rem;
-        margin-bottom: 1em;
+    .contentCard {
+        padding: 0.8em;
     }
 
-    .moderatorLength {
-        font-size: 1.2rem;
+    .contentType {
+        font-size: 0.65rem;
+        top: 0.3em;
+        right: 0.6em;
+        color: #1976d2;
     }
 
-    .commentCard {
-        padding: 0.5em;
-        margin-bottom: 1.2em;
-        box-shadow: 4px 4px 3px 0px rgba(0, 0, 0, 0.25);
+    .contentDetails {
+        padding: 0.5em 0.7em;
     }
 
-    .commentContainer {
-        margin: 0.8em auto 0;
-        gap: 0.6em;
-    }
-
-    .commentContent {
-        padding: 0.5em 1em 0.5em 3.5em;
-        gap: 0.6em;
+    .profileWrapper {
+        width: 2.2em;
     }
 
     .profilePic {
-        width: 4em;
-        height: 4em;
+        height: 2.2em;
     }
 
-    .commentUser {
-        font-size: 0.85rem;
+    .postTitle {
+        font-size: 0.95rem;
     }
 
-    .commentText {
+    .postImage {
+        max-height: 12em;
+    }
+
+    .contentText {
         font-size: 0.8rem;
-        margin: 0.4em 0;
+        line-height: 1.3;
     }
 
-    .commentTime {
-        font-size: 0.7rem;
+    .approveButton,
+    .deleteButton {
+        width: 2em;
+        height: 2em;
     }
 
     .approveIcon,
     .rejectIcon {
-        height: 1.6em;
-        width: 1.6em;
-        margin-right: 0.6em;
+        width: 1.4em;
+        height: 1.4em;
     }
 
-    .commentActions {
-        gap: 0.8em;
+    .contentCard[data-type="post"] .contentContainer {
+        padding: 0.8em;
+    }
+
+    .contentCard[data-type="post"] .profileWrapper {
+        width: 2.8em;
+    }
+
+    .contentCard[data-type="post"] .contentUser {
+        font-size: 0.9rem;
+    }
+
+    .contentCard[data-type="post"] .userTitle {
+        font-size: 0.75rem;
     }
 }
-  
