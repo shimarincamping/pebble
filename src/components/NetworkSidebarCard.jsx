@@ -16,7 +16,7 @@ const NetworkSidebarCard = ({
       {/* My Network Section */}
       <div className={styles.networkSidebarCard__myNetwork}>
         <h3>
-          My Network <span>({followerCount})</span>
+          My Followers <span>({followerCount})</span>
         </h3>
         <div className={styles.networkSidebarCard__myNetwork__userTileContainer}>
           <MyNetworkList myNetworkUsers={myFollowers} handleUserClick={handleUserClick} />
@@ -33,7 +33,7 @@ const NetworkSidebarCard = ({
 
       {/* People You May Know Section */}
       <div className={styles.networkSidebarCard__peopleYouMayKnow}>
-        <h3>People You May Know</h3>
+        <h3>Suggested Followers</h3>
         <PeopleYouMayKnowList 
           peopleYouMayKnowUsers={mySuggestedUsers} 
           handleFollowUser={handleFollowUser} 
