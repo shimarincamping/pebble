@@ -4,31 +4,35 @@ import PostCard from "../components/PostCard";
 import ComponentLoadingSpinner from "../components/ComponentLoadingSpinner";
 import styles from "../styles/PostCard.module.css";
 
-function PostCardContainer({ newPost }) {
+function PostCardContainer(props) {
   const navigate = useNavigate();
   const [postCardData, setPostCardData] = useState([]);
   const [copied, setCopied] = useState(false);
 
   // Fetch posts from backend
   useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/posts`);
-        const data = await response.json();
-        setPostCardData(data);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-      }
-    };
+    if (!props.postCardData) {
+      const fetchPosts = async () => {
+        try {
+          const response = await fetch(`${process.env.REACT_APP_API_URL}/posts`);
+          const data = await response.json();
+          setPostCardData(data);
+        } catch (error) {
+          console.error("Error fetching posts:", error);
+        }
+      };
 
-    fetchPosts();
+      fetchPosts();
+    } else {
+      setPostCardData(props.postCardData);
+    }
   }, []);
 
   useEffect(() => {
-    if (newPost) {
-      setPostCardData((prevPosts) => [{ ...newPost, id: prevPosts.length + 1 }, ...prevPosts]);
+    if (props.newPost) {
+      setPostCardData((prevPosts) => [{ ...props.newPost, id: prevPosts.length + 1 }, ...prevPosts]);
     }
-  }, [newPost]);
+  }, [props.newPost]);
 
   const handlePostClick = (id) => navigate(`/post/${id}`);
 
