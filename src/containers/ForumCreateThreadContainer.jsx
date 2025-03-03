@@ -6,12 +6,13 @@ import ForumThreadInputFieldRoadmapSectionButton from "../components/ForumThread
 
 export default function ForumCreateThreadContainer(props) {
     const [threadData, setThreadData] = useState({
-        threadType: "feedbackThread",
+        threadType: "forum",
         threadTitle: "",
         threadDescription: "",
     });
 
     const [roadmapThreadData, setRoadmapThreadData] = useState({
+        threadType: "roadmap",
         roadmapThreadTitle: "",
         roadmapThreadAuthor: "",
         roadmapProfileImageLink: "",
@@ -37,7 +38,7 @@ export default function ForumCreateThreadContainer(props) {
 
     // detect thread type
     const handleSelectThreadType = (event) => {
-        if (event.target.value === "roadmapThread") {
+        if (event.target.value === "roadmap") {
             setIsThreadTypeRoadmap(true);
         } else {
             setIsThreadTypeRoadmap(false);
@@ -208,8 +209,23 @@ export default function ForumCreateThreadContainer(props) {
         e.preventDefault(); // Prevent the default form submission behavior};
 
         isThreadTypeRoadmap
-            ? console.log(roadmapThreadData)
-            : console.log(threadData);
+            ? fetch(`${process.env.REACT_APP_API_URL}/roadmap/createRoadmap`, {
+                  method: "POST",
+                  body: JSON.stringify(roadmapThreadData),
+                  headers: new Headers({
+                      "Content-Type": "application/json; charset=UTF-8",
+                  }),
+              })
+            : fetch(
+                  `${process.env.REACT_APP_API_URL}/forum/createForumThread`,
+                  {
+                      method: "POST",
+                      body: JSON.stringify(threadData),
+                      headers: new Headers({
+                          "Content-Type": "application/json; charset=UTF-8",
+                      }),
+                  }
+              );
     };
 
     return (

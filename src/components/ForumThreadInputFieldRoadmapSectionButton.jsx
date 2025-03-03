@@ -19,15 +19,15 @@ export default function ForumThreadInputFieldRoadmapSectionButton(props) {
                     <div className={`${styles.createThread__input}`}>
                         <label>Title: </label>
                         <input
-                            id="roadmapBtnTitle"
+                            id="buttonTitle"
                             type="text"
-                            name="roadmapBtnTitle"
+                            name="buttonTitle"
                             placeholder="Add button title..."
                             onChange={(e) =>
                                 props.onSectionInputBtnChange(
                                     props.sectionIndex,
                                     props.btnIndex,
-                                    "roadmapBtnTitle",
+                                    "buttonTitle",
                                     e.target.value
                                 )
                             }
@@ -36,15 +36,15 @@ export default function ForumThreadInputFieldRoadmapSectionButton(props) {
                     <div className={`${styles.createThread__input}`}>
                         <label>Difficulty: </label>
                         <input
-                            id="roadmapBtnDifficulty"
+                            id="buttonDifficulty"
                             type="text"
-                            name="roadmapBtnDifficulty"
+                            name="buttonDifficulty"
                             placeholder="Add button difficulty..."
                             onChange={(e) =>
                                 props.onSectionInputBtnChange(
                                     props.sectionIndex,
                                     props.btnIndex,
-                                    "roadmapBtnDifficulty",
+                                    "buttonDifficulty",
                                     e.target.value
                                 )
                             }
@@ -53,15 +53,15 @@ export default function ForumThreadInputFieldRoadmapSectionButton(props) {
                     <div className={`${styles.createThread__input}`}>
                         <label>Duration: </label>
                         <input
-                            id="roadmapBtnDuration"
+                            id="buttonDuration"
                             type="text"
-                            name="roadmapBtnDuration"
+                            name="buttonDuration"
                             placeholder="Add button duration..."
                             onChange={(e) =>
                                 props.onSectionInputBtnChange(
                                     props.sectionIndex,
                                     props.btnIndex,
-                                    "roadmapBtnDuration",
+                                    "buttonDuration",
                                     e.target.value
                                 )
                             }
@@ -70,15 +70,15 @@ export default function ForumThreadInputFieldRoadmapSectionButton(props) {
                     <div className={`${styles.createThread__input}`}>
                         <label>Description: </label>
                         <input
-                            id="roadmapBtnDescription"
+                            id="buttonDescription"
                             type="text"
-                            name="roadmapBtnDescription"
+                            name="buttonDescription"
                             placeholder="Add button description..."
                             onChange={(e) =>
                                 props.onSectionInputBtnChange(
                                     props.sectionIndex,
                                     props.btnIndex,
-                                    "roadmapBtnDescription",
+                                    "buttonDescription",
                                     e.target.value
                                 )
                             }
@@ -87,15 +87,15 @@ export default function ForumThreadInputFieldRoadmapSectionButton(props) {
                     <div className={`${styles.createThread__input}`}>
                         <label>Image Link: </label>
                         <input
-                            id="roadmapBtnImageLink"
+                            id="buttonImage"
                             type="text"
-                            name="roadmapBtnImageLink"
+                            name="buttonImage"
                             placeholder="Add button image link..."
                             onChange={(e) =>
                                 props.onSectionInputBtnChange(
                                     props.sectionIndex,
                                     props.btnIndex,
-                                    "roadmapBtnImageLink",
+                                    "buttonImage",
                                     e.target.value
                                 )
                             }
@@ -104,15 +104,15 @@ export default function ForumThreadInputFieldRoadmapSectionButton(props) {
                     <div className={`${styles.createThread__input}`}>
                         <label>Resource Link: </label>
                         <input
-                            id="roadmapBtnResourceLink"
+                            id="buttonLink"
                             type="url"
-                            name="roadmapBtnResourceLink"
+                            name="buttonLink"
                             placeholder="Add button resource link..."
                             onChange={(e) =>
                                 props.onSectionInputBtnChange(
                                     props.sectionIndex,
                                     props.btnIndex,
-                                    "roadmapBtnResourceLink",
+                                    "buttonLink",
                                     e.target.value
                                 )
                             }
@@ -145,15 +145,15 @@ export default function ForumThreadInputFieldRoadmapSectionButton(props) {
                     <div className={`${styles.createThread__input}`}>
                         <label>Title: </label>
                         <input
-                            id="roadmapBtnTitle"
+                            id="buttonTitle"
                             type="text"
-                            name="roadmapBtnTitle"
+                            name="buttonTitle"
                             placeholder="Add button title..."
                             onChange={(e) =>
                                 props.onSectionInputBtnChange(
                                     props.sectionIndex,
                                     props.btnIndex,
-                                    "roadmapBtnTitle",
+                                    "buttonTitle",
                                     e.target.value
                                 )
                             }
@@ -162,15 +162,15 @@ export default function ForumThreadInputFieldRoadmapSectionButton(props) {
                     <div className={`${styles.createThread__input}`}>
                         <label>Resource Link: </label>
                         <input
-                            id="roadmapBtnResourceLink"
+                            id="buttonLink"
                             type="url"
-                            name="roadmapBtnResourceLink"
+                            name="buttonLink"
                             placeholder="Add button resource link..."
                             onChange={(e) =>
                                 props.onSectionInputBtnChange(
                                     props.sectionIndex,
                                     props.btnIndex,
-                                    "roadmapBtnResourceLink",
+                                    "buttonLink",
                                     e.target.value
                                 )
                             }
@@ -179,15 +179,15 @@ export default function ForumThreadInputFieldRoadmapSectionButton(props) {
                     <div className={`${styles.createThread__input}`}>
                         <label>Image Link: </label>
                         <input
-                            id="roadmapBtnImageLink"
+                            id="buttonImage"
                             type="text"
-                            name="roadmapBtnImageLink"
+                            name="buttonImage"
                             placeholder="Add button image link..."
                             onChange={(e) =>
                                 props.onSectionInputBtnChange(
                                     props.sectionIndex,
                                     props.btnIndex,
-                                    "roadmapBtnImageLink",
+                                    "buttonImage",
                                     e.target.value
                                 )
                             }
@@ -196,15 +196,15 @@ export default function ForumThreadInputFieldRoadmapSectionButton(props) {
                     <div className={`${styles.createThread__input}`}>
                         <label>Author Name: </label>
                         <input
-                            id="roadmapBtnAuthor"
+                            id="buttonAuthor"
                             type="text"
-                            name="roadmapBtnAuthor"
+                            name="buttonAuthor"
                             placeholder="Add button author..."
                             onChange={(e) =>
                                 props.onSectionInputBtnChange(
                                     props.sectionIndex,
                                     props.btnIndex,
-                                    "roadmapBtnAuthor",
+                                    "buttonAuthor",
                                     e.target.value
                                 )
                             }
