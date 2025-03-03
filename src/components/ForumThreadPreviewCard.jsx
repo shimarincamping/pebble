@@ -6,30 +6,31 @@ export default function ForumThreadPreviewCard({
     forumThread,
     userData,
     onClick,
+    toggleLike,
 }) {
     return (
-        <article
-            onClick={onClick}
-            className={`${styles.threadCard__thread} ${styles.threadCard__onClick}`}
-        >
-            <div className={`${styles.threadCard__header}`}>
-                <div className={`${styles.threadCard__title}`}>
-                    <h1>{forumThread.threadTitle}</h1>
-                    <time datetime={forumThread.threadDateTime}>
-                        Posted on {forumThread.threadDateTime}
-                    </time>
+        <article className={`${styles.threadCard__thread}`}>
+            <div
+                onClick={onClick}
+                className={`${styles.threadCard__main} ${styles.threadCard__onClick}`}
+            >
+                <div className={`${styles.threadCard__header}`}>
+                    <div className={`${styles.threadCard__title}`}>
+                        <h1>{forumThread.threadTitle}</h1>
+                        <time datetime={forumThread.threadDateTime}>
+                            Posted {forumThread.threadDateTime}
+                        </time>
+                    </div>
                 </div>
-                <div className={`${styles.threadCard__threadType}`}>
-                    {forumThread.threadType}
+                <div className={`${styles.threadCard__body}`}>
+                    <p>{forumThread.threadDescription}</p>
                 </div>
-            </div>
-            <div className={`${styles.threadCard__body}`}>
-                <p>{forumThread.threadDescription}</p>
             </div>
             <div className={`${styles.threadCard__footer}`}>
                 <div className={`${styles.threadCard__statistics}`}>
                     <span>
-                        <BiUpvote size={20} /> {forumThread.threadScore}
+                        <BiUpvote size={20} onClick={toggleLike} />{" "}
+                        {forumThread.threadScore}
                     </span>
                     <span>
                         <BiCommentDetail size={20} /> {forumThread.commentCount}

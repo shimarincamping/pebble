@@ -8,140 +8,85 @@ const ForumThreadContainer = () => {
     const { threadID } = useParams(); // Get the roadmap ID from
     const [forumThread, setForumThread] = useState(null);
     const [showAddComment, setShowAddComment] = useState(false);
-    const [hasAppendedUserData, setHasAppendedUserData] = useState(false);
-    const [inputText, setInputText] = useState("");
+    const [inputText, setInputText] = useState(" ");
+    const [commentDetails, setCommentDetails] = useState(null);
     const [replyTo, setReplyTo] = useState(null);
+    // const [hasUpvoted, setHasUpvoted] = useState(null);
 
-    const dummyForumThreadData = [
-        {
-            threadID: 1,
-            threadTitle:
-                "GongGong.AI a revolutionary new way for the older generation to interact with technology!",
-            threadDateTime: "2021-01-01 12:00:00",
-            threadType: "Feedback Thread",
-            threadDescription:
-                "I would love to receive some feedback on my newly created project that was made during the AI Nusantara GenAI workshop! Was wondering if the implementation of Gemini 1.5 Flash was the best choice for this use case. I’m also working on my conciseness and readability, so any additional feedback on that is appreciate. Thanks to anyone that takes the time to review this!",
-            threadScore: 38,
-            isFlagged: false,
-            userData: {
-                userID: 1,
-                profilePicture: "https://i.imgur.com/qPzFvF4.jpeg",
-                fullName: "Anoop Singh",
-                description: "BSE | Data Science | Finance",
-            },
-            comments: [
-                {
-                    commentID: 1,
-                    commentDetails: "So real",
-                    upvoteScore: 15,
-                    downvoteScore: 1,
-                    isFlagged: false,
-                    userData: {
-                        userID: 9,
-                        profilePicture: "https://i.imgur.com/qPzFvF4.jpeg",
-                        fullName: "Brendan Ooi",
-                        description: "Co-Founder at TalentSprout",
-                    },
-                },
-                {
-                    commentID: 2,
-                    commentDetails: "Nice!",
-                    upvoteScore: 10,
-                    downvoteScore: 2,
-                    isFlagged: false,
-                    userData: {
-                        userID: 3,
-                        profilePicture: "https://i.imgur.com/qPzFvF4.jpeg",
-                        fullName: "Edmond Yong",
-                        description: "Jesus",
-                    },
-                },
-            ],
-        },
-        {
-            threadID: 2,
-            threadTitle:
-                "Multi-model approaches to sentiment analysis with GenAI",
-            threadDateTime: "2021-01-02 12:00:00",
-            threadType: "Discussion Thread",
-            threadDescription:
-                "Hoping to one day replace goodreads :). Tried to include some GenAI features, might not have the best token efficiency. Any comments or feedback about the overall architecture or tech stack used would also be valuable Overall, I’m seeking feedback on implementation and features. Thanks very much for your time!",
-            threadScore: 55,
-            isFlagged: false,
-            userData: {
-                userID: 2,
-                profilePicture: "https://i.imgur.com/qPzFvF4.jpeg",
-                fullName: "Haarish Nair",
-                description: "Co-Founder at TalentSprout",
-            },
-            comments: [
-                {
-                    commentID: 1,
-                    commentDetails: "So UNREAL",
-                    upvoteScore: 15,
-                    downvoteScore: 1,
-                    isFlagged: false,
-                    userData: {
-                        userID: 9,
-                        profilePicture: "https://i.imgur.com/qPzFvF4.jpeg",
-                        fullName: "Brendan Ooi",
-                        description: "Co-Founder at TalentSprout",
-                    },
-                },
-                {
-                    commentID: 2,
-                    commentDetails: "KYS",
-                    upvoteScore: 10,
-                    downvoteScore: 2,
-                    isFlagged: false,
-                    userData: {
-                        userID: 3,
-                        profilePicture: "https://i.imgur.com/qPzFvF4.jpeg",
-                        fullName: "Edmond Yong",
-                        description: "Jesus",
-                    },
-                },
-            ],
-        },
-    ];
-
+    // Fetch forum data based on the ID
     useEffect(() => {
-        const selectedForumThread = dummyForumThreadData.find(
-            (item) => item.threadID === +threadID
-        );
-        setForumThread(selectedForumThread);
+        const fetchForumThread = async () => {
+            try {
+                const response = await fetch(
+                    `${process.env.REACT_APP_API_URL}/forum/${threadID}`
+                );
+                if (!response.ok) {
+                    throw new Error("Forum thread not found");
+                }
+                const data = await response.json();
+                setForumThread(data);
+            } catch (error) {
+                console.error("Error fetching forum thread:", error);
+                setForumThread(null);
+            }
+        };
+
+        fetchForumThread();
     }, [threadID]);
 
+    useEffect(() => {
+        if (replyTo) {
+            appendIDToReply(replyTo.fullName, inputText);
+        }
+    }, [replyTo]);
+
+    if (!forumThread) {
+        return <p>Loading roadmap details...</p>;
+    }
+
     const handleReplyComponent = (repliesTo) => {
+        // when first clicking on reply button
         setShowAddComment(true);
-        setHasAppendedUserData(true);
-        setReplyTo(repliesTo);
+        setReplyTo(repliesTo); // replyTo is the person you are replying to's data
     };
 
     const closeReplyComponent = () => {
         setShowAddComment(false);
+        setInputText("");
+        setCommentDetails(null);
     };
 
-    const appendIDToReply = (ID, text) => {
+    const appendIDToReply = (name, text) => {
         const existingID = inputText.match(/@\d+/);
         existingID
-            ? setInputText(inputText.replace(existingID, `@${ID}`))
-            : setInputText(`@${ID} ${text}`);
+            ? setInputText(inputText.replace(existingID, `@${name}`))
+            : setInputText(`@${name} ${text}`);
     };
 
     const handleInputChange = (e) => {
+        const { name, value } = e.target;
         setInputText(e.target.value);
+        setCommentDetails({ [name]: value });
     };
-
-    useEffect(() => {
-        if (replyTo) {
-            appendIDToReply(replyTo.userID, inputText);
-        }
-    }, [replyTo]);
 
     const handleSubmit = (e) => {
         e.preventDefault(); // Prevent the default form submission behavior};
-        console.log(inputText);
+        fetch(`${process.env.REACT_APP_API_URL}/forum/${threadID}/comments`, {
+            method: "POST",
+            body: JSON.stringify(commentDetails),
+            headers: new Headers({
+                "Content-Type": "application/json; charset=UTF-8",
+            }),
+        });
+    };
+
+    const toggleLike = async () => {
+        await fetch(
+            `${process.env.REACT_APP_API_URL}/forum/${threadID}/likes`,
+            {
+                method: "PUT",
+            }
+        );
     };
 
     if (!forumThread) return <p>Loading forum details...</p>;
@@ -152,6 +97,7 @@ const ForumThreadContainer = () => {
                 forumThread={forumThread}
                 userData={forumThread.userData}
                 onClickReply={() => handleReplyComponent(forumThread.userData)}
+                toggleLike={toggleLike}
             />
             <div>
                 {showAddComment ? (
