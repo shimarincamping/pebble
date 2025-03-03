@@ -13,7 +13,7 @@ function RewardWheelCardContainer(){
 
     const ticketCount=2;
     const getTicketCount=()=>{
-        if (ticketCount==1){
+        if (ticketCount===1){
             return ticketCount+" ticket"
         }else{
             return ticketCount+" tickets"

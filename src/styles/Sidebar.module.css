@@ -1,7 +1,6 @@
 /* Global sidebar styling */
 
 .sidebarContainer {
-    background-color: var(--sidebarContainerBackground);
     height: 90vh;
     min-width: 16em;
     margin-top: 10vh;
