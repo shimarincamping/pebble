@@ -14,6 +14,7 @@ export default function ForumThreadDetailsCard({
     forumThread,
     userData,
     onClickReply,
+    toggleLike,
 }) {
     return (
         <>
@@ -29,9 +30,6 @@ export default function ForumThreadDetailsCard({
                             Posted on {forumThread.threadDateTime}
                         </time>
                     </div>
-                    <div className={`${styles.threadCard__threadType}`}>
-                        {forumThread.threadType}
-                    </div>
                 </div>
                 <div className={`${styles.threadCard__body}`}>
                     <p>{forumThread.threadDescription}</p>
@@ -39,17 +37,17 @@ export default function ForumThreadDetailsCard({
                 <div className={`${styles.threadCard__footer}`}>
                     <div className={`${styles.threadCard__statistics}`}>
                         <span>
-                            <BiUpvote size={20} /> {forumThread.threadScore}
+                            <BiUpvote size={20} onClick={toggleLike} />{" "}
+                            {forumThread.threadScore}
                         </span>
                         <span>
                             <BiCommentDetail size={20} />{" "}
-                            {forumThread.commentCount}
                         </span>
                         <span>
                             <BiFlag size={20} />
                         </span>
                         <span>
-                            <BiShareAlt size={20} /> {forumThread.shareCount}
+                            <BiShareAlt size={20} />
                         </span>
                         <span onClick={onClickReply}>
                             <BiReply size={20} /> Reply

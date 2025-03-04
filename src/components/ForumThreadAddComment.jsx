@@ -8,14 +8,14 @@ export default function ForumThreadAddComment(props) {
             <section className={`${styles.createComment__section}`}>
                 <div className={`${styles.createComment__input}`}>
                     <div className={`${styles.createComment__cancel}`}>
-                        <label htmlFor="threadComment">Add a Comment</label>
+                        <label htmlFor="commentDetails">Add a Comment</label>
                         <button onClick={props.onCancel}>
                             <MdOutlineCancel size={25} />
                         </button>
                     </div>
                     <input
                         type="text"
-                        name="threadComment"
+                        name="commentDetails"
                         placeholder={`Reply to ${props.repliesTo}`}
                         value={props.inputText}
                         onChange={props.onChange}

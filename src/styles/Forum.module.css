@@ -44,6 +44,12 @@
     cursor: pointer;
 }
 
+.threadCard__main {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
 .threadCard__header {
     display: flex;
     justify-content: space-between;
@@ -331,7 +337,8 @@
     }
 }
 
-@media (max-width: 48em) { /* 768px */
+@media (max-width: 48em) {
+    /* 768px */
     .threadCard__header {
         flex-direction: column;
         gap: 0.5rem;
@@ -367,7 +374,8 @@
 }
 
 /* Mobile adjustments */
-@media (max-width: 30em) { /* 480px */
+@media (max-width: 30em) {
+    /* 480px */
     .forumHeader__button {
         font-size: 0.875rem;
         padding: 0.25rem 0.75rem;
