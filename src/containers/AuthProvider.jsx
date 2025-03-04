@@ -43,20 +43,21 @@ export const AuthProvider = ({ children }) => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password }),
             });
-
+    
             const data = await response.json();
-            if (response.ok) {
-                localStorage.setItem("jwtToken", data.jwtToken);
-                setUser(data.user);
-            } else {
-                throw new Error(data.message || "Login failed");
+            if (!response.ok) {
+                throw new Error(data.error || "Login failed"); // 🔴 Display error from backend
             }
+    
+            localStorage.setItem("jwtToken", data.jwtToken);
+            setUser(data.user);
         } catch (error) {
             console.error("Login error:", error.message);
+            alert("Invalid email or password. Please try again."); // 🔴 Notify user of invalid credentials
             throw error;
         }
     };
-
+    
     const logout = () => {
         localStorage.removeItem("jwtToken");
         setUser(null);

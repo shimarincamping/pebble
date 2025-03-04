@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 import { useAuth } from "../containers/AuthProvider";
 import LoginInputField from "../components/LoginInputField";
 import styles from "../styles/LoginRegistration.module.css";
 
 const LoginFormContainer = () => {
   const { login } = useAuth();
+  const navigate = useNavigate(); // Initialize navigation
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -21,13 +23,14 @@ const LoginFormContainer = () => {
     try {
       await login(formData.email, formData.password);
       alert("Login successful!");
+      navigate("/feed"); // Redirect to FeedPage
     } catch (error) {
       setError(error.message || "Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
   };
-
+  
   const formFields = {
     email: { label: "Email Address", type: "text" },
     password: { label: "Password", type: "password" },
