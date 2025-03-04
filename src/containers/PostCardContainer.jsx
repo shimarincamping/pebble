@@ -46,11 +46,17 @@ function PostCardContainer(props) {
       });
   
       if (response.ok) {
+        // Fetch updated post data
+        const updatedPost = await fetch(`${process.env.REACT_APP_API_URL}/posts/${id}`);
+        const updatedPostData = await updatedPost.json();
+  
+        // Update state with new data
         setPostCardData((prevData) =>
           prevData.map((post) =>
-            post.id === id ? { ...post, liked: !post.liked } : post
+            post.id === id ? updatedPostData : post
           )
         );
+  
         console.log("Post like toggled successfully.");
       } else {
         console.error("Failed to like/unlike post.");
@@ -59,35 +65,38 @@ function PostCardContainer(props) {
       console.error("Error liking post:", error);
     }
   };
-  
+      
   const handleReport = async (id) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/flags`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          contentID: id,
-          contentType: "post", // Adjust based on content type (post, thread, etc.)
-        }),
-      });
-  
-      if (response.ok) {
-        setPostCardData((prevData) =>
-          prevData.map((post) =>
-            post.id === id ? { ...post, reported: true } : post
-          )
-        );
-        console.log("Post reported successfully.");
-      } else {
-        console.error("Failed to report post.");
-      }
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/flags`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                contentID: id,
+                contentType: "post",
+            }),
+        });
+
+        if (response.ok) {
+            const { reported, contentID } = await response.json(); // Expecting { reported: true, contentID: id }
+
+            setPostCardData((prevData) =>
+                prevData.map((post) =>
+                    post.id === contentID ? { ...post, reported } : post
+                )
+            );
+
+            console.log("Post reported successfully.");
+        } else {
+            console.error("Failed to report post.");
+        }
     } catch (error) {
-      console.error("Error reporting post:", error);
+        console.error("Error reporting post:", error);
     }
-  };
-  
+};
+    
   const handleCopyLink = (link) => {
     navigator.clipboard.writeText(link);
     setCopied(true);

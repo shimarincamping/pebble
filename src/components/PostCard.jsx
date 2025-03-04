@@ -82,8 +82,8 @@ const PostCard = ({ post, onClick, onLike, onReport, onCopyLink }) => {
                     <BsFlagFill />
                 </div>
             </div>
-            {showComments && <PostCommentContainer onClose={() => setShowComments(false)} />}
-        </div>
+            {showComments && <PostCommentContainer postID={post.id} onClose={() => setShowComments(false)} />}
+            </div>
     );
 };
 
