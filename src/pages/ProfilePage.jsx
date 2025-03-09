@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import ApplicationSidebar from "../containers/ApplicationSidebar";
 import ApplicationMainContent from "../containers/ApplicationMainContent";
-import PageHeaderContainer from '../containers/PageHeaderContainer.jsx';
+import PageHeaderContainer from "../containers/PageHeaderContainer.jsx";
 
 import ProfilePageContainer from "../containers/ProfilePageContainer";
 import CVSidebarCardContainer from "../containers/CVSidebarCardContainer";
@@ -11,48 +11,32 @@ import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContain
 
 import styles from "../styles/global.module.css";
 
-    
 function ProfilePage() {
-
     const { id } = useParams();
 
     return (
         <>
             <PageHeaderContainer />
-
-            {
-                (id === "me") ? (
-                    <>
-                    <div
-                        className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBodyRight}`}  
-                    >
-                        <ApplicationMainContent>
-                            <ProfilePageContainer id={id}/>
-                        </ApplicationMainContent>
-
-                        <ApplicationSidebar>
-                            <CVSidebarCardContainer />
-                            <NetworkSidebarCardContainer />
-                        </ApplicationSidebar>
-                    </div>
-                    </> 
-                ) : (
-                    <>
-                    <div
-                        className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationWideBodyLeft}`}  
-                    >
-                        <ApplicationSidebar>
-                            <ProfileSidebarCardContainer />
-                        </ApplicationSidebar>
-
-                        <ApplicationMainContent>
-                            <ProfilePageContainer id={id}/>
-                        </ApplicationMainContent>
-                    </div>  
-                    </>                  
-                )
-            }
-            
+            <div
+                className={`${styles.mainApplicationGridContainer} ${
+                    id === "me" ? styles.mainApplicationWideBodyRight : styles.mainApplicationWideBodyLeft
+                }`}
+            >
+                {id !== "me" && (
+                    <ApplicationSidebar>
+                        <ProfileSidebarCardContainer />
+                    </ApplicationSidebar>
+                )}
+                <ApplicationMainContent>
+                    <ProfilePageContainer id={id} />
+                </ApplicationMainContent>
+                {id === "me" && (
+                    <ApplicationSidebar>
+                        <CVSidebarCardContainer />
+                        <NetworkSidebarCardContainer />
+                    </ApplicationSidebar>
+                )}
+            </div>
         </>
     );
 }
