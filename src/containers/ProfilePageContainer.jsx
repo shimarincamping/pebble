@@ -9,36 +9,60 @@ import ProfilePageDetailCardContainer from "./ProfilePageDetailCardContainer";
 import ProfilePagePostsCardContainer from "./ProfilePagePostsCardContainer";
 import EditProfileFormContainer from "./EditProfileFormContainer";
 
-function ProfilePageContainer({id}) {
+function ProfilePageContainer({ id }) {
 
     const { user } = useAuth();
     const isMyProfile = (id === "me");
+    const currentRequestID = (async () => {
+        return (isMyProfile) ? (await user) : id;
+    })();
 
     const [userProfileData, setUserProfileData] = useState(null);
     const [userProfileDetails, setUserProfileDetails] = useState(null);
     const [userPostHistory, setUserPostHistory] = useState(null);
     const [isEditProfileFormVisible, setIsEditProfileFormVisible] = useState(false);
 
-    const handleFetchProfileData = async () => {
-        const currentRequestID = (isMyProfile) ? (await user) : id;
+    useEffect(() => {
+        const handleFetchProfileData = async () => {
 
-        const fetchedProfileData = await fetch(
-            `${process.env.REACT_APP_API_URL}/users/${currentRequestID}/profile-information/full`
-        );
+            const fetchedProfileData = await fetch(
+                `${process.env.REACT_APP_API_URL}/users/${currentRequestID}/profile-information/full`
+            );
+    
+            if (fetchedProfileData.ok) {
+                const fetchedJsonProfileData = await fetchedProfileData.json();
+                setUserProfileData(fetchedJsonProfileData);
+                setUserProfileDetails(fetchedJsonProfileData.profileDetails);
+            }
+    
+            if (fetchedProfileData.status === 404) {
+                alert("The user profile does not exist or could not be found.");
+            }
+        };
 
-        if (fetchedProfileData.ok) {
-            const fetchedJsonProfileData = await fetchedProfileData.json();
-            setUserProfileData(fetchedJsonProfileData);
-            setUserProfileDetails(fetchedJsonProfileData.profileDetails);
-        }
+        handleFetchProfileData();
+    }, [currentRequestID]);
 
-        if (fetchedProfileData.status === 404) {
-            alert("The user profile does not exist or could not be found.");
-        }
-    };
+
+    useEffect(() => {
+        const pushAllProfileData = async () => {
+
+            await fetch(`${process.env.REACT_APP_API_URL}/users/${currentRequestID}`, {
+                method: "PUT",
+                body: JSON.stringify({
+                    ...userProfileData,
+                    profileDetails: userProfileDetails,
+                }),
+                headers: new Headers({
+                    "Content-Type": "application/json; charset=UTF-8",
+                }),
+            });
+        };
+
+        pushAllProfileData();
+    }, [currentRequestID, userProfileData, userProfileDetails]);
 
     const handleFetchPostHistory = async () => {
-        if (!currentRequestID) return;
 
         const fetchedPostHistoryData = await fetch(
             `${process.env.REACT_APP_API_URL}/posts?authorID=${currentRequestID}`
@@ -48,43 +72,7 @@ function ProfilePageContainer({id}) {
         setUserPostHistory(fetchedJsonPostHistoryData);
     };
 
-    useEffect(() => {
-        handleFetchProfileData();
-    }, [currentRequestID]);
-
-    useEffect(() => {
-        pushAllProfileData();
-    }, [userProfileData, userProfileDetails]);
-
-    function updateProfileData(dataKey, newValue) {
-        setUserProfileData((prev) => ({ ...prev, [dataKey]: newValue }));
-    }
-
-    function updateProfileDetails(dataKey, newValue) {
-        setUserProfileDetails((prev) => ({ ...prev, [dataKey]: newValue }));
-    }
-
-    async function pushAllProfileData() {
-        if (!currentRequestID) return;
-
-        await fetch(`${process.env.REACT_APP_API_URL}/users/${currentRequestID}`, {
-            method: "PUT",
-            body: JSON.stringify({
-                ...userProfileData,
-                profileDetails: userProfileDetails,
-            }),
-            headers: new Headers({
-                "Content-Type": "application/json; charset=UTF-8",
-            }),
-        });
-    }
-
-    function initPostHistory() {
-        handleFetchPostHistory();
-    }
-
-    async function toggleFollow() {
-        if (!currentRequestID) return;
+    const toggleFollow = async () => {
 
         await fetch(`${process.env.REACT_APP_API_URL}/users/${currentRequestID}/followers`, {
             method: "PUT",
@@ -94,6 +82,19 @@ function ProfilePageContainer({id}) {
             isFollowingUser: !prev.isFollowingUser,
             followerCount: prev.followerCount + (prev.isFollowingUser ? -1 : 1),
         }));
+    }
+
+
+    function updateProfileData(dataKey, newValue) {
+        setUserProfileData((prev) => ({ ...prev, [dataKey]: newValue }));
+    }
+
+    function updateProfileDetails(dataKey, newValue) {
+        setUserProfileDetails((prev) => ({ ...prev, [dataKey]: newValue }));
+    }
+
+    function initPostHistory() {
+        handleFetchPostHistory();
     }
 
     return (
