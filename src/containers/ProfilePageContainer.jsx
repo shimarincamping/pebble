@@ -9,19 +9,18 @@ import ProfilePageDetailCardContainer from "./ProfilePageDetailCardContainer";
 import ProfilePagePostsCardContainer from "./ProfilePagePostsCardContainer";
 import EditProfileFormContainer from "./EditProfileFormContainer";
 
-function ProfilePageContainer({ id }) {
+function ProfilePageContainer({id}) {
+
     const { user } = useAuth();
-    const isMyProfile = id === "me";
+    const isMyProfile = (id === "me");
 
     const [userProfileData, setUserProfileData] = useState(null);
     const [userProfileDetails, setUserProfileDetails] = useState(null);
     const [userPostHistory, setUserPostHistory] = useState(null);
     const [isEditProfileFormVisible, setIsEditProfileFormVisible] = useState(false);
 
-    const currentRequestID = isMyProfile ? user?.uid : id;
-
     const handleFetchProfileData = async () => {
-        if (!currentRequestID) return;
+        const currentRequestID = (isMyProfile) ? (await user) : id;
 
         const fetchedProfileData = await fetch(
             `${process.env.REACT_APP_API_URL}/users/${currentRequestID}/profile-information/full`

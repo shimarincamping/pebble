@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from "../containers/AuthProvider";
+
 import CodingChallengePreview from '../components/CodingChallengePreview';
 import CodingChallengeQuestion from '../components/CodingChallengeQuestion';
 import ComponentLoadingSpinner from '../components/ComponentLoadingSpinner';
@@ -7,7 +9,8 @@ import styles from '../styles/CodingChallengePreview.module.css';
 
 
 function CodingChallengePageContainer() {
-    
+
+    const { user } = useAuth();
     const [currentQuizList, setCurrentQuizList] = useState(null);
 
     const [currentQuiz, setCurrentQuiz] = useState(null);
@@ -15,7 +18,7 @@ function CodingChallengePageContainer() {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
     const handleFetchData = async () => {
-        const currentUserID = "3oMAV7h8tmHVMR8Vpv9B" // Replace with value set by authentication feature, currently always Anoop
+        const currentUserID = await user;
 
         const fetchedData = await fetch(`${process.env.REACT_APP_API_URL}/coding-challenges`);
         const fetchedJsonData = await fetchedData.json();
