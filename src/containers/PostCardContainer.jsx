@@ -3,20 +3,28 @@ import { useNavigate } from "react-router-dom";
 import PostCard from "../components/PostCard";
 import ComponentLoadingSpinner from "../components/ComponentLoadingSpinner";
 import styles from "../styles/PostCard.module.css";
+import { useAuth } from "../containers/AuthProvider";
+
 
 function PostCardContainer(props) {
   const navigate = useNavigate();
   const [postCardData, setPostCardData] = useState([]);
+  const [editingPost, setEditingPost] = useState(null);
+  const [newContent, setNewContent] = useState("");
   const [copied, setCopied] = useState(false);
+  const { user } = useAuth(); // useAuth calls useContext, fetches userId
 
-  // Fetch posts from backend
+  // Fetch posts from backend (only show visible posts)
   useEffect(() => {
     if (!props.postCardData) {
       const fetchPosts = async () => {
         try {
           const response = await fetch(`${process.env.REACT_APP_API_URL}/posts`);
           const data = await response.json();
-          setPostCardData(data);
+
+          // Filter out hidden posts
+          const visiblePosts = data.filter(post => post.isContentVisible !== false);
+          setPostCardData(visiblePosts);
         } catch (error) {
           console.error("Error fetching posts:", error);
         }
@@ -24,21 +32,75 @@ function PostCardContainer(props) {
 
       fetchPosts();
     } else {
-      setPostCardData(props.postCardData);
+      // Ensure only visible posts are set
+      setPostCardData(props.postCardData.filter(post => post.isContentVisible !== false));
     }
   }, []);
-
+  
   useEffect(() => {
     if (props.newPost) {
-      setPostCardData((prevPosts) => [{ ...props.newPost, id: prevPosts.length + 1 }, ...prevPosts]);
+      setPostCardData((prevPosts) => [{ ...props.newPost, user: prevPosts.length + 1 }, ...prevPosts]);
     }
   }, [props.newPost]);
 
-  const handlePostClick = (id) => navigate(`/post/${id}`);
+  const handlePostClick = (user) => navigate(`/post/${user}`);
 
-  const handleLike = async (id) => {
+  const handleEditClick = (post) => {
+    setEditingPost(post);
+    setNewContent(post.postDesc);
+  };
+
+  const handleSaveEdit = async () => {
+    if (!editingPost || !editingPost.user) {
+      console.error("Editing post is not properly set.");
+      return;
+    }
+  
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/posts/${id}/like`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/posts/${editingPost.user}/edit`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ newPostContent: newContent }),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to edit post.");
+      }
+  
+      // Update post in state
+      setPostCardData((prevData) =>
+        prevData.map((post) =>
+          post.user === editingPost.user ? { ...post, postDesc: newContent } : post
+        )
+      );
+  
+      // Close modal
+      setEditingPost(null);
+    } catch (error) {
+      console.error("Error editing post:", error);
+    }
+  };
+      
+  const handleDeleteClick = async (user) => {
+    if (!window.confirm("Are you sure you want to delete this post?")) return;
+
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/posts/${user}/delete`, { method: "DELETE" });
+
+      if (response.ok) {
+        // Immediately remove the post from the state
+        setPostCardData((prevData) => prevData.filter((post) => post.user !== user));
+      } else {
+        console.error("Failed to delete post.");
+      }
+    } catch (error) {
+      console.error("Error deleting post:", error);
+    }
+  };
+  
+  const handleLike = async (user) => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/posts/${user}/like`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -47,13 +109,13 @@ function PostCardContainer(props) {
   
       if (response.ok) {
         // Fetch updated post data
-        const updatedPost = await fetch(`${process.env.REACT_APP_API_URL}/posts/${id}`);
+        const updatedPost = await fetch(`${process.env.REACT_APP_API_URL}/posts/${user}`);
         const updatedPostData = await updatedPost.json();
   
         // Update state with new data
         setPostCardData((prevData) =>
           prevData.map((post) =>
-            post.id === id ? updatedPostData : post
+            post.user === user ? updatedPostData : post
           )
         );
   
@@ -66,7 +128,7 @@ function PostCardContainer(props) {
     }
   };
       
-  const handleReport = async (id) => {
+  const handleReport = async (user) => {
     try {
         const response = await fetch(`${process.env.REACT_APP_API_URL}/flags`, {
             method: "POST",
@@ -74,7 +136,7 @@ function PostCardContainer(props) {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                contentID: id,
+                contentID: user,
                 contentType: "post",
             }),
         });
@@ -84,7 +146,7 @@ function PostCardContainer(props) {
 
             setPostCardData((prevData) =>
                 prevData.map((post) =>
-                    post.id === contentID ? { ...post, reported } : post
+                    post.user === contentID ? { ...post, reported } : post
                 )
             );
 
@@ -109,9 +171,11 @@ function PostCardContainer(props) {
         {postCardData.length > 0 ? (
           postCardData.map((post) => (
             <PostCard
-              key={post.id}
+              key={post.user}
               post={post}
-              onClick={() => handlePostClick(post.id)}
+              onClick={() => handlePostClick(post.user)}
+              onEditClick={handleEditClick}
+              onDeleteClick={handleDeleteClick}
               onLike={handleLike}
               onReport={handleReport}
               onCopyLink={handleCopyLink}
@@ -121,6 +185,26 @@ function PostCardContainer(props) {
           <ComponentLoadingSpinner />
         )}
       </div>
+      {editingPost && (
+        <div className={styles.modalOverlay} onClick={() => setEditingPost(null)}>
+          <div className={styles.editModal} onClick={(e) => e.stopPropagation()}>
+            <h3>Edit Post</h3>
+            <textarea
+              value={newContent}
+              onChange={(e) => setNewContent(e.target.value)}
+              className={styles.textarea}
+            />
+            <div className={styles.modalButtons}>
+              <button className={styles.saveButton} onClick={handleSaveEdit}>
+                Save
+              </button>
+              <button className={styles.cancelButton} onClick={() => setEditingPost(null)}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       {copied && <div className={styles.copiedMessage}>Link copied to clipboard!</div>}
     </div>
   );

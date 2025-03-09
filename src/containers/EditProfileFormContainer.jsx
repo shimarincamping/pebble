@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import EditProfileForm from "../components/EditProfileForm";
 import styles from "../styles/EditProfileForm.module.css";
+import { useAuth } from "../containers/AuthProvider";
+
 
 const EditProfileFormContainer = ({ initialData, onClose, onSave }) => {
+    const { user } = useAuth(); // useAuth calls useContext, fetches userId
     const [formData, setFormData] = useState(initialData);
     const [profilePicture, setProfilePicture] = useState(null);
 
@@ -18,10 +21,28 @@ const EditProfileFormContainer = ({ initialData, onClose, onSave }) => {
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        onSave({ ...formData, profilePicture });
-        onClose();
+
+        try {
+            const currentRequestID = await user;; // ID set by authentication middleware
+
+            await fetch(`${process.env.REACT_APP_API_URL}/users/${currentRequestID}`, {
+                method: 'PUT',
+                body: JSON.stringify({
+                    ...formData, 
+                    profilePicture
+                }),
+                headers: {
+                    'Content-Type': 'application/json; charset=UTF-8'
+                }
+            });
+
+            onSave(formData);
+            onClose();
+        } catch (error) {
+            console.error("Error updating profile:", error);
+        }
     };
 
     return (
