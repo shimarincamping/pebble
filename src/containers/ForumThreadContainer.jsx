@@ -71,11 +71,13 @@ const ForumThreadContainer = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault(); // Prevent the default form submission behavior};
+        const token = localStorage.getItem("jwtToken");
         fetch(`${process.env.REACT_APP_API_URL}/forum/${threadID}/comments`, {
             method: "POST",
             body: JSON.stringify(commentDetails),
             headers: new Headers({
                 "Content-Type": "application/json; charset=UTF-8",
+                Authorization: `Bearer ${token}`,
             }),
         });
     };

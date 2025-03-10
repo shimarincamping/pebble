@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
 import { useAuth } from "./AuthProvider";
 
 import ProfilePageHeaderInfoCard from "../components/ProfilePageHeaderInfoCard";
@@ -13,9 +12,9 @@ import EditProfileFormContainer from "./EditProfileFormContainer";
 function ProfilePageContainer({ id }) {
 
     const { user } = useAuth();
-    const navigate = useNavigate();
 
     const isMyProfile = (id === "me");
+    const currentRequestID = isMyProfile ? user : id;
 
     const [userProfileData, setUserProfileData] = useState(null);
     const [userProfileDetails, setUserProfileDetails] = useState(null);
@@ -23,14 +22,11 @@ function ProfilePageContainer({ id }) {
     const [isEditProfileFormVisible, setIsEditProfileFormVisible] = useState(false);
 
     useEffect(() => {
+        if (!currentRequestID) { 
+            return; 
+        }
+
         const handleFetchProfileData = async () => {
-
-            const currentRequestID = isMyProfile ? await user : id;
-            if (!currentRequestID) {
-                return navigate('/splash')
-            }
-
-
             const fetchedProfileData = await fetch(
                 `${process.env.REACT_APP_API_URL}/users/${currentRequestID}/profile-information/full`
             );
@@ -47,17 +43,15 @@ function ProfilePageContainer({ id }) {
         };
 
         handleFetchProfileData();
-    }, [isMyProfile, user, id]);
+    }, [currentRequestID]);
 
 
     useEffect(() => {
+        if (!currentRequestID) { 
+            return; 
+        }
+        
         const pushAllProfileData = async () => {
-
-            const currentRequestID = isMyProfile ? await user : id;
-            if (!currentRequestID) {
-                return navigate('/splash')
-            }
-
             await fetch(`${process.env.REACT_APP_API_URL}/users/${currentRequestID}`, {
                 method: "PUT",
                 body: JSON.stringify({
@@ -71,13 +65,11 @@ function ProfilePageContainer({ id }) {
         };
 
         pushAllProfileData();
-    }, [userProfileData, userProfileDetails, isMyProfile, user, id]);
+    }, [userProfileData, userProfileDetails, currentRequestID]);
 
     const handleFetchPostHistory = async () => {
-
-        const currentRequestID = isMyProfile ? await user : id;
-        if (!currentRequestID) {
-            return navigate('/splash')
+        if (!currentRequestID) { 
+            return; 
         }
 
         const fetchedPostHistoryData = await fetch(
@@ -89,10 +81,8 @@ function ProfilePageContainer({ id }) {
     };
 
     const toggleFollow = async () => {
-
-        const currentRequestID = isMyProfile ? await user : id;
-        if (!currentRequestID) {
-            return navigate('/splash')
+        if (!currentRequestID) { 
+            return; 
         }
 
         await fetch(`${process.env.REACT_APP_API_URL}/users/${currentRequestID}/followers`, {
@@ -103,7 +93,7 @@ function ProfilePageContainer({ id }) {
             isFollowingUser: !prev.isFollowingUser,
             followerCount: prev.followerCount + (prev.isFollowingUser ? -1 : 1),
         }));
-    }
+    };
 
 
     function updateProfileData(dataKey, newValue) {

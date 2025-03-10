@@ -1,40 +1,56 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const checkAuth = async () => {
             const token = localStorage.getItem("jwtToken");
-            if (token) {
-                try {
-                    const response = await fetch(
-                        `${process.env.REACT_APP_API_URL}/auth/verify`,
-                        {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                                Authorization: `Bearer ${token}`,
-                            },
-                        }
-                    );
+            if (
+                location.pathname !== "/login" &&
+                location.pathname !== "/register" &&
+                location.pathname !== "/splash"
+            ) {
+                if (token) {
+                    try {
+                        const response = await fetch(
+                            `${process.env.REACT_APP_API_URL}/auth/verify`,
+                            {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    Authorization: `Bearer ${token}`,
+                                },
+                            }
+                        );
 
-                    if (response.ok) {
-                        const data = await response.json();
-                        if (!data.user.uid) {
-                            throw new Error(`Could not authenticate user`);
+                        if (response.ok) {
+                            const data = await response.json();
+                            if (!data.user.uid) {
+                                throw new Error(`Could not authenticate user`);
+                            }
+                            setUser(data.user.uid);
+                        } else {
+                            navigate("/login");
+                            throw new Error(
+                                `${response.status} ${response.body}`
+                            );
                         }
-                        setUser(data.user.uid);
-                    } else {
-                        throw new Error(`${response.status} ${response.body}`);
+                    } catch (error) {
+                        console.error("Auth verification failed:", error);
+                        localStorage.removeItem("token");
+                        setUser(null);
                     }
-                } catch (error) {
-                    console.error("Auth verification failed:", error);
-                    localStorage.removeItem("token");
-                    setUser(null);
+                } else {
+                    console.log("No token found during authentication");
+                    navigate("/login");
                 }
             }
             setLoading(false);
@@ -64,7 +80,8 @@ export const AuthProvider = ({ children }) => {
             }
 
             localStorage.setItem("jwtToken", data.jwtToken);
-            console.log(data.uid);
+
+            console.log("Auth provider.jsx login: " + data.uid);
             setUser(data.uid);
         } catch (error) {
             console.error("Login error:", error.message);
