@@ -20,10 +20,10 @@ const PostCard = ({ post, onClick, onLike, onReport, onCopyLink, onEditClick, on
                     <p>{post.courseName}</p>
                     <p className={styles.postTime}>{post.time}</p>
                 </div>
-
-                <a href={post.linkedinUrl} target="_blank" rel="noopener noreferrer">
-                    <FaLinkedin className={styles.linkedinIcon} />
-                </a>
+                <div className={styles.postActionsIcons}>
+                    <BsPencilFill className={styles.editIcon} onClick={(e) => { e.stopPropagation(); onEditClick(post); }} />
+                    <BsTrashFill className={styles.deleteIcon} onClick={(e) => { e.stopPropagation(); onDeleteClick(post.id); }} />
+                </div>
             </div>
 
             {post.postPicture && (
