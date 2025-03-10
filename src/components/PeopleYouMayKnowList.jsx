@@ -12,7 +12,7 @@ const PeopleYouMayKnowList = ({ peopleYouMayKnowUsers = [], handleFollowUser, ha
             onClick={() => handleUserClick(user.userID)}
           >
             <p>{user.shortName}</p>
-            <p>{user.course}, Year {user.year}</p>
+            {(user.course && user.year) ? (<p>{user.course}, Year {user.year}</p>) : (<p>PEBBLE user</p>)}
           </div>
           <button 
             className={styles.networkSidebarCard__peopleYouMayKnow__followButton} 
