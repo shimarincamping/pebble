@@ -13,11 +13,8 @@ export default function ForumThreadInputField(props) {
                         id="threadType"
                         onChange={props.onSelectChange}
                     >
-                        <option value="feedbackThread">Feedback Thread</option>
-                        <option value="discussionThread">
-                            Discussion Thread
-                        </option>
-                        <option value="roadmapThread">Roadmap Thread</option>
+                        <option value="forum">Forum Thread</option>
+                        <option value="roadmap">Roadmap Thread</option>
                     </select>
                     <button onClick={props.clickBackButton}>
                         <MdOutlineCancel size={30} />

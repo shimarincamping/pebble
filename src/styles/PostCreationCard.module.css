@@ -3,7 +3,7 @@
     border: 0.05em solid var(--cardOutlineColor);
     border-radius: 1.5em;
     box-shadow: 0.2em 0.2em 0.1em var(--cardShadowColor);
-    padding: 0;
+    padding: 1.2em;
     margin: 1.2em;
 }
 
@@ -11,94 +11,220 @@
     width: 3em;
     height: 3em;
     border-radius: 50%;
-    margin-left: 1em;
     object-fit: cover;
+    flex-shrink: 0;
 }
 
 .postHeading {
     display: flex;
     align-items: center;
-    gap: 1em;
-    margin-top: 1em;
+    gap: 1.5em;
+    margin-bottom: 1.2em;
+    flex-wrap: nowrap;
 }
 
 .postType, .postModule {
-    width: 180px;
+    width: 30%;
     position: relative;
+    flex-shrink: 1;
+    min-width: 8em;
+    margin-right: 1em;
+}
+
+.postType:last-child, .postModule:last-child {
+    margin-right: 0;
 }
 
 .postType h5, .postModule h5 {
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 0.9rem;
+    font-weight: 600;
     color: #333;
-    margin-bottom: 5px;
+    margin-bottom: 0.4em;
 }
 
 .selectInput {
-    width: 100%;
     padding: 0.5em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
+    border: 0.05em solid #ccc;
+    border-radius: 0.3em;
+    font-size: 0.9rem;
     background-color: #fff;
 }
 
 .imageUpload {
     cursor: pointer;
-    margin-top: 1.3em;
-    margin-left: 9.1em;
+    margin-top: 1em;
+    margin-left: 4em;
 }
 
 .titlePost, .writePost {
     margin-top: 1em;
+    width: 100%;
 }
 
 .inputField, .textareaField {
-    width: 91%;
+    width: 95%;
     padding: 1em;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    margin-left: 1em;
+    font-size: 0.9rem;
+    border: 0.05em solid #ccc;
+    border-radius: 0.5em;
 }
 
 .textareaField {
-    height: 120px;
+    height: 8em;
     resize: none;
 }
 
 .imagePreview {
     margin-top: 1em;
     text-align: center;
+    width: 100%;
 }
 
 .imagePreview img {
-    max-width: 100%;
-    border-radius: 10px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 95%;
+    border-radius: 0.6em;
+    box-shadow: 0.1em 0.1em 0.3em rgba(0, 0, 0, 0.1);
 }
 
 .postItBtn {
-    text-align: center;
+    text-align: right;
     margin-top: 1em;
+    width: 100%;
 }
 
 .postItBtn button {
     padding: 0.5em 2em;
-    border: none;
-    border-radius: 20px;
+    border: 0.05em solid #E51B22;
+    border-radius: 1.2em;
     background-color: #E51B22;
     color: white;
-    font-size: 14px;
+    font-size: 0.9rem;
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s;
-    margin-bottom: 1em;
-    margin-left: 39em;
 }
 
 .postItBtn button:hover {
     background-color: white;
     color: #E51B22;
-    border: 0.1em solid #E51B22;
+    border: 0.05em solid #E51B22;
+}
+
+/* Tablet screens */
+@media (max-width: 64em) {
+    .postCreationCard {
+        padding: 1em;
+        margin: 1em;
+    }
+
+    .postHeading {
+        display: flex;
+        align-items: center;    
+    }
+
+    .postType, .postModule {
+        width: 25%;
+        margin-right: 0.8em;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 48em) {
+    .postCreationCard {
+        padding: 0.8em;
+        margin: 0.8em;
+        width: 90%;
+    }
+
+    .postHeading {
+        display: flex;
+        align-items: center;
+    }
+
+    .profilePicture {
+        width: 2.5em;
+        height: 2.5em;
+    }
+
+    .postType, .postModule {
+        width: 28%;
+        min-width: 6em;
+        margin-right: 0.6em;
+    }
+
+    .postType h5, .postModule h5 {
+        font-size: 0.85rem;
+    }
+
+    .selectInput {
+        padding: 0.4em;
+        font-size: 0.85rem;
+    }
+
+    .imageUpload {
+        margin-left: 0;
+        margin-top: 0.8em;
+        width: 100%;
+        text-align: center;
+    }
+
+    .inputField, .textareaField {
+        width: 90%;
+        padding: 0.8em;
+        font-size: 0.85rem;
+        margin-left: 1.5em;
+    }
+
+    .postItBtn button {
+        width: 90%;
+        padding: 0.8em;
+        font-size: 0.85rem;
+        display: flex;
+        justify-content: center;
+        margin-left: 2em;
+    }
+}
+
+/* Small mobile screens */
+@media (max-width: 30em) {
+    .postCreationCard {
+        padding: 0.6em;
+        margin: 0.6em;
+        width: 85%;
+    }
+
+    .postHeading {
+        gap: 0.5em;
+    }
+
+    .profilePicture {
+        width: 2.2em;
+        height: 2.2em;
+    }
+
+    .postType, .postModule {
+        width: 30%;
+        min-width: 5em;
+        margin-right: 0.4em;
+    }
+
+    .postType h5, .postModule h5 {
+        font-size: 0.8rem;
+        margin-bottom: 0.2em;
+    }
+
+    .selectInput {
+        font-size: 0.8rem;
+        padding: 0.3em;
+    }
+
+    .inputField, .textareaField {
+        width: 85%;
+        padding: 0.6em;
+        font-size: 0.8rem;
+    }
+
+    .textareaField {
+        height: 6em;
+    }
 }

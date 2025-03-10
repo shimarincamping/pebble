@@ -16,13 +16,13 @@ export default function LeaderboardSectionSidebarItem(props) {
                 <h3>{props.fullName}</h3>
                 <hr />
                 <p>
-                    <span>Intake:</span> {props.intake}
+                    <span>Course:</span> {props.courseName}
                 </p>
                 <p>
                     <span>Email:</span> {props.email}
                 </p>
                 <p>
-                    <span>Student ID:</span> {props.studentID}
+                    <span>Student ID:</span> {props.userID}
                 </p>
             </div>
             <hr />

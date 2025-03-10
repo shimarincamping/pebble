@@ -37,9 +37,16 @@ const PostComment = ({ comments, comment, setComment, handleSubmit, onClose, sho
                         rows="4"
                         placeholder="Write a comment..."
                     />
-                    <button onClick={handleSubmit} className={styles.postButton}>
-                        Post It
-                    </button>
+                <button 
+                    onClick={(e) => {
+                        e.stopPropagation(); // Prevents unwanted parent event triggers
+                        handleSubmit(e);
+                    }} 
+                    className={styles.postButton}
+                >
+                    Post It
+                </button>
+                
                 </div>
 
                 {/* Popup Message */}

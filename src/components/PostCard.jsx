@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { BsHandThumbsUpFill, BsChatFill, BsShareFill, BsFlagFill } from "react-icons/bs"; 
+import { BsHandThumbsUpFill, BsChatFill, BsShareFill, BsFlagFill, BsPencilFill, BsTrashFill } from "react-icons/bs"; 
 import { FaLinkedin } from "react-icons/fa"; // Import LinkedIn icon
 import PostCommentContainer from "../containers/PostCommentContainer";
 import styles from "../styles/PostCard.module.css";
 
-const PostCard = ({ post, onClick, onLike, onReport, onCopyLink, sendAuthReq}) => {
+const PostCard = ({ post, onClick, onLike, onReport, onCopyLink, onEditClick, onDeleteClick }) => {
     const [expanded, setExpanded] = useState(false);
     const [showComments, setShowComments] = useState(false);
     return (
@@ -21,8 +21,7 @@ const PostCard = ({ post, onClick, onLike, onReport, onCopyLink, sendAuthReq}) =
                     <p className={styles.postTime}>{post.time}</p>
                 </div>
 
-                {/* <a href={post.linkedinUrl} target="_blank" rel="noopener noreferrer" onClick={sendAuthReq}> */}
-                <a rel="noopener noreferrer" onClick={sendAuthReq}>
+                <a href={post.linkedinUrl} target="_blank" rel="noopener noreferrer">
                     <FaLinkedin className={styles.linkedinIcon} />
                 </a>
             </div>
@@ -82,9 +81,15 @@ const PostCard = ({ post, onClick, onLike, onReport, onCopyLink, sendAuthReq}) =
                 >
                     <BsFlagFill />
                 </div>
+                <div>
+                <a href={post.linkedinUrl} target="_blank" rel="noopener noreferrer">
+                    <FaLinkedin className={styles.linkedinIcon} />
+                    </a>
+                </div>
+
             </div>
-            {showComments && <PostCommentContainer onClose={() => setShowComments(false)} />}
-        </div>
+            {showComments && <PostCommentContainer postID={post.id} onClose={() => setShowComments(false)} />}
+            </div>
     );
 };
 

@@ -4,92 +4,167 @@ import { useNavigate } from "react-router-dom";
 import PostCard from "../components/PostCard";
 import ComponentLoadingSpinner from "../components/ComponentLoadingSpinner";
 import styles from "../styles/PostCard.module.css";
+import { useAuth } from "../containers/AuthProvider";
+
 
 function PostCardContainer(props) {
   const navigate = useNavigate();
-
-  const dummyPostCardData = [
-    {
-      id: 1,
-      fullName: "Anoop Singh",
-      profilePicture: "https://i.imgur.com/qPzFvF4.jpeg",
-      courseName: "Bachelor of Software Engineering Student",
-      time: "1 minute ago",
-      linkedinUrl: "https://www.linkedin.com/in/anoopsinghhs", 
-      postPicture: "https://i.imgur.com/U3Xbkb3.jpeg",
-      title: "Successful Creation of my XR-based Application!",
-      date: "DEC 30, 2024",
-      postDesc: "My team and I have worked on an XR-based application called Sober.ly, serving as the technological interface for drug rehabilitation centres worldwide. We encountered many challenges, but through teamwork, dedication, and perseverance, we successfully launched the beta version. Our goal is to integrate AI-powered therapy tools into the platform and make it accessible globally to help those in need.",
-    },
-    {
-      id: 2,
-      fullName: "Haarish Nair",
-      profilePicture: "https://i.imgur.com/qPzFvF4.jpeg",
-      courseName: "Bachelor of Computer Science Student",
-      time: "5 minutes ago",
-      linkedinUrl: "https://www.linkedin.com/in/anoopsinghhs", 
-      postPicture: "https://i.imgur.com/U3Xbkb3.jpeg",
-      title: "Machine Learning Model for Predicting Cyber Attacks!",
-      date: "DEC 28, 2024",
-      postDesc: "Cybersecurity threats are evolving rapidly, and our team has developed a predictive machine learning model that identifies vulnerabilities before they can be exploited. Our approach leverages deep learning techniques to detect patterns in real-time security logs, preventing cyber attacks before they occur. This breakthrough can revolutionize how businesses and organizations protect their digital assets.",
-      liked: false,
-      reported: false,
-    }
-  ];
-
   const [postCardData, setPostCardData] = useState([]);
-  const [copied, setCopied] = useState(false); // Global state for copied message
+  const [editingPost, setEditingPost] = useState(null);
+  const [newContent, setNewContent] = useState("");
+  const [copied, setCopied] = useState(false);
+  const { user } = useAuth(); // useAuth calls useContext, fetches userId
 
-
+  // Fetch posts from backend (only show visible posts)
   useEffect(() => {
-    setPostCardData(props.postCardData || dummyPostCardData);
+    if (!props.postCardData) {
+      const fetchPosts = async () => {
+        try {
+          const response = await fetch(`${process.env.REACT_APP_API_URL}/posts`);
+          const data = await response.json();
+
+          // Filter out hidden posts
+          const visiblePosts = data.filter(post => post.isContentVisible !== false);
+          setPostCardData(visiblePosts);
+        } catch (error) {
+          console.error("Error fetching posts:", error);
+        }
+      };
+
+      fetchPosts();
+    } else {
+      // Ensure only visible posts are set
+      setPostCardData(props.postCardData.filter(post => post.isContentVisible !== false));
+    }
   }, []);
-
-  const handlePostClick = (id) => {
-    navigate(`/post/${id}`);
-  };
-
-  const handleLike = (id) => {
-    setPostCardData((prevData) =>
-      prevData.map((post) =>
-        post.id === id ? { ...post, liked: !post.liked } : post
-      )
-    );
-  };
-
-  const handleReport = (id) => {
-    setPostCardData((prevData) =>
-      prevData.map((post) =>
-        post.id === id ? { ...post, reported: !post.reported } : post
-      )
-    );
-  };
-
-  const handleCopyLink = (link) => {
-    navigator.clipboard.writeText(link);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000); // Hide message after 2 seconds
-  };
-
+  
   useEffect(() => {
     if (props.newPost) {
-      setPostCardData((prevPosts) => [{ ...props.newPost, id: prevPosts.length + 1 }, ...prevPosts]);
+      setPostCardData((prevPosts) => [{ ...props.newPost, user: prevPosts.length + 1 }, ...prevPosts]);
     }
   }, [props.newPost]);
 
+  const handlePostClick = (user) => navigate(`/post/${user}`);
 
-  //function to call backend for linkedin auth
-  //This auth process is for the user to allow pebble access to their account
-  const sendAuthReq = async () => {
-    try{
-      const response= await axios.get('https://localhost4001/auth/linkedin');
-    }catch (e){
-      console.error("Error during LinkedIn Auth : " + e);
+  const handleEditClick = (post) => {
+    setEditingPost(post);
+    setNewContent(post.postDesc);
+  };
+
+  const handleSaveEdit = async () => {
+    if (!editingPost || !editingPost.user) {
+      console.error("Editing post is not properly set.");
+      return;
     }
-    sendAuthReq();
-  }
+  
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/posts/${editingPost.user}/edit`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ newPostContent: newContent }),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to edit post.");
+      }
+  
+      // Update post in state
+      setPostCardData((prevData) =>
+        prevData.map((post) =>
+          post.user === editingPost.user ? { ...post, postDesc: newContent } : post
+        )
+      );
+  
+      // Close modal
+      setEditingPost(null);
+    } catch (error) {
+      console.error("Error editing post:", error);
+    }
+  };
+      
+  const handleDeleteClick = async (user) => {
+    if (!window.confirm("Are you sure you want to delete this post?")) return;
 
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/posts/${user}/delete`, { method: "DELETE" });
 
+      if (response.ok) {
+        // Immediately remove the post from the state
+        setPostCardData((prevData) => prevData.filter((post) => post.user !== user));
+      } else {
+        console.error("Failed to delete post.");
+      }
+    } catch (error) {
+      console.error("Error deleting post:", error);
+    }
+  };
+  
+  const handleLike = async (user) => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/posts/${user}/like`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  
+      if (response.ok) {
+        // Fetch updated post data
+        const updatedPost = await fetch(`${process.env.REACT_APP_API_URL}/posts/${user}`);
+        const updatedPostData = await updatedPost.json();
+  
+        // Update state with new data
+        setPostCardData((prevData) =>
+          prevData.map((post) =>
+            post.user === user ? updatedPostData : post
+          )
+        );
+  
+        console.log("Post like toggled successfully.");
+      } else {
+        console.error("Failed to like/unlike post.");
+      }
+    } catch (error) {
+      console.error("Error liking post:", error);
+    }
+  };
+      
+  const handleReport = async (user) => {
+    try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/flags`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                contentID: user,
+                contentType: "post",
+            }),
+        });
+
+        if (response.ok) {
+            const { reported, contentID } = await response.json(); // Expecting { reported: true, contentID: id }
+
+            setPostCardData((prevData) =>
+                prevData.map((post) =>
+                    post.user === contentID ? { ...post, reported } : post
+                )
+            );
+
+            console.log("Post reported successfully.");
+        } else {
+            console.error("Failed to report post.");
+        }
+    } catch (error) {
+        console.error("Error reporting post:", error);
+    }
+};
+    
+  const handleCopyLink = (link) => {
+    navigator.clipboard.writeText(link);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <div className={styles.posts}>
@@ -97,21 +172,40 @@ function PostCardContainer(props) {
         {postCardData.length > 0 ? (
           postCardData.map((post) => (
             <PostCard
-              key={post.id}
+              key={post.user}
               post={post}
-              onClick={() => handlePostClick(post.id)}
+              onClick={() => handlePostClick(post.user)}
+              onEditClick={handleEditClick}
+              onDeleteClick={handleDeleteClick}
               onLike={handleLike}
               onReport={handleReport}
-              onCopyLink={handleCopyLink} // Pass function to PostCard
-              sendAuthReq={sendAuthReq}
+              onCopyLink={handleCopyLink}
             />
           ))
         ) : (
           <ComponentLoadingSpinner />
         )}
       </div>
-
-      {/* Floating Copy Message */}
+      {editingPost && (
+        <div className={styles.modalOverlay} onClick={() => setEditingPost(null)}>
+          <div className={styles.editModal} onClick={(e) => e.stopPropagation()}>
+            <h3>Edit Post</h3>
+            <textarea
+              value={newContent}
+              onChange={(e) => setNewContent(e.target.value)}
+              className={styles.textarea}
+            />
+            <div className={styles.modalButtons}>
+              <button className={styles.saveButton} onClick={handleSaveEdit}>
+                Save
+              </button>
+              <button className={styles.cancelButton} onClick={() => setEditingPost(null)}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       {copied && <div className={styles.copiedMessage}>Link copied to clipboard!</div>}
     </div>
   );

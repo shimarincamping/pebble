@@ -1,6 +1,7 @@
-import React, { useState } from "react";import ApplicationSidebar from "../containers/ApplicationSidebar";
+import React, { useContext, useState } from "react";
+import ApplicationSidebar from "../containers/ApplicationSidebar";
 import ApplicationMainContent from "../containers/ApplicationMainContent";
-import PageHeaderContainer from '../containers/PageHeaderContainer.jsx';
+import PageHeaderContainer from "../containers/PageHeaderContainer.jsx";
 
 import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContainer";
 import DashboardStatsSidebarCardContainer from "../containers/DashboardStatsSidebarCardContainer";
@@ -10,36 +11,38 @@ import PostCardContainer from "../containers/PostCardContainer";
 import styles from "../styles/global.module.css";
 import PostCreationCardContainer from "../containers/PostCreationCardContainer.jsx";
 
-
+import { useAuth } from "../containers/AuthProvider";
 function FeedPage() {
-  const [newPost, setNewPost] = useState(null);
-  return (
-    <>
-      <PageHeaderContainer/>
+    const { user } = useAuth(); // useAuth calls useContext, fetches userId
+    const loggedInUserId = user;
 
-      <div
-        className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationNarrowBody}`}  
-      >
-        <ApplicationSidebar>
-          <ProfileSidebarCardContainer />
-        </ApplicationSidebar>
+    const [newPost, setNewPost] = useState(null);
 
-      <ApplicationMainContent>
-        <PostCreationCardContainer  onNewPost={setNewPost}/>
-        <PostCardContainer newPost={newPost}/>
+    return (
+        <>
+            <PageHeaderContainer />
 
-      </ApplicationMainContent>
+            <div
+                className={`${styles.mainApplicationGridContainer} ${styles.mainApplicationNarrowBody}`}
+            >
+                <ApplicationSidebar>
+                    <ProfileSidebarCardContainer />
+                </ApplicationSidebar>
 
-        <ApplicationSidebar>
-          <DashboardStatsSidebarCardContainer />
-          <NetworkSidebarCardContainer />
-        </ApplicationSidebar>
+                <ApplicationMainContent>
+                    <PostCreationCardContainer onNewPost={setNewPost} />
+                    <PostCardContainer newPost={newPost} />
+                </ApplicationMainContent>
 
-      </div>
-    </>
-  );
-  
+                <ApplicationSidebar>
+                    <DashboardStatsSidebarCardContainer />
+                    <NetworkSidebarCardContainer
+                        loggedInUserId={loggedInUserId}
+                    />
+                </ApplicationSidebar>
+            </div>
+        </>
+    );
 }
 
 export default FeedPage;
-
