@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./containers/AuthProvider"; // Import AuthProvider
 
-
 import SplashScreen from "./pages/SplashScreen";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
@@ -22,12 +21,11 @@ import "./styles/global.module.css";
 
 function App() {
     return (
-        <AuthProvider> {/* Wrap everything inside AuthProvider */}
-            <BrowserRouter>
+        <BrowserRouter>
+            <AuthProvider>
                 <Routes>
                     <Route path="/" element={<Navigate to="/splash" />} />
                     <Route path="/splash" element={<SplashScreen />} />
-
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegistrationPage />} />
 
@@ -40,7 +38,10 @@ function App() {
                     <Route path="/profile/:id" element={<ProfilePage />} />
 
                     <Route path="/forum" element={<ForumPage />} />
-                    <Route path="/forum/:threadID" element={<ForumThreadPage />} />
+                    <Route
+                        path="/forum/:threadID"
+                        element={<ForumThreadPage />}
+                    />
                     <Route
                         path="/codingchallenge"
                         element={<CodingChallengePage />}
@@ -58,8 +59,8 @@ function App() {
 
                     <Route path="/moderator" element={<Moderator />} />
                 </Routes>
-            </BrowserRouter>
-        </AuthProvider>
+            </AuthProvider>
+        </BrowserRouter>
     );
 }
 
