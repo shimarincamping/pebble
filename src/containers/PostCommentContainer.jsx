@@ -5,12 +5,22 @@ const PostCommentContainer = ({ postID, onClose }) => {
     const [comments, setComments] = useState([]);
     const [comment, setComment] = useState("");
     const [showPopup, setShowPopup] = useState(false);
+    const token = localStorage.getItem("jwtToken");
 
     // Fetch existing comments when component mounts
     useEffect(() => {
         const fetchComments = async () => {
             try {
-                const response = await fetch(`${process.env.REACT_APP_API_URL}/posts/${postID}/comments`);
+                const response = await fetch(
+                    `${process.env.REACT_APP_API_URL}/posts/${postID}/comments`,
+                    {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
                 if (response.ok) {
                     const data = await response.json();
                     setComments(data);
@@ -28,43 +38,50 @@ const PostCommentContainer = ({ postID, onClose }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("Submitting comment for postID:", postID);
-    
+
         if (!postID) {
             console.error("Error: postID is undefined");
             return;
         }
-    
+
         if (!comment.trim()) {
             console.log("Comment is empty");
             return;
         }
-    
+
         try {
             const newComment = {
                 id: Date.now(), // Temporary ID to avoid UI flicker
                 text: comment,
                 author: "You", // Replace with actual username if available
-                profilePic: "your-profile-pic-url" // Replace with actual profile pic URL
+                profilePic: "your-profile-pic-url", // Replace with actual profile pic URL
             };
-    
+
             // **Update UI immediately**
             setComments([...comments, newComment]);
-    
+
             // **Send to backend**
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/posts/${postID}/comments`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ text: comment }),
-            });
-    
+            const response = await fetch(
+                `${process.env.REACT_APP_API_URL}/posts/${postID}/comments`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({ text: comment }),
+                }
+            );
+
             if (response.ok) {
                 console.log("Comment posted successfully");
             } else {
-                console.error("Failed to add comment. Response:", await response.text());
+                console.error(
+                    "Failed to add comment. Response:",
+                    await response.text()
+                );
             }
-    
+
             setComment(""); // Clear input field
             setShowPopup(true);
             setTimeout(() => setShowPopup(false), 2000);
@@ -72,7 +89,7 @@ const PostCommentContainer = ({ postID, onClose }) => {
             console.error("Error adding comment:", error);
         }
     };
-        
+
     return (
         <PostComment
             comments={comments}

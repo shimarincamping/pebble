@@ -6,12 +6,21 @@ import styles from "../styles/CareerRoadmap.module.css";
 const CareerRoadmapPostContainer = () => {
     const { id } = useParams(); // Get the roadmap ID from URL
     const [roadmap, setRoadmap] = useState(null);
-
+    const token = localStorage.getItem("jwtToken");
     // Fetch roadmap data based on the ID
     useEffect(() => {
         const fetchRoadmap = async () => {
             try {
-                const response = await fetch(`${process.env.REACT_APP_API_URL}/roadmap/${id}`);
+                const response = await fetch(
+                    `${process.env.REACT_APP_API_URL}/roadmap/${id}`,
+                    {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
                 if (!response.ok) {
                     throw new Error("Roadmap not found");
                 }
