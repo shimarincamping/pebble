@@ -24,10 +24,12 @@ export const AuthProvider = ({ children }) => {
 
                     if (response.ok) {
                         const data = await response.json();
+                        if (!data.user.uid) {
+                            throw new Error(`Could not authenticate user`);
+                        }
                         setUser(data.user.uid);
                     } else {
-                        localStorage.removeItem("token");
-                        setUser(null);
+                        throw new Error(`${response.status} ${response.body}`);
                     }
                 } catch (error) {
                     console.error("Auth verification failed:", error);
