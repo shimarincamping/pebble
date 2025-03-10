@@ -11,36 +11,43 @@ import ProfilePagePostsCardContainer from "./ProfilePagePostsCardContainer";
 import EditProfileFormContainer from "./EditProfileFormContainer";
 
 function ProfilePageContainer({ id }) {
-
     const { user } = useAuth();
     const navigate = useNavigate();
 
-    const isMyProfile = (id === "me");
+    const isMyProfile = id === "me";
 
     const [userProfileData, setUserProfileData] = useState(null);
     const [userProfileDetails, setUserProfileDetails] = useState(null);
     const [userPostHistory, setUserPostHistory] = useState(null);
-    const [isEditProfileFormVisible, setIsEditProfileFormVisible] = useState(false);
+    const [isEditProfileFormVisible, setIsEditProfileFormVisible] =
+        useState(false);
+
+    const token = localStorage.getItem("jwtToken");
 
     useEffect(() => {
         const handleFetchProfileData = async () => {
-
             const currentRequestID = isMyProfile ? await user : id;
             if (!currentRequestID) {
-                return navigate('/splash')
+                return navigate("/splash");
             }
 
-
             const fetchedProfileData = await fetch(
-                `${process.env.REACT_APP_API_URL}/users/${currentRequestID}/profile-information/full`
+                `${process.env.REACT_APP_API_URL}/users/${currentRequestID}/profile-information/full`,
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
             );
-    
+
             if (fetchedProfileData.ok) {
                 const fetchedJsonProfileData = await fetchedProfileData.json();
                 setUserProfileData(fetchedJsonProfileData);
                 setUserProfileDetails(fetchedJsonProfileData.profileDetails);
             }
-    
+
             if (fetchedProfileData.status === 404) {
                 alert("The user profile does not exist or could not be found.");
             }
@@ -49,39 +56,47 @@ function ProfilePageContainer({ id }) {
         handleFetchProfileData();
     }, [isMyProfile, user, id]);
 
-
     useEffect(() => {
         const pushAllProfileData = async () => {
-
             const currentRequestID = isMyProfile ? await user : id;
             if (!currentRequestID) {
-                return navigate('/splash')
+                return navigate("/splash");
             }
 
-            await fetch(`${process.env.REACT_APP_API_URL}/users/${currentRequestID}`, {
-                method: "PUT",
-                body: JSON.stringify({
-                    ...userProfileData,
-                    profileDetails: userProfileDetails,
-                }),
-                headers: new Headers({
-                    "Content-Type": "application/json; charset=UTF-8",
-                }),
-            });
+            await fetch(
+                `${process.env.REACT_APP_API_URL}/users/${currentRequestID}`,
+                {
+                    method: "PUT",
+                    body: JSON.stringify({
+                        ...userProfileData,
+                        profileDetails: userProfileDetails,
+                    }),
+                    headers: new Headers({
+                        "Content-Type": "application/json; charset=UTF-8",
+                        Authorization: `Bearer ${token}`,
+                    }),
+                }
+            );
         };
 
         pushAllProfileData();
     }, [userProfileData, userProfileDetails, isMyProfile, user, id]);
 
     const handleFetchPostHistory = async () => {
-
         const currentRequestID = isMyProfile ? await user : id;
         if (!currentRequestID) {
-            return navigate('/splash')
+            return navigate("/splash");
         }
 
         const fetchedPostHistoryData = await fetch(
-            `${process.env.REACT_APP_API_URL}/posts?authorID=${currentRequestID}`
+            `${process.env.REACT_APP_API_URL}/posts?authorID=${currentRequestID}`,
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            }
         );
         const fetchedJsonPostHistoryData = await fetchedPostHistoryData.json();
 
@@ -89,22 +104,27 @@ function ProfilePageContainer({ id }) {
     };
 
     const toggleFollow = async () => {
-
         const currentRequestID = isMyProfile ? await user : id;
         if (!currentRequestID) {
-            return navigate('/splash')
+            return navigate("/splash");
         }
 
-        await fetch(`${process.env.REACT_APP_API_URL}/users/${currentRequestID}/followers`, {
-            method: "PUT",
-        });
+        await fetch(
+            `${process.env.REACT_APP_API_URL}/users/${currentRequestID}/followers`,
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
         setUserProfileData((prev) => ({
             ...prev,
             isFollowingUser: !prev.isFollowingUser,
             followerCount: prev.followerCount + (prev.isFollowingUser ? -1 : 1),
         }));
-    }
-
+    };
 
     function updateProfileData(dataKey, newValue) {
         setUserProfileData((prev) => ({ ...prev, [dataKey]: newValue }));
@@ -125,7 +145,9 @@ function ProfilePageContainer({ id }) {
                     <ProfilePageHeaderInfoCard
                         {...userProfileData}
                         isMyProfile={isMyProfile}
-                        toggleEditProfileFormVisible={() => setIsEditProfileFormVisible(true)}
+                        toggleEditProfileFormVisible={() =>
+                            setIsEditProfileFormVisible(true)
+                        }
                         toggleFollow={toggleFollow}
                     />
                     <ProfilePagePostsCardContainer
