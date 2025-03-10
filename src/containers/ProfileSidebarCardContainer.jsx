@@ -9,21 +9,22 @@ function ProfileSidebarCardContainer() {
     const [profileData, setProfileData] = useState(null);
     const [profileSubline, setProfileSubline] = useState([null, null]);
 
-    const handleFetchData = async () => {
-        const currentUserID = await user; // Replace with value set by authentication feature, currently always Anoop
-
-        const fetchedData = await fetch(
-            `${process.env.REACT_APP_API_URL}/users/${currentUserID}/profile-information/basic`
-        );
-        const fetchedJsonData = await fetchedData.json();
-
-        setProfileData(fetchedJsonData);
-        setProfileSubline(getProfileSubheading(fetchedJsonData));
-    };
-
     useEffect(() => {
+
+        const handleFetchData = async () => {
+            const currentUserID = await user; 
+    
+            const fetchedData = await fetch(
+                `${process.env.REACT_APP_API_URL}/users/${currentUserID}/profile-information/basic`
+            );
+            const fetchedJsonData = await fetchedData.json();
+    
+            setProfileData(fetchedJsonData);
+            setProfileSubline(getProfileSubheading(fetchedJsonData));
+        };
+
         handleFetchData();
-    }, []);
+    }, [user]);
 
     function getProfileSubheading(user) {
         switch (user.userType) {
@@ -35,7 +36,7 @@ function ProfileSidebarCardContainer() {
                 return ["Lecturer", "Taylor's University"];
             case "moderator":
                 return ["Community moderator", "Taylor's University"];
-            case "other":
+            default:
                 return ["PEBBLE user", "(External)"];
         }
     }

@@ -7,7 +7,6 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    // const [isAuthorized, setIsAuthorized] = useState(true);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -34,14 +33,15 @@ export const AuthProvider = ({ children }) => {
 
                         if (response.ok) {
                             const data = await response.json();
-                            // setIsAuthorized(true);
+                            if (!data.user.uid) {
+                                throw new Error(`Could not authenticate user`);
+                            }
                             setUser(data.user.uid);
                         } else {
-                            localStorage.removeItem("token");
-                            // setIsAuthorized(false);
-                            setUser(null);
-                            console.log("Authentication failed.");
                             navigate("/login");
+                            throw new Error(
+                                `${response.status} ${response.body}`
+                            );
                         }
                     } catch (error) {
                         console.error("Auth verification failed:", error);
@@ -50,11 +50,9 @@ export const AuthProvider = ({ children }) => {
                     }
                 } else {
                     console.log("No token found during authentication");
-                    // setIsAuthorized(false);
                     navigate("/login");
                 }
             }
-
             setLoading(false);
         };
 

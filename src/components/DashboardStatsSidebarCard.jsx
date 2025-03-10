@@ -15,7 +15,7 @@ export default function DashboardStatsSidebarCard(props) {
               <TbAward size={30} className={`${styles.statsSidebarCard__logo}`} />
               <div className={`${styles.statsSidebarCard__item__desc}`}>
                 <span className={`${styles.statsSidebarCard__data}`}>
-                  {props.leaderboardRank}&nbsp;
+                  #{props.leaderboardRank}&nbsp;
                 </span>
                 <span>&#40;{props.totalPoints} pts&#41;</span>
               </div>
