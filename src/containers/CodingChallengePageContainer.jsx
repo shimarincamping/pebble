@@ -94,7 +94,7 @@ function CodingChallengePageContainer() {
                 (currentQuizList) ? (
                     (!currentQuizQuestions) ? (
                         <>
-                            {Object.keys(currentQuizList).map((quiz, index) => (
+                            {Object.keys(currentQuizList).map((quiz) => (
                                 <CodingChallengePreview 
                                     key={quiz}
                                     codingTitle={currentQuizList[quiz].quizName}
