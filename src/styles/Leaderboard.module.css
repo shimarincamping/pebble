@@ -26,7 +26,9 @@
 }
 
 .leaderboardSectionItem__container__image{
-    max-width: 7em;
+    width: 7em;
+    height: 7em;
+    object-fit: cover;
     border-radius: 100%;
     border: white solid 2px;
     box-shadow: 0.1em 0.1em 0.1em var(--cardShadowColor);
@@ -64,11 +66,13 @@
 }
 
 .leaderboardSidebar__sidebarItem__image {
-    max-width: 7em;
+    width: 7em;
+    height: 7em;
     border-radius: 100%;
     border: white solid 2px;
     box-shadow: 0.1em 0.1em 0.1em var(--cardShadowColor);
     margin: auto;
+    object-fit: cover;
 }
 
 .leaderboardSidebar__sidebarItem__content {
