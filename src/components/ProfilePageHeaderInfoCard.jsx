@@ -33,16 +33,12 @@ function ProfilePageHeaderInfoCard(props) {
                         >
                             Edit Profile
                         </button>
-                    ) : props.loggedInUserId ? (
+                    ) : (
                         <button 
                             onClick={props.toggleFollow} 
                             className={props.isFollowing ? styles.headerInfoCard__unfollowButton : styles.headerInfoCard__followButton}
                         >
                             {props.isFollowing ? "Unfollow" : "Follow"}
-                        </button>
-                    ) : (
-                        <button disabled className={`${styles.headerInfoCard__disabledButton}`}>
-                            Follow (Login Required)
                         </button>
                     )}
                 </section>
