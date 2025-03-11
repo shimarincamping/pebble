@@ -11,7 +11,6 @@ function PostCardContainer(props) {
     const [editingPost, setEditingPost] = useState(null);
     const [newContent, setNewContent] = useState("");
     const [copied, setCopied] = useState(false);
-    const { user } = useAuth(); // useAuth calls useContext, fetches userId
     const token = localStorage.getItem("jwtToken");
     // Fetch posts from backend (only show visible posts)
     useEffect(() => {
@@ -54,13 +53,13 @@ function PostCardContainer(props) {
     useEffect(() => {
         if (props.newPost) {
             setPostCardData((prevPosts) => [
-                { ...props.newPost, user: prevPosts.length + 1 },
+                { ...props.newPost, id: prevPosts.length + 1 },
                 ...prevPosts,
             ]);
         }
     }, [props.newPost]);
 
-    const handlePostClick = (user) => navigate(`/post/${user}`);
+    const handlePostClick = (id) => navigate(`/post/${id}`);
 
     const handleEditClick = (post) => {
         setEditingPost(post);
@@ -68,15 +67,15 @@ function PostCardContainer(props) {
     };
 
     const handleSaveEdit = async () => {
-        if (!editingPost || !editingPost.user) {
+        if (!editingPost || !editingPost.id) {
             console.error("Editing post is not properly set.");
             return;
         }
 
         try {
-            const response = await fetch(
-                `${process.env.REACT_APP_API_URL}/posts/${editingPost.user}/edit`,
-                {
+          const response = await fetch(
+              `${process.env.REACT_APP_API_URL}/posts/${editingPost.id}`,
+                        {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",
@@ -93,7 +92,7 @@ function PostCardContainer(props) {
             // Update post in state
             setPostCardData((prevData) =>
                 prevData.map((post) =>
-                    post.user === editingPost.user
+                    post.id === editingPost.id
                         ? { ...post, postDesc: newContent }
                         : post
                 )
@@ -106,79 +105,75 @@ function PostCardContainer(props) {
         }
     };
 
-    const handleDeleteClick = async (user) => {
-        if (!window.confirm("Are you sure you want to delete this post?"))
-            return;
-
-        try {
-            const response = await fetch(
-                `${process.env.REACT_APP_API_URL}/posts/${user}/delete`,
-                {
-                    method: "DELETE",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                    },
-                }
-            );
-
-            if (response.ok) {
-                // Immediately remove the post from the state
-                setPostCardData((prevData) =>
-                    prevData.filter((post) => post.user !== user)
-                );
-            } else {
-                console.error("Failed to delete post.");
-            }
-        } catch (error) {
-            console.error("Error deleting post:", error);
-        }
+    const handleDeleteClick = async (id) => {
+      if (!window.confirm("Are you sure you want to delete this post?")) return;
+  
+      try {
+          const response = await fetch(
+              `${process.env.REACT_APP_API_URL}/posts/${id}`,
+              {
+                  method: "DELETE",
+                  headers: {
+                      "Content-Type": "application/json",
+                      Authorization: `Bearer ${token}`,
+                  },
+              }
+          );
+  
+          if (response.ok) {
+              setPostCardData((prevData) =>
+                  prevData.filter((post) => post.id !== id)
+              );
+          } else {
+              console.error("Failed to delete post.");
+          }
+      } catch (error) {
+          console.error("Error deleting post:", error);
+      }
     };
-
-    const handleLike = async (user) => {
-        try {
-            const response = await fetch(
-                `${process.env.REACT_APP_API_URL}/posts/${user}/like`,
-                {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                    },
-                }
-            );
-
-            if (response.ok) {
-                // Fetch updated post data
-                const updatedPost = await fetch(
-                    `${process.env.REACT_APP_API_URL}/posts/${user}`,
-                    {
-                        method: "GET",
-                        headers: {
-                            "Content-Type": "application/json",
-                            Authorization: `Bearer ${token}`,
-                        },
-                    }
-                );
-                const updatedPostData = await updatedPost.json();
-
-                // Update state with new data
-                setPostCardData((prevData) =>
-                    prevData.map((post) =>
-                        post.user === user ? updatedPostData : post
-                    )
-                );
-
-                console.log("Post like toggled successfully.");
-            } else {
-                console.error("Failed to like/unlike post.");
-            }
-        } catch (error) {
-            console.error("Error liking post:", error);
-        }
+  
+    const handleLike = async (id) => {
+      try {
+          const response = await fetch(
+              `${process.env.REACT_APP_API_URL}/posts/${id}/likes`,
+              {
+                  method: "PUT",
+                  headers: {
+                      "Content-Type": "application/json",
+                      Authorization: `Bearer ${token}`,
+                  },
+              }
+          );
+  
+          if (response.ok) {
+              const updatedPost = await fetch(
+                  `${process.env.REACT_APP_API_URL}/posts/${id}`,  // ✅ Use id instead of post.id
+                  {
+                      method: "GET",
+                      headers: {
+                          "Content-Type": "application/json",
+                          Authorization: `Bearer ${token}`,
+                      },
+                  }
+              );
+              const updatedPostData = await updatedPost.json();
+  
+              setPostCardData((prevData) =>
+                  prevData.map((post) =>
+                      post.id === id ? updatedPostData : post
+                  )
+              );
+  
+              console.log("Post like toggled successfully.");
+          } else {
+              console.error("Failed to like/unlike post.");
+          }
+      } catch (error) {
+          console.error("Error liking post:", error);
+      }
     };
-
-    const handleReport = async (user) => {
+  
+    const handleReport = async (id) => {
         try {
             const response = await fetch(
                 `${process.env.REACT_APP_API_URL}/flags`,
@@ -189,7 +184,7 @@ function PostCardContainer(props) {
                         Authorization: `Bearer ${token}`,
                     },
                     body: JSON.stringify({
-                        contentID: user,
+                        contentID: id,
                         contentType: "post",
                     }),
                 }
@@ -200,7 +195,7 @@ function PostCardContainer(props) {
 
                 setPostCardData((prevData) =>
                     prevData.map((post) =>
-                        post.user === contentID ? { ...post, reported } : post
+                        post.id === contentID ? { ...post, reported } : post
                     )
                 );
 
@@ -225,11 +220,11 @@ function PostCardContainer(props) {
                 {postCardData.length > 0 ? (
                     postCardData.map((post) => (
                         <PostCard
-                            key={post.user}
+                            key={post.id}
                             post={post}
-                            onClick={() => handlePostClick(post.user)}
+                            onClick={() => handlePostClick(post.id)}
                             onEditClick={handleEditClick}
-                            onDeleteClick={handleDeleteClick}
+                            onDeleteClick={() => handleDeleteClick(post.id)}
                             onLike={handleLike}
                             onReport={handleReport}
                             onCopyLink={handleCopyLink}
