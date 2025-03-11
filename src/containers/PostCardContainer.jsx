@@ -5,13 +5,43 @@ import ComponentLoadingSpinner from "../components/ComponentLoadingSpinner";
 import styles from "../styles/PostCard.module.css";
 import { useAuth } from "../containers/AuthProvider";
 
+
 function PostCardContainer(props) {
     const navigate = useNavigate();
     const [postCardData, setPostCardData] = useState([]);
     const [editingPost, setEditingPost] = useState(null);
     const [newContent, setNewContent] = useState("");
     const [copied, setCopied] = useState(false);
+    const { user } = useAuth(); // useAuth calls useContext, fetches userId
+    const visiblePosts = postCardData.filter((post) => post.isContentVisible !== false);
     const token = localStorage.getItem("jwtToken");
+
+    useEffect(() => {
+        const handleFetchData = async () => {
+            if (!user) return;
+    
+            try {
+                const fetchedData = await fetch(
+                    `${process.env.REACT_APP_API_URL}/users/${user.userID}/profile-information/basic`,
+                    {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
+                const fetchedJsonData = await fetchedData.json();
+    
+                setPostCardData(fetchedJsonData || {}); // Ensure postData is always an object
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            }
+        };
+    
+        handleFetchData();
+    }, [user]);
+
     // Fetch posts from backend (only show visible posts)
     useEffect(() => {
         if (!props.postCardData) {
@@ -106,32 +136,38 @@ function PostCardContainer(props) {
     };
 
     const handleDeleteClick = async (id) => {
-      if (!window.confirm("Are you sure you want to delete this post?")) return;
-  
-      try {
-          const response = await fetch(
-              `${process.env.REACT_APP_API_URL}/posts/${id}`,
-              {
-                  method: "DELETE",
-                  headers: {
-                      "Content-Type": "application/json",
-                      Authorization: `Bearer ${token}`,
-                  },
-              }
-          );
-  
-          if (response.ok) {
-              setPostCardData((prevData) =>
-                  prevData.filter((post) => post.id !== id)
-              );
-          } else {
-              console.error("Failed to delete post.");
-          }
-      } catch (error) {
-          console.error("Error deleting post:", error);
-      }
+        if (!window.confirm("Are you sure you want to delete this post?")) return;
+    
+        console.log("Deleting post with ID:", id); // Debugging
+    
+        try {
+            const response = await fetch(
+                `${process.env.REACT_APP_API_URL}/posts/${id}`,
+                {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+    
+            if (response.ok) {
+                setPostCardData((prevData) =>
+                    prevData.map((post) =>
+                        post.id === id ? { ...post, isContentVisible: false } : post
+                    )
+                );
+                console.log("Post marked as hidden.");
+            } else {
+                const errorText = await response.text();
+                console.error("Failed to delete post. Response:", errorText);
+            }
+        } catch (error) {
+            console.error("Error deleting post:", error);
+        }
     };
-  
+          
     const handleLike = async (id) => {
       try {
           const response = await fetch(
@@ -217,22 +253,23 @@ function PostCardContainer(props) {
     return (
         <div className={styles.posts}>
             <div className={styles.postsData}>
-                {postCardData.length > 0 ? (
-                    postCardData.map((post) => (
-                        <PostCard
-                            key={post.id}
-                            post={post}
-                            onClick={() => handlePostClick(post.id)}
-                            onEditClick={handleEditClick}
-                            onDeleteClick={() => handleDeleteClick(post.id)}
-                            onLike={handleLike}
-                            onReport={handleReport}
-                            onCopyLink={handleCopyLink}
-                        />
-                    ))
-                ) : (
-                    <ComponentLoadingSpinner />
-                )}
+            {visiblePosts.length > 0 ? (
+                visiblePosts.map((post) => (
+                    <PostCard
+                        key={post.id}
+                        post={post}
+                        currentUserID={user?.userID} // Pass userID as a prop
+                        onClick={() => handlePostClick(post.id)}
+                        onEditClick={handleEditClick}
+                        onDeleteClick={() => handleDeleteClick(post.id)}
+                        onLike={handleLike}
+                        onReport={handleReport}
+                        onCopyLink={handleCopyLink}
+                    />
+                ))
+            ) : (
+                <ComponentLoadingSpinner />
+            )}
             </div>
             {editingPost && (
                 <div
