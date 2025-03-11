@@ -1,8 +1,9 @@
 import { React, useEffect } from 'react';
 import styles from '../styles/NotificationPanel.module.css';
 import NotificationItem from './NotificationItem';
+import loadingSpinner from '../components/ComponentLoadingSpinner';
 
-function NotificationPanel({notificationsList = [],isNotiPanelVisible,handleBackClick}){
+function NotificationPanel({notificationsList = [] ,isNotiPanelVisible, handleBackClick}){
 
     useEffect(() => {
         console.log(`notificationsList@notificationPanel: ${notificationsList}`);
@@ -28,7 +29,7 @@ function NotificationPanel({notificationsList = [],isNotiPanelVisible,handleBack
 
                 
                 {
-                // notificationsList.length > 0 ? (
+                notificationsList.length > 0 ? (
                     
                         (notificationsList).map((notification) => (
                             
@@ -46,7 +47,7 @@ function NotificationPanel({notificationsList = [],isNotiPanelVisible,handleBack
 
 
                         ))
-                    // ) : <p>loading...</p>
+                    ) : (<loadingSpinner/>)
                 }
             
             </div>

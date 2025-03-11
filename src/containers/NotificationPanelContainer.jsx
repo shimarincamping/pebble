@@ -1,6 +1,5 @@
 import { React, useEffect, useState}  from 'react';
 import {useAuth} from './AuthProvider';
-import loading from '../components/ComponentLoadingSpinner';
 import NotificationPanel from '../components/NotificationPanel';
 
 
@@ -75,7 +74,7 @@ const NotificationPanelContainer = ({isNotiPanelVisible,handleBackClick}) => {
     return ( 
 
         <NotificationPanel  
-            NotificationsList={[...notifications]}
+            notificationsList={[...notifications]}
             isNotiPanelVisible={isNotiPanelVisible}
             handleBackClick={handleBackClick}
         />

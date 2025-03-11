@@ -24,7 +24,7 @@ function ProfileSidebarCard(props) {
 
             <div className={`${styles.profileSidebarCard__mainBody}`}>
                 <div className={`${styles.profileSidebarCard__mainBody__userHeader}`}>
-                    <h1>{(props.name).toUpperCase()}</h1>
+                    <h1>{(props.name)?.toUpperCase()}</h1>
                     <p>{props.subline1}</p>
                     <p>{props.subline2}</p>
                 </div> <br />
