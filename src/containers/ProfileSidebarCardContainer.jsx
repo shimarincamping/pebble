@@ -5,20 +5,26 @@ import { useAuth } from "../containers/AuthProvider";
 
 function ProfileSidebarCardContainer() {
     const { user } = useAuth(); // useAuth calls useContext, fetches userId
-
+    const token = localStorage.getItem("jwtToken");
     const [profileData, setProfileData] = useState(null);
     const [profileSubline, setProfileSubline] = useState([null, null]);
 
     useEffect(() => {
-
         const handleFetchData = async () => {
-            const currentUserID = await user; 
-    
+            const currentUserID = await user;
+
             const fetchedData = await fetch(
-                `${process.env.REACT_APP_API_URL}/users/${currentUserID}/profile-information/basic`
+                `${process.env.REACT_APP_API_URL}/users/${currentUserID}/profile-information/basic`,
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
             );
             const fetchedJsonData = await fetchedData.json();
-    
+
             setProfileData(fetchedJsonData);
             setProfileSubline(getProfileSubheading(fetchedJsonData));
         };

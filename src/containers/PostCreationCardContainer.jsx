@@ -1,53 +1,78 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PostCreationCard from "../components/PostCreationCard";
+import { useAuth } from "../containers/AuthProvider";
 
 function PostCreationCardContainer({ onNewPost }) {
-    const [postData, setPostData] = useState({
-        fullName: "Anoop Singh",
-        profilePicture: "https://i.imgur.com/qPzFvF4.jpeg",
-        courseName: "Bachelor of Software Engineering Student",
-        time: "1 minute ago",
-        linkedinUrl: "https://www.linkedin.com/in/anoopsingh",
-        postPicture: "",
-        title: "Successful Creation of my XR-based Application!",
-        date: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
-        postDesc: "My team and I have worked on an crowdsourcing app called Sober.ly...",
-    });
+    const token = localStorage.getItem("jwtToken");
+    const { user } = useAuth(); // useAuth calls useContext, fetches userId
+    const [postData, setPostData] = useState({});
+
+    useEffect(() => {
+        const handleFetchData = async () => {
+            const currentUserID = await user; // Ensure user ID is available
+
+            const fetchedData = await fetch(
+                `${process.env.REACT_APP_API_URL}/users/${currentUserID}/profile-information/basic`,
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            const fetchedJsonData = await fetchedData.json();
+
+            setPostData(fetchedJsonData || {}); // Ensure postData is always an object
+        };
+
+        handleFetchData();
+    }, [user]);
 
     const handlePostTitleChange = (event) => {
-        setPostData({ ...postData, title: event.target.value });
+        setPostData((prev) => ({ ...prev, title: event.target.value }));
     };
 
     const handlePostDescriptionChange = (event) => {
-        setPostData({ ...postData, postDesc: event.target.value });
+        setPostData((prev) => ({ ...prev, postDesc: event.target.value }));
     };
 
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
         if (file) {
             const imageURL = URL.createObjectURL(file);
-            setPostData({ ...postData, postPicture: imageURL });
+            setPostData((prev) => ({ ...prev, postPicture: imageURL }));
         }
     };
 
     const handlePostSubmit = async () => {
-        if (postData.title.trim() && postData.postDesc.trim()) {
+        if (postData?.title?.trim() && postData?.postDesc?.trim()) {
             try {
-                const response = await fetch(`${process.env.REACT_APP_API_URL}/posts/createPost`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        title: postData.title,
-                        postDesc: postData.postDesc,
-                        postPicture: postData.postPicture,
-                        linkedinURL: postData.linkedinUrl,
-                    }),
-                });
+                const response = await fetch(
+                    `${process.env.REACT_APP_API_URL}/posts/createPost`,
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        },
+                        body: JSON.stringify({
+                            title: postData.title,
+                            postDesc: postData.postDesc,
+                            body: JSON.stringify({
+                            title: postData.title,
+                            postDesc: postData.postDesc,
+                            postPicture: postData.postPicture || null,
+                            linkedinURL: postData.linkedinUrl || null, // ✅ Ensure it's null if undefined
+                            }),
+                        }),
+                    }
+                );
 
                 if (response.ok) {
                     const newPost = { ...postData, id: Date.now() };
                     onNewPost(newPost);
-                    setPostData({ ...postData, title: "", postDesc: "", postPicture: "" }); // Reset after posting
+                    setPostData({ title: "", postDesc: "", postPicture: "" }); // Reset after posting
                 } else {
                     console.error("Failed to create post:", await response.text());
                 }

@@ -4,11 +4,18 @@ import LeaderboardSectionItem from "../components/LeaderboardSectionItem";
 import ComponentLoadingSpinner from "../components/ComponentLoadingSpinner";
 export default function LeaderboardPageMainContainer({ setSelectedProfile }) {
     const [leaderboardData, setLeaderboardData] = useState(null);
-
+    const token = localStorage.getItem("jwtToken");
     const fetchLeaderboardData = async () => {
         try {
             const response = await fetch(
-                `${process.env.REACT_APP_API_URL}/leaderboard`
+                `${process.env.REACT_APP_API_URL}/leaderboard`,
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
             );
             const data = await response.json();
             setLeaderboardData(data);

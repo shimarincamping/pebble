@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { TbAward, TbCalendarMonth, TbGift } from "react-icons/tb";
 import { GiPlasticDuck } from "react-icons/gi";
 
@@ -48,9 +49,11 @@ export default function DashboardStatsSidebarCard(props) {
                   </span>
                   <span>tickets</span>
                 </div>
+                <Link to="/rewards">
                 <div className={`${styles.statsSidebarCard__logo__gift}`}>
-                  <TbGift size={20} />
+                    <TbGift size={20} />
                 </div>
+                </Link>
               </div>
             </div>
           </div>

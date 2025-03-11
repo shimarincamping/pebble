@@ -5,11 +5,12 @@ const ModeratorDashboardContainer = () => {
     const [flaggedContent, setFlaggedContent] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
+    const token = localStorage.getItem("jwtToken");
     // Fetch flagged content from backend
+
     async function fetchFlaggedContent() {
         setLoading(true);
-        const token = localStorage.getItem("jwtToken");
+
         try {
             const response = await fetch(
                 `${process.env.REACT_APP_API_URL}/flags`,
@@ -38,6 +39,10 @@ const ModeratorDashboardContainer = () => {
                 `${process.env.REACT_APP_API_URL}/flags/${flaggedId}/approve`,
                 {
                     method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
                 }
             );
             setFlaggedContent((prev) =>
@@ -55,6 +60,10 @@ const ModeratorDashboardContainer = () => {
                 `${process.env.REACT_APP_API_URL}/flags/${flaggedId}/deny`,
                 {
                     method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
                 }
             );
             setFlaggedContent((prev) =>
