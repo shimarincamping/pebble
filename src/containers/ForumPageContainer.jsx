@@ -11,11 +11,20 @@ export default function ForumPageContainer() {
     const [forumThreadData, setForumThreadData] = useState([]);
     const [forumThread, setForumThread] = useState({});
 
+    const token = localStorage.getItem("jwtToken");
+
     // Fetch data from the backend API
     const fetchForumThreadData = async () => {
         try {
             const response = await fetch(
-                `${process.env.REACT_APP_API_URL}/forum`
+                `${process.env.REACT_APP_API_URL}/forum`,
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
             );
             const data = await response.json();
             setForumThreadData(data);
@@ -54,6 +63,10 @@ export default function ForumPageContainer() {
             `${process.env.REACT_APP_API_URL}/forum/${threadID}/likes`,
             {
                 method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
             }
         );
     };

@@ -11,14 +11,22 @@ const ForumThreadContainer = () => {
     const [inputText, setInputText] = useState(" ");
     const [commentDetails, setCommentDetails] = useState(null);
     const [replyTo, setReplyTo] = useState(null);
-    // const [hasUpvoted, setHasUpvoted] = useState(null);
+
+    const token = localStorage.getItem("jwtToken");
 
     // Fetch forum data based on the ID
     useEffect(() => {
         const fetchForumThread = async () => {
             try {
                 const response = await fetch(
-                    `${process.env.REACT_APP_API_URL}/forum/${threadID}`
+                    `${process.env.REACT_APP_API_URL}/forum/${threadID}`,
+                    {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
                 );
                 if (!response.ok) {
                     throw new Error("Forum thread not found");
@@ -71,11 +79,13 @@ const ForumThreadContainer = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault(); // Prevent the default form submission behavior};
+        const token = localStorage.getItem("jwtToken");
         fetch(`${process.env.REACT_APP_API_URL}/forum/${threadID}/comments`, {
             method: "POST",
             body: JSON.stringify(commentDetails),
             headers: new Headers({
                 "Content-Type": "application/json; charset=UTF-8",
+                Authorization: `Bearer ${token}`,
             }),
         });
     };
@@ -85,6 +95,10 @@ const ForumThreadContainer = () => {
             `${process.env.REACT_APP_API_URL}/forum/${threadID}/likes`,
             {
                 method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
             }
         );
     };

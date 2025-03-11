@@ -207,13 +207,14 @@ export default function ForumCreateThreadContainer(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault(); // Prevent the default form submission behavior};
-
+        const token = localStorage.getItem("jwtToken");
         isThreadTypeRoadmap
             ? fetch(`${process.env.REACT_APP_API_URL}/roadmap/createRoadmap`, {
                   method: "POST",
                   body: JSON.stringify(roadmapThreadData),
                   headers: new Headers({
                       "Content-Type": "application/json; charset=UTF-8",
+                      Authorization: `Bearer ${token}`,
                   }),
               })
             : fetch(
@@ -223,6 +224,7 @@ export default function ForumCreateThreadContainer(props) {
                       body: JSON.stringify(threadData),
                       headers: new Headers({
                           "Content-Type": "application/json; charset=UTF-8",
+                          Authorization: `Bearer ${token}`,
                       }),
                   }
               );

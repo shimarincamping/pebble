@@ -3,9 +3,9 @@ import EditProfileForm from "../components/EditProfileForm";
 import styles from "../styles/EditProfileForm.module.css";
 import { useAuth } from "../containers/AuthProvider";
 
-
 const EditProfileFormContainer = ({ initialData, onClose, onSave }) => {
     const { user } = useAuth(); // useAuth calls useContext, fetches userId
+    const token = localStorage.getItem("jwtToken");
     const [formData, setFormData] = useState(initialData);
     const [profilePicture, setProfilePicture] = useState(null);
 
@@ -25,18 +25,22 @@ const EditProfileFormContainer = ({ initialData, onClose, onSave }) => {
         e.preventDefault();
 
         try {
-            const currentRequestID = await user;; // ID set by authentication middleware
+            const currentRequestID = await user; // ID set by authentication middleware
 
-            await fetch(`${process.env.REACT_APP_API_URL}/users/${currentRequestID}`, {
-                method: 'PUT',
-                body: JSON.stringify({
-                    ...formData, 
-                    profilePicture
-                }),
-                headers: {
-                    'Content-Type': 'application/json; charset=UTF-8'
+            await fetch(
+                `${process.env.REACT_APP_API_URL}/users/${currentRequestID}`,
+                {
+                    method: "PUT",
+                    body: JSON.stringify({
+                        ...formData,
+                        profilePicture,
+                    }),
+                    headers: {
+                        "Content-Type": "application/json; charset=UTF-8",
+                        Authorization: `Bearer ${token}`,
+                    },
                 }
-            });
+            );
 
             onSave(formData);
             onClose();
@@ -47,12 +51,12 @@ const EditProfileFormContainer = ({ initialData, onClose, onSave }) => {
 
     return (
         <div className={styles.overlay}>
-            <EditProfileForm 
-                formData={formData} 
-                handleChange={handleChange} 
-                handleSubmit={handleSubmit} 
-                handleImageUpload={handleImageUpload} 
-                closeForm={onClose} 
+            <EditProfileForm
+                formData={formData}
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+                handleImageUpload={handleImageUpload}
+                closeForm={onClose}
             />
         </div>
     );
