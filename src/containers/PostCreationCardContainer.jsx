@@ -46,42 +46,55 @@ function PostCreationCardContainer({ onNewPost }) {
     };
 
     const handlePostSubmit = async () => {
-        if (postData?.title?.trim() && postData?.postDesc?.trim()) {
-            try {
-                const response = await fetch(
-                    `${process.env.REACT_APP_API_URL}/posts/createPost`,
-                    {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                            Authorization: `Bearer ${token}`,
-                        },
-                        body: JSON.stringify({
-                            title: postData.title,
-                            postDesc: postData.postDesc,
-                            body: JSON.stringify({
-                            title: postData.title,
-                            postDesc: postData.postDesc,
-                            postPicture: postData.postPicture || null,
-                            linkedinURL: postData.linkedinUrl || null, // ✅ Ensure it's null if undefined
-                            }),
-                        }),
-                    }
-                );
-
-                if (response.ok) {
-                    const newPost = { ...postData, id: Date.now() };
-                    onNewPost(newPost);
-                    setPostData({ title: "", postDesc: "", postPicture: "" }); // Reset after posting
-                } else {
-                    console.error("Failed to create post:", await response.text());
+        if (!postData?.title?.trim() || !postData?.postDesc?.trim()) {
+            console.error("Title and description are required.");
+            return;
+        }
+    
+        try {
+            const response = await fetch(
+                `${process.env.REACT_APP_API_URL}/posts/createPost`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({
+                        title: postData.title,
+                        postDesc: postData.postDesc,
+                        postPicture: postData.postPicture || null, // Ensure null if empty
+                        linkedinURL: postData.linkedinURL || null, // Ensure null if empty
+                    }),
                 }
-            } catch (error) {
-                console.error("Error submitting post:", error);
+            );
+    
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`Failed to create post: ${errorText}`);
             }
+    
+            // Fetch the newly created post to update the feed
+            const newPost = {
+                ...postData,
+                id: Date.now(), // Temporary ID before getting the real one from Firestore
+            };
+            onNewPost(newPost);
+    
+            // Reset form after successful submission
+            setPostData({
+                title: "",
+                postDesc: "",
+                postPicture: "",
+                linkedinURL: "",
+            });
+    
+            console.log("Post created successfully!");
+        } catch (error) {
+            console.error("Error submitting post:", error);
         }
     };
-
+    
     return (
         <PostCreationCard
             postData={postData}
