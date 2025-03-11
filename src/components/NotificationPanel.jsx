@@ -1,8 +1,15 @@
-import React from 'react';
+import { React, useEffect } from 'react';
 import styles from '../styles/NotificationPanel.module.css';
 import NotificationItem from './NotificationItem';
 
-function NotificationPanel({NotificationsList,isNotiPanelVisible,handleBackClick}){
+function NotificationPanel({notificationsList = [],isNotiPanelVisible,handleBackClick}){
+
+    useEffect(() => {
+        console.log(`notificationsList@notificationPanel: ${notificationsList}`);
+        if (notificationsList.length > 0) {
+            console.log("First notification:", notificationsList[0]);
+        }
+    },[notificationsList])
 
     return(
         <div className={`${styles.NotificationPanelContainer}
@@ -20,14 +27,26 @@ function NotificationPanel({NotificationsList,isNotiPanelVisible,handleBackClick
             <div className={styles.Body}>
 
                 
-                 {(NotificationsList || []).map((notification) => (
+                {
+                // notificationsList.length > 0 ? (
+                    
+                        (notificationsList).map((notification) => (
+                            
+                            // <NotificationItem 
+                            //     RelevantUser={notification.RelevantUser} 
+                            //     NotificaitonContent={notification.NotificaitonContent}
+                            //     DateTimeInfo={notification.DateTimeInfo}
+                            // />
 
                             <NotificationItem 
-                                RelevantUser={notification.RelevantUser} 
-                                NotificaitonContent={notification.NotificaitonContent}
-                                DateTimeInfo={notification.DateTimeInfo}
+                                RelevantUser={notification.notificationTriggeredBy} 
+                                NotificationContent={notification.notificationText}
+                                DateTimeInfo={notification.notificationDateTime}
                             />
+
+
                         ))
+                    // ) : <p>loading...</p>
                 }
             
             </div>

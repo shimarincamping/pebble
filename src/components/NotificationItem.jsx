@@ -11,7 +11,7 @@ function NotificationItem(props){
             <div className={styles.TxtContainer}>
                 <div className={styles.TxtContainerTop}>
                     <h1>{props.RelevantUser}</h1>
-                    <p>{props.NotificaitonContent}</p>
+                    <p>{props.NotificationContent}</p>
                 </div>
 
                 <div className={styles.TxtContainerBot}>
