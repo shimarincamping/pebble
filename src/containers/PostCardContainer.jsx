@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import PostCard from "../components/PostCard";
 import ComponentLoadingSpinner from "../components/ComponentLoadingSpinner";
 import styles from "../styles/PostCard.module.css";
-import { useAuth } from "../containers/AuthProvider";
 
 
 function PostCardContainer(props) {
@@ -12,7 +11,6 @@ function PostCardContainer(props) {
   const [editingPost, setEditingPost] = useState(null);
   const [newContent, setNewContent] = useState("");
   const [copied, setCopied] = useState(false);
-  const { user } = useAuth(); // useAuth calls useContext, fetches userId
 
   // Fetch posts from backend (only show visible posts)
   useEffect(() => {
@@ -39,11 +37,11 @@ function PostCardContainer(props) {
   
   useEffect(() => {
     if (props.newPost) {
-      setPostCardData((prevPosts) => [{ ...props.newPost, user: prevPosts.length + 1 }, ...prevPosts]);
+      setPostCardData((prevPosts) => [{ ...props.newPost, id: prevPosts.length + 1 }, ...prevPosts]);
     }
   }, [props.newPost]);
 
-  const handlePostClick = (user) => navigate(`/post/${user}`);
+  const handlePostClick = (id) => navigate(`/post/${id}`);
 
   const handleEditClick = (post) => {
     setEditingPost(post);
@@ -51,13 +49,13 @@ function PostCardContainer(props) {
   };
 
   const handleSaveEdit = async () => {
-    if (!editingPost || !editingPost.user) {
+    if (!editingPost || !editingPost.id) {
       console.error("Editing post is not properly set.");
       return;
     }
   
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/posts/${editingPost.user}/edit`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/posts/${editingPost.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ newPostContent: newContent }),
@@ -70,7 +68,7 @@ function PostCardContainer(props) {
       // Update post in state
       setPostCardData((prevData) =>
         prevData.map((post) =>
-          post.user === editingPost.user ? { ...post, postDesc: newContent } : post
+          post.id === editingPost.id ? { ...post, postDesc: newContent } : post
         )
       );
   
@@ -81,15 +79,15 @@ function PostCardContainer(props) {
     }
   };
       
-  const handleDeleteClick = async (user) => {
+  const handleDeleteClick = async (id) => {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/posts/${user}/delete`, { method: "DELETE" });
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/posts/${id}`, { method: "DELETE" });
 
       if (response.ok) {
         // Immediately remove the post from the state
-        setPostCardData((prevData) => prevData.filter((post) => post.user !== user));
+        setPostCardData((prevData) => prevData.filter((post) => post.id !== id));
       } else {
         console.error("Failed to delete post.");
       }
@@ -98,9 +96,9 @@ function PostCardContainer(props) {
     }
   };
   
-  const handleLike = async (user) => {
+  const handleLike = async (id) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/posts/${user}/like`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/posts/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -109,13 +107,13 @@ function PostCardContainer(props) {
   
       if (response.ok) {
         // Fetch updated post data
-        const updatedPost = await fetch(`${process.env.REACT_APP_API_URL}/posts/${user}`);
+        const updatedPost = await fetch(`${process.env.REACT_APP_API_URL}/posts/${id}`);
         const updatedPostData = await updatedPost.json();
   
         // Update state with new data
         setPostCardData((prevData) =>
           prevData.map((post) =>
-            post.user === user ? updatedPostData : post
+            post.id === id ? updatedPostData : post
           )
         );
   
@@ -128,7 +126,7 @@ function PostCardContainer(props) {
     }
   };
       
-  const handleReport = async (user) => {
+  const handleReport = async (id) => {
     try {
         const response = await fetch(`${process.env.REACT_APP_API_URL}/flags`, {
             method: "POST",
@@ -136,7 +134,7 @@ function PostCardContainer(props) {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                contentID: user,
+                contentID: id,
                 contentType: "post",
             }),
         });
@@ -146,7 +144,7 @@ function PostCardContainer(props) {
 
             setPostCardData((prevData) =>
                 prevData.map((post) =>
-                    post.user === contentID ? { ...post, reported } : post
+                    post.id === contentID ? { ...post, reported } : post
                 )
             );
 
@@ -171,9 +169,9 @@ function PostCardContainer(props) {
         {postCardData.length > 0 ? (
           postCardData.map((post) => (
             <PostCard
-              key={post.user}
+              key={post.id}
               post={post}
-              onClick={() => handlePostClick(post.user)}
+              onClick={() => handlePostClick(post.id)}
               onEditClick={handleEditClick}
               onDeleteClick={handleDeleteClick}
               onLike={handleLike}
