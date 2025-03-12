@@ -77,7 +77,6 @@ function PostCreationCardContainer({ onNewPost }) {
             // Fetch the newly created post to update the feed
             const newPost = {
                 ...postData,
-                id: Date.now(), // Temporary ID before getting the real one from Firestore
             };
             onNewPost(newPost);
     
