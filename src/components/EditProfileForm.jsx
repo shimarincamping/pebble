@@ -84,6 +84,7 @@ const EditProfileForm = ({
                         value={formData.email}
                         onChange={handleChange}
                         required
+                        disabled
                     />
                 </label>
 

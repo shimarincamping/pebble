@@ -12,7 +12,7 @@ const LoginFormContainer = () => {
   const [error, setError] = useState("");
 
   const handleMicrosoftLogin = () => {
-    console.log("Microsoft Login clicked");
+    alert("Sorry! This feature is currently not yet supported!")
   };
 
   const handleSubmit = async (e) => {
@@ -74,9 +74,11 @@ const LoginFormContainer = () => {
               Forgot Password?
             </a>
           </p>
+          {/*
           <label>
             <input type="checkbox" /> Remember me
           </label>
+          */} 
         </div>
 
         <button type="submit" className={styles.formBody__loginPageButton} disabled={loading}>
