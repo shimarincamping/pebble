@@ -25,7 +25,7 @@
     padding: 1em 2em;
 }
 
-.leaderboardSectionItem__container__image{
+.leaderboardSectionItem__container__image {
     width: 7em;
     height: 7em;
     object-fit: cover;
@@ -79,6 +79,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.75em;
+    overflow-wrap: break-word;
 }
 
 .leaderboardSidebar__sidebarItem__content h3 {

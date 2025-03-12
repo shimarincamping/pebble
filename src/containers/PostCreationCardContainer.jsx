@@ -50,10 +50,10 @@ function PostCreationCardContainer({ onNewPost }) {
             console.error("Title and description are required.");
             return;
         }
-    
+
         try {
             const response = await fetch(
-                `${process.env.REACT_APP_API_URL}/posts/createPost`,
+                `${process.env.REACT_APP_API_URL}/posts`,
                 {
                     method: "POST",
                     headers: {
@@ -68,19 +68,19 @@ function PostCreationCardContainer({ onNewPost }) {
                     }),
                 }
             );
-    
+
             if (!response.ok) {
                 const errorText = await response.text();
                 throw new Error(`Failed to create post: ${errorText}`);
             }
-    
+
             // Fetch the newly created post to update the feed
             const newPost = {
                 ...postData,
                 id: Date.now(), // Temporary ID before getting the real one from Firestore
             };
             onNewPost(newPost);
-    
+
             // Reset form after successful submission
             setPostData({
                 title: "",
@@ -88,13 +88,13 @@ function PostCreationCardContainer({ onNewPost }) {
                 postPicture: "",
                 linkedinURL: "",
             });
-    
+
             console.log("Post created successfully!");
         } catch (error) {
             console.error("Error submitting post:", error);
         }
     };
-    
+
     return (
         <PostCreationCard
             postData={postData}

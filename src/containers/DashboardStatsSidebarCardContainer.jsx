@@ -1,37 +1,47 @@
 import React, { useState, useEffect } from "react";
 import DashboardStatsSidebarCard from "../components/DashboardStatsSidebarCard";
 import ComponentLoadingSpinner from "../components/ComponentLoadingSpinner";
+import { useAuth } from "../containers/AuthProvider";
 
 export default function DashboardStatsSidebarCardContainer() {
-  const dummyProfileStats = {
-    leaderboardRank: 25,
-    totalPoints: 1692,
-    monthlyPoints: 472,
-    tickets: 5,
-  };
+    const { user } = useAuth(); // useAuth calls useContext, fetches userId
+    const token = localStorage.getItem("jwtToken");
 
-  const [profileStats, setProfileStats] = useState(null);
+    const [profileStats, setProfileStats] = useState(null);
 
-  useEffect(() => {
-    const fetchData = setInterval(() => {
-      setProfileStats(dummyProfileStats);
-    }, 5000);
+    useEffect(() => {
+        const handleFetchData = async () => {
+            const currentUserID = await user;
 
-    return () => clearInterval(fetchData);
-  }, []);
+            const fetchedData = await fetch(
+                `${process.env.REACT_APP_API_URL}/users/${currentUserID}/stats`,
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            const fetchedJsonData = await fetchedData.json();
 
-  return (
-    <>
-      {
-        (profileStats) ? (
-          <DashboardStatsSidebarCard
-            leaderboardRank={profileStats.leaderboardRank}
-            totalPoints={profileStats.totalPoints}
-            monthlyPoints={profileStats.monthlyPoints}
-            tickets={profileStats.tickets}
-          />
-        ) : (<ComponentLoadingSpinner />)
-      }
-    </>
-  );
+            setProfileStats(fetchedJsonData);
+        };
+
+        handleFetchData();
+    }, []);
+
+    return (
+        <>
+            {profileStats ? (
+                <DashboardStatsSidebarCard
+                    leaderboardRank={profileStats.leaderboardRank}
+                    totalPoints={profileStats.totalPoints}
+                    tickets={profileStats.tickets}
+                />
+            ) : (
+                <ComponentLoadingSpinner />
+            )}
+        </>
+    );
 }
