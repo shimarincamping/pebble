@@ -6,9 +6,9 @@ import LoadingSpinner from '../components/ComponentLoadingSpinner';
 function NotificationPanel({notificationsList = [] ,isNotiPanelVisible, handleBackClick}){
 
     useEffect(() => {
-        console.log(`notificationsList@notificationPanel: ${notificationsList}`);
+        // console.log(`notificationsList@notificationPanel: ${notificationsList}`);
         if (notificationsList.length > 0) {
-            console.log("First notification:", notificationsList[0]);
+            // console.log("First notification:", notificationsList[0]);
         }
     },[notificationsList])
 
