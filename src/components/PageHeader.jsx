@@ -3,14 +3,6 @@ import styles from "../styles/PageHeader.module.css";
 
 function PageHeader({handleLogoClick,handleMenuClick,handleSearch}){
 
-    const testHamburger=()=>{
-        console.log("hamburger exists")
-    }
-
-    const testLogo=()=>{
-        console.log("logo exists")
-    }
-
     return(
         <>
             <div className={styles.HeaderContainerDiv}>
@@ -19,14 +11,14 @@ function PageHeader({handleLogoClick,handleMenuClick,handleSearch}){
                 </div>
 
                 <div className={styles.PebbleLongLogoContainer} >  
-                    <img  className={styles.PebbleLongLogo} src="/img/pebbleLongLogo.png" onclick={handleLogoClick} alt=""/> 
+                    <img  className={styles.PebbleLongLogo} src="/img/pebbleLongLogo.png" onClick={handleLogoClick} alt=""/> 
                 </div>
                
                 <div className={styles.SearchBarContainer}>
                     <form className={styles.SearchForm}>
                         <input className={styles.SearchBarInput} placeholder="Search on PEBBLE..." />
                     </form>
-                    <img className={styles.SearchIcon} src="/img/SearchIconForTopBar.svg"  onclick={handleSearch} alt=""/>
+                    <img className={styles.SearchIcon} src="/img/SearchIconForTopBar.svg"  onClick={handleSearch} alt=""/>
                 </div>
             </div>
         

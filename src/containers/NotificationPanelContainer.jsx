@@ -1,5 +1,9 @@
-import React from 'react';
+import { React, useEffect, useState}  from 'react';
+import {useAuth} from './AuthProvider';
+
 import NotificationPanel from '../components/NotificationPanel';
+const token = localStorage.getItem("jwtToken");
+
 
 const NotificationPanelContainer = ({isNotiPanelVisible,handleBackClick}) => {
 
@@ -21,16 +25,66 @@ const NotificationPanelContainer = ({isNotiPanelVisible,handleBackClick}) => {
         "DateTimeInfo":"2 Days ago, Saturday"
     }
 
+    const { user } = useAuth();
+    const currentUserID = user; 
+    const Notifications1=[dummy_data,dummy_data2,dummy_data3,dummy_data,dummy_data2,dummy_data3];
 
-    const Notifications=[dummy_data,dummy_data2,dummy_data3,dummy_data,dummy_data2,dummy_data3];
-   
-   
-   
-   
-   
+    const [notifications,setNotifications] = useState([]);
+
+    useEffect(()=>{
+        const getNotifications = async () => { 
+            try{
+                const notificationsResponse = await fetch(`${process.env.REACT_APP_API_URL}/users/${currentUserID}/notifications`,
+                    {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
+
+                if (notificationsResponse.ok){
+                    const fetchedNotificationsJSON = await notificationsResponse.json();
+                    console.log(`notificationsResponse@notificationPanelContainer: ${fetchedNotificationsJSON}`);
+                    console.log(`notificationsResponseStringified@notificationPanelContainer: ${JSON.stringify(fetchedNotificationsJSON)}`);
+                    setNotifications(fetchedNotificationsJSON);
+                }else{
+                    console.error("Notification Response unsuccessful")
+                }
+
+                
+            }catch(e){
+                console.error(`An error occured while fethcing notifications: ${e}`);
+            }
+        }
+        
+        getNotifications();
+    },[currentUserID]);
+
+    useEffect(() => {
+        console.log("Updated notifications state:", notifications);
+    }, [notifications]);
+
+    // const getNotifications = async () => { 
+    //     try{
+    //         const notificationsResponse = await fetch(`${process.env.REACT_APP_API_URL}/users/${currentUserID}/notifications`);
+    //         console.log(`notificationsResponse@notificationPanelContainer: ${notificationsResponse}`);
+    //         console.log(`notificationsResponseStringified@notificationPanelContainer: ${JSON.stringify(notificationsResponse)}`);
+    //         console.log(`currentUserID: ${currentUserID}`);
+
+    //         setNotifications(notificationsResponse);
+    //     }catch(e){
+    //         console.error(`An error occured while fethcing notifications: ${e}`);
+    //     }
+    // }
+
+    // getNotifications();
+
     return ( 
+
         <NotificationPanel  
-            NotificationsList={Notifications}
+            notificationsList={[...notifications]}
             isNotiPanelVisible={isNotiPanelVisible}
             handleBackClick={handleBackClick}
         />
