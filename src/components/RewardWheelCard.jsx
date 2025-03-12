@@ -2,9 +2,6 @@ import React,{useEffect, useState} from "react";
 import styles from "../styles/RewardWheelCard.module.css"
 import CongratsMessageCard from "./PrizeObtainedDialog"
 
-//delete the following import, it's not meant to be here
-import axios from 'axios';
-
 
     function RewardWheelCard({WheelRotation,handleSpin,getTicketCount,showCongrats}){
 
