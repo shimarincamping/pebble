@@ -4,7 +4,7 @@ import { FaLinkedin } from "react-icons/fa"; // Import LinkedIn icon
 import PostCommentContainer from "../containers/PostCommentContainer";
 import styles from "../styles/PostCard.module.css";
 
-const PostCard = ({ post, onClick, onLike, onReport, onCopyLink, onEditClick, onDeleteClick }) => {
+const PostCard = ({ post, currentUserID, onClick, onLike, onReport, onCopyLink, onEditClick, onDeleteClick }) => {
     const [expanded, setExpanded] = useState(false);
     const [showComments, setShowComments] = useState(false);
     return (
@@ -22,7 +22,15 @@ const PostCard = ({ post, onClick, onLike, onReport, onCopyLink, onEditClick, on
                 </div>
                 <div className={styles.postActionsIcons}>
                     <BsPencilFill className={styles.editIcon} onClick={(e) => { e.stopPropagation(); onEditClick(post); }} />
-                    <BsTrashFill className={styles.deleteIcon} onClick={(e) => { e.stopPropagation(); onDeleteClick(post.id); }} />
+                    {currentUserID === post.userID && ( // ✅ Only show for the owner
+                        <BsTrashFill
+                            className={styles.deleteIcon}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onDeleteClick(post.id);
+                            }}
+                        />
+                    )}
                 </div>
             </div>
 
