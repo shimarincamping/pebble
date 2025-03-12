@@ -36,9 +36,9 @@ function ProfilePageHeaderInfoCard(props) {
                     ) : (
                         <button 
                             onClick={props.toggleFollow} 
-                            className={props.isFollowing ? styles.headerInfoCard__unfollowButton : styles.headerInfoCard__followButton}
+                            className={props.isFollowingUser ? styles.headerInfoCard__unfollowButton : styles.headerInfoCard__followButton}
                         >
-                            {props.isFollowing ? "Unfollow" : "Follow"}
+                            {props.isFollowingUser ? "Unfollow" : "Follow"}
                         </button>
                     )}
                 </section>

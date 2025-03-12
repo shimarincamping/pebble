@@ -50,7 +50,7 @@ function NavPanel({ isVisible, HandleMenuClick, HandleBellClick, navigateTo }) {
                         <img src="/img/LearnIcon.png" alt=""></img>
                     </div>
                     <div className={styles.TextContainer}>
-                        <h2>Learn</h2>
+                        <h2>Forum</h2>
                     </div>
                 </div>
 
