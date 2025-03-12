@@ -1,7 +1,7 @@
 import { React, useEffect } from 'react';
 import styles from '../styles/NotificationPanel.module.css';
 import NotificationItem from './NotificationItem';
-import loadingSpinner from '../components/ComponentLoadingSpinner';
+import LoadingSpinner from '../components/ComponentLoadingSpinner';
 
 function NotificationPanel({notificationsList = [] ,isNotiPanelVisible, handleBackClick}){
 
@@ -43,11 +43,12 @@ function NotificationPanel({notificationsList = [] ,isNotiPanelVisible, handleBa
                                 RelevantUser={notification.notificationTriggeredBy} 
                                 NotificationContent={notification.notificationText}
                                 DateTimeInfo={notification.notificationDateTime}
+                                imgUrl={notification.notificationImage}
                             />
 
 
                         ))
-                    ) : (<loadingSpinner/>)
+                    ) : (<LoadingSpinner/>)
                 }
             
             </div>

@@ -1,6 +1,8 @@
 import { React, useEffect, useState}  from 'react';
 import {useAuth} from './AuthProvider';
+
 import NotificationPanel from '../components/NotificationPanel';
+const token = localStorage.getItem("jwtToken");
 
 
 const NotificationPanelContainer = ({isNotiPanelVisible,handleBackClick}) => {
@@ -32,7 +34,15 @@ const NotificationPanelContainer = ({isNotiPanelVisible,handleBackClick}) => {
     useEffect(()=>{
         const getNotifications = async () => { 
             try{
-                const notificationsResponse = await fetch(`${process.env.REACT_APP_API_URL}/users/${currentUserID}/notifications`);
+                const notificationsResponse = await fetch(`${process.env.REACT_APP_API_URL}/users/${currentUserID}/notifications`,
+                    {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
 
                 if (notificationsResponse.ok){
                     const fetchedNotificationsJSON = await notificationsResponse.json();

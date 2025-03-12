@@ -5,7 +5,7 @@ function NotificationItem(props){
     return(
         <div className={styles.ItemContainer}> 
             <div className={styles.ImgContainer}>
-                <img className={styles.ProfileImg} src='/img/HarHar.png'></img>
+                <img className={styles.ProfileImg} src={props.imgUrl}></img>
             </div>
 
             <div className={styles.TxtContainer}>

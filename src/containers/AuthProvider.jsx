@@ -80,6 +80,7 @@ export const AuthProvider = ({ children }) => {
             }
 
             localStorage.setItem("jwtToken", data.jwtToken);
+            console.log(`data.jwtToken: ${data.jwtToken}`);
 
             console.log("Auth provider.jsx login: " + data.uid);
             setUser(data.uid);
