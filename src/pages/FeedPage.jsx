@@ -11,10 +11,7 @@ import PostCardContainer from "../containers/PostCardContainer";
 import styles from "../styles/global.module.css";
 import PostCreationCardContainer from "../containers/PostCreationCardContainer.jsx";
 
-import { useAuth } from "../containers/AuthProvider";
 function FeedPage() {
-    const { user } = useAuth(); // useAuth calls useContext, fetches userId
-    const loggedInUserId = user;
 
     const [newPost, setNewPost] = useState(null);
 
@@ -36,9 +33,7 @@ function FeedPage() {
 
                 <ApplicationSidebar>
                     <DashboardStatsSidebarCardContainer />
-                    <NetworkSidebarCardContainer
-                        loggedInUserId={loggedInUserId}
-                    />
+                    <NetworkSidebarCardContainer />
                 </ApplicationSidebar>
             </div>
         </>
