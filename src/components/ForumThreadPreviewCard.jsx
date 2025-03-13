@@ -1,5 +1,5 @@
 import React from "react";
-import { BiUpvote, BiCommentDetail, BiShareAlt, BiFlag } from "react-icons/bi";
+import { BiUpvote, BiFlag } from "react-icons/bi";
 import styles from "../styles/Forum.module.css";
 
 export default function ForumThreadPreviewCard({
@@ -33,13 +33,7 @@ export default function ForumThreadPreviewCard({
                         {forumThread.threadScore}
                     </span>
                     <span>
-                        <BiCommentDetail size={20} /> {forumThread.commentCount}
-                    </span>
-                    <span>
                         <BiFlag size={20} />
-                    </span>
-                    <span>
-                        <BiShareAlt size={20} />
                     </span>
                 </div>
                 <div className={`${styles.threadCard__profile}`}>

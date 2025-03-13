@@ -10,9 +10,16 @@ export default function ForumThreadInputFieldRoadmapSection(props) {
         >
             <div className={`${styles.createThread__input__title}`}>
                 Section {props.index + 1}
-                <button>
-                    <MdOutlineCancel size={20} />
-                </button>
+                {props.index !== 0 ? (
+                    <>
+                        <button>
+                            <MdOutlineCancel
+                                size={20}
+                                onClick={props.deleteRoadmapSection}
+                            />
+                        </button>
+                    </>
+                ) : null}
             </div>
             <div className={`${styles.createThread__input}`}>
                 <label htmlFor="roadmapSectionType">Section Type:</label>
