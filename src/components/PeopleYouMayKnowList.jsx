@@ -17,7 +17,7 @@ const PeopleYouMayKnowList = ({ peopleYouMayKnowUsers = [], handleFollowUser, ha
           <button 
             className={styles.networkSidebarCard__peopleYouMayKnow__followButton} 
             value={user.userID} 
-            onClick={handleFollowUser}
+            onClick={() => handleFollowUser(user.userID)}
           >
             Follow
           </button>

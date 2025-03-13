@@ -18,8 +18,7 @@ function ProfilePageContainer({ id }) {
     const [userProfileData, setUserProfileData] = useState(null);
     const [userProfileDetails, setUserProfileDetails] = useState(null);
     const [userPostHistory, setUserPostHistory] = useState(null);
-    const [isEditProfileFormVisible, setIsEditProfileFormVisible] =
-        useState(false);
+    const [isEditProfileFormVisible, setIsEditProfileFormVisible] = useState(false);
 
     const token = localStorage.getItem("jwtToken");
 
@@ -104,7 +103,7 @@ function ProfilePageContainer({ id }) {
             return;
         }
 
-        await fetch(
+        const fetchResponse = await fetch(
             `${process.env.REACT_APP_API_URL}/users/${currentRequestID}/followers`,
             {
                 method: "PUT",
@@ -114,11 +113,14 @@ function ProfilePageContainer({ id }) {
                 },
             }
         );
-        setUserProfileData((prev) => ({
-            ...prev,
-            isFollowingUser: !prev.isFollowingUser,
-            followerCount: prev.followerCount + (prev.isFollowingUser ? -1 : 1),
-        }));
+
+        if (fetchResponse.ok) {
+            setUserProfileData((prev) => ({
+                ...prev,
+                isFollowingUser: !prev.isFollowingUser,
+                followerCount: prev.followerCount + (prev.isFollowingUser ? -1 : 1),
+            }));
+        }
     };
 
     function updateProfileData(dataKey, newValue) {
@@ -140,9 +142,8 @@ function ProfilePageContainer({ id }) {
                     <ProfilePageHeaderInfoCard
                         {...userProfileData}
                         isMyProfile={isMyProfile}
-                        toggleEditProfileFormVisible={() =>
-                            setIsEditProfileFormVisible(true)
-                        }
+                        isFollowable={user === id}
+                        toggleEditProfileFormVisible={() => setIsEditProfileFormVisible(true)}
                         toggleFollow={toggleFollow}
                     />
                     <ProfilePagePostsCardContainer
@@ -180,9 +181,13 @@ function ProfilePageContainer({ id }) {
             {isEditProfileFormVisible && (
                 <ApplicationMainOverlay>
                     <EditProfileFormContainer
+                        id={currentRequestID}
                         initialData={userProfileData}
                         onClose={() => setIsEditProfileFormVisible(false)}
-                        onSave={updateProfileData}
+                        onSave={(updatedData) => {
+                            setUserProfileData(updatedData); // Update profile data immediately
+                            setUserProfileDetails(updatedData.profileDetails);
+                        }}
                     />
                 </ApplicationMainOverlay>
             )}

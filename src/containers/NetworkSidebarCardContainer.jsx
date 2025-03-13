@@ -4,15 +4,17 @@ import NetworkSidebarCard from "../components/NetworkSidebarCard";
 import ComponentLoadingSpinner from "../components/ComponentLoadingSpinner";
 import NetworkPopup from "../components/NetworkPopup";
 import ApplicationMainOverlay from "../containers/ApplicationMainOverlay";
+import { useAuth } from "./AuthProvider";
 
-function NetworkSidebarCardContainer({ loggedInUserId }) {
+function NetworkSidebarCardContainer() {
     const navigate = useNavigate();
     const [networkData, setNetworkData] = useState(null);
     const [popupData, setPopupData] = useState(null);
     const [popupTitle, setPopupTitle] = useState("");
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const token = localStorage.getItem("jwtToken");
-    // Use a test user ID if loggedInUserId is missing
+    const { user } = useAuth();
+    const loggedInUserId = user;
     const userId = loggedInUserId;
 
     const fetchNetworkData = useCallback(async () => {
@@ -23,7 +25,6 @@ function NetworkSidebarCardContainer({ loggedInUserId }) {
 
         try {
             const url = `${process.env.REACT_APP_API_URL}/users/${userId}/network`;
-
             const response = await fetch(url, {
                 method: "GET",
                 headers: {
@@ -32,38 +33,40 @@ function NetworkSidebarCardContainer({ loggedInUserId }) {
                 credentials: "include",
             });
 
-            console.log("Response status:", response.status);
-
             if (!response.ok) throw new Error(`Error: ${response.status}`);
 
             const data = await response.json();
             setNetworkData(data);
         } catch (error) {
             console.error("Error fetching network data:", error);
-            setNetworkData([]); // Prevents errors due to missing data
+            setNetworkData([]); 
         }
-    }, [userId]);
+    }, [token, userId]);
 
     useEffect(() => {
         fetchNetworkData();
     }, [fetchNetworkData]);
 
-    const handleFollowUser = async ({ target }) => {
-        const userID = target.value;
+    const handleFollowUser = async (followeeId) => {
         if (!userId) {
             console.error("No userId found, cannot follow/unfollow");
             return;
         }
-
-        console.log(`Attempting to follow/unfollow user: ${userID}`);
-
+    
+        if (!followeeId) {
+            console.error("Invalid user ID provided.");
+            return;
+        }
+    
+        console.log(`Current User ID: ${userId}, Attempting to follow/unfollow User ID: ${followeeId}`);
+    
+        if (followeeId === userId) {
+            console.warn("User cannot follow themselves.");
+            return;
+        }
+    
         try {
-            const url = `${process.env.REACT_APP_API_URL}/users/${userId}/followers`;
-            console.log("Making request to:", url);
-
-            const payload = { followeeId: userID };
-            console.log("Payload:", JSON.stringify(payload));
-
+            const url = `${process.env.REACT_APP_API_URL}/users/${followeeId}/followers`;
             const response = await fetch(url, {
                 method: "PUT",
                 credentials: "include",
@@ -71,22 +74,40 @@ function NetworkSidebarCardContainer({ loggedInUserId }) {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
                 },
-                body: JSON.stringify(payload),
+                body: JSON.stringify({ followeeId }),
             });
-
-            console.log("Response status:", response.status);
-            const responseData = await response.text(); // Get the response body
-            console.log("Response body:", responseData);
-
-            if (!response.ok)
-                throw new Error(`Error: ${response.status} - ${responseData}`);
-
+    
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`Error: ${response.status} - ${errorText}`);
+            }
+    
             console.log("Follow/unfollow successful!");
-            fetchNetworkData(); // Refresh network data
+    
+            setNetworkData((prevData) => {
+                if (!prevData) return prevData;
+    
+                const isFollowing = prevData?.myFollowing?.includes(followeeId) || false;
+    
+                return {
+                    ...prevData,
+                    myFollowing: isFollowing
+                        ? (prevData.myFollowing || []).filter((id) => id !== followeeId)
+                        : [...(prevData.myFollowing || []), followeeId],
+    
+                    myFollowers: isFollowing
+                        ? (prevData.myFollowers || []).filter((id) => id !== userId)
+                        : [...(prevData.myFollowers || []), userId],
+                };
+            });
+    
+            alert(`You have ${networkData?.myFollowing?.includes(followeeId) ? "unfollowed" : "followed"} the user!`);
+    
         } catch (error) {
             console.error("Error following/unfollowing user:", error);
         }
     };
+    
 
     const handleUserClick = (userID) => {
         navigate(`/profile/${userID}`);
@@ -129,11 +150,7 @@ function NetworkSidebarCardContainer({ loggedInUserId }) {
                         users={popupData}
                         handleClose={handleClosePopup}
                         handleUserClick={handleUserClick}
-                        handleFollowUser={
-                            popupTitle === "People You May Know"
-                                ? handleFollowUser
-                                : null
-                        }
+                        handleFollowUser={popupTitle === "People You May Know" ? handleFollowUser : null}
                     />
                 </ApplicationMainOverlay>
             )}

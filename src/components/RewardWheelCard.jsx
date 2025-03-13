@@ -1,20 +1,13 @@
-import React,{useEffect, useState} from "react";
+import {React,useEffect, useState} from "react";
 import styles from "../styles/RewardWheelCard.module.css"
 import CongratsMessageCard from "./PrizeObtainedDialog"
 
 
-    function RewardWheelCard({WheelRotation,handleSpin,getTicketCount,showCongrats}){
+//delete the following import, it's not meant to be here
 
-    // delete all of this, its not meant to be here
 
-    // const sendAuthReq = async () => {
-    //     try{
-    //         const response= await axios.get('http://localhost:4001/auth/linkedin');
-    //         console.log(response);
-    //     }catch (e){
-    //         console.error("Error during LinkedIn Auth : " + e);
-    //     }
-    // }
+
+    function RewardWheelCard({WheelRotation,handleSpin,showTicketCount,showCongrats,nTickets}){
 
     const sendAuthReq = async () => {
         
@@ -23,18 +16,18 @@ import CongratsMessageCard from "./PrizeObtainedDialog"
     }
 
     return(
-
+        
         <div className={styles.Container}>
-            <h1>You have <span className={styles.TicketCount}> {getTicketCount()}</span> ready for use! </h1>
+            <h1>You have <span className={styles.TicketCount}> {showTicketCount(nTickets)}</span> ready for use! </h1>
 
             <div className={styles.WheelContainer}>
                 <img 
                     className={styles.Wheel}
                     style={
                             {transform: `rotate(${WheelRotation}deg)`,
-                             transition: WheelRotation ? "transform 2s ease-out" : ""
+                            transition: WheelRotation ? "transform 2s ease-out" : ""
                             }
-                         } 
+                        } 
                     src="/img/RewardWheelImg.png"
                     onTransitionEnd={showCongrats}
                 />
@@ -55,7 +48,6 @@ import CongratsMessageCard from "./PrizeObtainedDialog"
 
             
         </div> 
-
     );
 
 }
