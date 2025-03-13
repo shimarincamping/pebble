@@ -3,80 +3,85 @@ import styles from "../styles/Forum.module.css";
 import { BiPlusCircle } from "react-icons/bi";
 import { MdOutlineCancel } from "react-icons/md";
 
-export default function ForumThreadInputFieldRoadmapSection(props) {
+export default function RoadmapEditSection({
+    index,
+    section,
+    handleSelectSectionType,
+    onSectionInputChange,
+    onRemoveSection,
+    onAddSection,
+    threadSectionBtnInput, 
+}) {
+
     return (
-        <div
-            className={`${styles.createThread__inputDiv} ${styles.createThread__container}`}
-        >
+
+        <div className={`${styles.createThread__inputDiv} ${styles.createThread__container}`}>
             <div className={`${styles.createThread__input__title}`}>
-                Section {props.index + 1}
-                <button>
+                Section {index + 1}
+                <button onClick={() => onRemoveSection(index)}>
                     <MdOutlineCancel size={20} />
                 </button>
             </div>
+
             <div className={`${styles.createThread__input}`}>
-                <label htmlFor="roadmapSectionType">Section Type:</label>
+                <label htmlFor={`roadmapSectionType-${index}`}>Section Type:</label>
                 <select
                     name="roadmapSectionType"
-                    id="roadmapSectionType"
+                    id={`roadmapSectionType-${index}`}
+                    value={section.roadmapSectionType || "roadmapSectionCourses"}
                     onChange={(e) =>
-                        props.handleSelectSectionType(
-                            props.index,
-                            "roadmapSectionType",
-                            e.target.value
-                        )
+                        handleSelectSectionType(index, "roadmapSectionType", e.target.value)
                     }
                 >
                     <option value="roadmapSectionCourses">Courses</option>
                     <option value="roadmapSectionProjects">Projects</option>
-                    <option value="roadmapSectionCompetitions">
-                        Competitions
-                    </option>
+                    <option value="roadmapSectionCompetitions">Competitions</option>
                 </select>
             </div>
+
             <div className={`${styles.createThread__input}`}>
-                <label>Section Title: </label>
+                <label htmlFor={`roadmapSectionTitle-${index}`}>Section Title: </label>
                 <input
-                    id="roadmapSectionTitle"
+                    id={`roadmapSectionTitle-${index}`}
                     type="text"
                     name="roadmapSectionTitle"
                     placeholder="Add section title..."
+                    value={section.roadmapSectionTitle || ""}
                     onChange={(e) =>
-                        props.onSectionInputChange(
-                            props.index,
-                            "roadmapSectionTitle",
-                            e.target.value
-                        )
+                        onSectionInputChange(index, "roadmapSectionTitle", e.target.value)
                     }
-                ></input>
+                />
             </div>
+
             <div className={`${styles.createThread__input}`}>
-                <label>Section Description: </label>
+                <label htmlFor={`roadmapSectionDescription-${index}`}>Section Description: </label>
                 <input
-                    id="roadmapSectionDescription"
+                    id={`roadmapSectionDescription-${index}`}
                     type="text"
                     name="roadmapSectionDescription"
                     placeholder="Add section description..."
+                    value={section.roadmapSectionDescription || ""}
                     onChange={(e) =>
-                        props.onSectionInputChange(
-                            props.index,
-                            "roadmapSectionDescription",
-                            e.target.value
-                        )
+                        onSectionInputChange(index, "roadmapSectionDescription", e.target.value)
                     }
-                ></input>
+                />
             </div>
+
+            {/* Render the buttons passed from the container */}
             <div className={`${styles.createThread__inputDiv}`}>
-                {props.threadSectionBtnInput}
+                {threadSectionBtnInput}
             </div>
+
+            {/* Button to Add a New Section */}
             <button
                 className={`${styles.createThread__button__addContent}`}
                 type="button"
-                onClick={props.addRoadmapThreadSection}
+                onClick={onAddSection}
             >
                 <BiPlusCircle size={20} />
                 Add Roadmap Thread Section
             </button>
-        </div>
+        </div>        
     );
+    
 }
