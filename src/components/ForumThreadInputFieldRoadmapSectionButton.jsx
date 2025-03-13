@@ -12,9 +12,16 @@ export default function ForumThreadInputFieldRoadmapSectionButton(props) {
                 <div className={`${styles.createThread__inputDiv}`}>
                     <div className={`${styles.createThread__input__title}`}>
                         Button {props.btnIndex + 1}
-                        <button>
-                            <MdOutlineCancel size={20} />
-                        </button>
+                        {props.btnIndex !== 0 ? (
+                            <>
+                                <button>
+                                    <MdOutlineCancel
+                                        size={20}
+                                        onClick={props.deleteRoadmapSectionBtn}
+                                    />
+                                </button>
+                            </>
+                        ) : null}
                     </div>
                     <div className={`${styles.createThread__input}`}>
                         <label>Title: </label>
@@ -138,9 +145,16 @@ export default function ForumThreadInputFieldRoadmapSectionButton(props) {
                 <div className={`${styles.createThread__inputDiv}`}>
                     <div className={`${styles.createThread__input__title}`}>
                         Button {props.btnIndex + 1}
-                        <button>
-                            <MdOutlineCancel size={20} />
-                        </button>
+                        {props.btnIndex !== 0 ? (
+                            <>
+                                <button>
+                                    <MdOutlineCancel
+                                        size={20}
+                                        onClick={props.deleteRoadmapSectionBtn}
+                                    />
+                                </button>
+                            </>
+                        ) : null}
                     </div>
                     <div className={`${styles.createThread__input}`}>
                         <label>Title: </label>

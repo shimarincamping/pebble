@@ -7,15 +7,23 @@ export default function ForumThreadInputFieldRoadmapDescription(props) {
         <>
             <div className={`${styles.createThread__input__title}`}>
                 Description {props.index + 1}
-                <button>
-                    <MdOutlineCancel size={20} />
-                </button>
+                {props.index !== 0 ? (
+                    <>
+                        <button>
+                            <MdOutlineCancel
+                                size={20}
+                                onClick={props.deleteDescription}
+                            />
+                        </button>
+                    </>
+                ) : null}
             </div>
             <div className={`${styles.createThread__input}`}>
                 <label htmlFor="roadmapDescriptionTitle">
                     Roadmap Description Heading
                 </label>
                 <input
+                    required
                     type="text"
                     name="roadmapDescriptionTitle"
                     placeholder="Add a description heading..."
@@ -33,6 +41,7 @@ export default function ForumThreadInputFieldRoadmapDescription(props) {
                     Roadmap Description Content
                 </label>
                 <textarea
+                    required
                     rows="8"
                     type="text"
                     name="roadmapDescriptionContent"

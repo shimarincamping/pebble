@@ -26,9 +26,10 @@ export default function ForumThreadInputField(props) {
                         <div className={`${styles.createThread__inputDiv}`}>
                             <div className={`${styles.createThread__input}`}>
                                 <label htmlFor="roadmapThreadTitle">
-                                    Roadmap Post Title
+                                    Roadmap Post Title*
                                 </label>
                                 <input
+                                    required
                                     type="text"
                                     name="roadmapThreadTitle"
                                     placeholder="Add a post title..."
@@ -37,9 +38,10 @@ export default function ForumThreadInputField(props) {
                             </div>
                             <div className={`${styles.createThread__input}`}>
                                 <label htmlFor="roadmapThreadAuthor">
-                                    Roadmap Author
+                                    Roadmap Author*
                                 </label>
                                 <input
+                                    required
                                     type="text"
                                     name="roadmapThreadAuthor"
                                     placeholder="Add a roadmap author..."
@@ -48,9 +50,10 @@ export default function ForumThreadInputField(props) {
                             </div>
                             <div className={`${styles.createThread__input}`}>
                                 <label htmlFor="roadmapProfileImageLink">
-                                    Roadmap Profile Image Link
+                                    Roadmap Profile Image Link*
                                 </label>
                                 <input
+                                    required
                                     type="text"
                                     name="roadmapProfileImageLink"
                                     placeholder="Add a profile image link..."
@@ -59,9 +62,10 @@ export default function ForumThreadInputField(props) {
                             </div>
                             <div className={`${styles.createThread__input}`}>
                                 <label htmlFor="roadmapBannerImageLink">
-                                    Roadmap Banner Image Link
+                                    Roadmap Banner Image Link*
                                 </label>
                                 <input
+                                    required
                                     type="text"
                                     name="roadmapBannerImageLink"
                                     placeholder="Add a profile image link..."
@@ -91,6 +95,7 @@ export default function ForumThreadInputField(props) {
                         <div className={`${styles.createThread__input}`}>
                             <label htmlFor="threadTitle">Post Title</label>
                             <input
+                                required
                                 type="text"
                                 name="threadTitle"
                                 placeholder="Add a post title..."
@@ -102,6 +107,7 @@ export default function ForumThreadInputField(props) {
                                 Post Description
                             </label>
                             <textarea
+                                required
                                 rows="8"
                                 type="text"
                                 name="threadDescription"
