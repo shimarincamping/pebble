@@ -1,10 +1,26 @@
 import React, { useState } from "react";
-import { BsHandThumbsUpFill, BsChatFill, BsShareFill, BsFlagFill, BsPencilFill, BsTrashFill } from "react-icons/bs"; 
+import {
+    BsHandThumbsUpFill,
+    BsChatFill,
+    BsShareFill,
+    BsFlagFill,
+    BsPencilFill,
+    BsTrashFill,
+} from "react-icons/bs";
 import { FaLinkedin } from "react-icons/fa"; // Import LinkedIn icon
 import PostCommentContainer from "../containers/PostCommentContainer";
 import styles from "../styles/PostCard.module.css";
 
-const PostCard = ({ post, currentUserID, onClick, onLike, onReport, onCopyLink, onEditClick, onDeleteClick }) => {
+const PostCard = ({
+    post,
+    currentUserID,
+    onClick,
+    onLike,
+    onReport,
+    onCopyLink,
+    onEditClick,
+    onDeleteClick,
+}) => {
     const [expanded, setExpanded] = useState(false);
     const [showComments, setShowComments] = useState(false);
     return (
@@ -21,7 +37,13 @@ const PostCard = ({ post, currentUserID, onClick, onLike, onReport, onCopyLink, 
                     <p className={styles.postTime}>{post.time}</p>
                 </div>
                 <div className={styles.postActionsIcons}>
-                    <BsPencilFill className={styles.editIcon} onClick={(e) => { e.stopPropagation(); onEditClick(post); }} />
+                    <BsPencilFill
+                        className={styles.editIcon}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onEditClick(post);
+                        }}
+                    />
                     {currentUserID === post.userID && ( // ✅ Only show for the owner
                         <BsTrashFill
                             className={styles.deleteIcon}
@@ -36,22 +58,26 @@ const PostCard = ({ post, currentUserID, onClick, onLike, onReport, onCopyLink, 
 
             {post.postPicture && (
                 <div className={styles.postImageContainer}>
-                    <img src={post.postPicture} alt="Post" className={styles.postImage} />
+                    <img
+                        src={post.postPicture}
+                        alt="Post"
+                        className={styles.postImage}
+                    />
                 </div>
             )}
 
             <div className={styles.postContent}>
                 <h3>{post.title}</h3>
-                <p className={styles.postMeta}>
-                    {post.date} 
-                </p>
+                <p className={styles.postMeta}>{post.date}</p>
                 <p className={styles.postDesc}>
-                    {expanded ? post.postDesc : `${post.postDesc.substring(0, 150)}...`}
+                    {expanded
+                        ? post.postDesc
+                        : `${post.postDesc.substring(0, 150)}...`}
                 </p>
 
                 {post.postDesc.length > 150 && (
-                    <button 
-                        className={styles.readMore} 
+                    <button
+                        className={styles.readMore}
                         onClick={(e) => {
                             e.stopPropagation(); // Prevents triggering the post click event
                             setExpanded(!expanded);
@@ -66,7 +92,9 @@ const PostCard = ({ post, currentUserID, onClick, onLike, onReport, onCopyLink, 
 
             <div className={styles.postActions}>
                 <div
-                    className={`${styles.action} ${post.liked ? styles.liked : ""}`}
+                    className={`${styles.action} ${
+                        post.liked ? styles.liked : ""
+                    }`}
                     onClick={(e) => {
                         e.stopPropagation();
                         onLike(post.id);
@@ -74,14 +102,28 @@ const PostCard = ({ post, currentUserID, onClick, onLike, onReport, onCopyLink, 
                 >
                     <BsHandThumbsUpFill />
                 </div>
-                <div className={styles.action} onClick={(e) => { e.stopPropagation(); setShowComments(true); }}>
+                <div
+                    className={styles.action}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setShowComments(true);
+                    }}
+                >
                     <BsChatFill />
                 </div>
-                <div className={styles.action} onClick={(e) => { e.stopPropagation(); onCopyLink(window.location.href); }}>
+                <div
+                    className={styles.action}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onCopyLink(window.location.href);
+                    }}
+                >
                     <BsShareFill />
                 </div>
                 <div
-                    className={`${styles.action} ${post.reported ? styles.reported : ""}`}
+                    className={`${styles.action} ${
+                        post.reported ? styles.reported : ""
+                    }`}
                     onClick={(e) => {
                         e.stopPropagation();
                         onReport(post.id);
@@ -90,14 +132,22 @@ const PostCard = ({ post, currentUserID, onClick, onLike, onReport, onCopyLink, 
                     <BsFlagFill />
                 </div>
                 <div>
-                <a href={post.linkedinUrl} target="_blank" rel="noopener noreferrer">
-                    <FaLinkedin className={styles.linkedinIcon} />
+                    <a
+                        href={post.linkedinUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <FaLinkedin className={styles.linkedinIcon} />
                     </a>
                 </div>
-
             </div>
-            {showComments && <PostCommentContainer postID={post.id} onClose={() => setShowComments(false)} />}
-            </div>
+            {showComments && (
+                <PostCommentContainer
+                    postID={post.postID}
+                    onClose={() => setShowComments(false)}
+                />
+            )}
+        </div>
     );
 };
 
