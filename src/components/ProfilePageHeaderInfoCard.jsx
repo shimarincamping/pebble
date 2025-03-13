@@ -37,6 +37,7 @@ function ProfilePageHeaderInfoCard(props) {
                         <button 
                             onClick={props.toggleFollow} 
                             className={props.isFollowingUser ? styles.headerInfoCard__unfollowButton : styles.headerInfoCard__followButton}
+                            disabled={props.isFollowable}
                         >
                             {props.isFollowingUser ? "Unfollow" : "Follow"}
                         </button>
