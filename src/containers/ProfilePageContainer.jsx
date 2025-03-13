@@ -180,9 +180,13 @@ function ProfilePageContainer({ id }) {
             {isEditProfileFormVisible && (
                 <ApplicationMainOverlay>
                     <EditProfileFormContainer
+                        id={currentRequestID}
                         initialData={userProfileData}
                         onClose={() => setIsEditProfileFormVisible(false)}
-                        onSave={updateProfileData}
+                        onSave={(updatedData) => {
+                            setUserProfileData(updatedData); // Update profile data immediately
+                            setUserProfileDetails(updatedData.profileDetails);
+                        }}
                     />
                 </ApplicationMainOverlay>
             )}
