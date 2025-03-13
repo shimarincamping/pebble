@@ -3,7 +3,7 @@ import styles from "../styles/CareerRoadmapPost.module.css";
 import { Link } from "react-router-dom";
 import CareerRoadmapButtons from "./CareerRoadmapButtons";
 
-const CareerRoadmapPost = ({ roadmap }) => {
+const CareerRoadmapPost = ({ roadmap, isAuthor, handleEdit, handleDelete }) => {
   return (
     <div className={styles.roadmapPost}>
       <div className={styles.roadmapPost__header}>
@@ -42,12 +42,25 @@ const CareerRoadmapPost = ({ roadmap }) => {
         ))}
       </div>
 
+
       <div className={styles.bottomSection}>
         <h2 className={styles.bottomSection__sectionTitle}>Bottom Line</h2>
         <p>By actively participating in these competitions and showcasing your skills and achievements, you can significantly enhance your resume.</p>
-        <div className={styles.bottomSection__backButton}>
-          <Link to="/roadmap">Back to Roadmap</Link>
-        </div>
+        <div className={styles.bottomSection__bottomButtons}>
+          {isAuthor && (
+          <div className={styles.bottomButtons__authorActions}>
+            <div className={styles.edit}>
+              <button onClick={handleEdit} className={styles.editButton}>Edit</button>
+            </div>
+            <div className={styles.delete}>
+              <button onClick={handleDelete} className={styles.deleteButton}>Delete</button>
+            </div>
+          </div>
+          )}
+          <div className={styles.bottomSection__backButton}>
+            <Link to="/roadmap">Back to Roadmap</Link>
+          </div>
+        </div> 
       </div>
     </div>
   );
