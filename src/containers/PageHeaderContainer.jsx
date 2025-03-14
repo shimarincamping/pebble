@@ -9,13 +9,13 @@ function PageHeaderContainer(){
         setNavPanelVisibility(!isNavPanelVisible);
     }
 
-    function showNavPanel(){
-        setNavPanelVisibility(true);
-    }
+    // function showNavPanel(){
+    //     setNavPanelVisibility(true);
+    // }
 
-    function hideNavPanel(){
-        setNavPanelVisibility(false);
-    }
+    // function hideNavPanel(){
+    //     setNavPanelVisibility(false);
+    // }
     
     return(
         <>

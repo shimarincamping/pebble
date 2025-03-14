@@ -19,7 +19,7 @@ function RewardWheelCardContainer(){
     const [ticketCount,setTicketCount]=useState(null);
     const [rewardName,setReward]=useState("")
 
-    let rewardsList=['Discord Nitro', 'Syopz Voucher', 'New Profile Picture', '+10 points', '+10 points', 'Discord Nitro', '+10 points', '+10 points', '+10 points', 'Syopz Voucher', 'Discord Nitro']
+    const rewardsList=['Discord Nitro', 'Syopz Voucher', '+30 points', '+10 points', '+10 points', 'Discord Nitro', '+30 points', '+10 points', '+10 points', 'Syopz Voucher', 'Discord Nitro']
 
 
     useEffect(() => {
@@ -74,19 +74,41 @@ function RewardWheelCardContainer(){
 
 
     const handleSpin= async () => {
-        //Math.floor(Math.random()*10) returns a number between 0(inclusive) and 9(inclusive)
+        try{
+            // (ticketCount > 0){ instead of just (ticketCount){ to account for ticketCount being null before the fetch from backend is complete.
+            if (ticketCount > 0){
+                console.log(`@handleSpin activated `);
+                Math.floor(Math.random()*10) //returns a number between 0(inclusive) and 9(inclusive)
 
-        // const obtainedReward = await fetch (`${process.env.REACT_APP_API_URL}/rewards/sendReward`, {
+                let pos=Math.floor(Math.random()*10)
+                let deg=5400+pos*36;
+                setWheelRotation(deg);
+                setReward(rewardsList[pos]);
+                setTicketCount(ticketCount-1);
+
+                // Telling the backend what the user won. 
+                const obtainedReward = await fetch (`${process.env.REACT_APP_API_URL}/rewards/sendReward`, 
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        },
+                        body: {
+                            rewardName : "+69 points"
+                            // rewardName : rewardsList[pos]
+                        }
+                    }
+                );
+            }else{
+                alert('You currently have 0 tickets!');
+            }
             
-        //     headers = {
-        //         yap:yap
-        //     }
-        // });
 
-        let pos=Math.floor(Math.random()*10)
-        let deg=5400+pos*36;
-        setWheelRotation(deg);
-        setReward(rewardsList[pos]);
+        }catch(e){
+            console.error("Error occured while spinning wheel: ",e);
+        }
+        
     }
 
     const handleDialogClose=()=>{
