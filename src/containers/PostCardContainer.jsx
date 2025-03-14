@@ -244,8 +244,9 @@ function PostCardContainer(props) {
         }
     };
 
-    const handleCopyLink = (link) => {
-        navigator.clipboard.writeText(link);
+    const handleCopyLink = (postID) => {
+        const postLink = `${window.location.origin}/posts/${postID}`;
+        navigator.clipboard.writeText(postLink);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
