@@ -49,7 +49,7 @@ const PostCard = ({
                             className={styles.deleteIcon}
                             onClick={(e) => {
                                 e.stopPropagation();
-                                onDeleteClick(post.id);
+                                onDeleteClick(post.postID);
                             }}
                         />
                     )}
@@ -97,7 +97,7 @@ const PostCard = ({
                     }`}
                     onClick={(e) => {
                         e.stopPropagation();
-                        onLike(post.id);
+                        onLike(post.postID);
                     }}
                 >
                     <BsHandThumbsUpFill />
@@ -115,7 +115,7 @@ const PostCard = ({
                     className={styles.action}
                     onClick={(e) => {
                         e.stopPropagation();
-                        onCopyLink(window.location.href);
+                        onCopyLink(post.postID); // Pass the post ID
                     }}
                 >
                     <BsShareFill />
@@ -126,7 +126,7 @@ const PostCard = ({
                     }`}
                     onClick={(e) => {
                         e.stopPropagation();
-                        onReport(post.id);
+                        onReport(post.postID);
                     }}
                 >
                     <BsFlagFill />
