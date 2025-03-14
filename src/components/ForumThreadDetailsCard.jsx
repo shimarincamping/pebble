@@ -1,11 +1,11 @@
 import React from "react";
 import {
     BiUpvote,
-    BiCommentDetail,
-    BiShareAlt,
     BiFlag,
     BiReply,
     BiArrowBack,
+    BiEditAlt,
+    BiTrash,
 } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import styles from "../styles/Forum.module.css";
@@ -15,6 +15,8 @@ export default function ForumThreadDetailsCard({
     userData,
     onClickReply,
     toggleLike,
+    onClickEdit,
+    handleDelete,
 }) {
     return (
         <>
@@ -27,7 +29,7 @@ export default function ForumThreadDetailsCard({
                     <div className={`${styles.threadCard__title}`}>
                         <h1>{forumThread.threadTitle}</h1>
                         <time datetime={forumThread.threadDateTime}>
-                            Posted on {forumThread.threadDateTime}
+                            Posted {forumThread.threadDateTime}
                         </time>
                     </div>
                 </div>
@@ -37,17 +39,17 @@ export default function ForumThreadDetailsCard({
                 <div className={`${styles.threadCard__footer}`}>
                     <div className={`${styles.threadCard__statistics}`}>
                         <span>
-                            <BiUpvote size={20} onClick={toggleLike} />{" "}
+                            <BiUpvote size={20} onClick={toggleLike} />
                             {forumThread.threadScore}
                         </span>
                         <span>
-                            <BiCommentDetail size={20} />{" "}
+                            <BiEditAlt size={20} onClick={onClickEdit} />
                         </span>
                         <span>
                             <BiFlag size={20} />
                         </span>
                         <span>
-                            <BiShareAlt size={20} />
+                            <BiTrash size={20} onClick={handleDelete} />
                         </span>
                         <span onClick={onClickReply}>
                             <BiReply size={20} /> Reply

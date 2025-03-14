@@ -76,6 +76,7 @@ export default function ForumPageContainer() {
             {isCreatingThread ? (
                 <ForumCreateThreadContainer
                     clickBackButton={handleGenerateForum}
+                    fetchForumData={fetchForumThreadData}
                 />
             ) : (
                 <>

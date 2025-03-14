@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ForumThreadInputField from "../components/ForumThreadInputField";
 import ForumThreadInputFieldRoadmapDescription from "../components/ForumThreadInputFieldRoadmapDescription";
 import ForumThreadInputFieldRoadmapSection from "../components/ForumThreadInputFieldRoadmapSection";
 import ForumThreadInputFieldRoadmapSectionButton from "../components/ForumThreadInputFieldRoadmapSectionButton";
 
 export default function ForumCreateThreadContainer(props) {
+    const navigate = useNavigate();
     const [threadData, setThreadData] = useState({
         threadType: "forum",
         threadTitle: "",
@@ -70,6 +72,9 @@ export default function ForumCreateThreadContainer(props) {
                 index={index}
                 description={description}
                 onDescriptionInputChange={handleInputDescriptionChange}
+                deleteDescription={() => {
+                    deleteRoadmapDescription(index);
+                }}
             />
         ));
 
@@ -92,6 +97,15 @@ export default function ForumCreateThreadContainer(props) {
         }));
     };
 
+    const deleteRoadmapDescription = (index) => {
+        setRoadmapThreadData((prev) => ({
+            ...prev,
+            roadmapDescription: prev.roadmapDescription.filter(
+                (_, i) => i !== index
+            ),
+        }));
+    };
+
     // roadmap sections mapping, adding, editing
     const mapRoadmapThreadSectionData = (useState) =>
         useState.roadmapSection.map((section, sectionIndex) => (
@@ -102,6 +116,9 @@ export default function ForumCreateThreadContainer(props) {
                 onSectionInputChange={handleInputSectionChange}
                 isSectionTypeProject={isSectionTypeProject}
                 addRoadmapThreadSection={addRoadmapThreadSection}
+                deleteRoadmapSection={() => {
+                    deleteRoadmapSection(sectionIndex);
+                }}
                 threadSectionBtnInput={section.roadmapSectionButton.map(
                     (btn, btnIndex) => (
                         <ForumThreadInputFieldRoadmapSectionButton
@@ -116,6 +133,9 @@ export default function ForumCreateThreadContainer(props) {
                             addRoadmapThreadSectionBtn={
                                 addRoadmapThreadSectionBtn
                             }
+                            deleteRoadmapSectionBtn={() => {
+                                deleteRoadmapSectionBtn(sectionIndex, btnIndex);
+                            }}
                         />
                     )
                 )}
@@ -145,6 +165,14 @@ export default function ForumCreateThreadContainer(props) {
             ],
         }));
     };
+
+    const deleteRoadmapSection = (index) => {
+        setRoadmapThreadData((prev) => ({
+            ...prev,
+            roadmapSection: prev.roadmapSection.filter((_, i) => i !== index),
+        }));
+    };
+
     // roadmap sections button handling, adding, editing
     const handleInputSectionBtnChange = (
         sectionIndex,
@@ -189,6 +217,25 @@ export default function ForumCreateThreadContainer(props) {
         }));
     };
 
+    const deleteRoadmapSectionBtn = (sectionIndex, btnIndex) => {
+        setRoadmapThreadData((prev) => ({
+            ...prev,
+            roadmapSection: [
+                ...prev.roadmapSection.map((section, index) =>
+                    index === sectionIndex
+                        ? {
+                              ...section,
+                              roadmapSectionButton:
+                                  section.roadmapSectionButton.filter(
+                                      (_, j) => j !== btnIndex
+                                  ),
+                          }
+                        : section
+                ),
+            ],
+        }));
+    };
+
     // handle inputs
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -205,29 +252,57 @@ export default function ForumCreateThreadContainer(props) {
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior};
         const token = localStorage.getItem("jwtToken");
-        isThreadTypeRoadmap
-            ? fetch(`${process.env.REACT_APP_API_URL}/roadmap/createRoadmap`, {
-                  method: "POST",
-                  body: JSON.stringify(roadmapThreadData),
-                  headers: new Headers({
-                      "Content-Type": "application/json; charset=UTF-8",
-                      Authorization: `Bearer ${token}`,
-                  }),
-              })
-            : fetch(
-                  `${process.env.REACT_APP_API_URL}/forum/createForumThread`,
-                  {
-                      method: "POST",
-                      body: JSON.stringify(threadData),
-                      headers: new Headers({
-                          "Content-Type": "application/json; charset=UTF-8",
-                          Authorization: `Bearer ${token}`,
-                      }),
-                  }
-              );
+        if (isThreadTypeRoadmap) {
+            try {
+                const response = await fetch(
+                    `${process.env.REACT_APP_API_URL}/roadmap/createRoadmap`,
+                    {
+                        method: "POST",
+                        body: JSON.stringify(roadmapThreadData),
+                        headers: new Headers({
+                            "Content-Type": "application/json; charset=UTF-8",
+                            Authorization: `Bearer ${token}`,
+                        }),
+                    }
+                );
+                if (response.ok) {
+                    alert("Successfully created roadmap!");
+                    navigate("/roadmap");
+                } else {
+                    alert(
+                        "Failed to create roadmap, user does not have permission."
+                    );
+                }
+            } catch (error) {
+                console.error("Error submitting roadmap.");
+            }
+        } else if (!isThreadTypeRoadmap) {
+            try {
+                const response = await fetch(
+                    `${process.env.REACT_APP_API_URL}/forum/createForumThread`,
+                    {
+                        method: "POST",
+                        body: JSON.stringify(threadData),
+                        headers: new Headers({
+                            "Content-Type": "application/json; charset=UTF-8",
+                            Authorization: `Bearer ${token}`,
+                        }),
+                    }
+                );
+
+                if (response.ok) {
+                    alert("Successfully created forum thread!");
+                    props.fetchForumData();
+                } else {
+                    alert("Failed to create forum thread.");
+                }
+            } catch (error) {
+                console.error("Error submitting forum thread.");
+            }
+        }
     };
 
     return (

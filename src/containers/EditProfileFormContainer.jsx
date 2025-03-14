@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import EditProfileForm from "../components/EditProfileForm";
 import styles from "../styles/EditProfileForm.module.css";
-import { useAuth } from "../containers/AuthProvider";
 
-const EditProfileFormContainer = ({ initialData, onClose, onSave }) => {
-    const { user } = useAuth(); // useAuth calls useContext, fetches userId
+const EditProfileFormContainer = ({ id, initialData, onClose, onSave }) => { // ✅ Accept `id` as a prop
     const token = localStorage.getItem("jwtToken");
     const [formData, setFormData] = useState(initialData);
     const [profilePicture, setProfilePicture] = useState(null);
@@ -24,11 +22,14 @@ const EditProfileFormContainer = ({ initialData, onClose, onSave }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try {
-            const currentRequestID = await user; // ID set by authentication middleware
+        if (!id) {
+            console.error("User ID is undefined. Cannot proceed with update.");
+            return;
+        }
 
-            await fetch(
-                `${process.env.REACT_APP_API_URL}/users/${currentRequestID}`,
+        try {
+            const response = await fetch(
+                `${process.env.REACT_APP_API_URL}/users/${id}`,  // ✅ Use `id` from props
                 {
                     method: "PUT",
                     body: JSON.stringify({
@@ -41,6 +42,10 @@ const EditProfileFormContainer = ({ initialData, onClose, onSave }) => {
                     },
                 }
             );
+
+            if (!response.ok) {
+                throw new Error("Failed to update profile");
+            }
 
             onSave(formData);
             onClose();
