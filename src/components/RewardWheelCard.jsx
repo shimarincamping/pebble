@@ -9,11 +9,6 @@ import CongratsMessageCard from "./PrizeObtainedDialog"
 
     function RewardWheelCard({WheelRotation,handleSpin,showTicketCount,showCongrats,nTickets}){
 
-    const sendAuthReq = async () => {
-        
-       window.location='http://localhost:4001/auth/linkedin';
-        
-    }
 
     return(
         
@@ -35,8 +30,8 @@ import CongratsMessageCard from "./PrizeObtainedDialog"
                 <img 
                     className={styles.SpinNow} 
                     src="/img/SpinNowIcon.png"
-                    // onClick={handleSpin} 
-                    onClick={sendAuthReq} 
+                    onClick={handleSpin} 
+                    
                 />
 
                 <img

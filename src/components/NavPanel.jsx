@@ -2,8 +2,6 @@ import React from "react";
 import styles from "../styles/NavPanel.module.css";
 
 function NavPanel({ isVisible, HandleMenuClick, HandleBellClick, navigateTo }) {
-    // alert(props.isVisible);
-    // let isVisible=-1;
 
     return (
         <div
