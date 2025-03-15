@@ -8,12 +8,11 @@ import { useAuth } from "../containers/AuthProvider";
 
 function PostCardContainer(props) {
     const navigate = useNavigate();
-    const [postCardData, setPostCardData] = useState([]);
+    const [postCardData, setPostCardData] = useState(null);
     const [editingPost, setEditingPost] = useState(null);
     const [newContent, setNewContent] = useState("");
     const [copied, setCopied] = useState(false);
     const { user } = useAuth(); // useAuth calls useContext, fetches userId
-    const visiblePosts = postCardData.filter((post) => post.isContentVisible !== false);
     const token = localStorage.getItem("jwtToken");
 
     useEffect(() => {
@@ -58,12 +57,7 @@ function PostCardContainer(props) {
                         }
                     );
                     const data = await response.json();
-
-                    // Filter out hidden posts
-                    const visiblePosts = data.filter(
-                        (post) => post.isContentVisible !== false
-                    );
-                    setPostCardData(visiblePosts);
+                    setPostCardData(data);
                 } catch (error) {
                     console.error("Error fetching posts:", error);
                 }
@@ -254,8 +248,8 @@ function PostCardContainer(props) {
     return (
         <div className={styles.posts}>
             <div className={styles.postsData}>
-            {visiblePosts.length > 0 ? (
-                visiblePosts.map((post) => (
+            {postCardData ? (
+                postCardData.map((post) => (
                     <PostCard
                         key={post.postID}
                         post={post}
