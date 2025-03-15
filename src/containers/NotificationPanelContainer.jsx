@@ -30,6 +30,7 @@ const NotificationPanelContainer = ({isNotiPanelVisible,handleBackClick}) => {
     // const Notifications1=[dummy_data,dummy_data2,dummy_data3,dummy_data,dummy_data2,dummy_data3];
 
     const [notifications,setNotifications] = useState([]);
+    const [isLoading,setLoading] = useState(true);
 
     useEffect(()=>{
         const getNotifications = async () => { 
@@ -66,12 +67,18 @@ const NotificationPanelContainer = ({isNotiPanelVisible,handleBackClick}) => {
         // console.log("Updated notifications state:", notifications);
     }, [notifications]);
 
+
+    useEffect( () => {
+        setLoading(false);
+    },[isLoading]);
+
     return ( 
 
         <NotificationPanel  
             notificationsList={[...notifications]}
             isNotiPanelVisible={isNotiPanelVisible}
             handleBackClick={handleBackClick}
+            isLoading={isLoading}
         />
     );
 

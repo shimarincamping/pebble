@@ -114,6 +114,11 @@
     flex:1;
 }
 
+.noNotificationImg{
+    width:100%; 
+    height:auto;
+}
+
 /* Tablet screens */
 @media (max-width: 64em) {
     .NotificationPanelContainer {
