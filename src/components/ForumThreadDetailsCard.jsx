@@ -1,6 +1,7 @@
 import React from "react";
 import {
     BiUpvote,
+    BiSolidUpvote,
     BiFlag,
     BiReply,
     BiArrowBack,
@@ -17,6 +18,7 @@ export default function ForumThreadDetailsCard({
     toggleLike,
     onClickEdit,
     handleDelete,
+    onClickFlag,
 }) {
     return (
         <>
@@ -38,15 +40,22 @@ export default function ForumThreadDetailsCard({
                 </div>
                 <div className={`${styles.threadCard__footer}`}>
                     <div className={`${styles.threadCard__statistics}`}>
-                        <span>
-                            <BiUpvote size={20} onClick={toggleLike} />
-                            {forumThread.threadScore}
-                        </span>
+                        {forumThread.liked ? (
+                            <span>
+                                <BiSolidUpvote size={20} onClick={toggleLike} />
+                                {forumThread.threadScore}
+                            </span>
+                        ) : (
+                            <span>
+                                <BiUpvote size={20} onClick={toggleLike} />
+                                {forumThread.threadScore}
+                            </span>
+                        )}
                         <span>
                             <BiEditAlt size={20} onClick={onClickEdit} />
                         </span>
                         <span>
-                            <BiFlag size={20} />
+                            <BiFlag size={20} onClick={onClickFlag} />
                         </span>
                         <span>
                             <BiTrash size={20} onClick={handleDelete} />
