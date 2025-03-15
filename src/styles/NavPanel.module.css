@@ -113,7 +113,7 @@
     background-color: white;
     overflow-y: auto;
     padding: 0.5em 0;  /* Added padding top and bottom */
-    margin-bottom: 4em;
+    /* margin-bottom: 4em; */
 }
 
 /* Effects each row, in the navbar body (including the icon and text*/
@@ -161,6 +161,12 @@
     align-items: center;
 }
 
+/* resizing this individually because it's default size is smaller than the other icons */
+.goalsIcon{
+    height:40em;
+    width:auto;
+}
+
 
 .Footer{
     height:8%;
@@ -177,6 +183,7 @@
     margin-right:4%;
     cursor: pointer;
 }
+
 
 .LogOut{
     margin-left:2%;

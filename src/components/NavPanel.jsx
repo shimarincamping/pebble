@@ -79,6 +79,16 @@ function NavPanel({ isVisible, HandleMenuClick, HandleBellClick, navigateTo }) {
                         <h2>Coding Challenges</h2>
                     </div>
                 </div>
+
+                <div onClick={navigateTo("/goals")}>
+                    <div className={styles.ImgContainer}>
+                        <img src="/img/goalsIcon.png" alt="" className={styles.goalsIcon}></img>
+                    </div>
+
+                    <div className={styles.TextContainer}>
+                        <h2>goals</h2>
+                    </div>
+                </div>
             </div>
 
             <div className={styles.Footer}>
