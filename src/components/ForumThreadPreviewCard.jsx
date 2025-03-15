@@ -1,5 +1,5 @@
 import React from "react";
-import { BiUpvote, BiFlag } from "react-icons/bi";
+import { BiUpvote, BiSolidUpvote, BiFlag } from "react-icons/bi";
 import styles from "../styles/Forum.module.css";
 
 export default function ForumThreadPreviewCard({
@@ -28,10 +28,17 @@ export default function ForumThreadPreviewCard({
             </div>
             <div className={`${styles.threadCard__footer}`}>
                 <div className={`${styles.threadCard__statistics}`}>
-                    <span>
-                        <BiUpvote size={20} onClick={toggleLike} />{" "}
-                        {forumThread.threadScore}
-                    </span>
+                    {forumThread.liked ? (
+                        <span>
+                            <BiSolidUpvote size={20} onClick={toggleLike} />
+                            {forumThread.threadScore}
+                        </span>
+                    ) : (
+                        <span>
+                            <BiUpvote size={20} onClick={toggleLike} />
+                            {forumThread.threadScore}
+                        </span>
+                    )}
                     <span>
                         <BiFlag size={20} />
                     </span>

@@ -1,5 +1,12 @@
 import React from "react";
-import { BiUpvote, BiReply, BiFlag, BiEditAlt, BiTrash } from "react-icons/bi";
+import {
+    BiUpvote,
+    BiSolidUpvote,
+    BiReply,
+    BiFlag,
+    BiEditAlt,
+    BiTrash,
+} from "react-icons/bi";
 import styles from "../styles/Forum.module.css";
 
 export default function ForumThreadComments({
@@ -17,10 +24,17 @@ export default function ForumThreadComments({
             </div>
             <div className={`${styles.threadCard__footer}`}>
                 <div className={`${styles.threadCard__statistics}`}>
-                    <span>
-                        <BiUpvote size={20} onClick={toggleLike} />{" "}
-                        {comment.likes}
-                    </span>
+                    {comment.liked ? (
+                        <span>
+                            <BiSolidUpvote size={20} onClick={toggleLike} />
+                            {comment.likes}
+                        </span>
+                    ) : (
+                        <span>
+                            <BiUpvote size={20} onClick={toggleLike} />
+                            {comment.likes}
+                        </span>
+                    )}
                     <span>
                         <BiEditAlt size={20} onClick={onClickEdit} />
                     </span>

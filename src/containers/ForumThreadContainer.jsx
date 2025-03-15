@@ -18,10 +18,8 @@ const ForumThreadContainer = () => {
     const [inputText, setInputText] = useState(" ");
     const [commentDetails, setCommentDetails] = useState(null);
     const [replyTo, setReplyTo] = useState(null);
-    const [hasLiked, setHasLiked] = useState(false);
     const [commentIndex, setCommentIndex] = useState(null);
     const [editedCommentData, setEditedCommentData] = useState(null);
-    const [hasLikedComment, setHasLikedComment] = useState(false);
 
     const token = localStorage.getItem("jwtToken");
 
@@ -106,13 +104,39 @@ const ForumThreadContainer = () => {
         }
     };
 
-    const handleThreadEditSubmit = (e) => {
+    const toggleThreadFlag = async (forumThread) => {
+        try {
+            const response = await fetch(
+                `${process.env.REACT_APP_API_URL}/forum/${threadID}/flags`,
+                {
+                    method: "POST",
+                    body: JSON.stringify({
+                        text: forumThread.threadDescription,
+                        postType: "thread",
+                    }),
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            if (response.ok) {
+                alert("Thread successfully flagged.");
+            } else {
+                alert("Error while flagging thread!");
+            }
+        } catch (error) {
+            console.error("Error while flagging thread:", error);
+        }
+    };
+
+    const handleThreadEditSubmit = async (e) => {
         e.preventDefault();
 
         const token = localStorage.getItem("jwtToken");
 
         try {
-            const response = fetch(
+            const response = await fetch(
                 `${process.env.REACT_APP_API_URL}/forum/${threadID}`,
                 {
                     method: "PUT",
@@ -136,7 +160,7 @@ const ForumThreadContainer = () => {
                 }));
             }
         } catch (error) {
-            console.error("Error deleting post:", error);
+            console.error("Error deleting thread:", error);
         }
         setShowThreadEditField(false);
     };
@@ -165,7 +189,7 @@ const ForumThreadContainer = () => {
                 );
             }
         } catch (error) {
-            console.error("Error deleting post:", error);
+            console.error("Error deleting thread:", error);
         }
     };
 
@@ -264,6 +288,32 @@ const ForumThreadContainer = () => {
         }
     };
 
+    const toggleCommentFlag = async (comment) => {
+        try {
+            const response = await fetch(
+                `${process.env.REACT_APP_API_URL}/forum/${threadID}/flags`,
+                {
+                    method: "POST",
+                    body: JSON.stringify({
+                        text: comment.commentDetails,
+                        postType: "threadComment",
+                    }),
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            if (response.ok) {
+                alert("Thread successfully flagged.");
+            } else {
+                alert("Error while flagging thread!");
+            }
+        } catch (error) {
+            console.error("Error while flagging thread:", error);
+        }
+    };
+
     const handleCommentEditSubmit = async (e, comment) => {
         e.preventDefault();
 
@@ -324,7 +374,7 @@ const ForumThreadContainer = () => {
                 );
             }
         } catch (error) {
-            console.error("Error deleting post:", error);
+            console.error("Error deleting comment:", error);
         }
     };
 
@@ -337,6 +387,7 @@ const ForumThreadContainer = () => {
                 userData={forumThread.userData}
                 onClickReply={() => handleReplyComponent(forumThread.userData)}
                 toggleLike={toggleThreadLike}
+                onClickFlag={() => toggleThreadFlag(forumThread)}
                 onClickEdit={() => handleForumEditComponent(forumThread)}
                 handleDelete={handleThreadDelete}
             />
@@ -372,6 +423,9 @@ const ForumThreadContainer = () => {
                             }
                             toggleLike={() => {
                                 toggleCommentLike(comment);
+                            }}
+                            toggleFlag={() => {
+                                toggleCommentFlag(comment);
                             }}
                             handleDelete={() => {
                                 handleCommentDelete(comment);

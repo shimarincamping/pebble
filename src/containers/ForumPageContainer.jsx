@@ -59,16 +59,51 @@ export default function ForumPageContainer() {
     };
 
     const toggleLike = async (threadID) => {
-        await fetch(
-            `${process.env.REACT_APP_API_URL}/forum/${threadID}/likes`,
-            {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
+        try {
+            const response = await fetch(
+                `${process.env.REACT_APP_API_URL}/forum/${threadID}/likes`,
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            if (response.ok) {
+                fetchForumThreadData();
+            } else {
+                alert("User cannot like their own thread!");
             }
-        );
+        } catch (error) {
+            console.error("Error liking thread:", error);
+        }
+    };
+
+    const toggleThreadFlag = async (threadID, forumThread) => {
+        try {
+            const response = await fetch(
+                `${process.env.REACT_APP_API_URL}/forum/${threadID}/flags`,
+                {
+                    method: "POST",
+                    body: JSON.stringify({
+                        text: forumThread.threadDescription,
+                        postType: "thread",
+                    }),
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            if (response.ok) {
+                alert("Thread successfully flagged.");
+            } else {
+                alert("Error while flagging thread!");
+            }
+        } catch (error) {
+            console.error("Error while flagging thread:", error);
+        }
     };
 
     return (
@@ -92,6 +127,12 @@ export default function ForumPageContainer() {
                                 }
                                 toggleLike={() =>
                                     toggleLike(forumThread.threadID)
+                                }
+                                toggleThreadFlag={() =>
+                                    toggleThreadFlag(
+                                        forumThread.threadID,
+                                        forumThread
+                                    )
                                 }
                             />
                         ))
