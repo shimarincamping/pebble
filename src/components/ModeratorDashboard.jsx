@@ -2,10 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "../styles/ModeratorDashboard.module.css";
 
-const ModeratorDashboard = ({ flaggedContent, loading, error, onApprove, onDeny }) => {
-  if (loading) {
-    return <p className={styles.loadingText}>Loading flagged content...</p>;
-  }
+const ModeratorDashboard = ({ flaggedContent, error, onApprove, onDeny }) => {
 
   if (error) {
     return <p className={styles.errorText}>{error}</p>;
