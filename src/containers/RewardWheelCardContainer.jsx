@@ -94,12 +94,13 @@ function RewardWheelCardContainer(){
                             "Content-Type": "application/json",
                             Authorization: `Bearer ${token}`,
                         },
-                        body: {
-                            rewardName : "+69 points"
+                        body: JSON.stringify ({
+                            rewardName : "+10 points"
                             // rewardName : rewardsList[pos]
-                        }
+                        })
                     }
                 );
+
             }else{
                 alert('You currently have 0 tickets!');
             }

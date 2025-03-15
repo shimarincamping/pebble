@@ -3,7 +3,7 @@ import styles from '../styles/NotificationPanel.module.css';
 import NotificationItem from './NotificationItem';
 import LoadingSpinner from '../components/ComponentLoadingSpinner';
 
-function NotificationPanel({notificationsList = [] ,isNotiPanelVisible, handleBackClick}){
+function NotificationPanel({notificationsList = [] ,isNotiPanelVisible, handleBackClick, isLoading}){
 
     useEffect(() => {
         // console.log(`notificationsList@notificationPanel: ${notificationsList}`);
@@ -29,26 +29,20 @@ function NotificationPanel({notificationsList = [] ,isNotiPanelVisible, handleBa
 
                 
                 {
-                notificationsList.length > 0 ? (
-                    
-                        (notificationsList).map((notification) => (
-                            
-                            // <NotificationItem 
-                            //     RelevantUser={notification.RelevantUser} 
-                            //     NotificaitonContent={notification.NotificaitonContent}
-                            //     DateTimeInfo={notification.DateTimeInfo}
-                            // />
+                    isLoading ? 
+                        (<LoadingSpinner/>) :
 
-                            <NotificationItem 
-                                RelevantUser={notification.notificationTriggeredBy} 
-                                NotificationContent={notification.notificationText}
-                                DateTimeInfo={notification.notificationDateTime}
-                                imgUrl={notification.notificationImage}
-                            />
-
-
-                        ))
-                    ) : (<LoadingSpinner/>)
+                        notificationsList.length > 0 ? (
+                                (notificationsList).map((notification) => (
+                                
+                                    <NotificationItem 
+                                        RelevantUser={notification.notificationTriggeredBy} 
+                                        NotificationContent={notification.notificationText}
+                                        DateTimeInfo={notification.notificationDateTime}
+                                        imgUrl={notification.notificationImage}
+                                    />
+                            ))
+                        ) : <img className={styles.noNotificationImg} src="/img/noNotifications.png"/>
                 }
             
             </div>
