@@ -70,9 +70,11 @@ const PostCard = ({
                 <h3>{post.title}</h3>
                 <p className={styles.postMeta}>{post.date}</p>
                 <p className={styles.postDesc}>
-                    {expanded
-                        ? post.postDesc
-                        : `${post.postDesc.substring(0, 150)}...`}
+                    {post.postDesc
+                        ? expanded
+                            ? post.postDesc
+                            : `${post.postDesc.substring(0, 150)}...`
+                        : "No content available"}
                 </p>
 
                 {post.postDesc.length > 150 && (

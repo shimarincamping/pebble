@@ -16,6 +16,7 @@ import CareerRoadmapPostPage from "./pages/CareerRoadmapPostPage";
 import LeaderboardPage from "./pages/LeaderboardPage";
 import Moderator from "./pages/ModeratorDashboardPage";
 import RewardsPage from "./pages/RewardsPage";
+import PostPage from "./pages/PostPage";
 
 import "./styles/global.module.css";
 
@@ -30,6 +31,7 @@ function App() {
                     <Route path="/register" element={<RegistrationPage />} />
 
                     <Route path="/feed" element={<FeedPage />} />
+                    <Route path="/post/:postID" element={<PostPage />} />
 
                     <Route
                         path="/profile"
