@@ -245,6 +245,37 @@ function PostCardContainer(props) {
         setTimeout(() => setCopied(false), 2000);
     };
 
+    const handleLinkedinSync = async (postID) => {
+        try{
+            const linkedRes = await fetch (`${process.env.REACT_APP_API_URL}/posts/${postID}/linkedin`,{
+                method: "POST",
+    
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+    
+                body : JSON.stringify({ 
+                    "currentUserID" : user
+                })
+            })
+                .then(response => response.json())
+                .then(data =>{
+                    if(data.action == 'redirect'){
+                        console.log(`data.action ${data.action}`);
+                        console.log(`data.authUrl ${data.authUrl}`);
+                        window.location.href = data.authUrl;
+                    }else if(data.action == 'alert'){
+                        alert('Post synced on LinkedIn successfully!');
+                    }
+                })
+
+
+        }catch(e){
+            console.error("error occured @handleLinkedinSync: ",e); 
+        }
+       
+    }
     return (
         <div className={styles.posts}>
             <div className={styles.postsData}>
@@ -260,6 +291,7 @@ function PostCardContainer(props) {
                         onLike={handleLike}
                         onReport={handleReport}
                         onCopyLink={handleCopyLink}
+                        handleLinkedinSync={() =>handleLinkedinSync(post.postID)}
                     />
                 ))
             ) : (

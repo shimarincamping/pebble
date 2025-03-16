@@ -20,6 +20,7 @@ const PostCard = ({
     onCopyLink,
     onEditClick,
     onDeleteClick,
+    handleLinkedinSync,
 }) => {
     const [expanded, setExpanded] = useState(false);
     const [showComments, setShowComments] = useState(false);
@@ -132,13 +133,16 @@ const PostCard = ({
                     <BsFlagFill />
                 </div>
                 <div>
-                    <a
+                    <div onClick={handleLinkedinSync}>
+                        <FaLinkedin className={styles.linkedinIcon} />
+                    </div>
+                    {/* <a
                         href={post.linkedinUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         <FaLinkedin className={styles.linkedinIcon} />
-                    </a>
+                    </a> */}
                 </div>
             </div>
             {showComments && (
