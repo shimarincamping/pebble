@@ -38,48 +38,67 @@ const GeneratedCVDisplay = ({ formData }) => {
 
             <section className={`${styles.CV__section}`}>
                 <h2>Education</h2>
-                <p>{formData.education}</p>
+                {Array.isArray(formData.education) ? (
+                    formData.education.map((edu, index) => (
+                        <p key={index}>{edu.degree} - {edu.institution} ({edu.year})</p>
+                    ))
+                ) : (
+                    <p>{formData.education}</p>
+                )}
             </section>
 
             <section className={`${styles.CV__section}`}>
                 <h2>Work Experience</h2>
-                <p>{formData.workExperience}</p>
+                {Array.isArray(formData.workExperience) ? (
+                    formData.workExperience.map((exp, index) => (
+                        <p key={index}><strong>{exp.title}</strong> at {exp.company} ({exp.duration})<br/>{exp.description}</p>
+                    ))
+                ) : (
+                    <p>{formData.workExperience}</p>
+                )}
             </section>
 
-            {formData.projects && (
-                <section className={`${styles.CV__section}`}>
-                    <h2>Projects</h2>
-                    <p>{formData.projects}</p>
-                </section>
-            )}
-
-            {formData.skills && (
-                <section className={`${styles.CV__section}`}>
-                    <h2>Skills</h2>
-                    <p>{formData.skills}</p>
-                </section>
-            )}
-
-            {formData.certifications && (
-                <section className={`${styles.CV__section}`}>
-                    <h2>Certifications</h2>
+            <section className={`${styles.CV__section}`}>
+                <h2>Certifications</h2>
+                {Array.isArray(formData.certifications) ? (
+                    formData.certifications.map((cert, index) => (
+                        <p key={index}>{cert.name} - {cert.year}</p>
+                    ))
+                ) : (
                     <p>{formData.certifications}</p>
-                </section>
-            )}
+                )}
+            </section>
 
-            {formData.languages && (
-                <section className={`${styles.CV__section}`}>
-                    <h2>Languages</h2>
+            <section className={`${styles.CV__section}`}>
+                <h2>Projects</h2>
+                {Array.isArray(formData.projects) ? (
+                    formData.projects.map((project, index) => (
+                        <p key={index}><strong>{project.name}</strong> - {project.description}</p>
+                    ))
+                ) : (
+                    <p>{formData.projects}</p>
+                )}
+            </section>
+
+            <section className={`${styles.CV__section}`}>
+                <h2>Languages</h2>
+                {Array.isArray(formData.languages) ? (
+                    <p>{formData.languages.join(", ")}</p>
+                ) : (
                     <p>{formData.languages}</p>
-                </section>
-            )}
+                )}
+            </section>
 
-            {formData.awards && (
-                <section className={`${styles.CV__section}`}>
-                    <h2>Awards & Achievements</h2>
+            <section className={`${styles.CV__section}`}>
+                <h2>Awards & Achievements</h2>
+                {Array.isArray(formData.awards) ? (
+                    formData.awards.map((award, index) => (
+                        <p key={index}>{award.name} - {award.organization} ({award.year})</p>
+                    ))
+                ) : (
                     <p>{formData.awards}</p>
-                </section>
-            )}
+                )}
+            </section>
 
             <section className={`${styles.CV__section}`}>
                 <h2>Job Description</h2>

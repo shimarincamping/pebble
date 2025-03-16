@@ -7,8 +7,8 @@ function CVSidebarCard(props) {
             <div class={`${styles.cvSidebarCard}`}>
                 <h3>Resume/CV Builder</h3>
                 {
-                    (props.latestUserCV) ? (
-                        <div class={`${styles.cvSidebarCard__viewCVTile}`}>
+                    props.latestUserCV ? (
+                        <div className={styles.cvSidebarCard__viewCVTile}>
                             <img 
                                 src='/img/cvPreviewImage.png'
                                 alt='CV Preview'
