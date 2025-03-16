@@ -22,7 +22,9 @@ function ProfilePagePostsCardContainer(props) {
 
                 {(props.latestPost) ? (
                 <section>
-                    <PostCardContainer postCardData={[props.latestPost]}/>
+                    <PostCardContainer 
+                        postCardData={[props.latestPost]} 
+                    />
                 </section>
                 ) : ( <h3>This user has no posts.</h3> )}
 
