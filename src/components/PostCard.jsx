@@ -92,12 +92,10 @@ const PostCard = ({
 
             <div className={styles.postActions}>
                 <div
-                    className={`${styles.action} ${
-                        post.liked ? styles.liked : ""
-                    }`}
+                    className={`${styles.action} ${post.liked ? styles.liked : ""}`}
                     onClick={(e) => {
                         e.stopPropagation();
-                        onLike(post.postID);
+                        onLike(post.postID, post.authorId);
                     }}
                 >
                     <BsHandThumbsUpFill />

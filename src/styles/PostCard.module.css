@@ -128,11 +128,12 @@
 }
 
 .liked {
-    color: #0073b1;
+    color: #0073b1 !important; /* ✅ Ensure it stays blue */
+    transition: color 0.2s ease-in-out;
 }
 
 .reported {
-    color: red;
+    color: orange;
 }
 
 .copiedMessage {
