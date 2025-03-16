@@ -43,36 +43,43 @@ function PostCardContainer(props) {
 
     // Fetch posts from backend (only show visible posts)
     useEffect(() => {
-        if (!props.postCardData) {
-            const fetchPosts = async () => {
-                try {
-                    const response = await fetch(
-                        `${process.env.REACT_APP_API_URL}/posts`,
-                        {
-                            method: "GET",
-                            headers: {
-                                "Content-Type": "application/json",
-                                Authorization: `Bearer ${token}`,
-                            },
-                        }
-                    );
-                    const data = await response.json();
-                    setPostCardData(data);
-                } catch (error) {
-                    console.error("Error fetching posts:", error);
+        const fetchPosts = async () => {
+            try {
+                let apiUrl = `${process.env.REACT_APP_API_URL}/posts`;
+                
+                // ✅ If singlePostID exists, fetch only that post
+                if (props.singlePostID) {
+                    apiUrl = `${process.env.REACT_APP_API_URL}/posts/${props.singlePostID}`;
                 }
-            };
 
+                const response = await fetch(apiUrl, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+
+                const data = await response.json();
+
+                if (props.singlePostID) {
+                    setPostCardData([data]); // ✅ Store only 1 post as an array
+                } else {
+                    setPostCardData(data.filter((post) => post.isContentVisible !== false));
+                }
+            } catch (error) {
+                console.error("Error fetching posts:", error);
+            }
+        };
+
+        // Only fetch if no post data exists OR singlePostID is provided
+        if (!props.postCardData || props.singlePostID) {
             fetchPosts();
         } else {
-            // Ensure only visible posts are set
-            setPostCardData(
-                props.postCardData.filter(
-                    (post) => post.isContentVisible !== false
-                )
-            );
+            // Ensure only visible posts are set (for normal profile view)
+            setPostCardData(props.postCardData.filter((post) => post.isContentVisible !== false));
         }
-    }, []);
+    }, [props.singlePostID]); // ✅ Depend on singlePostID to avoid unnecessary fetches
 
     useEffect(() => {
         if (props.newPost) {
@@ -163,46 +170,45 @@ function PostCardContainer(props) {
     };
           
     const handleLike = async (postID) => {
-      try {
-          const response = await fetch(
-              `${process.env.REACT_APP_API_URL}/posts/${postID}/likes`,
-              {
-                  method: "PUT",
-                  headers: {
-                      "Content-Type": "application/json",
-                      Authorization: `Bearer ${token}`,
-                  },
-              }
-          );
-  
-          if (response.ok) {
-              const updatedPost = await fetch(
-                  `${process.env.REACT_APP_API_URL}/posts/${postID}`,
-                  {
-                      method: "GET",
-                      headers: {
-                          "Content-Type": "application/json",
-                          Authorization: `Bearer ${token}`,
-                      },
-                  }
-              );
-              const updatedPostData = await updatedPost.json();
-  
-              setPostCardData((prevData) =>
-                  prevData.map((post) =>
-                      post.postID === postID ? updatedPostData : post
-                  )
-              );
-  
-              console.log("Post like toggled successfully.");
-          } else {
-              console.error("Failed to like/unlike post.");
-          }
-      } catch (error) {
-          console.error("Error liking post:", error);
-      }
+        try {
+            // ✅ Step 1: Find the post in the current state
+            setPostCardData((prevData) =>
+                prevData.map((post) => {
+                    if (post.postID === postID) {
+                        // ✅ Toggle `liked` state manually
+                        const isLiked = post.liked ?? false;
+                        return {
+                            ...post,
+                            liked: !isLiked,
+                        };
+                    }
+                    return post;
+                })
+            );
+    
+            // ✅ Step 2: Send Like/Unlike request
+            const response = await fetch(
+                `${process.env.REACT_APP_API_URL}/posts/${postID}/likes`,
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+    
+            if (!response.ok) {
+                console.error("❌ Failed to like/unlike post.");
+                return;
+            }
+    
+            console.log("✅ Like/unlike request successful.");
+        } catch (error) {
+            console.error("❌ Error liking post:", error);
+        }
     };
-  
+                          
     const handleReport = async (postID) => {
         try {
             const response = await fetch(
@@ -239,7 +245,7 @@ function PostCardContainer(props) {
     };
 
     const handleCopyLink = (postID) => {
-        const postLink = `${window.location.origin}/posts/${postID}`;
+        const postLink = `${window.location.origin}/post/${postID}`; // Make sure the path is correct
         navigator.clipboard.writeText(postLink);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);

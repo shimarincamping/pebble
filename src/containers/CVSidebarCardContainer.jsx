@@ -74,7 +74,7 @@ function CVSidebarCardContainer() {
             {CVData ? (
                 <>
                     <CVSidebarCard 
-                        {...CVData} 
+                        latestUserCV={CVData.latestUserCV ? true : false} // Pass a boolean instead of the object                        
                         handleGenerate={toggleCVGenerationOverlay} 
                         handleView={toggleCVViewOverlay}
                     />
@@ -92,13 +92,13 @@ function CVSidebarCardContainer() {
                                     portfolio: CVData.latestUserCV?.portfolio || "",
                                     summary: CVData.latestUserCV?.summary || "",
                                     jobDesc: CVData.latestUserCV?.jobDesc || "",
-                                    workExperience: CVData.latestUserCV?.workExperience?.map(item => `${item.title} - ${item.description}`).join("\n") || "",
-                                    education: CVData.latestUserCV?.education?.map(item => `${item.degree} - ${item.institution} (${item.year})`).join("\n") || "",
+                                    workExperience: CVData.latestUserCV?.workExperience || [], // Keep it as an array
+                                    education: CVData.latestUserCV?.education || [], // Keep it as an array
                                     skills: CVData.latestUserCV?.skills?.join(", ") || "",
-                                    certifications: CVData.latestUserCV?.certifications?.map(item => `${item.name} - ${item.year}`).join("\n") || "",
-                                    projects: CVData.latestUserCV?.projects?.map(item => `${item.name} - ${item.description}`).join("\n") || "",
-                                    languages: CVData.latestUserCV?.languages?.join(", ") || "",
-                                    awards: CVData.latestUserCV?.awards?.map(item => `${item.name} - ${item.organization} (${item.year})`).join("\n") || ""
+                                    certifications: CVData.latestUserCV?.certifications || [], // Keep it as an array
+                                    projects: CVData.latestUserCV?.projects || [], // Keep it as an array
+                                    languages: CVData.latestUserCV?.languages || [],
+                                    awards: CVData.latestUserCV?.awards || [] // Keep it as an array                                    
                                 }}
                                 onClose={toggleCVGenerationOverlay}
                                 onGenerate={handleGenerateCV}

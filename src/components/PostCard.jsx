@@ -45,7 +45,6 @@ const PostCard = ({
                             onEditClick(post);
                         }}
                     />
-                    {currentUserID === post.userID && ( // ✅ Only show for the owner
                         <BsTrashFill
                             className={styles.deleteIcon}
                             onClick={(e) => {
@@ -53,7 +52,6 @@ const PostCard = ({
                                 onDeleteClick(post.postID);
                             }}
                         />
-                    )}
                 </div>
             </div>
 
@@ -71,9 +69,11 @@ const PostCard = ({
                 <h3>{post.title}</h3>
                 <p className={styles.postMeta}>{post.date}</p>
                 <p className={styles.postDesc}>
-                    {expanded
-                        ? post.postDesc
-                        : `${post.postDesc.substring(0, 150)}...`}
+                    {post.postDesc
+                        ? expanded
+                            ? post.postDesc
+                            : `${post.postDesc.substring(0, 150)}...`
+                        : "No content available"}
                 </p>
 
                 {post.postDesc.length > 150 && (
@@ -93,12 +93,10 @@ const PostCard = ({
 
             <div className={styles.postActions}>
                 <div
-                    className={`${styles.action} ${
-                        post.liked ? styles.liked : ""
-                    }`}
+                    className={`${styles.action} ${post.liked ? styles.liked : ""}`}
                     onClick={(e) => {
                         e.stopPropagation();
-                        onLike(post.postID);
+                        onLike(post.postID, post.authorId);
                     }}
                 >
                     <BsHandThumbsUpFill />
