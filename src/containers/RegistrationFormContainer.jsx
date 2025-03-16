@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../containers/AuthProvider"; // Import AuthProvider hook
 import RegistrationInputField from "../components/RegistrationInputField";
 import styles from "../styles/LoginRegistration.module.css";
 
 function RegistrationFormContainer() {
     const { register } = useAuth(); // Use the register function
+    const navigate = useNavigate();
 
     // Defining all the fields
     const formFields = {
@@ -126,6 +128,7 @@ function RegistrationFormContainer() {
                 formData.confirmPassword.trim()
             );
             alert("Registration successful! Please log in.");
+            navigate("/login");
         } catch (error) {
             setErrorMessage(error.message || "Registration failed. Please try again.");
         } finally {
