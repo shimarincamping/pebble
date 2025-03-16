@@ -44,7 +44,6 @@ const PostCard = ({
                             onEditClick(post);
                         }}
                     />
-                    {currentUserID === post.userID && ( // ✅ Only show for the owner
                         <BsTrashFill
                             className={styles.deleteIcon}
                             onClick={(e) => {
@@ -52,7 +51,6 @@ const PostCard = ({
                                 onDeleteClick(post.postID);
                             }}
                         />
-                    )}
                 </div>
             </div>
 

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../styles/NavPanel.module.css";
 
-function NavPanel({ isVisible, HandleMenuClick, HandleBellClick, navigateTo }) {
+function NavPanel({ isVisible, HandleMenuClick, HandleBellClick, navigateTo, handleLogout }) {
 
     return (
         <div
@@ -86,13 +86,13 @@ function NavPanel({ isVisible, HandleMenuClick, HandleBellClick, navigateTo }) {
                     </div>
 
                     <div className={styles.TextContainer}>
-                        <h2>goals</h2>
+                        <h2>Goals</h2>
                     </div>
                 </div>
             </div>
 
             <div className={styles.Footer}>
-                <div className={styles.LogOut}>
+                <div className={styles.LogOut} onClick={handleLogout}>
                     <h3>LOG OUT</h3>
                 </div>
                 <img
