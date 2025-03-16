@@ -270,6 +270,7 @@ function PostCardContainer(props) {
                     if(data.action == 'redirect'){
                         console.log(`data.action ${data.action}`);
                         console.log(`data.authUrl ${data.authUrl}`);
+                        alert('You will now be redirected to the LinkedIn platform for authentication.\nAfter the redirect, please click on the linkedIn logo to complete the sync process.')
                         window.location.href = data.authUrl;
                     }else if(data.action == 'alert'){
                         alert('Post synced on LinkedIn successfully!');
