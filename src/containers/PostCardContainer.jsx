@@ -163,46 +163,45 @@ function PostCardContainer(props) {
     };
           
     const handleLike = async (postID) => {
-      try {
-          const response = await fetch(
-              `${process.env.REACT_APP_API_URL}/posts/${postID}/likes`,
-              {
-                  method: "PUT",
-                  headers: {
-                      "Content-Type": "application/json",
-                      Authorization: `Bearer ${token}`,
-                  },
-              }
-          );
-  
-          if (response.ok) {
-              const updatedPost = await fetch(
-                  `${process.env.REACT_APP_API_URL}/posts/${postID}`,
-                  {
-                      method: "GET",
-                      headers: {
-                          "Content-Type": "application/json",
-                          Authorization: `Bearer ${token}`,
-                      },
-                  }
-              );
-              const updatedPostData = await updatedPost.json();
-  
-              setPostCardData((prevData) =>
-                  prevData.map((post) =>
-                      post.postID === postID ? updatedPostData : post
-                  )
-              );
-  
-              console.log("Post like toggled successfully.");
-          } else {
-              console.error("Failed to like/unlike post.");
-          }
-      } catch (error) {
-          console.error("Error liking post:", error);
-      }
+        try {
+            // ✅ Step 1: Find the post in the current state
+            setPostCardData((prevData) =>
+                prevData.map((post) => {
+                    if (post.postID === postID) {
+                        // ✅ Toggle `liked` state manually
+                        const isLiked = post.liked ?? false;
+                        return {
+                            ...post,
+                            liked: !isLiked,
+                        };
+                    }
+                    return post;
+                })
+            );
+    
+            // ✅ Step 2: Send Like/Unlike request
+            const response = await fetch(
+                `${process.env.REACT_APP_API_URL}/posts/${postID}/likes`,
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+    
+            if (!response.ok) {
+                console.error("❌ Failed to like/unlike post.");
+                return;
+            }
+    
+            console.log("✅ Like/unlike request successful.");
+        } catch (error) {
+            console.error("❌ Error liking post:", error);
+        }
     };
-  
+                          
     const handleReport = async (postID) => {
         try {
             const response = await fetch(
