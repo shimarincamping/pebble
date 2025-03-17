@@ -34,12 +34,12 @@ function NavPanel({ isVisible, HandleMenuClick, HandleBellClick, navigateTo, han
                     </div>
                 </div>
 
-                <div onClick={navigateTo("/rewards")}>
+                <div onClick={navigateTo("/profile")}>
                     <div className={styles.ImgContainer}>
-                        <img src="/img/RewardsIcon.png" alt=""></img>
+                        <img src="/img/ProfileIcon.png" alt=""></img>
                     </div>
                     <div className={styles.TextContainer}>
-                        <h2>Rewards</h2>
+                        <h2>Profile</h2>
                     </div>
                 </div>
 
@@ -52,31 +52,12 @@ function NavPanel({ isVisible, HandleMenuClick, HandleBellClick, navigateTo, han
                     </div>
                 </div>
 
-                <div onClick={navigateTo("/profile")}>
-                    <div className={styles.ImgContainer}>
-                        <img src="/img/ProfileIcon.png" alt=""></img>
-                    </div>
-                    <div className={styles.TextContainer}>
-                        <h2>Me</h2>
-                    </div>
-                </div>
-
                 <div onClick={navigateTo("/roadmap")}>
                     <div className={styles.ImgContainer}>
                         <img src="/img/RoadMapIcon.png" alt=""></img>
                     </div>
                     <div className={styles.TextContainer}>
                         <h2>Roadmaps</h2>
-                    </div>
-                </div>
-
-                <div onClick={navigateTo("/codingchallenge")}>
-                    <div className={styles.ImgContainer}>
-                        <img src="/img/CodingChallengesIcon.png" alt=""></img>
-                    </div>
-
-                    <div className={styles.TextContainer}>
-                        <h2>Coding Challenges</h2>
                     </div>
                 </div>
 
@@ -87,6 +68,25 @@ function NavPanel({ isVisible, HandleMenuClick, HandleBellClick, navigateTo, han
 
                     <div className={styles.TextContainer}>
                         <h2>Goals</h2>
+                    </div>
+                </div>
+
+                <div onClick={navigateTo("/rewards")}>
+                    <div className={styles.ImgContainer}>
+                        <img src="/img/RewardsIcon.png" alt=""></img>
+                    </div>
+                    <div className={styles.TextContainer}>
+                        <h2>Rewards</h2>
+                    </div>
+                </div>
+
+                <div onClick={navigateTo("/codingchallenge")}>
+                    <div className={styles.ImgContainer}>
+                        <img src="/img/CodingChallengesIcon.png" alt=""></img>
+                    </div>
+
+                    <div className={styles.TextContainer}>
+                        <h2>Coding Challenges</h2>
                     </div>
                 </div>
             </div>
