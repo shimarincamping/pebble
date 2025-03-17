@@ -57,11 +57,11 @@ export default function DashboardStatsSidebarCard(props) {
                             </span>
                             <span>tickets</span>
                         </div>
-                        <div
+                        <Link to="/rewards"
                             className={`${styles.statsSidebarCard__logo__gift}`}
                         >
                             <TbGift size={20} />
-                        </div>
+                        </Link>
                     </div>
                 </div>
             </div>
