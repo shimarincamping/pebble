@@ -74,6 +74,7 @@ const ModeratorDashboardContainer = () => {
 
         fetchFlaggedContent();
     }, []);
+    
 
     return (
         (flaggedContent) ? (
