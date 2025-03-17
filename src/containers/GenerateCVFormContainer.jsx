@@ -1,30 +1,15 @@
 import React, { useState } from "react";
 import GenerateCVForm from "../components/GenerateCVForm";
-import styles from "../styles/GenerateCV.module.css";
+import ApplicationMainOverlay from "./ApplicationMainOverlay";
 
 const GenerateCVFormContainer = ({ initialData, onClose, onGenerate }) => {
-    const [formData, setFormData] = useState(initialData);
+    const [formData, setFormData] = useState({
+        jobDesc : ""
+    });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-
-        setFormData((prev) => {
-            if (["skills", "languages"].includes(name)) {
-                return { ...prev, [name]: value.split(",").map(item => item.trim()) };
-            }
-
-            if (["workExperience", "education", "certifications", "projects", "awards"].includes(name)) {
-                return {
-                    ...prev,
-                    [name]: value.split("\n").map(item => {
-                        const [title, description] = item.split(" - ");
-                        return { title: title?.trim(), description: description?.trim() };
-                    })
-                };
-            }
-
-            return { ...prev, [name]: value };
-        });
+        setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
     const handleSubmit = (e) => {
@@ -33,14 +18,14 @@ const GenerateCVFormContainer = ({ initialData, onClose, onGenerate }) => {
     };
     
     return (
-        <div className={styles.overlay}>
+        <ApplicationMainOverlay>
             <GenerateCVForm 
-                formData={formData} 
+                formData={formData}
                 handleChange={handleChange} 
                 handleSubmit={handleSubmit} 
                 closeForm={onClose} 
             />
-        </div>
+        </ApplicationMainOverlay>
     );
 };
 

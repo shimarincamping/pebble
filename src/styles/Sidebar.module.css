@@ -481,6 +481,11 @@
     padding: 1.25em;
 }
 
+.cvSidebarCard > h2 {
+    text-align: center;
+    margin: 1.5em auto 1.5em;
+}
+
 .cvSidebarCard__viewCVTile {
     margin-top: 1em;
     text-align: center;

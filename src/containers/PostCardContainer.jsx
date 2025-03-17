@@ -92,7 +92,9 @@ function PostCardContainer(props) {
         }
     }, [props.newPost]);
 
-    const handlePostClick = (postID) => navigate(`/post/${postID}`);
+    const handleAuthorClick = (authorID) => {
+        navigate(`../profile/${authorID}`);
+    }
 
     const handleEditClick = (post) => {
         setEditingPost(post);
@@ -267,12 +269,12 @@ function PostCardContainer(props) {
             })
                 .then(response => response.json())
                 .then(data =>{
-                    if(data.action == 'redirect'){
+                    if(data.action === 'redirect'){
                         console.log(`data.action ${data.action}`);
                         console.log(`data.authUrl ${data.authUrl}`);
                         alert('You will now be redirected to the LinkedIn platform for authentication.\nAfter the redirect, please click on the linkedIn logo to complete the sync process.')
                         window.location.href = data.authUrl;
-                    }else if(data.action == 'alert'){
+                    }else if(data.action === 'alert'){
                         alert('Post synced on LinkedIn successfully!');
                     }
                 })
@@ -292,7 +294,7 @@ function PostCardContainer(props) {
                         key={post.postID}
                         post={post}
                         currentUserDetails={userDetails} 
-                        onClick={() => handlePostClick(post.postID)}
+                        onAuthorClick={() => handleAuthorClick(post.authorID)}
                         onEditClick={handleEditClick}
                         onDeleteClick={() => handleDeleteClick(post.postID)}
                         onLike={handleLike}

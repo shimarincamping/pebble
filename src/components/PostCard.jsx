@@ -14,7 +14,7 @@ import styles from "../styles/PostCard.module.css";
 const PostCard = ({
     post,
     currentUserDetails,
-    onClick,
+    onAuthorClick,
     onLike,
     onReport,
     onCopyLink,
@@ -28,14 +28,17 @@ const PostCard = ({
 
 
     return (
-        <div className={styles.postCard} onClick={onClick}>
+        <div className={styles.postCard}>
             <div className={styles.postHeading}>
                 <img
                     src={post.profilePicture}
                     alt={`${post.fullName}'s profile`}
                     className={styles.profilePicture}
+                    onClick={onAuthorClick}
                 />
-                <div className={styles.userDetails}>
+                <div className={styles.userDetails}
+                    onClick={onAuthorClick}
+                >
                     <h3>{post.fullName}</h3>
                     <p>{post.courseName}</p>
                     <p className={styles.postTime}>{post.time}</p>

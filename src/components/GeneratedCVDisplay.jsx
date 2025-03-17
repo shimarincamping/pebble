@@ -100,11 +100,6 @@ const GeneratedCVDisplay = ({ formData }) => {
                 )}
             </section>
 
-            <section className={`${styles.CV__section}`}>
-                <h2>Job Description</h2>
-                <p>{formData.jobDesc}</p>
-            </section>
-
         </div>
     );
 };
