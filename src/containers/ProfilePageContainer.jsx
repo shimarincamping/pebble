@@ -27,6 +27,10 @@ function ProfilePageContainer({ id }) {
             return;
         }
 
+        setUserProfileData(null);
+        setUserProfileDetails(null);
+        setUserPostHistory(null);
+
         const handleFetchProfileData = async () => {
             const fetchedProfileData = await fetch(
                 `${process.env.REACT_APP_API_URL}/users/${currentRequestID}/profile-information/full`,
@@ -54,7 +58,7 @@ function ProfilePageContainer({ id }) {
     }, [currentRequestID]);
 
     useEffect(() => {
-        if (!currentRequestID) {
+        if (!currentRequestID || !isMyProfile) {
             return;
         }
 
