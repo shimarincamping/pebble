@@ -14,7 +14,6 @@ function PostCardContainer(props) {
     const [copied, setCopied] = useState(false);
     const [userDetails, setUserDetails] = useState(null);
     const { user } = useAuth(); // useAuth calls useContext, fetches userId
-    console.log("Logged-in user:", user);
     const token = localStorage.getItem("jwtToken");
 
     useEffect(() => {
