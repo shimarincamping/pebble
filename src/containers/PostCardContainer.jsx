@@ -12,16 +12,19 @@ function PostCardContainer(props) {
     const [editingPost, setEditingPost] = useState(null);
     const [newContent, setNewContent] = useState("");
     const [copied, setCopied] = useState(false);
+    const [userDetails, setUserDetails] = useState(null);
     const { user } = useAuth(); // useAuth calls useContext, fetches userId
+    console.log("Logged-in user:", user);
     const token = localStorage.getItem("jwtToken");
 
     useEffect(() => {
-        const handleFetchData = async () => {
+        
+        const fetchUserDetails = async () => {
             if (!user) return;
-    
+        
             try {
-                const fetchedData = await fetch(
-                    `${process.env.REACT_APP_API_URL}/users/${user.userID}/profile-information/basic`,
+                const response = await fetch(
+                    `${process.env.REACT_APP_API_URL}/users/${user}/profile-information/basic`,
                     {
                         method: "GET",
                         headers: {
@@ -30,17 +33,17 @@ function PostCardContainer(props) {
                         },
                     }
                 );
-                const fetchedJsonData = await fetchedData.json();
-    
-                setPostCardData(fetchedJsonData || {}); // Ensure postData is always an object
+                const data = await response.json();
+        
+                setUserDetails(data || {}); // ✅ Ensure userDetails is always an object
             } catch (error) {
-                console.error("Error fetching user data:", error);
+                console.error("Error fetching user details:", error);
             }
         };
     
-        handleFetchData();
+        fetchUserDetails();
     }, [user]);
-
+    
     // Fetch posts from backend (only show visible posts)
     useEffect(() => {
         const fetchPosts = async () => {
@@ -154,12 +157,10 @@ function PostCardContainer(props) {
             );
     
             if (response.ok) {
-                setPostCardData((prevData) =>
-                    prevData.map((post) =>
-                        post.postID === postID ? { ...post, isContentVisible: false } : post
-                    )
-                );
-                console.log("Post marked as hidden.");
+                // ✅ Remove the deleted post from the state
+                setPostCardData((prevData) => prevData.filter((post) => post.postID !== postID));
+    
+                console.log("Post deleted and removed from UI.");
             } else {
                 const errorText = await response.text();
                 console.error("Failed to delete post. Response:", errorText);
@@ -168,7 +169,7 @@ function PostCardContainer(props) {
             console.error("Error deleting post:", error);
         }
     };
-          
+              
     const handleLike = async (postID) => {
         try {
             // ✅ Step 1: Find the post in the current state
@@ -291,14 +292,15 @@ function PostCardContainer(props) {
                     <PostCard
                         key={post.postID}
                         post={post}
-                        currentUserID={user?.userID} // Pass userID as a prop
+                        currentUserDetails={userDetails} 
                         onClick={() => handlePostClick(post.postID)}
                         onEditClick={handleEditClick}
                         onDeleteClick={() => handleDeleteClick(post.postID)}
                         onLike={handleLike}
                         onReport={handleReport}
                         onCopyLink={handleCopyLink}
-                        handleLinkedinSync={() =>handleLinkedinSync(post.postID)}
+                        handleLinkedinSync={() => handleLinkedinSync(post.postID)}
+                        isProfilePage={props.isProfilePage}
                     />
                 ))
             ) : (

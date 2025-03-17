@@ -16,7 +16,10 @@ function ProfilePageAllPostsList(props) {
                 { 
                     (props.postList) ? (
                         <section>
-                            <PostCardContainer postCardData={props.postList}/>
+                            <PostCardContainer
+                                postCardData={props.postList}
+                                isProfilePage={props.isProfilePage} // ✅ Forward the prop
+                            />
                         </section>
                     ) : (<ComponentLoadingSpinner />)
                 }

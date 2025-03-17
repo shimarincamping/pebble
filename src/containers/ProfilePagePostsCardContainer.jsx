@@ -23,7 +23,8 @@ function ProfilePagePostsCardContainer(props) {
                 {(props.latestPost) ? (
                 <section>
                     <PostCardContainer 
-                        postCardData={[props.latestPost]} 
+                            postCardData={[props.latestPost]} 
+                            isProfilePage={true} // ✅ Pass this prop
                     />
                 </section>
                 ) : ( <h3>This user has no posts.</h3> )}
@@ -37,6 +38,7 @@ function ProfilePagePostsCardContainer(props) {
                     <ProfilePageAllPostsList
                         postList={props.allPosts}
                         toggleFormOverlay={toggleFormOverlay}
+                        isProfilePage={true}  // ✅ Pass this prop manually
                     />
                 </ApplicationMainOverlay>
             )}
