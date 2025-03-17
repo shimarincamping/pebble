@@ -13,38 +13,6 @@ function CVSidebarCardContainer() {
     const { user } = useAuth(); // useAuth calls useContext, fetches userId
     const token = localStorage.getItem("jwtToken");
 
-    // Dummy data ----------------------------
-    const dummyCVData = {
-            fullName: "Anoop Singh",
-            email: "anoopsingh@example.com",
-            phone: "+123456789",
-            address: "123 Main Street, City, Country",
-            linkedin: "https://linkedin.com/in/anoopsingh",
-            github: "https://github.com/anoopsingh",
-            portfolio: "https://anoopsingh.dev",
-            summary: "Highly motivated software engineer with 3+ years of experience in web development and cybersecurity. Passionate about building secure and scalable applications.",
-            workExperience: [
-                { title: "Part Time Software Engineer", company: "ABC Corp", duration: "2022 - Present", description: "Developed and maintained web applications using React and Node.js." },
-                { title: "Intern", company: "XYZ Ltd", duration: "2021 - 2022", description: "Assisted in frontend development and security assessments." }
-            ],
-            education: [
-                { degree: "BSc Computer Science", institution: "University of Tech", year: "2022" }
-            ],
-            skills: ["JavaScript", "React", "Python", "Cybersecurity", "SQL", "Cloud Computing"],
-            certifications: [
-                { name: "Certified Ethical Hacker (CEH)", year: "2023" },
-                { name: "AWS Certified Solutions Architect", year: "2024" }
-            ],
-            projects: [
-                { name: "Personal Portfolio Website", description: "Built a fully responsive portfolio using React and Tailwind CSS." },
-                { name: "Secure Chat App", description: "Developed an encrypted messaging application with end-to-end security features." }
-            ],
-            languages: ["English", "Spanish", "Mandarin"],
-            awards: [
-                { name: "Best Software Engineer Intern", organization: "XYZ Ltd", year: "2021" }
-            ]
-    };
-
     const [CVData, setCVData] = useState(null);
     const [CVGenerationOverlayVisible, setCVGenerationOverlayVisible] = useState(false);
     const [CVViewOverlayVisible, setCVViewOverlayVisible] = useState(false);
@@ -104,6 +72,7 @@ function CVSidebarCardContainer() {
 
         if (fetchedData.ok) {
             const fetchedJsonData = await fetchedData.json();
+            console.log(fetchedJsonData);
             setCVData(fetchedJsonData);
             setCVGenerationOverlayVisible(false); 
             setCVViewOverlayVisible(true); 
