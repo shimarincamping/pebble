@@ -18,7 +18,7 @@ function PostCardContainer(props) {
 
     useEffect(() => {
         
-        const fetchUserDetails = async () => {
+        const handleFetchData = async () => {
             if (!user) return;
         
             try {
