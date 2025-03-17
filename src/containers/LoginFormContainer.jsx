@@ -23,7 +23,7 @@ const LoginFormContainer = () => {
     try {
       await login(formData.email, formData.password);
       alert("Login successful!");
-      navigate("/feed"); // Redirect to FeedPage
+      navigate("/feed");
     } catch (error) {
       setError(error.message || "Something went wrong. Please try again.");
     } finally {

@@ -40,9 +40,9 @@ function PostCardContainer(props) {
             }
         };
     
-        fetchUserDetails();
-    }, [user]);
-    
+        handleFetchData();
+    }, [token, user]);
+
     // Fetch posts from backend (only show visible posts)
     useEffect(() => {
         const fetchPosts = async () => {

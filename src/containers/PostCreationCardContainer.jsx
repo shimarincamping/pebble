@@ -27,7 +27,7 @@ function PostCreationCardContainer({ onNewPost }) {
         };
 
         handleFetchData();
-    }, [user]);
+    }, [token, user]);
 
     const handlePostTitleChange = (event) => {
         setPostData((prev) => ({ ...prev, title: event.target.value }));
@@ -39,60 +39,60 @@ function PostCreationCardContainer({ onNewPost }) {
 
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
-        if (file) {
-            const imageURL = URL.createObjectURL(file);
-            setPostData((prev) => ({ ...prev, postPicture: imageURL }));
-        }
+        if (!file) return;
+    
+        setPostData((prev) => ({ ...prev, postPictureFile: file })); // Store the actual file
     };
+    
 
     const handlePostSubmit = async () => {
         if (!postData?.title?.trim() || !postData?.postDesc?.trim()) {
             console.error("Title and description are required.");
             return;
         }
-
+    
         try {
-            const response = await fetch(
-                `${process.env.REACT_APP_API_URL}/posts`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                    },
-                    body: JSON.stringify({
-                        title: postData.title,
-                        postDesc: postData.postDesc,
-                        postPicture: postData.postPicture || null, // Ensure null if empty
-                        linkedinURL: postData.linkedinURL || null, // Ensure null if empty
-                    }),
-                }
-            );
-
+            const formData = new FormData();
+            formData.append("title", postData.title);
+            formData.append("postDesc", postData.postDesc);
+            formData.append("linkedinURL", postData.linkedinURL || "");
+    
+            if (postData.postPictureFile) {
+                console.log("Appending file:", postData.postPictureFile); // Debugging output
+                formData.append("file", postData.postPictureFile);
+            }
+    
+            // Debugging: Log FormData contents
+            for (let pair of formData.entries()) {
+                console.log(pair[0], pair[1]); // Ensure file is included
+            }
+    
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/posts`, {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`, // Don't set Content-Type for FormData
+                },
+                body: formData,
+            });
+    
             if (!response.ok) {
                 const errorText = await response.text();
                 throw new Error(`Failed to create post: ${errorText}`);
             }
-
-            // Fetch the newly created post to update the feed
-            const newPost = {
-                ...postData,
-            };
-            onNewPost(newPost);
-
-            // Reset form after successful submission
-            setPostData({
-                title: "",
-                postDesc: "",
-                postPicture: "",
-                linkedinURL: "",
-            });
-
-            console.log("Post created successfully!");
+    
+            const data = await response.json();
+            onNewPost(data.post);
+    
+            setPostData({ title: "", postDesc: "", postPictureFile: null, linkedinURL: "" });
+    
+            alert("Post created successfully!");
         } catch (error) {
             console.error("Error submitting post:", error);
         }
     };
+    
+    
+    
 
     return (
         <PostCreationCard
