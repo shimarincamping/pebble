@@ -89,6 +89,16 @@ function NavPanel({ isVisible, HandleMenuClick, HandleBellClick, navigateTo, han
                         <h2>Coding Challenges</h2>
                     </div>
                 </div>
+
+                <div onClick={navigateTo("/leaderboard")}>
+                    <div className={styles.ImgContainer}>
+                        <img src="/img/LeaderboardIcon.png" alt=""></img>
+                    </div>
+
+                    <div className={styles.TextContainer}>
+                        <h2>Leaderboard</h2>
+                    </div>
+                </div>
             </div>
 
             <div className={styles.Footer}>
