@@ -23,7 +23,7 @@ const GeneratedCVDisplay = ({ formData }) => {
                     <h2>Summary</h2>
                     <p>{formData.summary}</p>
                 </section>
-            )}
+            )} <br />
 
             <section className={`${styles.CV__section}`}>
                 <h2>Education</h2>
@@ -41,21 +41,29 @@ const GeneratedCVDisplay = ({ formData }) => {
             <section className={`${styles.CV__section}`}>
                 <h2>Work Experience</h2>
                 {formData.experience.map((exp, index) => (
-                    <p key={index}><strong>{exp.title}</strong> at {exp.company} ({exp.duration})<br/>{exp.description}</p>
+                    <>
+                        <p><strong>{exp.title}</strong><br />{exp.description}</p> <br />
+                    </>
                 ))}
             </section>
 
             <section className={`${styles.CV__section}`}>
                 <h2>Certifications</h2>
-                {formData.certifications.map(cert => (
-                    <p>{cert}</p>
-                ))}
+                <ul>
+                    {formData.certifications.map(cert => (
+                        <>
+                            <li>{cert}</li> <br />
+                        </>
+                    ))}
+                </ul>
             </section>
 
             <section className={`${styles.CV__section}`}>
                 <h2>Projects</h2>
                 {formData.projects.map((project, index) => (
-                    <p key={index}><strong>{project.title}</strong> - {project.description}</p>
+                    <>
+                        <p><strong>{project.title}</strong> - {project.description}</p> <br />
+                    </>
                 ))}
             </section>
 
