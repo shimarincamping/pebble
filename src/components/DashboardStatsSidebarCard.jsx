@@ -35,7 +35,7 @@ export default function DashboardStatsSidebarCard(props) {
                     />
                     <div className={`${styles.statsSidebarCard__item__desc}`}>
                         <span className={`${styles.statsSidebarCard__data}`}>
-                            {props.totalPoints}pts
+                            {props.totalPoints} pts
                         </span>
                     </div>
                 </div>
