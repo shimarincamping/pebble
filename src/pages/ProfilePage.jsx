@@ -6,7 +6,7 @@ import PageHeaderContainer from "../containers/PageHeaderContainer.jsx";
 
 import ProfilePageContainer from "../containers/ProfilePageContainer";
 import CVSidebarCardContainer from "../containers/CVSidebarCardContainer";
-import DashboardStatsSidebarCardContainer from "../containers/DashboardStatsSidebarCardContainer.jsx";
+import NetworkSidebarCardContainer from "../containers/NetworkSidebarCardContainer";
 import ProfileSidebarCardContainer from "../containers/ProfileSidebarCardContainer";
 
 import styles from "../styles/global.module.css";
@@ -33,7 +33,7 @@ function ProfilePage() {
                 {id === "me" && (
                     <ApplicationSidebar>
                         <CVSidebarCardContainer />
-                        <DashboardStatsSidebarCardContainer />
+                        <NetworkSidebarCardContainer />
                     </ApplicationSidebar>
                 )}
             </div>
