@@ -13,7 +13,7 @@ import styles from "../styles/PostCard.module.css";
 
 const PostCard = ({
     post,
-    currentUserID,
+    currentUserDetails,
     onClick,
     onLike,
     onReport,
@@ -21,9 +21,12 @@ const PostCard = ({
     onEditClick,
     onDeleteClick,
     handleLinkedinSync,
+    isProfilePage
 }) => {
     const [expanded, setExpanded] = useState(false);
     const [showComments, setShowComments] = useState(false);
+
+
     return (
         <div className={styles.postCard} onClick={onClick}>
             <div className={styles.postHeading}>
@@ -37,6 +40,7 @@ const PostCard = ({
                     <p>{post.courseName}</p>
                     <p className={styles.postTime}>{post.time}</p>
                 </div>
+                {isProfilePage && post.fullName === currentUserDetails?.fullName && (
                 <div className={styles.postActionsIcons}>
                     <BsPencilFill
                         className={styles.editIcon}
@@ -52,7 +56,8 @@ const PostCard = ({
                                 onDeleteClick(post.postID);
                             }}
                         />
-                </div>
+                    </div>
+                )}
             </div>
 
             {post.postPicture && (
