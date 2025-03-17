@@ -92,6 +92,10 @@
     font-weight: 600;
 }
 
+.leaderboardSidebar__sidebarItem__content a {
+    color: var(--taylorsRed);
+}
+
 .leaderboardSidebar__sidebarItem__bioHeader {
     font-weight: 600;
     text-align: center;
