@@ -65,21 +65,19 @@ function PostCardContainer(props) {
                 const data = await response.json();
 
                 if (props.singlePostID) {
-                    setPostCardData([data]); // ✅ Store only 1 post as an array
+                    setPostCardData([data]); 
                 } else {
-                    setPostCardData(data.filter((post) => post.isContentVisible !== false));
+                    setPostCardData(data);
                 }
             } catch (error) {
                 console.error("Error fetching posts:", error);
             }
         };
 
-        // Only fetch if no post data exists OR singlePostID is provided
         if (!props.postCardData || props.singlePostID) {
             fetchPosts();
         } else {
-            // Ensure only visible posts are set (for normal profile view)
-            setPostCardData(props.postCardData.filter((post) => post.isContentVisible !== false));
+            setPostCardData(props.postCardData);
         }
     }, [props.singlePostID]); // ✅ Depend on singlePostID to avoid unnecessary fetches
 
