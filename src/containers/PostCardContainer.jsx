@@ -209,10 +209,10 @@ function PostCardContainer(props) {
         }
     };
                           
-    const handleReport = async (postID) => {
+    const handleReport = async (postID,text) => {
         try {
             const response = await fetch(
-                `${process.env.REACT_APP_API_URL}/flags`,
+                `${process.env.REACT_APP_API_URL}/posts/${postID}/flags`,
                 {
                     method: "POST",
                     headers: {
@@ -220,8 +220,8 @@ function PostCardContainer(props) {
                         Authorization: `Bearer ${token}`,
                     },
                     body: JSON.stringify({
-                        contentID: postID,
-                        contentType: "post",
+                        text:text,
+                        postType: "post",
                     }),
                 }
             );
@@ -296,7 +296,7 @@ function PostCardContainer(props) {
                         onEditClick={handleEditClick}
                         onDeleteClick={() => handleDeleteClick(post.postID)}
                         onLike={handleLike}
-                        onReport={handleReport}
+                        onReport={() => handleReport(post.postID,post.title+post.postDesc)}
                         onCopyLink={handleCopyLink}
                         handleLinkedinSync={() => handleLinkedinSync(post.postID)}
                         isProfilePage={props.isProfilePage}
