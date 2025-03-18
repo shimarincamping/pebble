@@ -7,6 +7,7 @@ export default function ForumThreadPreviewCard({
     userData,
     onClick,
     toggleLike,
+    toggleThreadFlag,
 }) {
     return (
         <article className={`${styles.threadCard__thread}`}>
@@ -40,7 +41,7 @@ export default function ForumThreadPreviewCard({
                         </span>
                     )}
                     <span>
-                        <BiFlag size={20} />
+                        <BiFlag size={20} onClick={toggleThreadFlag} />
                     </span>
                 </div>
                 <div className={`${styles.threadCard__profile}`}>
