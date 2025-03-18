@@ -116,6 +116,7 @@ const EditProfileForm = ({
                     <span className={styles.requiredAsterisk}>*</span>
                     <input
                         type="file"
+                        name="file"
                         accept="image/*"
                         onChange={handleImageUpload}
                     />
