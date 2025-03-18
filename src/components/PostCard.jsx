@@ -87,19 +87,19 @@ const PostCard = ({
                             ) : post.postDesc
                         ) : "No content available"
                     }
-                </p>
 
-                {post.postDesc.length > 200 && (
-                    <button
-                        className={styles.readMore}
-                        onClick={(e) => {
-                            e.stopPropagation(); // Prevents triggering the post click event
-                            setExpanded(!expanded);
-                        }}
-                    >
-                        {expanded ? "Read Less" : "Read More"}
-                    </button>
-                )}
+                    {post.postDesc.length > 200 && (
+                        <button
+                            className={styles.readMore}
+                            onClick={(e) => {
+                                e.stopPropagation(); // Prevents triggering the post click event
+                                setExpanded(!expanded);
+                            }}
+                        >
+                            {expanded ? "Read Less" : "Read More"}
+                        </button>
+                    )}
+                </p>
             </div>
 
             <hr className={styles.separator} />

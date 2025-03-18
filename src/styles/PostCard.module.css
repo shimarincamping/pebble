@@ -92,21 +92,20 @@
     font-size: 0.95em;
     color: #333;
     margin-top: 5px;
-    text-align: justify;
     white-space: pre-wrap;
-    display: inline;
+    text-align: justify;
+    display: block;
 }
 
 .readMore {
     background-color: transparent;
     border: none;
     color: #0073b1;
-    font-size: 0.8em;
+    font-size: 0.85em;
     cursor: pointer;
     padding: 5px 0;
     font-weight: bold;
-    display: inline-block;
-    margin-left: 0.5em;
+    margin-left: 0.6em;
 }
 
 .readMore:hover {
