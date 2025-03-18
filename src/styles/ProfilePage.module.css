@@ -101,6 +101,8 @@
 .headerInfoCard__gridContainer__rightColumn p:nth-of-type(2) {
     font-size: 1.2rem;
     white-space: pre-wrap;
+    max-height: 6.5em;
+    overflow-y: scroll;
 }
 
 /* Profile posts card */
