@@ -14,7 +14,7 @@ export default function LeaderboardSectionItem(props) {
                 <p
                     className={`${styles.leaderboardSectionItem__userData__intakeCourse}`}
                 >
-                    {props.intake} - {props.courseName}
+                    {props.courseName}
                 </p>
                 <p>
                     <span>Total Points:</span> {props.totalPoints}
