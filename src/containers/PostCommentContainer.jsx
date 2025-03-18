@@ -208,6 +208,7 @@ const PostCommentContainer = ({ postID, onClose }) => {
 
     const handleFlagComment = async (commentID, text) => {
         try {
+            alert(`Post comment flagged successfully!`);
             const response = await fetch(
                 `${process.env.REACT_APP_API_URL}/posts/${postID}/flags`, // ✅ Backend expects this route
                 {

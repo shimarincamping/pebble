@@ -211,6 +211,7 @@ function PostCardContainer(props) {
                           
     const handleReport = async (postID,text) => {
         try {
+            alert(`Post successfully flagged!`)
             const response = await fetch(
                 `${process.env.REACT_APP_API_URL}/posts/${postID}/flags`,
                 {
@@ -227,15 +228,14 @@ function PostCardContainer(props) {
             );
 
             if (response.ok) {
-                const { reported, contentID } = await response.json(); // Expecting { reported: true, contentID: id }
+                // const { reported, contentID } = await response.json(); // Expecting { reported: true, contentID: id }
 
-                setPostCardData((prevData) =>
-                    prevData.map((post) =>
-                        post.postID === contentID ? { ...post, reported } : post
-                    )
-                );
+                // setPostCardData((prevData) =>
+                //     prevData.map((post) =>
+                //         post.postID === contentID ? { ...post, reported } : post
+                //     )
+                // );
 
-                console.log("Post reported successfully.");
             } else {
                 console.error("Failed to report post.");
             }
