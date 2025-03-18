@@ -93,6 +93,7 @@
     color: #333;
     margin-top: 5px;
     text-align: justify;
+    white-space: pre-wrap;
 }
 
 .readMore {
