@@ -80,14 +80,16 @@ const PostCard = ({
                 <h3>{post.title}</h3>
                 <p className={styles.postMeta}>{post.date}</p>
                 <p className={styles.postDesc}>
-                    {post.postDesc
-                        ? expanded
-                            ? post.postDesc
-                            : `${post.postDesc.substring(0, 150)}...`
-                        : "No content available"}
+                    {
+                        (post.postDesc) ? (
+                            (post.postDesc.length > 200 && !expanded) ? (
+                                `${post.postDesc.substring(0, 200).trim()}...`
+                            ) : post.postDesc
+                        ) : "No content available"
+                    }
                 </p>
 
-                {post.postDesc.length > 150 && (
+                {post.postDesc.length > 200 && (
                     <button
                         className={styles.readMore}
                         onClick={(e) => {

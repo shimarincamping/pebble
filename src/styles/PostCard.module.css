@@ -94,6 +94,7 @@
     margin-top: 5px;
     text-align: justify;
     white-space: pre-wrap;
+    display: inline;
 }
 
 .readMore {
@@ -104,6 +105,8 @@
     cursor: pointer;
     padding: 5px 0;
     font-weight: bold;
+    display: inline-block;
+    margin-left: 0.5em;
 }
 
 .readMore:hover {
