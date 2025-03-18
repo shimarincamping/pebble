@@ -52,10 +52,10 @@ const GeneratedCVDisplay = ({ formData }) => {
                 <ul>
                     {formData.certifications.map(cert => (
                         <>
-                            <li>{cert}</li> <br />
+                            <li>{cert}</li>
                         </>
                     ))}
-                </ul>
+                </ul> <br />
             </section>
 
             <section className={`${styles.CV__section}`}>
