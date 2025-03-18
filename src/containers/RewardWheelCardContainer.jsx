@@ -75,9 +75,7 @@ function RewardWheelCardContainer(){
 
     const handleSpin= async () => {
         try{
-            // (ticketCount > 0){ instead of just (ticketCount){ to account for ticketCount being null before the fetch from backend is complete.
             if (ticketCount > 0){
-                console.log(`@handleSpin activated `);
                 Math.floor(Math.random()*10) //returns a number between 0(inclusive) and 9(inclusive)
 
                 let pos=Math.floor(Math.random()*10)
@@ -96,7 +94,6 @@ function RewardWheelCardContainer(){
                         },
                         body: JSON.stringify ({
                             rewardName : "+10 points"
-                            // rewardName : rewardsList[pos]
                         })
                     }
                 );
