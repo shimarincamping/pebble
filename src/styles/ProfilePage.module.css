@@ -25,7 +25,7 @@
 .headerInfoCard__profilePictureBorder {
     width: 13em;
     position: absolute;
-    top: 29.09%;
+    top: 8.9em;
     left: 7em;
 }
 
@@ -35,7 +35,7 @@
     object-fit: cover;
     border-radius: 100%;
     position: absolute;
-    top: 30.1%;
+    top: 9.2em;
     left: 7.3em;
 }
 
@@ -47,7 +47,7 @@
 .headerInfoCard__gridContainer__leftColumn {
     text-align: center;
     width: 26.6em;
-    padding-top: 7.7em;
+    padding-top: 30%;
 }
 
 .headerInfoCard__followerCount {
@@ -268,6 +268,35 @@
     .headerInfoCard__bannerImage {
         height: 11em;  /* Slightly smaller banner on mobile */
     }
+
+    .headerInfoCard__profilePictureBorder {
+        top: 7em;
+        left: 1.9em;
+        height: 10.4em;
+        width: 10.4em;
+    }
+    
+    .headerInfoCard__profilePicture {
+        top: 7.23em;
+        left: 2.15em;
+        height: 9.92em;
+        width: 9.92em;
+    }
+
+    .headerInfoCard__gridContainer__leftColumn {
+        width: 17em;
+    }
+
+    .headerInfoCard__followerCount {
+        margin-left: -2.2em;
+    }
+
+    .headerInfoCard__editProfileButton,
+    .headerInfoCard__followButton,
+    .headerInfoCard__unfollowButton { 
+        margin-left: -3em;
+    }
+
 }
 
 @media (max-width: 30em) {
