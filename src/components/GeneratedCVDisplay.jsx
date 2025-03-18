@@ -9,7 +9,7 @@ const GeneratedCVDisplay = ({ formData }) => {
                 <p>
                     {formData.contactInformation.email} | {formData.contactInformation.phoneNumber} | &nbsp;
                     <a
-                        href={formData.contactInformation.linkedin}
+                        href={`//${formData.contactInformation.linkedin}`}
                         target="_blank"
                         rel="noopener noreferrer"
                     >
