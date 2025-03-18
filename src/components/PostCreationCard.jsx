@@ -36,7 +36,7 @@ function PostCreationCard({ postData, onPostTypeChange, onModuleChange, onPostTi
 
                 {/* Image Upload Button */}
                 <label className={styles.imageUpload}>
-                    <input type="file" accept="image/*" onChange={onImageUpload} hidden />
+                    <input type="file" name="file" accept="image/*" onChange={onImageUpload} hidden />
                     <BsImage size={35} color="grey" />
                 </label>
             </div>

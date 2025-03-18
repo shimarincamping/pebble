@@ -25,6 +25,9 @@
 }
 
 .userDetails {
+    display: flex;
+    align-items: center; /* Aligns items vertically */
+    justify-content: space-between; /* Ensures spacing between name and icon */
     flex-grow: 1;
     margin-left: 10px;
 }
@@ -39,6 +42,11 @@
     font-size: 0.9em;
     color: #555;
     margin: 2px 0;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column; /* Ensures name, course, and time stay stacked */
 }
 
 .linkedinIcon {
@@ -85,6 +93,8 @@
     color: #333;
     margin-top: 5px;
     text-align: justify;
+    white-space: pre-wrap;
+    display: inline;
 }
 
 .readMore {
@@ -95,6 +105,8 @@
     cursor: pointer;
     padding: 5px 0;
     font-weight: bold;
+    display: inline-block;
+    margin-left: 0.5em;
 }
 
 .readMore:hover {

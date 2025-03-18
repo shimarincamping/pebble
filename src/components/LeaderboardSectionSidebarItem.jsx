@@ -22,7 +22,7 @@ export default function LeaderboardSectionSidebarItem(props) {
                     <span>Email:</span> {props.email}
                 </p>
                 <p>
-                    <span>Student ID:</span> {props.userID}
+                    <span>User ID:</span> <a href={`../profile/${props.userID}`}>{props.userID}</a>
                 </p>
             </div>
             <hr />

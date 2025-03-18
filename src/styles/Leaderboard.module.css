@@ -26,12 +26,14 @@
 }
 
 .leaderboardSectionItem__container__image {
-    width: 7em;
+    min-width: 7em;
+    max-width: 7em;
     height: 7em;
-    object-fit: cover;
     border-radius: 100%;
     border: white solid 2px;
     box-shadow: 0.1em 0.1em 0.1em var(--cardShadowColor);
+    margin: auto;
+    object-fit: cover;
 }
 
 .leaderboardSectionItem__userData {
@@ -88,6 +90,10 @@
 
 .leaderboardSidebar__sidebarItem__content span {
     font-weight: 600;
+}
+
+.leaderboardSidebar__sidebarItem__content a {
+    color: var(--taylorsRed);
 }
 
 .leaderboardSidebar__sidebarItem__bioHeader {

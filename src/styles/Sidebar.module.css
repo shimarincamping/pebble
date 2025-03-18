@@ -197,8 +197,10 @@
 
 .networkSidebarCard__myNetwork__userTile img,
 .networkSidebarCard__peopleYouMayKnow__userTile img {
-    width: 3.2em;
-    height: 3.2em;
+    min-width: 3.2em;
+    max-width: 3.2em;
+    min-height: 3.2em;
+    max-height: 3.2em;
     border: 0.1em solid #ccc;
     border-radius: 50%;
     object-fit: cover;
@@ -388,6 +390,10 @@
 
 .statsSidebarCard__item__tickets {
     background-color: var(--dashboardStatsTickets);
+}
+
+.statsSidebarCard__item__tickets a {
+    color: black;
 }
 
 .statsSidebarCard__item__desc {

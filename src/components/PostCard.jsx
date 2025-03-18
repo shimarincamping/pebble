@@ -36,15 +36,16 @@ const PostCard = ({
                     className={styles.profilePicture}
                     onClick={onAuthorClick}
                 />
-                <div className={styles.userDetails}
-                    onClick={onAuthorClick}
-                >
-                    <h3>{post.fullName}</h3>
-                    <p>{post.courseName}</p>
-                    <p className={styles.postTime}>{post.time}</p>
+                <div className={styles.userDetails} onClick={onAuthorClick}>
+                    <div className={styles.userInfo}>
+                        <h3>{post.fullName}</h3>
+                        <p>{post.courseName}</p>
+                        <p className={styles.postTime}>{post.time}</p>
+                    </div>
                 </div>
+                
                 {isProfilePage && post.fullName === currentUserDetails?.fullName && (
-                <div className={styles.postActionsIcons}>
+                <div className={styles.postActionsIcons} onClick={handleLinkedinSync}>
                     <BsPencilFill
                         className={styles.editIcon}
                         onClick={(e) => {
@@ -59,6 +60,8 @@ const PostCard = ({
                                 onDeleteClick(post.postID);
                             }}
                         />
+
+                        <FaLinkedin className={styles.linkedinIcon} />
                     </div>
                 )}
             </div>
@@ -77,14 +80,16 @@ const PostCard = ({
                 <h3>{post.title}</h3>
                 <p className={styles.postMeta}>{post.date}</p>
                 <p className={styles.postDesc}>
-                    {post.postDesc
-                        ? expanded
-                            ? post.postDesc
-                            : `${post.postDesc.substring(0, 150)}...`
-                        : "No content available"}
+                    {
+                        (post.postDesc) ? (
+                            (post.postDesc.length > 200 && !expanded) ? (
+                                `${post.postDesc.substring(0, 200).trim()}...`
+                            ) : post.postDesc
+                        ) : "No content available"
+                    }
                 </p>
 
-                {post.postDesc.length > 150 && (
+                {post.postDesc.length > 200 && (
                     <button
                         className={styles.readMore}
                         onClick={(e) => {
@@ -138,18 +143,22 @@ const PostCard = ({
                 >
                     <BsFlagFill />
                 </div>
-                <div>
+                {/*<div>
+                    {isProfilePage && post.fullName === currentUserDetails?.fullName && (
                     <div onClick={handleLinkedinSync}>
                         <FaLinkedin className={styles.linkedinIcon} />
                     </div>
+                    )}
+    
+
                     {/* <a
                         href={post.linkedinUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         <FaLinkedin className={styles.linkedinIcon} />
-                    </a> */}
-                </div>
+                    </a> 
+                </div> */}
             </div>
             {showComments && (
                 <PostCommentContainer
