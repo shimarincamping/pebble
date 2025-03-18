@@ -93,7 +93,7 @@ function RewardWheelCardContainer(){
                             Authorization: `Bearer ${token}`,
                         },
                         body: JSON.stringify ({
-                            rewardName : "+10 points"
+                            rewardName : rewardName
                         })
                     }
                 );
