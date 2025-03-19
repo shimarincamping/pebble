@@ -84,7 +84,7 @@ function PostCardContainer(props) {
     useEffect(() => {
         if (props.newPost) {
             setPostCardData((prevPosts) => [
-                { ...props.newPost, postID: prevPosts.length + 1 },
+                { ...props.newPost },
                 ...prevPosts,
             ]);
         }

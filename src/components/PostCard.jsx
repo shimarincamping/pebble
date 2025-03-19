@@ -40,7 +40,7 @@ const PostCard = ({
                     <div className={styles.userInfo}>
                         <h3>{post.fullName}</h3>
                         <p>{post.courseName}</p>
-                        <p className={styles.postTime}>{post.time}</p>
+                        <p className={styles.postTime}>{post.time || "Now"}</p>
                     </div>
                 </div>
                 
