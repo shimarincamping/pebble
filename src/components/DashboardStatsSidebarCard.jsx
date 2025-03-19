@@ -21,9 +21,9 @@ export default function DashboardStatsSidebarCard(props) {
                     />
                     <div className={`${styles.statsSidebarCard__item__desc}`}>
                         <span className={`${styles.statsSidebarCard__data}`}>
-                            #{props.leaderboardRank}&nbsp;
+                            {(props.leaderboardRank === 0) ? "Unranked" : (`#${props.leaderboardRank} `)}
                         </span>
-                        <span>&#40;{props.totalPoints} pts&#41;</span>
+                        {(props.leaderboardRank !== 0) && <span>&#40;Top {props.leaderboardPercent}%&#41;</span>}
                     </div>
                 </div>
                 <div
