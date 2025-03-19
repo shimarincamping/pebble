@@ -1,10 +1,5 @@
 # PEBBLE: A professional roadmap for students
 
-- Figma: https://www.figma.com/design/WgdVVZlZTA4za0cYw6i3E2/Pebble-Prototype?node-id=0-1&t=0aDt9vg8pzmEyd43-1
-- Delegations: https://docs.google.com/document/d/1CUqblS-rSEoMU-LyUUG043Zkb0AuRiRWGvIkkMjnOKE/edit?usp=sharing
+During university, students often find themselves at an important crossroads in their life—one full of decisions that could potentially affect the entire course of their future careers. It goes without saying, then, that students are often filled with doubt or uncertainty about making the right choices, and understandably so. Based on preliminary research performed by the project team, it is observed that Taylor’s University students are also generally uneasy with improving their professional network, online brand, and career-relevant hard skills. 
 
-
-## Current Deadlines
-- **22nd Jan** - First recommended deadline for frontend JSX
-- **17th Feb** - Full completion date for web application 
-- **9th Mar** - Full completion date for mobile application port
+PEBBLE, a crowdsourced platform designed specifically for Taylor’s School of Computing student, aims to tackle these multifaceted issues using a crowdsourced and gamified approach, with features that both bridge the gap between students and the professional world, while still offering a safe space for students to develop their networking and computing-related skills away from the pressure or perceived intimidation of sites such as LinkedIn. This project utilises a combination of modern technologies and frameworks, mainly React, Express, and Firebase, while incorporating generative AI capabilities via Google’s Gemini and external integrations with platforms such as LinkedIn.
