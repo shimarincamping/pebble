@@ -122,6 +122,7 @@ const ForumThreadContainer = () => {
             );
             if (response.ok) {
                 alert("Thread successfully flagged.");
+                navigate("/forum");
             } else {
                 alert("Error while flagging thread!");
             }

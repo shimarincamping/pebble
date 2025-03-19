@@ -34,11 +34,9 @@ export default function ForumThreadInputFieldRoadmapSection(props) {
                         )
                     }
                 >
-                    <option value="roadmapSectionCourses">Courses</option>
-                    <option value="roadmapSectionProjects">Projects</option>
-                    <option value="roadmapSectionCompetitions">
-                        Competitions
-                    </option>
+                    <option value="courses">Courses</option>
+                    <option value="projects">Projects</option>
+                    <option value="competitions">Competitions</option>
                 </select>
             </div>
             <div className={`${styles.createThread__input}`}>
