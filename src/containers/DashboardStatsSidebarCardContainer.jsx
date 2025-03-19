@@ -36,6 +36,7 @@ export default function DashboardStatsSidebarCardContainer() {
             {profileStats ? (
                 <DashboardStatsSidebarCard
                     leaderboardRank={profileStats.leaderboardRank}
+                    leaderboardPercent={profileStats.leaderboardPercent}
                     totalPoints={profileStats.totalPoints}
                     tickets={profileStats.tickets}
                 />
