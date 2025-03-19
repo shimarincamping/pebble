@@ -81,9 +81,9 @@ function PostCreationCardContainer({ onNewPost }) {
             }
     
             const data = await response.json();
-            onNewPost(data.post);
-    
-            setPostData({ title: "", postDesc: "", postPictureFile: null, linkedinURL: "" });
+            
+            onNewPost({...postData, ...data.post, postID : data.postID});
+            setPostData((prev) => ({...prev, title: "", postDesc: "", postPictureFile: null, linkedinURL: "" }));
     
             alert("Post created successfully!");
         } catch (error) {
